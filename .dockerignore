@@ -1,12 +1,12 @@
-# Ignore build artifacts and local deps — keep source for Dokploy builds
-.dockerignore
+# Keep source for Dokploy Docker builds; exclude local noise and secrets.
 .git
 .gitignore
 .next
 node_modules
 npm-debug.log*
-README.md
 .env
 .env*.local
-Dockerfile*
-docker-compose*.yml
+.agents
+.claude
+.cursor
+*.md

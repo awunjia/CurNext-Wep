@@ -1,6 +1,6 @@
 # CurNext
 
-Marketing website for [curnext.app](https://curnext.app) — Next.js, React, [shadcn/ui](https://ui.shadcn.com/), Docker, Dokploy, and Cloudflare Turnstile.
+Marketing website for [curnext.app](https://curnext.app) - Next.js, React, [shadcn/ui](https://ui.shadcn.com/), Docker, Dokploy, and Cloudflare Turnstile.
 
 ## Stack
 
@@ -73,14 +73,22 @@ docker build \
 
 ## Dokploy
 
-1. Create an application from this repo.
-2. Use the included `Dockerfile` (or Compose).
-3. Set build args / env:
+**Builder: Dockerfile** (not Nixpacks). Path: `Dockerfile`. Context: `.`. Published port: `3000`.
+
+1. Create an Application from this Git repo (branch you deploy, e.g. `prod`).
+2. Build type → **Dockerfile**. Leave Dockerfile path as `Dockerfile`.
+3. **Build Arguments** (required for client-side values baked into the image):
    - `NEXT_PUBLIC_SITE_URL=https://curnext.app`
    - `NEXT_PUBLIC_TURNSTILE_SITE_KEY=...`
-   - `TURNSTILE_SECRET_KEY=...`
-4. Point the domain `curnext.app` at Dokploy, then put **Cloudflare** in front (proxy/orange-cloud).
-5. Configure Turnstile for `curnext.app` (and `localhost` for local testing).
+4. **Environment** (runtime secrets / server config - see `.env.example`):
+   - `DATABASE_URL`, `DIRECT_URL` (Supabase Postgres)
+   - `TURNSTILE_SECRET_KEY`
+   - SMTP, R2/S3, `GROQ_API_KEY`, etc. as needed
+5. Domains → attach `curnext.app` (and `www` if used). Cloudflare orange-cloud in front is fine.
+6. Deploy. On start the container runs `prisma migrate deploy`, then Next.js on port 3000.
+7. Configure Turnstile for `curnext.app` (and `localhost` for local testing).
+
+Do not set `SITE_URL` / `NEXT_PUBLIC_SITE_URL` to `0.0.0.0` - that is only the container listen address (`HOSTNAME`).
 
 ## Turnstile
 
