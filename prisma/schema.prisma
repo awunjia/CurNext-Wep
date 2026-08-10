@@ -1,0 +1,215 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  firstName          String    @map("first_name")
+  lastName           String    @map("last_name")
+  email              String
+  company            String?
+  phone              String?
+  subject            String?
+  message            String
+  source             String    @default("contact")
+  turnstileHostname  String?   @map("turnstile_hostname")
+  userAgent          String?   @map("user_agent")
+  ipAddress          String?   @map("ip_address")
+  readAt             DateTime? @map("read_at")
+
+  @@index([createdAt(sort: Desc)])
+  @@index([email])
+  @@index([readAt])
+  @@map("contacts")
+}
+
+model DemoRequest {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  firstName          String    @map("first_name")
+  lastName           String    @map("last_name")
+  email              String
+  company            String
+  jobTitle           String?   @map("job_title")
+  phone              String?
+  country            String?
+  companySize        String?   @map("company_size")
+  solutions          String[]  @default([])
+  message            String?
+  source             String    @default("request-demo")
+  turnstileHostname  String?   @map("turnstile_hostname")
+  userAgent          String?   @map("user_agent")
+  ipAddress          String?   @map("ip_address")
+  readAt             DateTime? @map("read_at")
+
+  @@index([createdAt(sort: Desc)])
+  @@index([email])
+  @@index([readAt])
+  @@map("demo_requests")
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  email              String  @unique
+  source             String  @default("homepage")
+  turnstileHostname  String? @map("turnstile_hostname")
+  userAgent          String? @map("user_agent")
+  ipAddress          String? @map("ip_address")
+
+  @@index([createdAt(sort: Desc)])
+  @@index([ipAddress, createdAt(sort: Desc)])
+  @@map("newsletter_subscribers")
+}
+
+model QuoteRequest {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  firstName          String    @map("first_name")
+  lastName           String    @map("last_name")
+  email              String
+  company            String
+  phone              String?
+  country            String?
+  siteSize           String    @map("site_size")
+  subscriptionTier  String    @map("subscription_tier")
+  solutions          String[]  @default([])
+  message            String?
+  source             String    @default("request-quote")
+  turnstileHostname  String?   @map("turnstile_hostname")
+  userAgent          String?   @map("user_agent")
+  ipAddress          String?   @map("ip_address")
+  readAt             DateTime? @map("read_at")
+
+  @@index([createdAt(sort: Desc)])
+  @@index([email])
+  @@index([readAt])
+  @@map("quote_requests")
+}
+
+enum JobOpeningStatus {
+  DRAFT
+  OPEN
+  ON_HOLD
+  CLOSED
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACTOR
+  INTERN
+}
+
+enum WorkArrangement {
+  REMOTE
+  ONSITE
+  HYBRID
+  FREELANCE
+}
+
+enum CandidateStage {
+  APPLIED
+  SCREENING
+  ONLINE_INTERVIEW
+  ONSITE_INTERVIEW
+  ASSESSMENT
+  SHORTLISTED
+  PRE_HIRE
+  OFFER
+  HIRED
+  REJECTED
+}
+
+/// HR-managed openings (existing `job_openings` table). Read-only from this app.
+model JobOpening {
+  id                   String            @id @default(cuid())
+  title                String
+  departmentId         String?
+  status               JobOpeningStatus  @default(DRAFT)
+  description          String?
+  responsibilities     String?
+  requirements         String?
+  location             String?
+  employmentType       EmploymentType
+  workArrangement      WorkArrangement?
+  publicSlug           String?
+  applicationDeadline  DateTime?
+  openedAt             DateTime?
+  closedAt             DateTime?
+  publishedAt          DateTime?
+  hiringManagerUserId  String?
+  createdByUserId      String?
+  deletedAt            DateTime?
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+
+  department HrDepartment? @relation(fields: [departmentId], references: [id])
+  candidates JobCandidate[]
+
+  @@index([status, publishedAt])
+  @@index([deletedAt])
+  @@map("job_openings")
+}
+
+model HrDepartment {
+  id             String    @id @default(cuid())
+  name           String
+  code           String?
+  description    String?
+  officeLocation String?
+  countryCode    String?
+  parentId       String?
+  managerUserId  String?
+  deletedAt      DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  openings JobOpening[]
+
+  @@map("hr_departments")
+}
+
+/// HR candidates table. Marketing site writes only application-necessary fields.
+model JobCandidate {
+  id                   String         @id @default(cuid())
+  jobOpeningId         String
+  firstName            String
+  lastName             String
+  email                String
+  phone                String?
+  coverLetter          String?
+  resumeStorageKey     String?
+  resumeFileName       String?
+  resumeContentType    String?
+  stage                CandidateStage @default(APPLIED)
+  source               String?
+  applicationIpHash    String?
+  deletedAt            DateTime?
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
+
+  jobOpening JobOpening @relation(fields: [jobOpeningId], references: [id])
+
+  @@index([jobOpeningId, stage])
+  @@index([email])
+  @@index([stage, createdAt(sort: Desc)])
+  @@index([deletedAt])
+  @@map("job_candidates")
+}
+

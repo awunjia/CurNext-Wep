@@ -1,0 +1,46 @@
+---
+description: Marketing page heading sizes - section h3, item h4, except HomeHero
+globs: src/components/**/*.tsx,src/app/**/*.tsx
+alwaysApply: false
+---
+
+# Marketing heading typography
+
+When building or editing marketing pages (home sections, solutions, how-it-works, placeholders, future pages):
+
+## Section titles
+
+Use **`h3`** with shared class from `@/lib/typography`:
+
+```tsx
+import { sectionHeadingClassName } from "@/lib/typography";
+
+<h3 id="..." className={sectionHeadingClassName}>
+  Section title
+</h3>
+```
+
+Equivalent classes: `text-xl font-semibold tracking-tight sm:text-2xl`
+
+Do **not** use `text-3xl` / `text-4xl` / `text-5xl` for section headings.
+
+## Item titles (cards, steps, zones, measures)
+
+Use **`h4`** with:
+
+```tsx
+import { itemHeadingClassName } from "@/lib/typography";
+
+<h4 className={itemHeadingClassName}>{title}</h4>
+```
+
+## Page / hero titles
+
+- **Home hero only** (`HomeHero`): keep the large display `h1` (`text-4xl sm:text-5xl md:text-6xl`). Do not shrink it.
+- **Solution product heroes**: `h1` with `solutionHeroHeadingClassName` (`text-2xl sm:text-3xl md:text-4xl`, white on image).
+- **Text-only page intros** (e.g. How it works): use the **section** size for the primary title (`sectionHeadingClassName`). Prefer `h1` for SEO on the page title, visually matching the section h3 size.
+
+## Do not
+
+- Reintroduce large `h2` section titles (`text-3xl sm:text-4xl`)
+- Nest `h3` item titles under `h3` section titles - demote items to `h4`

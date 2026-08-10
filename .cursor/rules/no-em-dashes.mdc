@@ -1,0 +1,23 @@
+---
+description: Prefer ASCII hyphen (-) over em/en dashes in copy and UI text
+alwaysApply: true
+---
+
+# No em or en dashes
+
+Never use em dashes (`—`) or en dashes (`–`) in user-facing copy, UI strings, comments, commit messages, or docs you write for this project.
+
+Use a regular hyphen-minus (`-`) instead.
+
+```text
+❌ act on—before schedules slip
+✅ act on - before schedules slip
+
+❌ 1–10 employees
+✅ 1-10 employees
+
+❌ Next.js — React
+✅ Next.js - React
+```
+
+When editing existing text, replace any `—` or `–` with `-`.
