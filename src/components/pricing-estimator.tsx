@@ -15,7 +15,7 @@ import {
 import type { CountryCode } from "libphonenumber-js";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { FieldLabel } from "@/components/field-label";
@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import {
+  operatingCountryCodes,
   pricingCurrencies,
   type PricingCurrencyCode,
 } from "@/config/currencies";
@@ -94,6 +95,7 @@ const fieldClass =
   "h-11 w-full min-w-0 bg-background/60 px-3 text-base dark:bg-background/40 sm:h-10 sm:text-sm";
 
 export function PricingEstimator() {
+  const locale = useLocale();
   const t = useTranslations("pricing.estimator");
   const tSolutions = useTranslations("solutions.catalog");
   const tPricing = useTranslations("pricing");
@@ -211,6 +213,7 @@ export function PricingEstimator() {
           solutions: contact.solutions,
           message: contact.message,
           turnstileToken,
+          locale,
         }),
       });
 
@@ -446,6 +449,7 @@ export function PricingEstimator() {
               value={contact.phone || undefined}
               country={contact.countryCode}
               defaultCountry={contact.countryCode}
+              countries={operatingCountryCodes}
               onChange={(value) => {
                 updateContact("phone", value ?? "");
                 validatePhone(value ?? "");

@@ -19,7 +19,7 @@ const PRODUCT_PRIORITY = new Set([
   "/solutions/structural-health",
   "/solutions/mep",
   "/technologies",
-  "/security",
+  "/data/security",
   "/blog",
   "/how-it-works",
 ]);

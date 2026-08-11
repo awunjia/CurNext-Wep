@@ -3739,6 +3739,39 @@
       "submitError": "Impossible d'envoyer la demande de devis",
       "toastTitle": "Demande de devis envoyée",
       "toastBody": "Merci - nous avons bien reçu votre demande et enverrons bientôt un devis cadré."
+    },
+    "confirmationEmail": {
+      "subject": "Nous avons bien reçu votre demande de devis CurNext, {firstName}",
+      "eyebrow": "Devis CurNext",
+      "greeting": "Bonjour {firstName},",
+      "intro": "Merci d'avoir demandé un devis CurNext pour {company}. Votre demande a bien été reçue et notre équipe préparera une proposition.",
+      "selectionsTitle": "Vos sélections (indicatives)",
+      "nodeCount": "Nombre de nœuds",
+      "installBand": "Tranche d'installation",
+      "market": "Marché",
+      "installFee": "Frais d'installation",
+      "duration": "Durée du contrat",
+      "subscription": "Abonnement",
+      "solutionsTitle": "Solutions requises",
+      "solutionsNone": "Non précisé",
+      "nextTitle": "Prochaines étapes",
+      "next1": "L'équipe commerciale examine le nombre de nœuds, les surfaces et le calendrier.",
+      "next2": "Nous envoyons un devis cadré - pas un total panier engageant avant confirmation.",
+      "next3": "Nous planifions un court appel si quelque chose doit être clarifié.",
+      "questions": "Questions",
+      "indicative": "Indicatif uniquement - le devis final dépend des surfaces, des étages et du périmètre de mise en service.",
+      "regards": "Cordialement,",
+      "team": "L'équipe CurNext",
+      "securityTitle": "Avis de sécurité",
+      "securityBody": "Ce message a été envoyé parce qu'une demande de devis a été soumise avec cet e-mail sur curnext.app. CurNext ne vous demandera jamais de mots de passe ou de détails de paiement par e-mail.",
+      "securityContact": "Si vous n'avez pas soumis cette demande, contactez {securityEmail}.",
+      "privacy": "Confidentialité",
+      "terms": "Conditions",
+      "businessId": "Identifiant d'entreprise {id}",
+      "monthUnit": "{count} mois",
+      "monthUnitOne": "1 mois",
+      "companyFallback": "votre projet",
+      "perMonth": "/mois"
     }
   },
   "contact": {
@@ -3790,7 +3823,7 @@
     "form": {
       "firstName": "Prénom",
       "lastName": "Nom",
-      "workEmail": "E-mail professionnel",
+      "workEmail": "E-mail",
       "phone": "Téléphone",
       "company": "Entreprise",
       "topic": "Sujet",
@@ -3817,6 +3850,26 @@
         "press": "Presse / médias",
         "other": "Autre"
       }
+    },
+    "confirmationEmail": {
+      "subject": "Nous avons bien reçu votre message, {firstName}",
+      "eyebrow": "Contact CurNext",
+      "greeting": "Bonjour {firstName},",
+      "intro": "Merci d'avoir contacté CurNext. Votre message a bien été reçu et notre équipe vous répondra.",
+      "topic": "Sujet",
+      "email": "E-mail",
+      "nextTitle": "Prochaines étapes",
+      "next1": "L'équipe concernée examine votre message.",
+      "next2": "Nous répondons depuis une adresse CurNext avec la suite à donner.",
+      "next3": "Pour une proposition cadrée, utilisez Demander un devis sur Tarification. Pour les postes ouverts, utilisez Carrières.",
+      "questions": "Questions",
+      "regards": "Cordialement,",
+      "team": "L'équipe CurNext",
+      "securityTitle": "Avis de sécurité",
+      "securityBody": "Ce message a été envoyé parce qu'un formulaire de contact a été soumis avec cet e-mail sur curnext.app. CurNext ne vous demandera jamais de mots de passe ou de détails de paiement par e-mail.",
+      "securityContact": "Si vous n'avez pas envoyé ce message, contactez {securityEmail}.",
+      "privacy": "Confidentialité",
+      "businessId": "Identifiant d'entreprise {id}"
     }
   },
   "support": {

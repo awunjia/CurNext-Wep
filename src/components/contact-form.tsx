@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
+import type { CountryCode } from "libphonenumber-js";
 import {
   Building2,
   Loader2,
@@ -12,12 +13,20 @@ import {
   Tag,
   User,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { FieldLabel } from "@/components/field-label";
+import { PhoneNumberInput } from "@/components/phone-number-input";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import {
   TurnstileWidget,
@@ -35,6 +44,7 @@ type FormState = {
   email: string;
   company: string;
   phone: string;
+  countryCode: CountryCode;
   subject: ContactSubjectId | "";
   message: string;
 };
@@ -45,15 +55,14 @@ const initialState: FormState = {
   email: "",
   company: "",
   phone: "",
+  countryCode: "FI",
   subject: "",
   message: "",
 };
 
-const selectClassName =
-  "border-input bg-transparent focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 h-8 w-full min-w-0 rounded-lg border px-2.5 py-1 text-base outline-none transition-colors focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm";
-
 export function ContactForm() {
   const t = useTranslations("contact.form");
+  const locale = useLocale();
   const [form, setForm] = useState<FormState>(initialState);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -83,8 +92,15 @@ export function ContactForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...form,
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          company: form.company,
+          phone: form.phone || undefined,
+          subject: form.subject,
+          message: form.message,
           turnstileToken,
+          locale,
         }),
       });
       const data = (await res.json()) as { ok?: boolean; error?: string };
@@ -162,13 +178,17 @@ export function ContactForm() {
             <FieldLabel htmlFor="contact-phone" icon={Phone}>
               {t("phone")}
             </FieldLabel>
-            <Input
+            <PhoneNumberInput
               id="contact-phone"
-              name="phone"
-              type="tel"
-              autoComplete="tel"
-              value={form.phone}
-              onChange={(e) => update("phone", e.target.value)}
+              value={form.phone || undefined}
+              country={form.countryCode}
+              defaultCountry={form.countryCode}
+              onChange={(value) => update("phone", value ?? "")}
+              onCountryChange={(nextCountry) => {
+                if (nextCountry) {
+                  update("countryCode", nextCountry);
+                }
+              }}
               className="bg-background/60 dark:bg-background/40"
             />
           </div>
@@ -192,25 +212,33 @@ export function ContactForm() {
             <FieldLabel htmlFor="contact-subject" icon={Tag} required>
               {t("topic")}
             </FieldLabel>
-            <select
-              id="contact-subject"
-              name="subject"
-              required
-              value={form.subject}
-              onChange={(e) =>
-                update("subject", e.target.value as ContactSubjectId | "")
-              }
-              className={cn(selectClassName, "bg-background/60 dark:bg-background/40")}
+            <Select
+              value={form.subject || undefined}
+              onValueChange={(value) => {
+                if (!value) return;
+                update("subject", value as ContactSubjectId);
+              }}
             >
-              <option value="" disabled>
-                {t("selectTopic")}
-              </option>
-              {contactSubjects.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {t(`subjects.${item.id}`)}
-                </option>
-              ))}
-            </select>
+              <SelectTrigger
+                id="contact-subject"
+                className={cn(
+                  "w-full min-w-0 bg-background/60 dark:bg-background/40",
+                )}
+              >
+                <SelectValue placeholder={t("selectTopic")} />
+              </SelectTrigger>
+              <SelectContent
+                alignItemWithTrigger={false}
+                align="start"
+                className="max-h-[min(18rem,50dvh)] w-[var(--anchor-width)] max-w-[calc(100vw-2rem)]"
+              >
+                {contactSubjects.map((item) => (
+                  <SelectItem key={item.id} value={item.id}>
+                    {t(`subjects.${item.id}`)}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
 

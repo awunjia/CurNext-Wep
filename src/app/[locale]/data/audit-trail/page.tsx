@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import { CompliancePage } from "@/components/compliance-page";
+import { AuditTrailPage } from "@/components/audit-trail-page";
 import { withLocaleMetadata } from "@/lib/i18n-metadata";
 
 type Props = {
@@ -10,15 +10,15 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "compliance" });
+  const t = await getTranslations({ locale, namespace: "auditTrail" });
   return withLocaleMetadata({
     locale,
-    path: "/compliance",
+    path: "/data/audit-trail",
     title: t("title"),
     description: t("description"),
   });
 }
 
 export default function Page() {
-  return <CompliancePage />;
+  return <AuditTrailPage />;
 }

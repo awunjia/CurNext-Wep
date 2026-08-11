@@ -51,7 +51,9 @@ export const TurnstileWidget = forwardRef<
         onError={onError}
         options={{
           theme: "auto",
-          size: "flexible",
+          // "normal" is widely supported; "flexible" can trigger Turnstile 400020
+          // on some widget/sitekey combinations (incl. localhost).
+          size: "normal",
           ...options,
         }}
       />

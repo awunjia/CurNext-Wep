@@ -3739,6 +3739,39 @@
       "submitError": "No se pudo enviar la solicitud de presupuesto",
       "toastTitle": "Quote request submitted",
       "toastBody": "Gracias - recibimos su solicitud y enviaremos pronto un presupuesto acotado."
+    },
+    "confirmationEmail": {
+      "subject": "Hemos recibido su solicitud de presupuesto CurNext, {firstName}",
+      "eyebrow": "Presupuesto CurNext",
+      "greeting": "Hola {firstName},",
+      "intro": "Gracias por solicitar un presupuesto CurNext para {company}. Su solicitud se ha recibido y nuestro equipo preparará una propuesta.",
+      "selectionsTitle": "Sus selecciones (indicativas)",
+      "nodeCount": "Número de nodos",
+      "installBand": "Banda de instalación",
+      "market": "Mercado",
+      "installFee": "Tarifa de instalación",
+      "duration": "Duración del contrato",
+      "subscription": "Suscripción",
+      "solutionsTitle": "Soluciones requeridas",
+      "solutionsNone": "No especificado",
+      "nextTitle": "Qué ocurre a continuación",
+      "next1": "Ventas revisa el número de nodos, superficies y calendario.",
+      "next2": "Enviamos un presupuesto acotado - no un total de carrito vinculante hasta confirmar.",
+      "next3": "Programamos una breve llamada si hay que aclarar algo.",
+      "questions": "Preguntas",
+      "indicative": "Solo indicativo - el presupuesto final depende de superficies, plantas y alcance de puesta en marcha.",
+      "regards": "Atentamente,",
+      "team": "El equipo de CurNext",
+      "securityTitle": "Aviso de seguridad",
+      "securityBody": "Este mensaje se envió porque se envió una solicitud de presupuesto con este correo en curnext.app. CurNext nunca le pedirá contraseñas ni datos de pago por correo.",
+      "securityContact": "Si usted no envió esta solicitud, contacte a {securityEmail}.",
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "businessId": "ID de empresa {id}",
+      "monthUnit": "{count} meses",
+      "monthUnitOne": "1 mes",
+      "companyFallback": "su proyecto",
+      "perMonth": "/mes"
     }
   },
   "contact": {
@@ -3790,7 +3823,7 @@
     "form": {
       "firstName": "Nombre",
       "lastName": "Apellidos",
-      "workEmail": "Correo de trabajo",
+      "workEmail": "Correo",
       "phone": "Teléfono",
       "company": "Empresa",
       "topic": "Tema",
@@ -3817,6 +3850,26 @@
         "press": "Prensa / medios",
         "other": "Otra cosa"
       }
+    },
+    "confirmationEmail": {
+      "subject": "Hemos recibido su mensaje, {firstName}",
+      "eyebrow": "Contacto CurNext",
+      "greeting": "Hola {firstName},",
+      "intro": "Gracias por contactar a CurNext. Su mensaje se ha recibido y nuestro equipo le dará seguimiento.",
+      "topic": "Asunto",
+      "email": "Correo",
+      "nextTitle": "Qué ocurre a continuación",
+      "next1": "El equipo adecuado revisa su nota.",
+      "next2": "Respondemos desde una dirección CurNext con los siguientes pasos.",
+      "next3": "Para una propuesta acotada, use Solicitar presupuesto en Precios. Para roles abiertos, use Carreras.",
+      "questions": "Preguntas",
+      "regards": "Atentamente,",
+      "team": "El equipo de CurNext",
+      "securityTitle": "Aviso de seguridad",
+      "securityBody": "Este mensaje se envió porque se envió un formulario de contacto con este correo en curnext.app. CurNext nunca le pedirá contraseñas ni datos de pago por correo.",
+      "securityContact": "Si usted no envió este mensaje, contacte a {securityEmail}.",
+      "privacy": "Privacidad",
+      "businessId": "ID de empresa {id}"
     }
   },
   "support": {

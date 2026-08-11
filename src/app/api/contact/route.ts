@@ -60,6 +60,7 @@ function parsePayload(body: unknown): {
     subjectId: ContactSubjectId;
     message: string;
     turnstileToken: string;
+    locale: string;
   };
   error?: string;
 } {
@@ -76,6 +77,7 @@ function parsePayload(body: unknown): {
   const subjectId = clean(input.subject, MAX_LEN.subject);
   const message = clean(input.message, MAX_LEN.message);
   const turnstileToken = clean(input.turnstileToken, 2048);
+  const locale = clean(input.locale, 8) || "en";
 
   if (!firstName || !lastName) {
     return { error: "First and last name are required" };
@@ -103,6 +105,7 @@ function parsePayload(body: unknown): {
       subjectId: subjectId as ContactSubjectId,
       message,
       turnstileToken,
+      locale,
     },
   };
 }
@@ -142,6 +145,7 @@ export async function POST(request: Request) {
     }
 
     const label = subjectLabel(parsed.data.subjectId);
+    const locale = parsed.data.locale;
 
     await prisma.contact.create({
       data: {
@@ -159,10 +163,24 @@ export async function POST(request: Request) {
       },
     });
 
-    const confirmation = buildContactConfirmationEmail({
+    let localizedSubjectLabel = label;
+    try {
+      const messages = (
+        await import(`../../../../messages/${locale}.json`)
+      ).default as {
+        contact?: { form?: { subjects?: Record<string, string> } };
+      };
+      localizedSubjectLabel =
+        messages.contact?.form?.subjects?.[parsed.data.subjectId] ?? label;
+    } catch {
+      localizedSubjectLabel = label;
+    }
+
+    const confirmation = await buildContactConfirmationEmail({
       firstName: parsed.data.firstName,
       email: parsed.data.email,
-      subjectLabel: label,
+      subjectLabel: localizedSubjectLabel,
+      locale,
     });
 
     const notify = buildContactNotifyEmail({
@@ -186,6 +204,7 @@ export async function POST(request: Request) {
         subject: confirmation.subject,
         text: confirmation.text,
         html: confirmation.html,
+        attachments: confirmation.attachments,
       });
       if (!customerResult.sent) {
         console.error("contact confirmation email failed", customerResult.error);

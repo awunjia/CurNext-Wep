@@ -44,17 +44,16 @@ make start-only     # serve existing production build without rebuilding
 
 ## Prisma models
 
-- `Contact` → `contacts` table (for Contact Us form)
-- `DemoRequest` → `demo_requests` table (Request Demo form)
+- `Contact` → `contacts` table (Contact Us form)
+- `QuoteRequest` → `quote_requests` table (Pricing quote form)
 
-Schema: `prisma/schema.prisma`  
-Initial migration: `prisma/migrations/20260807120000_init_contacts_and_demo_requests`
+Schema: `prisma/schema.prisma`
 
-## Request Demo
+## Request quote
 
 1. Set `DATABASE_URL` and Turnstile keys in `.env`
 2. Run `make fresh` (or `make migrate-deploy && make dev`)
-3. Submit from `/request-demo` — Turnstile is verified, then Prisma saves the row
+3. Submit from `/pricing` - Turnstile is verified, then Prisma saves the row
 
 ## Docker
 

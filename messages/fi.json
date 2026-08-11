@@ -3739,6 +3739,39 @@
       "submitError": "Tarjouspyyntöä ei voitu lähettää",
       "toastTitle": "Tarjouspyyntö lähetetty",
       "toastBody": "Kiitos - vastaanotimme pyyntösi ja lähetämme rajattuun tarjouksen pian."
+    },
+    "confirmationEmail": {
+      "subject": "Vastaanotimme CurNext-tarjouspyyntösi, {firstName}",
+      "eyebrow": "CurNext-tarjous",
+      "greeting": "Hei {firstName},",
+      "intro": "Kiitos CurNext-tarjouspyynnöstäsi kohteelle {company}. Pyyntösi on vastaanotettu ja tiimimme valmistelee ehdotuksen.",
+      "selectionsTitle": "Valintasi (ohjeelliset)",
+      "nodeCount": "Solmujen määrä",
+      "installBand": "Asennuskaista",
+      "market": "Markkina",
+      "installFee": "Asennusmaksu",
+      "duration": "Sopimuksen kesto",
+      "subscription": "Tilaus",
+      "solutionsTitle": "Tarvittavat ratkaisut",
+      "solutionsNone": "Ei määritetty",
+      "nextTitle": "Mitä tapahtuu seuraavaksi",
+      "next1": "Myynti käy läpi solmumäärän, pinnat ja aikataulun.",
+      "next2": "Lähetämme rajatun tarjouksen - ei sitovaa ostoskorin summaa ennen vahvistusta.",
+      "next3": "Varaamme lyhyen puhelun, jos jotain pitää selventää.",
+      "questions": "Kysymykset",
+      "indicative": "Vain ohjeellinen - lopullinen tarjous riippuu pinnoista, kerroksista ja käyttöönoton laajuudesta.",
+      "regards": "Ystävällisin terveisin,",
+      "team": "CurNext-tiimi",
+      "securityTitle": "Turvallisuushuomautus",
+      "securityBody": "Tämä viesti lähetettiin, koska tarjouspyyntö lähetettiin tällä sähköpostilla osoitteessa curnext.app. CurNext ei koskaan pyydä salasanoja tai maksutietoja sähköpostitse.",
+      "securityContact": "Jos et lähettänyt tätä pyyntöä, ota yhteyttä osoitteeseen {securityEmail}.",
+      "privacy": "Tietosuoja",
+      "terms": "Ehdot",
+      "businessId": "Y-tunnus {id}",
+      "monthUnit": "{count} kuukautta",
+      "monthUnitOne": "1 kuukausi",
+      "companyFallback": "projektisi",
+      "perMonth": "/kk"
     }
   },
   "contact": {
@@ -3790,7 +3823,7 @@
     "form": {
       "firstName": "Etunimi",
       "lastName": "Sukunimi",
-      "workEmail": "Työsähköposti",
+      "workEmail": "Sähköposti",
       "phone": "Puhelin",
       "company": "Yritys",
       "topic": "Aihe",
@@ -3817,6 +3850,26 @@
         "press": "Lehdistö / media",
         "other": "Jokin muu"
       }
+    },
+    "confirmationEmail": {
+      "subject": "Vastaanotimme viestisi, {firstName}",
+      "eyebrow": "CurNext-yhteydenotto",
+      "greeting": "Hei {firstName},",
+      "intro": "Kiitos, että otit yhteyttä CurNextiin. Viestisi on vastaanotettu ja tiimimme palaa asiaan.",
+      "topic": "Aihe",
+      "email": "Sähköposti",
+      "nextTitle": "Mitä tapahtuu seuraavaksi",
+      "next1": "Oikea tiimi käy viestisi läpi.",
+      "next2": "Vastaamme CurNext-osoitteesta jatkotoimilla.",
+      "next3": "Laajuudelliselle tarjoukselle käytä Pyydä tarjous -kohtaa Hinnoittelussa. Avoimiin paikkoihin käytä Ura-sivua.",
+      "questions": "Kysymykset",
+      "regards": "Ystävällisin terveisin,",
+      "team": "CurNext-tiimi",
+      "securityTitle": "Turvallisuushuomautus",
+      "securityBody": "Tämä viesti lähetettiin, koska yhteydenottolomake lähetettiin tällä sähköpostilla osoitteessa curnext.app. CurNext ei koskaan pyydä salasanoja tai maksutietoja sähköpostitse.",
+      "securityContact": "Jos et lähettänyt tätä viestiä, ota yhteyttä osoitteeseen {securityEmail}.",
+      "privacy": "Tietosuoja",
+      "businessId": "Y-tunnus {id}"
     }
   },
   "support": {

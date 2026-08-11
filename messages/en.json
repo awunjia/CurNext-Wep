@@ -3739,6 +3739,39 @@
       "submitError": "Unable to submit quote request",
       "toastTitle": "Quote request submitted",
       "toastBody": "Thanks - we received your request and will send a scoped quote soon."
+    },
+    "confirmationEmail": {
+      "subject": "We received your CurNext quote request, {firstName}",
+      "eyebrow": "CurNext quote",
+      "greeting": "Hi {firstName},",
+      "intro": "Thank you for requesting a CurNext quote for {company}. Your request has been received, and our team will prepare a proposal.",
+      "selectionsTitle": "Your selections (indicative)",
+      "nodeCount": "Node count",
+      "installBand": "Install band",
+      "market": "Market",
+      "installFee": "Installation fee",
+      "duration": "Contract duration",
+      "subscription": "Subscription",
+      "solutionsTitle": "Solutions required",
+      "solutionsNone": "Not specified",
+      "nextTitle": "What happens next",
+      "next1": "Sales reviews your node count, surfaces, and timeline.",
+      "next2": "We send a scoped quote - not a binding cart total until confirmed.",
+      "next3": "We schedule a short call if anything needs clarifying.",
+      "questions": "Questions",
+      "indicative": "Indicative only - final quote depends on surfaces, floors, and commissioning scope.",
+      "regards": "Best regards,",
+      "team": "The CurNext team",
+      "securityTitle": "Security notice",
+      "securityBody": "This message was sent because a quote request was submitted with this email on curnext.app. CurNext will never ask you for passwords or payment details by email.",
+      "securityContact": "If you did not submit this request, contact {securityEmail}.",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "businessId": "Business ID {id}",
+      "monthUnit": "{count} months",
+      "monthUnitOne": "1 month",
+      "companyFallback": "your project",
+      "perMonth": "/mo"
     }
   },
   "contact": {
@@ -3790,7 +3823,7 @@
     "form": {
       "firstName": "First name",
       "lastName": "Last name",
-      "workEmail": "Work email",
+      "workEmail": "Email",
       "phone": "Phone",
       "company": "Company",
       "topic": "Topic",
@@ -3817,6 +3850,26 @@
         "press": "Press / media",
         "other": "Something else"
       }
+    },
+    "confirmationEmail": {
+      "subject": "We received your message, {firstName}",
+      "eyebrow": "CurNext contact",
+      "greeting": "Hi {firstName},",
+      "intro": "Thank you for contacting CurNext. Your message has been received and our team will follow up.",
+      "topic": "Topic",
+      "email": "Email",
+      "nextTitle": "What happens next",
+      "next1": "The right team reviews your note.",
+      "next2": "We reply from a CurNext address with next steps.",
+      "next3": "For a scoped proposal, use Request Quote on Pricing. For open roles, use Careers.",
+      "questions": "Questions",
+      "regards": "Best regards,",
+      "team": "The CurNext team",
+      "securityTitle": "Security notice",
+      "securityBody": "This message was sent because a contact form was submitted with this email on curnext.app. CurNext will never ask you for passwords or payment details by email.",
+      "securityContact": "If you did not submit this message, contact {securityEmail}.",
+      "privacy": "Privacy",
+      "businessId": "Business ID {id}"
     }
   },
   "support": {

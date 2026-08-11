@@ -189,19 +189,19 @@ export const sitePages: SitePage[] = [
   },
   {
     title: "Datacenters",
-    href: "/datacenters",
+    href: "/data/datacenters",
     description: "EU cloud residency - Germany and Frankfurt",
     group: "trust",
   },
   {
     title: "Security",
-    href: "/security",
+    href: "/data/security",
     description: "Architecture, zones, and layer controls",
     group: "trust",
   },
   {
     title: "Compliance",
-    href: "/compliance",
+    href: "/data/compliance",
     description: "Privacy, frameworks, and evidence without invented certifications",
     group: "trust",
   },
@@ -213,7 +213,7 @@ export const sitePages: SitePage[] = [
   },
   {
     title: "Audit Trail",
-    href: "/audit-trail",
+    href: "/data/audit-trail",
     description: "Project activity and accountability history",
     group: "trust",
   },
@@ -410,12 +410,12 @@ export const primaryNav: NavItem[] = [
       },
       {
         title: "Datacenters",
-        href: "/datacenters",
+        href: "/data/datacenters",
         description: "EU cloud residency - Germany and Frankfurt",
       },
       {
         title: "Security",
-        href: "/security",
+        href: "/data/security",
         description: "Architecture, zones, and layer controls",
       },
       {

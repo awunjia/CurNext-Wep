@@ -1,9 +1,37 @@
 import { siteConfig } from "@/config/site";
+import { locales, type AppLocale } from "@/i18n/routing";
+import {
+  curnextLogoImgHtml,
+  emailSiteUrl,
+  getCurnextLogoAttachment,
+} from "@/lib/email-branding";
 
 type ContactConfirmationEmailInput = {
   firstName: string;
   email: string;
   subjectLabel: string;
+  locale?: string;
+};
+
+type ConfirmationCopy = {
+  subject: string;
+  eyebrow: string;
+  greeting: string;
+  intro: string;
+  topic: string;
+  email: string;
+  nextTitle: string;
+  next1: string;
+  next2: string;
+  next3: string;
+  questions: string;
+  regards: string;
+  team: string;
+  securityTitle: string;
+  securityBody: string;
+  securityContact: string;
+  privacy: string;
+  businessId: string;
 };
 
 function escapeHtml(value: string): string {
@@ -14,63 +42,88 @@ function escapeHtml(value: string): string {
     .replaceAll('"', "&quot;");
 }
 
-function emailSiteUrl(): string {
-  const configured = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
-  if (configured && !configured.includes("localhost")) {
-    return configured;
+function resolveLocale(value?: string): AppLocale {
+  if (value && (locales as readonly string[]).includes(value)) {
+    return value as AppLocale;
   }
-  return `https://${siteConfig.domain}`;
+  return "en";
+}
+
+function fill(template: string, vars: Record<string, string>): string {
+  return template.replace(/\{(\w+)\}/g, (_, key: string) => vars[key] ?? "");
+}
+
+async function loadConfirmationCopy(
+  locale: AppLocale,
+): Promise<ConfirmationCopy> {
+  const messages = (await import(`../../messages/${locale}.json`)).default as {
+    contact: { confirmationEmail: ConfirmationCopy };
+  };
+  return messages.contact.confirmationEmail;
 }
 
 const font =
   "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 
-export function buildContactConfirmationEmail(
+export async function buildContactConfirmationEmail(
   input: ContactConfirmationEmailInput,
 ) {
-  const name = escapeHtml(input.firstName);
+  const locale = resolveLocale(input.locale);
+  const copy = await loadConfirmationCopy(locale);
+
+  const securityEmail =
+    process.env.SECURITY_EMAIL ?? "security@curnext.app";
+  const questionsEmail =
+    process.env.SMTP_FROM_NOREPLY ?? "info@curnext.app";
+
+  const subject = fill(copy.subject, { firstName: input.firstName });
+  const greeting = fill(copy.greeting, { firstName: input.firstName });
+  const securityContact = fill(copy.securityContact, { securityEmail });
+  const businessIdLine = fill(copy.businessId, { id: siteConfig.businessId });
+
   const email = escapeHtml(input.email);
   const subjectLabel = escapeHtml(input.subjectLabel);
   const year = new Date().getFullYear();
   const siteUrl = emailSiteUrl();
-  const privacyUrl = `${siteUrl}/data/privacy-policy`;
-  const supportEmail = escapeHtml(
-    process.env.SMTP_FROM_NOREPLY ?? "info@curnext.app",
+  const privacyUrl = `${siteUrl}/${locale}/data/privacy-policy`;
+  const securityEmailEsc = escapeHtml(securityEmail);
+  const questionsEmailEsc = escapeHtml(questionsEmail);
+  const securityContactHtml = escapeHtml(securityContact).replaceAll(
+    securityEmailEsc,
+    `<a href="mailto:${securityEmailEsc}" style="color:#94a3b8;">${securityEmailEsc}</a>`,
   );
 
-  const subject = `We received your message, ${input.firstName}`;
-
   const text = [
-    `Hi ${input.firstName},`,
+    greeting,
     "",
-    "Thank you for contacting CurNext. Your message has been received.",
+    copy.intro,
     "",
-    `Topic: ${input.subjectLabel}`,
+    `${copy.topic}: ${input.subjectLabel}`,
     "",
-    "What happens next",
-    "1. The right team reviews your note.",
-    "2. We reply from a CurNext address with next steps.",
-    "3. For a scoped proposal, use Request Quote on Pricing. For open roles, use Careers.",
+    copy.nextTitle,
+    `1. ${copy.next1}`,
+    `2. ${copy.next2}`,
+    `3. ${copy.next3}`,
     "",
-    `Questions: ${process.env.SMTP_FROM_NOREPLY ?? "info@curnext.app"}`,
-    `Visit CurNext: ${siteUrl}`,
+    `${copy.questions}: ${questionsEmail}`,
+    `CurNext: ${siteUrl}`,
     "",
-    "Best regards,",
-    "The CurNext team",
+    copy.regards,
+    copy.team,
     "",
     "---",
-    "Security notice",
-    "This message was sent because a contact form was submitted with this email on curnext.app. CurNext will never ask you for passwords or payment details by email.",
-    `If you did not submit this message, contact ${process.env.SMTP_FROM_NOREPLY ?? "info@curnext.app"}.`,
+    copy.securityTitle,
+    copy.securityBody,
+    securityContact,
     "",
-    `Privacy: ${privacyUrl}`,
+    `${copy.privacy}: ${privacyUrl}`,
     "",
     `© ${year} CurNext`,
-    `Business ID ${siteConfig.businessId}`,
+    businessIdLine,
   ].join("\n");
 
   const html = `<!DOCTYPE html>
-<html lang="en">
+<html lang="${locale}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,25 +135,28 @@ export function buildContactConfirmationEmail(
       <td align="center">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#111827;border:1px solid #1e293b;border-radius:16px;overflow:hidden;">
           <tr>
-            <td style="padding:28px 28px 8px;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#94a3b8;">CurNext contact</td>
+            <td style="padding:28px 28px 12px;">${curnextLogoImgHtml()}</td>
           </tr>
           <tr>
-            <td style="padding:8px 28px 0;font-size:24px;font-weight:600;line-height:1.3;color:#f8fafc;">Hi ${name},</td>
+            <td style="padding:0 28px 8px;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#94a3b8;">${escapeHtml(copy.eyebrow)}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 28px 0;font-size:24px;font-weight:600;line-height:1.3;color:#f8fafc;">${escapeHtml(greeting)}</td>
           </tr>
           <tr>
             <td style="padding:16px 28px 0;font-size:15px;line-height:1.6;color:#cbd5e1;">
-              Thank you for contacting CurNext. Your message has been received and our team will follow up.
+              ${escapeHtml(copy.intro)}
             </td>
           </tr>
           <tr>
             <td style="padding:20px 28px 0;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;">
                 <tr>
-                  <td style="padding:16px 18px;font-size:13px;color:#94a3b8;">Topic</td>
+                  <td style="padding:16px 18px;font-size:13px;color:#94a3b8;">${escapeHtml(copy.topic)}</td>
                   <td style="padding:16px 18px;font-size:14px;color:#f8fafc;text-align:right;">${subjectLabel}</td>
                 </tr>
                 <tr>
-                  <td style="padding:0 18px 16px;font-size:13px;color:#94a3b8;">Email</td>
+                  <td style="padding:0 18px 16px;font-size:13px;color:#94a3b8;">${escapeHtml(copy.email)}</td>
                   <td style="padding:0 18px 16px;font-size:14px;color:#f8fafc;text-align:right;">${email}</td>
                 </tr>
               </table>
@@ -108,25 +164,26 @@ export function buildContactConfirmationEmail(
           </tr>
           <tr>
             <td style="padding:24px 28px 0;font-size:14px;line-height:1.6;color:#cbd5e1;">
-              <strong style="color:#f8fafc;">What happens next</strong><br />
-              1. The right team reviews your note.<br />
-              2. We reply from a CurNext address with next steps.<br />
-              3. For a scoped proposal, use Request Quote on Pricing. For open roles, use Careers.
+              <strong style="color:#f8fafc;">${escapeHtml(copy.nextTitle)}</strong><br />
+              1. ${escapeHtml(copy.next1)}<br />
+              2. ${escapeHtml(copy.next2)}<br />
+              3. ${escapeHtml(copy.next3)}
             </td>
           </tr>
           <tr>
             <td style="padding:28px;font-size:13px;line-height:1.6;color:#94a3b8;">
-              Questions: <a href="mailto:${supportEmail}" style="color:#e2e8f0;text-decoration:none;">${supportEmail}</a><br />
+              ${escapeHtml(copy.questions)}: <a href="mailto:${questionsEmailEsc}" style="color:#e2e8f0;text-decoration:none;">${questionsEmailEsc}</a><br />
               <a href="${siteUrl}" style="color:#e2e8f0;text-decoration:none;">${siteUrl.replace(/^https?:\/\//, "")}</a>
             </td>
           </tr>
         </table>
         <p style="margin:20px 0 0;font-size:12px;line-height:1.5;color:#64748b;max-width:560px;">
-          This message was sent because a contact form was submitted with this email on curnext.app.
-          If you did not submit this, contact ${supportEmail}.
+          ${escapeHtml(copy.securityBody)}
+          <br />
+          ${securityContactHtml}
           <br /><br />
-          <a href="${privacyUrl}" style="color:#94a3b8;">Privacy</a>
-          &nbsp;·&nbsp; © ${year} CurNext · Business ID ${escapeHtml(siteConfig.businessId)}
+          <a href="${privacyUrl}" style="color:#94a3b8;">${escapeHtml(copy.privacy)}</a>
+          &nbsp;·&nbsp; © ${year} CurNext · ${escapeHtml(businessIdLine)}
         </p>
       </td>
     </tr>
@@ -134,5 +191,10 @@ export function buildContactConfirmationEmail(
 </body>
 </html>`;
 
-  return { subject, text, html };
+  return {
+    subject,
+    text,
+    html,
+    attachments: [getCurnextLogoAttachment()],
+  };
 }

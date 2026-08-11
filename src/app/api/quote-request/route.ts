@@ -4,16 +4,18 @@ import {
   defaultPricingCurrency,
   type PricingCurrencyCode,
 } from "@/config/currencies";
+import {
+  formatMarketMoney,
+  installBandForNodes,
+  monthlySubscription,
+} from "@/config/pricing";
 import { solutions } from "@/config/site";
 import { buildQuoteConfirmationEmail } from "@/lib/quote-confirmation-email";
 import {
   clampQuoteDuration,
   clampQuoteNodes,
   feeForNodes,
-  labelForDuration,
-  labelForNodes,
   marketLabelForCurrency,
-  priceForScope,
   type QuoteRequestPayload,
 } from "@/lib/quote-request";
 import {
@@ -76,7 +78,7 @@ function clientIp(request: Request): string | undefined {
 }
 
 function parsePayload(body: unknown): {
-  data?: QuoteRequestPayload;
+  data?: QuoteRequestPayload & { locale: string };
   error?: string;
 } {
   if (!body || typeof body !== "object") {
@@ -92,6 +94,7 @@ function parsePayload(body: unknown): {
   const country = clean(input.country, MAX_LEN.country) || undefined;
   const message = clean(input.message, MAX_LEN.message) || undefined;
   const turnstileToken = clean(input.turnstileToken, 2048);
+  const locale = clean(input.locale, 8) || "en";
   const currency = parseCurrency(input.currency);
 
   const nodesRaw = parseNumber(input.nodes);
@@ -133,6 +136,7 @@ function parsePayload(body: unknown): {
       solutions: selectedSolutions,
       message,
       turnstileToken,
+      locale,
     },
   };
 }
@@ -167,49 +171,63 @@ export async function POST(request: Request) {
     }
 
     const market = marketLabelForCurrency(parsed.data.currency);
+    const installBand = installBandForNodes(
+      parsed.data.nodes,
+      parsed.data.currency,
+    ).label;
+    const setupFee = feeForNodes(parsed.data.nodes, parsed.data.currency);
+    const monthlyPrice = formatMarketMoney(
+      monthlySubscription(parsed.data.nodes, parsed.data.currency),
+      parsed.data.currency,
+    );
+
+    const company = parsed.data.company?.trim() || "Individual";
+    const quoteSummary = [
+      `Nodes: ${parsed.data.nodes}`,
+      `Install band: ${installBand}`,
+      `Market: ${market} (${parsed.data.currency})`,
+      `Installation fee: ${setupFee}`,
+      `Duration: ${parsed.data.durationMonths} months`,
+      `Subscription: ${monthlyPrice}/mo`,
+    ].join("\n");
+    const messageBody = parsed.data.message
+      ? `${quoteSummary}\n\n${parsed.data.message}`
+      : quoteSummary;
+    const userAgent =
+      request.headers.get("user-agent")?.slice(0, 400) ?? undefined;
 
     await prisma.quoteRequest.create({
       data: {
         firstName: parsed.data.firstName,
         lastName: parsed.data.lastName,
         email: parsed.data.email,
-        company: parsed.data.company ?? "",
+        company,
         phone: parsed.data.phone,
         country: parsed.data.country,
         siteSize: String(parsed.data.nodes),
         subscriptionTier: `${parsed.data.durationMonths}|${parsed.data.currency}`,
         solutions: parsed.data.solutions,
-        message: parsed.data.message
-          ? `[Market: ${market} / ${parsed.data.currency}]\n\n${parsed.data.message}`
-          : `[Market: ${market} / ${parsed.data.currency}]`,
+        message: messageBody,
         source: "pricing",
-        turnstileHostname: turnstile.hostname,
-        userAgent: request.headers.get("user-agent")?.slice(0, 400),
+        turnstileHostname: turnstile.hostname ?? undefined,
+        userAgent,
         ipAddress,
-        readAt: null,
       },
     });
 
-    const nodesLabel = labelForNodes(
-      parsed.data.nodes,
-      parsed.data.currency,
-    );
-    const durationLabel = labelForDuration(parsed.data.durationMonths);
-    const setupFee = feeForNodes(parsed.data.nodes, parsed.data.currency);
-    const subscriptionPrice = priceForScope(
-      parsed.data.nodes,
-      parsed.data.durationMonths,
-      parsed.data.currency,
-    );
-
-    const confirmation = buildQuoteConfirmationEmail({
+    const confirmation = await buildQuoteConfirmationEmail({
       firstName: parsed.data.firstName,
       email: parsed.data.email,
       company: parsed.data.company,
-      nodesLabel: `${nodesLabel} · ${market}`,
-      durationLabel,
-      subscriptionPrice,
+      locale: parsed.data.locale,
+      nodeCount: parsed.data.nodes,
+      installBand,
+      market,
+      currency: parsed.data.currency,
       setupFee,
+      durationMonths: parsed.data.durationMonths,
+      monthlyPrice,
+      solutionHrefs: parsed.data.solutions,
     });
 
     const salesMail = buildQuoteSalesEmail({
@@ -219,11 +237,14 @@ export async function POST(request: Request) {
       company: parsed.data.company,
       phone: parsed.data.phone,
       country: parsed.data.country,
-      nodesLabel: `${nodesLabel} · ${market} (${parsed.data.currency})`,
+      nodeCount: parsed.data.nodes,
+      installBand,
+      market,
+      currency: parsed.data.currency,
       setupFee,
-      durationLabel,
-      subscriptionPrice,
-      solutions: parsed.data.solutions,
+      durationMonths: parsed.data.durationMonths,
+      monthlyPrice,
+      solutionHrefs: parsed.data.solutions,
       message: parsed.data.message,
     });
 
@@ -238,6 +259,7 @@ export async function POST(request: Request) {
         subject: confirmation.subject,
         text: confirmation.text,
         html: confirmation.html,
+        attachments: confirmation.attachments,
       });
       if (!customerResult.sent) {
         console.error("quote confirmation email failed", customerResult.error);

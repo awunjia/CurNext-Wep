@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import { SecurityPage } from "@/components/security-page";
+import { DatacentersPage } from "@/components/datacenters-page";
 import { withLocaleMetadata } from "@/lib/i18n-metadata";
 
 type Props = {
@@ -10,15 +10,15 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "security" });
+  const t = await getTranslations({ locale, namespace: "datacenters" });
   return withLocaleMetadata({
     locale,
-    path: "/security",
+    path: "/data/datacenters",
     title: t("title"),
     description: t("description"),
   });
 }
 
 export default function Page() {
-  return <SecurityPage />;
+  return <DatacentersPage />;
 }

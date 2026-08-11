@@ -4,7 +4,6 @@ import type { CountryCode } from "libphonenumber-js";
 import PhoneInput from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
 
-import { operatingCountryCodes } from "@/config/currencies";
 import { cn } from "@/lib/utils";
 
 import "react-phone-number-input/style.css";
@@ -14,6 +13,7 @@ type PhoneNumberInputProps = {
   value?: string;
   country?: CountryCode;
   defaultCountry?: CountryCode;
+  /** Limit the country list. Omit for all countries. */
   countries?: CountryCode[];
   onChange: (value?: string) => void;
   onCountryChange?: (country?: CountryCode) => void;
@@ -26,7 +26,7 @@ export function PhoneNumberInput({
   value,
   country,
   defaultCountry = "FI",
-  countries = operatingCountryCodes,
+  countries,
   onChange,
   onCountryChange,
   className,
@@ -39,7 +39,7 @@ export function PhoneNumberInput({
       countryCallingCodeEditable={false}
       country={country}
       defaultCountry={defaultCountry}
-      countries={countries}
+      {...(countries ? { countries } : {})}
       flags={flags}
       value={value}
       disabled={disabled}

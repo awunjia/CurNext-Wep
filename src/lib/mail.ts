@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import type { Attachment } from "nodemailer/lib/mailer";
 
 function smtpConfig() {
   const host = process.env.SMTP_HOST;
@@ -6,14 +7,22 @@ function smtpConfig() {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASSWORD;
 
-  if (!host || !user || !pass) {
+  if (!host || !user || !pass || Number.isNaN(port)) {
     return null;
   }
+
+  // Implicit TLS only on 465. Ports 587/2525 use STARTTLS (secure: false).
+  // Mis-setting SMTP_SECURE=true on 2525 causes: wrong version number / ESOCKET.
+  const secureEnv = process.env.SMTP_SECURE;
+  const secure =
+    secureEnv === "true" || secureEnv === "false"
+      ? secureEnv === "true"
+      : port === 465;
 
   return {
     host,
     port,
-    secure: process.env.SMTP_SECURE === "true",
+    secure,
     auth: { user, pass },
   };
 }
@@ -44,6 +53,7 @@ export async function sendMail(options: {
   subject: string;
   text: string;
   html: string;
+  attachments?: Attachment[];
 }): Promise<{ sent: boolean; error?: string }> {
   const transport = createMailTransport();
   if (!transport) {
@@ -61,6 +71,7 @@ export async function sendMail(options: {
       subject: options.subject,
       text: options.text,
       html: options.html,
+      attachments: options.attachments,
     });
     return { sent: true };
   } catch (error) {

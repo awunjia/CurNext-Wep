@@ -136,7 +136,7 @@ export async function ContactPage() {
                   height={1024}
                   className="h-auto w-full bg-transparent"
                   sizes="(max-width: 1024px) 80vw, 360px"
-                  priority={false}
+                  priority
                 />
               </div>
             </div>

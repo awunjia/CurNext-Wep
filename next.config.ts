@@ -39,7 +39,27 @@ const nextConfig: NextConfig = {
       },
       {
         source: `/${locale}/data-centers`,
-        destination: `/${locale}/datacenters`,
+        destination: `/${locale}/data/datacenters`,
+        permanent: true,
+      },
+      {
+        source: `/${locale}/datacenters`,
+        destination: `/${locale}/data/datacenters`,
+        permanent: true,
+      },
+      {
+        source: `/${locale}/security`,
+        destination: `/${locale}/data/security`,
+        permanent: true,
+      },
+      {
+        source: `/${locale}/compliance`,
+        destination: `/${locale}/data/compliance`,
+        permanent: true,
+      },
+      {
+        source: `/${locale}/audit-trail`,
+        destination: `/${locale}/data/audit-trail`,
         permanent: true,
       },
       {
@@ -70,7 +90,27 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/data-centers",
-        destination: "/en/datacenters",
+        destination: "/en/data/datacenters",
+        permanent: true,
+      },
+      {
+        source: "/datacenters",
+        destination: "/en/data/datacenters",
+        permanent: true,
+      },
+      {
+        source: "/security",
+        destination: "/en/data/security",
+        permanent: true,
+      },
+      {
+        source: "/compliance",
+        destination: "/en/data/compliance",
+        permanent: true,
+      },
+      {
+        source: "/audit-trail",
+        destination: "/en/data/audit-trail",
         permanent: true,
       },
       {

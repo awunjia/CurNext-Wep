@@ -4,7 +4,7 @@ import { verifyTurnstileToken } from "@/lib/turnstile";
 
 /**
  * Example endpoint for verifying Cloudflare Turnstile tokens.
- * Wire form submissions (contact, demo request) to this pattern.
+ * Wire form submissions (contact, quote request) to this pattern.
  */
 export async function POST(request: Request) {
   try {

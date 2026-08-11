@@ -34,33 +34,6 @@ model Contact {
   @@map("contacts")
 }
 
-model DemoRequest {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  firstName          String    @map("first_name")
-  lastName           String    @map("last_name")
-  email              String
-  company            String
-  jobTitle           String?   @map("job_title")
-  phone              String?
-  country            String?
-  companySize        String?   @map("company_size")
-  solutions          String[]  @default([])
-  message            String?
-  source             String    @default("request-demo")
-  turnstileHostname  String?   @map("turnstile_hostname")
-  userAgent          String?   @map("user_agent")
-  ipAddress          String?   @map("ip_address")
-  readAt             DateTime? @map("read_at")
-
-  @@index([createdAt(sort: Desc)])
-  @@index([email])
-  @@index([readAt])
-  @@map("demo_requests")
-}
-
 model NewsletterSubscriber {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now()) @map("created_at")

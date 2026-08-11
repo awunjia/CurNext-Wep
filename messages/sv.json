@@ -3739,6 +3739,39 @@
       "submitError": "Kunde inte skicka offertförfrågan",
       "toastTitle": "Quote request submitted",
       "toastBody": "Tack - vi har mottagit din förfrågan och skickar snart en avgränsad offert."
+    },
+    "confirmationEmail": {
+      "subject": "Vi har tagit emot din CurNext-offertförfrågan, {firstName}",
+      "eyebrow": "CurNext-offert",
+      "greeting": "Hej {firstName},",
+      "intro": "Tack för att du begärde en CurNext-offert för {company}. Din förfrågan har mottagits och vårt team förbereder ett förslag.",
+      "selectionsTitle": "Dina val (vägledande)",
+      "nodeCount": "Antal noder",
+      "installBand": "Installationsband",
+      "market": "Marknad",
+      "installFee": "Installationsavgift",
+      "duration": "Avtalslängd",
+      "subscription": "Prenumeration",
+      "solutionsTitle": "Nödvändiga lösningar",
+      "solutionsNone": "Inte angivet",
+      "nextTitle": "Vad händer härnäst",
+      "next1": "Försäljning granskar nodantal, ytor och tidplan.",
+      "next2": "Vi skickar en avgränsad offert - inte en bindande varukorgssumma förrän den bekräftats.",
+      "next3": "Vi bokar ett kort samtal om något behöver förtydligas.",
+      "questions": "Frågor",
+      "indicative": "Endast vägledande - slutlig offert beror på ytor, våningar och idrifttagningsomfattning.",
+      "regards": "Vänliga hälsningar,",
+      "team": "CurNext-teamet",
+      "securityTitle": "Säkerhetsmeddelande",
+      "securityBody": "Detta meddelande skickades eftersom en offertförfrågan skickades med den här e-postadressen på curnext.app. CurNext kommer aldrig att be dig om lösenord eller betalningsuppgifter via e-post.",
+      "securityContact": "Om du inte skickade denna förfrågan, kontakta {securityEmail}.",
+      "privacy": "Integritet",
+      "terms": "Villkor",
+      "businessId": "Företags-ID {id}",
+      "monthUnit": "{count} månader",
+      "monthUnitOne": "1 månad",
+      "companyFallback": "ditt projekt",
+      "perMonth": "/mån"
     }
   },
   "contact": {
@@ -3790,7 +3823,7 @@
     "form": {
       "firstName": "Förnamn",
       "lastName": "Efternamn",
-      "workEmail": "Jobb-e-post",
+      "workEmail": "E-post",
       "phone": "Telefon",
       "company": "Företag",
       "topic": "Ämne",
@@ -3817,6 +3850,26 @@
         "press": "Press / media",
         "other": "Något annat"
       }
+    },
+    "confirmationEmail": {
+      "subject": "Vi har tagit emot ditt meddelande, {firstName}",
+      "eyebrow": "CurNext-kontakt",
+      "greeting": "Hej {firstName},",
+      "intro": "Tack för att du kontaktade CurNext. Ditt meddelande har mottagits och vårt team återkommer.",
+      "topic": "Ämne",
+      "email": "E-post",
+      "nextTitle": "Vad händer härnäst",
+      "next1": "Rätt team granskar din notering.",
+      "next2": "Vi svarar från en CurNext-adress med nästa steg.",
+      "next3": "För ett avgränsat förslag, använd Begär offert under Priser. För öppna roller, använd Karriär.",
+      "questions": "Frågor",
+      "regards": "Vänliga hälsningar,",
+      "team": "CurNext-teamet",
+      "securityTitle": "Säkerhetsmeddelande",
+      "securityBody": "Detta meddelande skickades eftersom ett kontaktformulär skickades med den här e-postadressen på curnext.app. CurNext kommer aldrig att be dig om lösenord eller betalningsuppgifter via e-post.",
+      "securityContact": "Om du inte skickade detta meddelande, kontakta {securityEmail}.",
+      "privacy": "Integritet",
+      "businessId": "Företags-ID {id}"
     }
   },
   "support": {
