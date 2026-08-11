@@ -1,0 +1,344 @@
+{
+  "page": {
+    "title": "Accord de traitement des données",
+    "description": "CurNext fournit un accord de traitement des données aux clients qui ont besoin de clauses de sous-traitant lorsque CurNext traite des données personnelles pour l'utilisation de la plateforme par le Client - y compris les clients en Finlande (UE), au Canada et au Cameroun.",
+    "leadNote": "Cette page est un résumé orienté achats, aligné sur la pratique de l'art. 28 du RGPD (rôles, périmètre, MOT, sous-traitants publics, transferts et notifications). Un DPA signé est un instrument juridique - la rédaction finale des clauses doit être revue par un conseil. Ne considérez pas cette page comme le corps de l'accord exécuté.",
+    "supportLine": "CurNext agit en tant que sous-traitant pour les Données Client instruites via les Services. L'hébergement principal de l'application et de la base de données de la plateforme est en Allemagne / Francfort. Marchés commerciaux actuels : Finlande, Canada et Cameroun. Les programmes entreprise exécutent le DPA dans les 30 jours suivant la signature du calendrier."
+  },
+  "dpaAudience": {
+    "title": "À qui s'adresse ce document",
+    "lead": "Clients B2B, achats et examinateurs juridiques / sécurité qui ont besoin de clauses de sous-traitant pour le SaaS CurNext et la surveillance de site.",
+    "bullets": [
+      "Clients de l'UE ayant besoin de clauses art. 28 du RGPD (Finlande et autres Clients de l'EEE)",
+      "Clients canadiens ayant besoin de transparence pour les revues fournisseurs PIPEDA / Loi 25 du Québec",
+      "Clients camerounais ayant besoin d'une distinction claire responsable / sous-traitant et d'une cartographie des sous-traitants",
+      "Examineurs IT et sécurité cartographiant les sous-traitants, fournisseurs d'IA et régions d'hébergement"
+    ]
+  },
+  "dpaBreach": {
+    "title": "Notification de violation et assistance",
+    "rows": [
+      {
+        "context": "Accord standard",
+        "target": "Sans retard injustifié après confirmation d'une violation de données personnelles affectant les Données Client"
+      },
+      {
+        "context": "Entreprise",
+        "target": "Dans les 24 heures au contact sécurité désigné du Client après confirmation d'une violation de données personnelles ou d'un incident de sécurité à impact entreprise affectant les Données Client"
+      },
+      {
+        "context": "Réglementaire",
+        "target": "Parcours art. 33 du RGPD (72 h à l'autorité le cas échéant) - les obligations Client/responsable peuvent différer selon le marché (UE, Canada, Cameroun)"
+      }
+    ],
+    "assistance": [
+      "Accès / export (outils d'export de la plateforme + canal de support)",
+      "Rectification (outils compte / administration)",
+      "Effacement / limitation (support + processus contractuel ; les journaux d'audit peuvent être en écriture seule ou pseudonymisés par conception)",
+      "Portabilité (export lisible par machine lorsque disponible)"
+    ],
+    "note": "Le Client reste le point d'entrée pour la plupart des demandes des personnes concernées concernant les données contrôlées par le Client sur chaque marché d'exploitation.",
+    "securityEmail": "security@curnext.app"
+  },
+  "dpaExecute": {
+    "title": "Comment conclure le DPA",
+    "lead": "Conditions de service standard : les parties concluent un DPA sur demande lorsque le Prestataire traite des données personnelles pour le compte du Client. Calendrier entreprise : conclure le DPA du Prestataire dans les trente (30) jours suivant la signature du Calendrier (sauf si un DPA existant s'applique déjà).",
+    "bullets": [
+      "Demandez le DPA exécutable à legal@curnext.app ou via Contact (Clients de Finlande, du Canada et du Cameroun bienvenus)",
+      "Vue d'ensemble sécurité et liste actuelle des sous-traitants disponibles sur demande ; changements matériels : préavis entreprise de 30 jours",
+      "Droit applicable aux accords commerciaux : droit finlandais ; tribunaux d'Helsinki, Finlande (sous réserve des protections impératives) - alignez la clause de droit applicable du DPA final avec votre conseil"
+    ],
+    "legalEmail": "legal@curnext.app",
+    "supportEmail": "support@curnext.app"
+  },
+  "dpaHosting": {
+    "title": "Où a lieu le traitement",
+    "lead": "Le calcul de l'application principale s'exécute sur Hetzner en Allemagne. PostgreSQL géré et Auth s'exécutent sur Supabase à Francfort, Allemagne. Les clients au Canada et au Cameroun utilisent cette même pile de production UE pour les Données Client, sauf addendum entreprise disposant autrement."
+  },
+  "dpaInstructions": {
+    "title": "Instructions et responsabilités du Client",
+    "bullets": [
+      "Le Client donne des instructions de traitement via l'interface de la plateforme, les API, les contrats et les demandes de support écrites",
+      "Le Client est responsable de la base légale, des informations aux personnes concernées et des réponses aux demandes des personnes pour les données qu'il contrôle sur son marché (UE, Canada, Cameroun ou autre)",
+      "Le Client gère les invitations utilisateurs et le RBAC au sein de son locataire",
+      "La plateforme prend en charge l'export des données personnelles de l'utilisateur connecté (profil, appartenances, préférences). Un portail d'effacement entièrement en libre-service n'est pas revendiqué ici tant qu'il n'est pas livré - l'effacement suit le support et le processus contractuel"
+    ]
+  },
+  "dpaMarkets": {
+    "title": "Marchés de vente vs lieu d'hébergement des données",
+    "lead": "CurNext vend en Finlande, au Canada et au Cameroun. Les Données Client de la plateforme pour ces marchés sont traitées sur la même pile de production ancrée dans l'UE, sauf addendum écrit de résidence entreprise disposant autrement. Vendre dans un pays n'équivaut pas à y héberger une région de production locale.",
+    "rows": [
+      {
+        "market": "Finlande (UE)",
+        "commercial": "Marché d'exploitation",
+        "hosting": "Application principale + base de données en Allemagne / Francfort ; le RGPD s'applique en tant que traitement UE",
+        "frameworks": "RGPD ; autorité de contrôle finlandaise le cas échéant"
+      },
+      {
+        "market": "Canada",
+        "commercial": "Marché d'exploitation",
+        "hosting": "Même pile de production UE - les Données Client sont hébergées dans l'UE et accessibles par les utilisateurs/admins canadiens selon les instructions",
+        "frameworks": "PIPEDA et règles provinciales (y compris la Loi 25 du Québec le cas échéant) - le Client reste responsable des Données Client ; transferts documentés ci-dessous"
+      },
+      {
+        "market": "Cameroun",
+        "commercial": "Marché d'exploitation",
+        "hosting": "Même pile de production UE - les Données Client sont hébergées dans l'UE et accessibles par les utilisateurs/admins camerounais selon les instructions",
+        "frameworks": "Obligations locales de protection des données le cas échéant - le Client reste responsable des Données Client ; transferts documentés ci-dessous"
+      }
+    ],
+    "honesty": "CurNext n'annonce pas actuellement de régions de production séparées au Canada ou au Cameroun. Le CDN edge, la livraison d'e-mails, les paiements, les API d'IA et l'observabilité peuvent traiter des données limitées hors d'Allemagne - voir les sous-traitants."
+  },
+  "dpaRelated": [
+    {
+      "title": "Politique de confidentialité",
+      "href": "/data/privacy-policy"
+    },
+    {
+      "title": "Politiques RGPD",
+      "href": "/data/gdpr"
+    },
+    {
+      "title": "Politique de sécurité",
+      "href": "/data/security-policy"
+    },
+    {
+      "title": "Conditions d'utilisation",
+      "href": "/data/terms-of-service"
+    },
+    {
+      "title": "Architecture de sécurité",
+      "href": "/security"
+    },
+    {
+      "title": "Centres de données",
+      "href": "/datacenters"
+    },
+    {
+      "title": "Marchés tarifaires",
+      "href": "/pricing"
+    }
+  ],
+  "dpaRoles": {
+    "title": "Parties et rôles",
+    "lead": "Lorsque CurNext traite des données personnelles pour le compte du Client, CurNext est sous-traitant et le Client reste responsable de ces Données Client.",
+    "rows": [
+      {
+        "role": "Prestataire / Sous-traitant",
+        "party": "CurNext, Helsinki, Finlande",
+        "note": "Traite les données personnelles sur instructions du Client pour fournir les Services"
+      },
+      {
+        "role": "Client / Responsable",
+        "party": "Organisation cliente (Finlande, Canada, Cameroun ou autre Client contractant)",
+        "note": "Détermine les finalités et les moyens pour les données personnelles qu'elle charge CurNext de traiter"
+      },
+      {
+        "role": "Personnes concernées",
+        "party": "En général les employés, prestataires, invités et contacts de site du Client",
+        "note": "Utilisateurs de plateforme B2B sur invitation uniquement - pas une audience d'application grand public B2C"
+      }
+    ],
+    "honesty": [
+      "CurNext peut également être responsable pour son propre compte, la facturation, les RH, les journaux de sécurité de ses systèmes et les leads marketing - voir la Politique de confidentialité.",
+      "Ne lisez pas cette page comme « CurNext n'est toujours que sous-traitant »."
+    ]
+  },
+  "dpaScope": {
+    "title": "Ce que nous traitons",
+    "lead": "Nature et finalité : surveillance et préparation de chantiers et d'installations - télémétrie des appareils, configuration BIM/site, tableaux de bord, alertes, preuves de conformité, accès des équipes, API/webhooks, fonctionnalités assistées par IA lorsque activées, et support.",
+    "categories": [
+      {
+        "category": "Compte / identité",
+        "examples": "Nom, e-mail professionnel, rôle, appartenance à l'organisation, statut d'invitation"
+      },
+      {
+        "category": "Contexte d'authentification",
+        "examples": "Statut de session et MFA (pas les mots de passe - authentification gérée)"
+      },
+      {
+        "category": "Métadonnées projet / site",
+        "examples": "Noms de projets, adresses de bâtiments saisies par le Client, étiquettes d'étages et de pièces"
+      },
+      {
+        "category": "Contenu opérationnel",
+        "examples": "Destinataires d'alertes, tickets, plans/fichiers BIM téléversés, notes"
+      },
+      {
+        "category": "Appareil / télémétrie",
+        "examples": "Lectures de capteurs, identifiants d'appareils, scores de préparation (généralement pas de données personnelles d'installateur sauf si le Client les ajoute)"
+      },
+      {
+        "category": "Contexte des fonctions IA",
+        "examples": "Invites et contexte que le Client ou les Services envoient aux fonctions IA (par exemple assistance à la préparation) - minimisés et non utilisés pour entraîner des modèles CurNext hors des besoins du produit"
+      },
+      {
+        "category": "Audit / sécurité",
+        "examples": "Journaux d'accès, refus de permission, événements d'audit RGPD (identifiants préférés ; e-mails masqués dans les journaux)"
+      }
+    ],
+    "specialCategory": "CurNext n'est pas conçu pour traiter des données de catégories particulières (par exemple santé ou biométrie à des fins d'identification) comme fonctionnalité centrale. Si le Client téléverse de telles données, des instructions écrites explicites sont requises.",
+    "duration": "Le traitement se poursuit pendant la durée des Services / de l'abonnement, puis la restitution ou la suppression suit le DPA et les clauses de résiliation.",
+    "minimization": [
+      "La télémétrie des appareils doit exclure les données personnelles d'installateur sauf nécessité",
+      "Les journaux ne doivent pas contenir de mots de passe, JWT, clés API ou corps d'e-mails complets",
+      "Les fonctions IA doivent recevoir le contexte minimal nécessaire à la tâche",
+      "Le Prestataire ne traitera pas les Données Client à des fins non liées (par exemple vente de données personnelles)"
+    ]
+  },
+  "dpaSubprocessors": {
+    "title": "Sous-traitants",
+    "lastUpdated": "9 août 2026",
+    "lead": "Liste publique des tiers susceptibles de traiter des données personnelles du Client pour fournir les Services. La pratique du secteur est un tableau avec finalité, catégories de données et localisation. Conditions entreprise : les nouveaux sous-traitants matériels font l'objet d'un préavis d'au moins trente (30) jours ; le Client peut s'y opposer pour motifs raisonnables de protection des données. Abonnez-vous aux changements via legal@curnext.app.",
+    "rows": [
+      {
+        "name": "Hetzner Online GmbH",
+        "purpose": "Hébergement d'application (origines Docker derrière équilibreurs de charge)",
+        "dataCategories": "Données applicatives, identifiants de compte dans les charges de travail",
+        "location": "Allemagne",
+        "privacyUrl": "https://www.hetzner.com/legal/privacy-policy",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "Supabase, Inc.",
+        "purpose": "Base de données PostgreSQL gérée et authentification",
+        "dataCategories": "Compte, projet, métadonnées de télémétrie, contexte d'authentification",
+        "location": "Francfort, Allemagne (eu-central)",
+        "privacyUrl": "https://supabase.com/privacy",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "Cloudflare, Inc.",
+        "purpose": "DNS, TLS, WAF, CDN, Turnstile ; stockage objet R2 optionnel",
+        "dataCategories": "Métadonnées de connexion, signaux de protection de formulaires ; objets/téléversements lorsque R2 est utilisé",
+        "location": "Edge mondial ; option juridiction UE R2 pour objets / archive d'audit",
+        "privacyUrl": "https://www.cloudflare.com/privacypolicy/",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "SMTP2GO",
+        "purpose": "E-mail transactionnel (invitations, flux de mot de passe, notifications)",
+        "dataCategories": "Adresse e-mail, nom, contenu du message requis pour la livraison",
+        "location": "Centre de données UE (Amsterdam) lorsque le compte CurNext est hébergé dans l'UE ; la livraison au destinataire peut atteindre des MTA dans le monde entier",
+        "privacyUrl": "https://www.smtp2go.com/privacy/",
+        "group": "E-mail"
+      },
+      {
+        "name": "Stripe, Inc.",
+        "purpose": "Paiements et facturation lorsqu'ils sont utilisés",
+        "dataCategories": "Contact de facturation et métadonnées de paiement selon les conditions Stripe",
+        "location": "Selon les conditions Stripe (souvent traitement US/EEE)",
+        "privacyUrl": "https://stripe.com/privacy",
+        "group": "Paiements"
+      },
+      {
+        "name": "Google LLC (Gemini / Google AI)",
+        "purpose": "Fonctions IA du produit lorsque Gemini est activé",
+        "dataCategories": "Invites et contexte requis pour la fonction IA",
+        "location": "Selon les conditions de traitement des données Google Cloud / Gemini",
+        "privacyUrl": "https://policies.google.com/privacy",
+        "group": "IA"
+      },
+      {
+        "name": "Groq, Inc.",
+        "purpose": "Inférence pour l'assistant public de la base de connaissances sur curnext.app (après consentement de l'utilisateur), et autres fonctions IA du produit lorsque Groq est activé",
+        "dataCategories": "Invites, questions de chat et court contexte de conversation requis pour la fonction",
+        "location": "Selon les conditions de traitement / confidentialité du fournisseur",
+        "privacyUrl": "https://groq.com/privacy-policy/",
+        "group": "IA"
+      },
+      {
+        "name": "Signicat AS",
+        "purpose": "Flux d'identité électronique / eID pour authentification forte lorsque utilisés",
+        "dataCategories": "Attributs d'identité requis pour la transaction eID",
+        "location": "EEE (traitement Norvège / UE selon Signicat)",
+        "privacyUrl": "https://www.signicat.com/privacy",
+        "group": "Identité"
+      },
+      {
+        "name": "Datadog, Inc.",
+        "purpose": "Observabilité applicative et d'infrastructure",
+        "dataCategories": "Journaux et métriques opérationnels (secrets exclus par conception)",
+        "location": "Selon le site / la région Datadog configurés pour CurNext",
+        "privacyUrl": "https://www.datadoghq.com/legal/privacy/",
+        "group": "Observabilité"
+      },
+      {
+        "name": "Grafana Labs",
+        "purpose": "Observabilité métriques / tableaux de bord lorsqu'elle est utilisée",
+        "dataCategories": "Métriques opérationnelles et métadonnées associées",
+        "location": "Selon la région Grafana Cloud configurée pour CurNext",
+        "privacyUrl": "https://grafana.com/legal/privacy-policy/",
+        "group": "Observabilité"
+      },
+      {
+        "name": "OpenWeather Ltd.",
+        "purpose": "Contexte météo pour les fonctions de préparation de site / surface lorsqu'il est utilisé",
+        "dataCategories": "Coordonnées de localisation ou de site configurées par le Client ; réponses météo",
+        "location": "Selon les conditions OpenWeather",
+        "privacyUrl": "https://openweather.co.uk/privacy-policy",
+        "group": "Données"
+      }
+    ],
+    "honesty": "Application principale + base de données pour les Données Client de la plateforme : Allemagne / Francfort. L'IA, la livraison d'e-mails, les paiements, le CDN edge et l'observabilité peuvent traiter des données personnelles limitées hors d'Allemagne. Les partenaires matériel / fabrication (par exemple Semtech, Sensirion, JLCPCB) ne sont pas listés comme sous-traitants de données personnelles sauf s'ils reçoivent des données personnelles du Client."
+  },
+  "dpaToms": {
+    "title": "Mesures techniques et organisationnelles",
+    "lead": "Résumé de haut niveau uniquement. Voir la Politique de sécurité et la page Sécurité pour le détail d'architecture. CurNext ne revendique pas de certification ISO 27001 ou SOC 2 pour lui-même sur cette page.",
+    "rows": [
+      {
+        "control": "Contrôle d'accès",
+        "summary": "Accès sur invitation uniquement ; RBAC ; MFA pour les rôles privilégiés / OWNER"
+      },
+      {
+        "control": "Transport",
+        "summary": "HTTPS / TLS ; liaison terrain WireGuard + MQTT mTLS (broker non public)"
+      },
+      {
+        "control": "Au repos",
+        "summary": "Chiffrement de la base gérée ; chiffrement du stockage objet lorsqu'il est utilisé"
+      },
+      {
+        "control": "Isolation des locataires",
+        "summary": "Périmètre organisation / projet ; RLS le cas échéant"
+      },
+      {
+        "control": "Journalisation / audit",
+        "summary": "Événements d'audit structurés orientés RGPD ; secrets non journalisés"
+      },
+      {
+        "control": "Sauvegardes",
+        "summary": "Sauvegardes chiffrées avec tests de restauration dans le programme de sécurité"
+      },
+      {
+        "control": "Protection edge",
+        "summary": "WAF / TLS Cloudflare devant les origines"
+      },
+      {
+        "control": "Contrôles IA",
+        "summary": "Prédiction de cure interne (TensorFlow.js) dans le produit ; Gemini et Groq uniquement pour les fonctions assistées activées ; minimiser le contexte des invites ; pas de vente des Données Client"
+      },
+      {
+        "control": "Parcours d'incident",
+        "summary": "Notification orientée art. 33 du RGPD ; cible entreprise 24 h vers le contact sécurité du Client"
+      },
+      {
+        "control": "Vulnérabilités / thèmes CRA",
+        "summary": "OTA signé, cadence SBOM, divulgation via security@curnext.app"
+      }
+    ]
+  },
+  "dpaTransfers": {
+    "title": "Transferts internationaux",
+    "bullets": [
+      "Le stockage principal et le traitement applicatif des Données Client sont conçus autour d'un hébergement UE (Allemagne / Francfort), y compris pour les Clients au Canada et au Cameroun",
+      "L'accès par les utilisateurs Client au Canada ou au Cameroun constitue un transfert international / un schéma d'accès distant - le Client reste responsable de la façon dont il invite les utilisateurs sur ces marchés",
+      "Lorsqu'un sous-traitant transfère ou accède à des données hors EEE/Royaume-Uni (par exemple Gemini, Groq, Stripe ou edge Cloudflare), le Prestataire utilisera un mécanisme de transfert approprié (par exemple CCT UE ou décision d'adéquation) comme l'exige la loi",
+      "Clients canadiens : le Prestataire soutient la diligence fournisseur PIPEDA / Loi 25 avec cette liste, les MOT et les annexes DPA approuvées par un conseil - un hébergement local au Canada n'est pas revendiqué ici",
+      "Clients camerounais : le Prestataire soutient la diligence locale avec cette liste et le DPA - un hébergement local au Cameroun n'est pas revendiqué ici",
+      "Les annexes CCT et les évaluations de transfert sont jointes aux dossiers DPA approuvés par un conseil"
+    ]
+  },
+  "legalEyebrow": "Juridique",
+  "translationNote": "Les traductions sont fournies à titre indicatif. En cas d'accord signé, la version anglaise fait foi."
+}

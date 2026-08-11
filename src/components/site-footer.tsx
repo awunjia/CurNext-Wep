@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowUpRight,
   BookOpen,
@@ -9,10 +8,15 @@ import {
   Shield,
   type LucideIcon,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
+import { CookiePreferencesButton } from "@/components/cookie-consent-banner";
+import { FooterNavLink } from "@/components/footer-nav-link";
 import { AppStoreBadge, GooglePlayBadge } from "@/components/store-badges";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig, sitePages, solutions } from "@/config/site";
+import { Link } from "@/i18n/navigation";
+import { footerGroupKey, footerItemKeyByHref } from "@/lib/nav-labels";
 
 const footerGroups: {
   title: string;
@@ -49,7 +53,29 @@ const footerGroups: {
   },
 ];
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const tFooter = await getTranslations("footer");
+  const tNav = await getTranslations("nav");
+  const tLegal = await getTranslations("legal");
+
+  const businessIdDisplay = /coming soon/i.test(siteConfig.businessId)
+    ? tLegal("comingSoon")
+    : siteConfig.businessId;
+
+  function groupLabel(title: string) {
+    const key = footerGroupKey[title];
+    return key ? tFooter(key as "solutions") : title;
+  }
+
+  function itemLabel(href: string, fallback: string) {
+    const key = footerItemKeyByHref[href];
+    if (!key) return fallback;
+    if (key in { ourBlog: 1, events: 1, support: 1, compliance: 1, dpa: 1, auditTrail: 1, securityPolicy: 1, privacyPolicy: 1, cookiePolicy: 1, termsConditions: 1, gdprPolicies: 1, solutions: 1, resources: 1, company: 1, trust: 1, legal: 1 }) {
+      return tFooter(key as "ourBlog");
+    }
+    return tNav(key as "home");
+  }
+
   return (
     <footer className="border-border mt-auto border-t">
       <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
@@ -76,7 +102,7 @@ export function SiteFooter() {
               <span>{siteConfig.name}</span>
             </Link>
             <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
-              {siteConfig.slogan}
+              {tFooter("slogan")}
             </p>
             <div className="flex flex-wrap items-center gap-2 pt-1">
               <AppStoreBadge href={siteConfig.links.appStore} />
@@ -92,11 +118,12 @@ export function SiteFooter() {
                 <div key={group.title} className="min-w-0 space-y-3">
                   <p className="flex items-center gap-2 text-sm font-medium">
                     <Icon className="size-4 shrink-0" aria-hidden />
-                    <span className="truncate">{group.title}</span>
+                    <span className="truncate">{groupLabel(group.title)}</span>
                   </p>
                   <ul className="space-y-2">
                     {group.pages.map((page) => {
                       const external = /^https?:\/\//.test(page.href);
+                      const label = itemLabel(page.href, page.title);
                       return (
                         <li key={page.href}>
                           {external ? (
@@ -106,19 +133,16 @@ export function SiteFooter() {
                               rel="noopener noreferrer"
                               className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm break-words transition-colors"
                             >
-                              {page.title}
+                              {label}
                               <ArrowUpRight
                                 className="size-3 shrink-0 opacity-70"
                                 aria-hidden
                               />
                             </a>
                           ) : (
-                            <Link
-                              href={page.href}
-                              className="text-muted-foreground hover:text-foreground block text-sm break-words transition-colors"
-                            >
-                              {page.title}
-                            </Link>
+                            <FooterNavLink href={page.href}>
+                              {label}
+                            </FooterNavLink>
                           )}
                         </li>
                       );
@@ -136,9 +160,12 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {siteConfig.name}, Inc.
           </p>
-          <p>
-            Business ID: {siteConfig.businessId}
-          </p>
+          <div className="flex flex-col items-center gap-2 sm:items-end">
+            <p>
+              {tFooter("businessId", { id: businessIdDisplay })}
+            </p>
+            <CookiePreferencesButton label={tFooter("cookieSettings")} />
+          </div>
         </div>
       </div>
     </footer>

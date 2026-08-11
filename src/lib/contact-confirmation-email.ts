@@ -65,7 +65,7 @@ export function buildContactConfirmationEmail(
     "",
     `Privacy: ${privacyUrl}`,
     "",
-    `© ${year} CurNext Oy`,
+    `© ${year} CurNext`,
     `Business ID ${siteConfig.businessId}`,
   ].join("\n");
 
@@ -126,7 +126,7 @@ export function buildContactConfirmationEmail(
           If you did not submit this, contact ${supportEmail}.
           <br /><br />
           <a href="${privacyUrl}" style="color:#94a3b8;">Privacy</a>
-          &nbsp;·&nbsp; © ${year} CurNext Oy · Business ID ${escapeHtml(siteConfig.businessId)}
+          &nbsp;·&nbsp; © ${year} CurNext · Business ID ${escapeHtml(siteConfig.businessId)}
         </p>
       </td>
     </tr>

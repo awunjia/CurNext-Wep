@@ -1,0 +1,940 @@
+{
+  "eyebrow": "Documentación",
+  "onThisPage": "En esta página",
+  "sectionNav": "Encabezados de sección",
+  "title": "Documentación",
+  "description": "Documentación de producto extensa para CurNext - ruta de obra, soluciones, API, SDK, firmware, integraciones, seguridad, hosting y alcance comercial. Basada en el material público de curnext.app.",
+  "tabs": {
+    "overview": {
+      "label": "Resumen",
+      "description": "Qué es CurNext, cómo está organizada la documentación y a dónde ir después.",
+      "sections": {
+        "what-is-curnext": {
+          "title": "¿Qué es CurNext?",
+          "paragraphs": [
+            "CurNext ofrece inteligencia de obra lista para construir para superficies y espacios. Los nodos de campo miden las condiciones en el propio trabajo. La plataforma indica si se puede avanzar - con preparación, alertas y una pista de auditoría vinculada a su proyecto.",
+            "El producto se vende como inteligencia de construcción, no como una lista de materiales de radio. Los equipos de obra y oficina actúan sobre decisiones go / no-go. Desarrolladores y operadores amplían la misma pila mediante la API REST, los SDK, las integraciones Market Place y las operaciones de firmware.",
+            "Esta superficie de Docs resume el material de producto público ya publicado en curnext.app. Está pensada para leerse de extremo a extremo. Los runbooks detallados de seguridad de hardware, las fijaciones de fábrica y los procedimientos ops privados permanecen en la documentación interna."
+          ]
+        },
+        "who-it-is-for": {
+          "title": "Para quién",
+          "paragraphs": [
+            "CurNext está pensado para contratistas, equipos de proyecto, coordinadores BIM, roles de facilities tras la entrega e integradores que necesitan decisiones de preparación en las herramientas que ya usan."
+          ],
+          "bullets": [
+            "Equipos de obra que actúan sobre preparación go / no-go en losas, muros, aire, fugas, estructura e instalaciones",
+            "Equipos de oficina que siguen superficies frente al calendario y la evidencia de entrega",
+            "Desarrolladores que llaman a la API REST o a los SDK oficiales",
+            "Operadores que revisan el catálogo de firmware, las versiones reportadas y el contexto OTA en el edge",
+            "Revisores de compras y seguridad que leen las páginas Security, Datacenters y DPA"
+          ]
+        },
+        "operating-markets": {
+          "title": "Mercados de operación",
+          "paragraphs": [
+            "CurNext vende actualmente en Finlandia, Canadá y Camerún. Los precios son de lista nativos por mercado (EUR, CAD, XAF) - no una única tabla de conversión FX.",
+            "Los Platform Client Data de esos mercados se alojan en la pila de producción anclada en la UE (orígenes de aplicación en Alemania, base de datos y auth en Fráncfort), salvo que un addendum escrito de residencia empresarial indique lo contrario. Vender en Canadá o Camerún no es lo mismo que alojar una región de producción local allí."
+          ],
+          "links": [
+            {
+              "label": "Precios",
+              "href": "/pricing"
+            },
+            {
+              "label": "Datacenters",
+              "href": "/datacenters"
+            },
+            {
+              "label": "DPA",
+              "href": "/data/data-processing-agreement"
+            }
+          ]
+        },
+        "how-docs-is-organized": {
+          "title": "Cómo está organizada esta documentación",
+          "paragraphs": [
+            "Use las pestañas superiores para pasar entre temas. En pantallas grandes, el riel izquierdo enumera los encabezados de sección de la pestaña activa y resalta la sección visible al desplazarse."
+          ],
+          "bullets": [
+            "Resumen - marco del producto y navegación",
+            "Ruta de obra - L1 a L5 y conectividad",
+            "Soluciones - cada SKU fijado en fábrica en profundidad",
+            "API - URL base, auth, dominios, webhooks",
+            "SDK - lenguajes, instalación, patrones",
+            "Firmware - catálogo, historial, OTA en el edge",
+            "Integraciones - catálogo Market Place",
+            "Seguridad - resumen de arquitectura pública",
+            "Hosting - residencia y postura de escala",
+            "Comercial - modelo de precios y vías de contacto"
+          ]
+        },
+        "related-surfaces": {
+          "title": "Superficies relacionadas",
+          "paragraphs": [
+            "Docs está junto a otras superficies públicas. Prefiera el chat de IA de Knowledge Base para preguntas rápidas basadas en el conocimiento del sitio, y Contact cuando falte una guía."
+          ],
+          "links": [
+            {
+              "label": "Cómo funciona",
+              "href": "/how-it-works"
+            },
+            {
+              "label": "Tecnologías",
+              "href": "/technologies"
+            },
+            {
+              "label": "Recursos",
+              "href": "/resources"
+            },
+            {
+              "label": "Casos de estudio",
+              "href": "/case-studies"
+            },
+            {
+              "label": "Knowledge Base",
+              "href": "/knowledge-base"
+            },
+            {
+              "label": "Contacto",
+              "href": "/contact"
+            }
+          ]
+        }
+      }
+    },
+    "site-path": {
+      "label": "Ruta de obra",
+      "description": "De los nodos de campo a la nube CurNext - capas, energía, uplink y resultados.",
+      "sections": {
+        "path-intro": {
+          "title": "Una ruta para cada superficie",
+          "paragraphs": [
+            "Curado, secado, aire, fuga, estructura y MEP comparten la misma ruta a la nube. Los dispositivos capturan condiciones en el trabajo. La recolección por planta mantiene un nivel organizado. La energía dedicada mantiene el hardware de planta y edificio en línea. El uplink del edificio es el puente seguro fuera de la obra. La nube CurNext convierte los datos de obra en preparación, alertas y siguientes acciones - con una pista de auditoría para clientes y cumplimiento.",
+            "Esta es una pila industrial de construcción, no juguetes IoT de consumo. Las páginas públicas nombran capacidades a un nivel adecuado para compradores e integradores. No son una guía de superficie de ataque."
+          ],
+          "links": [
+            {
+              "label": "Cómo funciona",
+              "href": "/how-it-works"
+            },
+            {
+              "label": "Tecnologías",
+              "href": "/technologies"
+            }
+          ]
+        },
+        "layers": {
+          "title": "Capas L1-L5",
+          "paragraphs": [
+            "Cada capa tiene un solo trabajo. La energía no interpreta mediciones. Las pasarelas de planta no enfrentan Internet público. El controlador del edificio es el límite de seguridad para el uplink y la OTA de campo firmada."
+          ],
+          "subsections": [
+            {
+              "title": "L1 - Sense (nodos de campo)",
+              "paragraphs": [
+                "Instale en el propio trabajo - losas en curado, muros en secado, aire interior, fugas, estructura o sistemas de planta. Los dispositivos capturan las condiciones que impulsan el calendario y la calidad."
+              ],
+              "bullets": [
+                "SKU: CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP",
+                "Identidad de dispositivo única y material de claves de secure-element",
+                "Diseño antimanipulación y detección de desplazamiento en nodos de campo",
+                "LoRaWAN Class A (EU868) para nodos inalámbricos a batería cuando corresponda"
+              ]
+            },
+            {
+              "title": "L2 - Aggregate (CN-FG)",
+              "paragraphs": [
+                "Cada planta concentra el tráfico de dispositivos en un punto de recolección, para que un nivel siga organizado al escalar el proyecto por alas y zonas."
+              ],
+              "bullets": [
+                "Ancla de confianza para la verificación del enlace aéreo (MIC, contadores, join)",
+                "Solo VLAN de planta - sin interfaz orientada a la nube",
+                "OTA solo desde CN-BC"
+              ]
+            },
+            {
+              "title": "L3 - Power (CN-UPS)",
+              "paragraphs": [
+                "La energía dedicada mantiene el hardware de planta y edificio en línea durante cortes. Esta capa solo suministra energía - no interpreta mediciones ni lleva un plano de datos en la VLAN de gestión."
+              ]
+            },
+            {
+              "title": "L4 - Bridge (CN-BC)",
+              "paragraphs": [
+                "La unidad de edificio es el enlace seguro desde la red de obra hacia CurNext. Mantiene una ruta protegida fuera de la obra, termina la orquestación OTA de campo y habla con la ruta del broker de nube privada."
+              ],
+              "bullets": [
+                "Cliente WireGuard en el límite de seguridad del edificio",
+                "MQTT sobre TLS con mTLS mutuo hacia el broker privado",
+                "Trabajos OTA firmados para objetivos L1/L2",
+                "Store-and-forward cifrado cuando el uplink está caído"
+              ]
+            },
+            {
+              "title": "L5 - Decide (nube CurNext)",
+              "paragraphs": [
+                "La plataforma convierte los datos de obra en estado de preparación, alertas y siguientes acciones - en el panel web y la app móvil - con una pista de auditoría para clientes y cumplimiento."
+              ],
+              "bullets": [
+                "Paneles de proyecto, alertas, preparación mapeada en BIM",
+                "API REST, SDK, Market Place, catálogo de firmware",
+                "Acceso solo por invitación, RBAC, MFA privilegiado"
+              ]
+            }
+          ]
+        },
+        "connectivity": {
+          "title": "Conectividad",
+          "paragraphs": [
+            "Nombrados a nivel de capacidad - protocolos industriales estándar para la ruta de hardware y HTTPS para integraciones de compradores."
+          ],
+          "bullets": [
+            "LoRaWAN (EU868) para nodos de campo a batería - radio de largo alcance, amigable con la obra, hacia la ruta de planta",
+            "MQTT sobre TLS para telemetría de dispositivos y pasarelas en la ruta de hardware",
+            "Temas WireGuard para conectividad edge del edificio hacia los servicios cloud CurNext",
+            "REST HTTPS para integraciones de compradores en api.curnext.app - preparación, BIM, dispositivos, alertas, webhooks"
+          ]
+        },
+        "outcomes": {
+          "title": "Resultados en obra",
+          "paragraphs": [
+            "Los equipos deben salir de CurNext con decisiones y evidencia, no solo gráficos."
+          ],
+          "bullets": [
+            "Una sola pila para cada superficie - curado, secado, aire, fuga, estructura y MEP",
+            "Decisiones, no solo paneles - qué está listo, qué está en riesgo, qué hacer a continuación",
+            "Evidencia que viaja - entregas, reclamaciones y auditorías sin reconstruir informes a mano"
+          ]
+        }
+      }
+    },
+    "solutions": {
+      "label": "Soluciones",
+      "description": "Líneas de producto fijadas en fábrica para trabajos de obra en la misma pila.",
+      "sections": {
+        "solution-catalog": {
+          "title": "Catálogo de soluciones",
+          "paragraphs": [
+            "Cada SKU está fijado a un propósito para un trabajo de obra en la misma pila CurNext. Elija la línea de producto que coincida con la superficie y escale nodos y duración en Precios."
+          ],
+          "bullets": [
+            "CN-CC - Concrete Curing: curado de losa, madurez, preparación",
+            "CN-WD - Wall Drying: yeso, zonas húmedas, soporte de azulejo",
+            "CN-IAQ - Indoor Air: CO₂, PM, VOC (incl. post-entrega)",
+            "CN-LEAK - Leak Detection: salas de planta, baños, montantes",
+            "CN-SHM - Structural Health: deformación, grieta, inclinación, vibración",
+            "CN-MEP - MEP: caudal, presión, energía (panel PoE)"
+          ],
+          "links": [
+            {
+              "label": "Todas las soluciones",
+              "href": "/solutions"
+            }
+          ]
+        },
+        "solution-cn-cc": {
+          "title": "CN-CC - Concrete Curing",
+          "paragraphs": [
+            "El curado de hormigón supervisa la madurez de la losa con sondas de aire, superficie y núcleo. Un nodo edge sellado permanece fuera del vertido; sondas robustas se sitúan donde la losa necesita medición. El modelo TensorFlow.js interno de CurNext convierte esas temperaturas en predicciones de curado y timing listo para construir, con pista de auditoría para el paquete de vertido."
+          ],
+          "bullets": [
+            "Roles de sonda de aire, superficie y núcleo en el mismo modelo de arnés",
+            "Predicción de curado TensorFlow.js interna para la preparación",
+            "Preparación go / no-go en lugar de solo reglas de curado por calendario",
+            "Pista de curado documentada para encofrado y oficios siguientes",
+            "Ruta de campo LoRaWAN hacia CN-FG y CN-BC"
+          ],
+          "links": [
+            {
+              "label": "Abrir página CN-CC",
+              "href": "/solutions/concrete-curing"
+            }
+          ]
+        },
+        "solution-cn-wd": {
+          "title": "CN-WD - Wall Drying",
+          "paragraphs": [
+            "El secado de muros cubre yeso, zonas húmedas y soporte de azulejo. Los nodos vigilan la humedad y las ventanas de secado para que los equipos de acabado no atrapen conjuntos húmedos detrás de revestimientos bajo presión de plazo."
+          ],
+          "bullets": [
+            "Preparación de acabado para conjuntos de yeso y zonas húmedas",
+            "Alertas cuando las superficies permanecen fuera de banda",
+            "Llamadas seco / esperar compartidas para paquetes de oficios",
+            "Pista de condiciones antes del trabajo de cobertura"
+          ],
+          "links": [
+            {
+              "label": "Abrir página CN-WD",
+              "href": "/solutions/wall-drying"
+            }
+          ]
+        },
+        "solution-cn-iaq": {
+          "title": "CN-IAQ - Indoor Air",
+          "paragraphs": [
+            "El aire interior aporta contexto de CO2, partículas, VOC y clima en la misma pila de obra - también tras la entrega y en ocupación temprana, cuando los equipos necesitan calidad de aire compartida sin una campaña de laboratorio aparte por cada queja."
+          ],
+          "bullets": [
+            "Nodos de zona representativos para entrega y ocupación",
+            "Umbrales y alertas para roles de obra y facilities",
+            "Mediciones vinculadas a espacios, no notas puntuales de recorridos",
+            "El mismo uplink de edificio y superficie de proyecto que otros SKU"
+          ],
+          "links": [
+            {
+              "label": "Abrir página CN-IAQ",
+              "href": "/solutions/indoor-air"
+            }
+          ]
+        },
+        "solution-cn-leak": {
+          "title": "CN-LEAK - Leak Detection",
+          "paragraphs": [
+            "La detección de fugas vigila salas de planta, baños y montantes ante eventos de humedad que a menudo se encuentran tarde - cuando acabados y equipos ya están en riesgo."
+          ],
+          "bullets": [
+            "Alertas orientadas a eventos para zonas húmedas de alto riesgo",
+            "Conciencia más temprana para responsables de obra y MEP",
+            "Uplink edge con ubicaciones mapeadas al proyecto",
+            "Ruta de respuesta antes de que el daño se propague"
+          ],
+          "links": [
+            {
+              "label": "Abrir página CN-LEAK",
+              "href": "/solutions/leak-detection"
+            }
+          ]
+        },
+        "solution-cn-shm": {
+          "title": "CN-SHM - Salud estructural",
+          "paragraphs": [
+            "La salud estructural supervisa inclinación, grietas, deformación y contexto de vibración durante obras críticas y temporales - contexto continuo entre visitas de levantamiento periódicas."
+          ],
+          "bullets": [
+            "Puntos estructurales acordados instrumentados en la ruta del edificio",
+            "Umbrales e historial para ingenieros y jefes de obra",
+            "Eventos retenidos cuando las obras cambian las condiciones del sitio",
+            "Complementa, no sustituye, la práctica de levantamiento"
+          ],
+          "links": [
+            {
+              "label": "Abrir página CN-SHM",
+              "href": "/solutions/structural-health"
+            }
+          ]
+        },
+        "solution-cn-mep": {
+          "title": "CN-MEP - MEP",
+          "paragraphs": [
+            "La sensórica MEP cubre caudal, presión y energía donde se necesitan tasas de muestreo más altas o señales cableadas de planta - incluidos caminos de panel PoE durante puesta en marcha y equilibrado."
+          ],
+          "bullets": [
+            "Señales de planta cableadas en circuitos acordados",
+            "Registro compartido durante ventanas de puesta en marcha",
+            "Preparación en la nube e historial para responsables MEP",
+            "Encaja en el mismo modelo de proyecto y API que los SKU inalámbricos"
+          ],
+          "links": [
+            {
+              "label": "Abrir página CN-MEP",
+              "href": "/solutions/mep"
+            }
+          ]
+        },
+        "solution-patterns": {
+          "title": "Patrones de obra anónimos",
+          "paragraphs": [
+            "Los casos de estudio del sitio de marketing son patrones de despliegue anónimos por SKU - reto, enfoque y resultado - sin inventar logos de clientes ni porcentajes ficticios. Las referencias nominativas están disponibles vía ventas bajo NDA."
+          ],
+          "links": [
+            {
+              "label": "Casos de estudio",
+              "href": "/case-studies"
+            }
+          ]
+        }
+      }
+    },
+    "api": {
+      "label": "API",
+      "description": "REST versionada para preparación, BIM, dispositivos, mediciones y eventos.",
+      "sections": {
+        "api-intro": {
+          "title": "Resumen de la API",
+          "paragraphs": [
+            "La API REST de CurNext es la superficie de integración para la inteligencia de preparación. Enmarque las llamadas en torno a decisiones y contexto de proyecto - no un volcado crudo de sensores. Los SDK oficiales encapsulan las mismas rutas /api/v1.",
+            "La documentación OpenAPI interactiva y el playground están en api.curnext.app/docs. La vista de marketing está en /api."
+          ],
+          "links": [
+            {
+              "label": "Resumen de la API",
+              "href": "/api"
+            },
+            {
+              "label": "Playground OpenAPI",
+              "href": "https://api.curnext.app/docs",
+              "external": true
+            }
+          ]
+        },
+        "api-base": {
+          "title": "URL base y versionado",
+          "paragraphs": [
+            "El host de API de producción es api.curnext.app. Pase solo el host a los SDK - las rutas van prefijadas con /api/v1 en el cable."
+          ]
+        },
+        "api-auth": {
+          "title": "Autenticación y acceso",
+          "paragraphs": [
+            "Cree una clave API de proyecto en el producto bajo Integration. Pásela como token Bearer en cada solicitud.",
+            "El acceso a la API sigue su suscripción de sitio - cantidad de nodos y duración - no un nombre de plan legado \"Professional\". Las claves están acotadas al proyecto que las emitió."
+          ],
+          "bullets": [
+            "Guarde las claves en un gestor de secretos - nunca en código cliente ni repos públicos",
+            "Rote las claves cuando alguien deje el proyecto o se sospeche una filtración",
+            "Prefiera scripts operativos de corta vida a incrustar claves en apps móviles"
+          ]
+        },
+        "api-domains": {
+          "title": "Dominios que puede llamar",
+          "paragraphs": [
+            "Use estos dominios como modelo mental al diseñar una integración."
+          ],
+          "subsections": [
+            {
+              "title": "Health",
+              "paragraphs": [
+                "Estado del servicio para balanceadores de carga y comprobaciones de uptime."
+              ]
+            },
+            {
+              "title": "Projects",
+              "paragraphs": [
+                "Listar proyectos, miembros, eventos de auditoría, contexto de suscripción y vistas de preparación ligadas a la estructura del edificio."
+              ]
+            },
+            {
+              "title": "Devices",
+              "paragraphs": [
+                "Listar y obtener dispositivos vinculados al proyecto."
+              ]
+            },
+            {
+              "title": "Alerts",
+              "paragraphs": [
+                "Listar, obtener y resolver alertas operativas."
+              ]
+            },
+            {
+              "title": "Measurements",
+              "paragraphs": [
+                "Ciclos de medición y últimas lecturas de dispositivos para las superficies instrumentadas."
+              ]
+            },
+            {
+              "title": "Webhooks",
+              "paragraphs": [
+                "Liste endpoints de webhook vía API. Cree y gestione receptores en la UI del producto para eventos como SURFACE_READY, ALERT_CREATED y DEVICE_DISPLACED."
+              ]
+            },
+            {
+              "title": "BIM",
+              "paragraphs": [
+                "Árbol de jerarquía del proyecto para que la preparación siga mapeada a plantas, habitaciones y superficies."
+              ]
+            }
+          ]
+        },
+        "api-errors": {
+          "title": "Errores y comportamiento de rate",
+          "paragraphs": [
+            "Trate 401 como clave inválida o ausente, 404 como recurso ausente y 429 como limitación de tasa. Reintente 429 con backoff. No reintente 401 sin rotar credenciales.",
+            "Los límites de tasa exactos dependen del proyecto y del contexto de suscripción - no codifique cifras RPS inventadas desde esta página Docs."
+          ]
+        }
+      }
+    },
+    "sdks": {
+      "label": "SDK",
+      "description": "Clientes oficiales para la misma superficie REST en varios lenguajes.",
+      "sections": {
+        "sdk-intro": {
+          "title": "Qué puede construir",
+          "paragraphs": [
+            "Restringir la experiencia al cliente CurNext no basta. Los SDK oficiales dan a los equipos libertad para extender la inteligencia de preparación a aplicaciones, flujos y pilas que ya operan."
+          ],
+          "bullets": [
+            "Traer preparación y telemetría a paneles o informes",
+            "Automatizar flujos de obra - resolver alertas, listar eventos de auditoría, impulsar ops desde scripts",
+            "Integrar con apps Node, PHP, Go, Python, Java o Flutter que ya ejecuta",
+            "Trabajar con webhooks - listar endpoints vía SDK; crear receptores en el panel"
+          ],
+          "links": [
+            {
+              "label": "Página de SDK",
+              "href": "/sdks"
+            }
+          ]
+        },
+        "sdk-languages": {
+          "title": "Lenguajes oficiales",
+          "paragraphs": [
+            "Instale desde registros públicos. Las versiones live en la página SDK se resuelven desde npm, Packagist, pkg.go.dev, PyPI y Maven Central cuando están publicadas. Flutter está previsto en pub.dev y marcado coming soon hasta publicarse."
+          ],
+          "bullets": [
+            "JavaScript / TypeScript - @curnext/sdk (npm, disponible)",
+            "PHP - curnext/sdk (Packagist, disponible)",
+            "Go - github.com/awunjia/curnext-go (pkg.go.dev, disponible)",
+            "Python - curnext (PyPI, disponible)",
+            "Java - app.curnext:curnext-sdk (Maven Central, disponible)",
+            "Flutter - curnext (previsto) (pub.dev, próximamente)"
+          ]
+        },
+        "sdk-auth": {
+          "title": "Patrón de auth",
+          "paragraphs": [
+            "Pase CURNEXT_API_KEY y un baseUrl opcional (solo host). La base por defecto es https://api.curnext.app."
+          ]
+        },
+        "sdk-javascript": {
+          "title": "JavaScript / TypeScript",
+          "paragraphs": [
+            "Cliente Fetch tipado para apps web, servicios Node y backends TypeScript que necesitan preparación y contexto de proyecto."
+          ],
+          "bullets": [
+            "Cliente tipado",
+            "Node y navegadores",
+            "Fetch API"
+          ],
+          "links": [
+            {
+              "label": "Abrir en npm",
+              "href": "https://www.npmjs.com/package/@curnext/sdk",
+              "external": true
+            }
+          ]
+        },
+        "sdk-php": {
+          "title": "PHP",
+          "paragraphs": [
+            "Cliente PHP 8.1+ para Laravel, Symfony y PHP puro que trae preparación a portales, ERP y automatización."
+          ],
+          "bullets": [
+            "PHP 8.1+",
+            "cURL + JSON",
+            "Laravel y Symfony"
+          ],
+          "links": [
+            {
+              "label": "Abrir en Packagist",
+              "href": "https://packagist.org/packages/curnext/sdk",
+              "external": true
+            }
+          ]
+        },
+        "sdk-go": {
+          "title": "Go",
+          "paragraphs": [
+            "Cliente Go idiomático para pasarelas, servicios de obra y microservicios que hablan con CurNext por HTTPS."
+          ],
+          "bullets": [
+            "context.Context",
+            "Errores tipados",
+            "net/http"
+          ],
+          "links": [
+            {
+              "label": "Abrir en pkg.go.dev",
+              "href": "https://pkg.go.dev/github.com/awunjia/curnext-go",
+              "external": true
+            }
+          ]
+        },
+        "sdk-python": {
+          "title": "Python",
+          "paragraphs": [
+            "Cliente Python para pipelines de datos, servicios FastAPI y scripts que traen preparación y telemetría."
+          ],
+          "bullets": [
+            "pip install",
+            "Respuestas dict",
+            "Django y FastAPI"
+          ],
+          "links": [
+            {
+              "label": "Abrir en PyPI",
+              "href": "https://pypi.org/project/curnext/",
+              "external": true
+            }
+          ]
+        },
+        "sdk-java": {
+          "title": "Java",
+          "paragraphs": [
+            "Cliente JVM para Spring Boot, Quarkus y servicios empresariales. Maven groupId app.curnext; los imports siguen en io.curnext.sdk.*."
+          ],
+          "bullets": [
+            "Java 17+",
+            "Gradle y Maven",
+            "Jackson"
+          ],
+          "links": [
+            {
+              "label": "Abrir en Maven Central",
+              "href": "https://central.sonatype.com/artifact/app.curnext/curnext-sdk",
+              "external": true
+            }
+          ]
+        },
+        "sdk-flutter": {
+          "title": "Flutter",
+          "paragraphs": [
+            "Cliente Flutter / Dart para apps móviles y de escritorio que necesitan preparación, dispositivos y alertas en campo. Misma superficie REST que los SDK live - el paquete aún no está en pub.dev."
+          ],
+          "bullets": [
+            "Próximamente",
+            "Dart",
+            "Móvil y escritorio"
+          ]
+        }
+      }
+    },
+    "firmware": {
+      "label": "Firmware",
+      "description": "Catálogo, versiones reportadas, historial de instalación y OTA en el edge.",
+      "sections": {
+        "firmware-model": {
+          "title": "Lo que existe hoy",
+          "paragraphs": [
+            "CurNext rastrea un catálogo de versiones de firmware, cadenas de versión de dispositivo reportadas e historial de instalación. La OTA de campo se orquesta en el edge en CN-BC.",
+            "La carga en la nube, los canales de publicación y la UI de despliegue de flota en un clic no forman parte de la superficie de marketing pública. No es un flasheador de navegador."
+          ],
+          "bullets": [
+            "Explorar el modelo de catálogo: versión, tipo de dispositivo, indicadores production y CE",
+            "Entender las cadenas de flota reportadas frente a las filas del catálogo",
+            "Ver cómo el historial de instalación registra métodos factory, OTA, USB y manual",
+            "La OTA de campo se ejecuta como trabajos firmados en CN-BC"
+          ],
+          "links": [
+            {
+              "label": "Página de firmware",
+              "href": "/firmware"
+            }
+          ]
+        },
+        "firmware-catalog": {
+          "title": "Indicadores del catálogo",
+          "paragraphs": [
+            "Las filas del catálogo llevan indicadores de production y marcado CE. No hay un enum de canal draft/beta en el modelo público descrito aquí."
+          ],
+          "bullets": [
+            "isProduction - si la fila del catálogo está marcada para uso en production",
+            "ceMarked - indicador de marcado CE en la fila del catálogo",
+            "El tipo de dispositivo vincula la fila a CN-CC, CN-FG, CN-BC, CN-UPS y clases relacionadas"
+          ]
+        },
+        "firmware-history": {
+          "title": "Historial de instalación",
+          "paragraphs": [
+            "El historial de instalación registra cómo una versión llegó a un dispositivo. Los métodos incluyen FACTORY, OTA, USB y MANUAL."
+          ]
+        },
+        "firmware-ota": {
+          "title": "OTA en el edge en CN-BC",
+          "paragraphs": [
+            "Los trabajos firmados llegan a CN-BC. El agente edge verifica, prepara y actualiza objetivos. Las imágenes se direccionan por checksum. Los despliegues pueden pasar por los estados accepted, rejected, canary, rolling, done y failed."
+          ],
+          "subsections": [
+            {
+              "title": "Objetivos",
+              "bullets": [
+                "bc - autoactualización de CN-BC",
+                "fg - actualización de planta CN-FG",
+                "cc - nodos de campo vía FUOTA / LoRaWAN",
+                "ups - actualización CN-UPS enmarcada por UART"
+              ]
+            }
+          ]
+        },
+        "firmware-security": {
+          "title": "Temas de seguridad",
+          "paragraphs": [
+            "OTA firmada, identidad de secure-element y temas anti-rollback forman parte del modelo de seguridad de hardware. El aprovisionamiento de fábrica y la instalación NFC de campo se documentan para operaciones aparte de esta página Docs pública."
+          ],
+          "links": [
+            {
+              "label": "Arquitectura de seguridad",
+              "href": "/security"
+            }
+          ]
+        }
+      }
+    },
+    "integrations": {
+      "label": "Integraciones",
+      "description": "Conexiones de terceros Market Place por categoría.",
+      "sections": {
+        "marketplace": {
+          "title": "Market Place",
+          "paragraphs": [
+            "Conecte mensajería, programación, monitorización, productividad, almacenamiento, BIM, construcción, enterprise, IoT, mapas, CRM y contabilidad desde el Market Place del producto.",
+            "La mayoría de las apps usan OAuth de un clic en el panel. Datadog se conecta con claves API (no OAuth). Los propietarios del proyecto gestionan conexiones en el producto. La página de marketing Integrations es un catálogo - las acciones de conexión se ejecutan en el panel."
+          ],
+          "links": [
+            {
+              "label": "Página de integraciones",
+              "href": "/integrations"
+            },
+            {
+              "label": "Abrir Market Place del panel",
+              "href": "https://dash.curnext.app/addon",
+              "external": true
+            }
+          ]
+        },
+        "marketplace-categories": {
+          "title": "Categorías",
+          "paragraphs": [
+            "Filtre el catálogo por categoría cuando conozca el trabajo - mensajería para alertas, BIM para modelos, CRM para flujos de cuenta."
+          ],
+          "bullets": [
+            "Mensajería",
+            "Programación",
+            "Monitorización",
+            "Productividad",
+            "Almacenamiento",
+            "BIM",
+            "Construcción",
+            "Enterprise",
+            "IoT",
+            "Mapas",
+            "CRM",
+            "Contabilidad"
+          ]
+        },
+        "marketplace-catalog": {
+          "title": "Catálogo (18 integraciones)",
+          "paragraphs": [
+            "El catálogo público enumera actualmente estas integraciones. Las descripciones se mantienen breves - abra el sitio del proveedor para el detalle del producto."
+          ],
+          "bullets": [
+            "WhatsApp (Messaging, OAuth): Envíe alertas de obra críticas y actualizaciones de preparación a su número de WhatsApp.",
+            "Slack (Messaging, OAuth): Publique alertas y resúmenes diarios en canales de su espacio Slack.",
+            "Microsoft Teams (Messaging, OAuth): Entregue alertas operativas y actualizaciones de preparación a canales de Teams.",
+            "Google Calendar (Scheduling, OAuth): Sincronice ventanas de inspección, hitos de curado y visitas de obra.",
+            "Calendly (Scheduling, OAuth): Permita que inspectores y propietarios reserven visitas desde disponibilidad compartida.",
+            "Datadog (Monitoring, API key): Reenvíe métricas de salud de dispositivos y eventos de alerta a su pila Datadog.",
+            "Google Sheets (Productivity, OAuth): Exporte instantáneas de preparación y resúmenes de telemetría a una hoja compartida.",
+            "Dropbox (Storage, OAuth): Archive informes, certificados y fotos de obra en carpetas de proyecto compartidas.",
+            "Autodesk Revit (BIM, OAuth): Sincronice modelos BIM, habitaciones y superficies con el contexto de preparación de curado.",
+            "Procore (Construction, OAuth): Envíe estado de preparación y alertas a registros de proyecto Procore.",
+            "IBM Maximo (Enterprise, OAuth): Vincule activos de sonda y órdenes de mantenimiento con telemetría de obra.",
+            "Azure IoT Hub (IoT, OAuth): Ingiera telemetría y comandos de dispositivos a través de su entorno Azure IoT.",
+            "Google Maps (Maps, OAuth): Sitúe edificios, sondas y contexto meteorológico en mapas de proyecto.",
+            "Mapbox (Maps, OAuth): Renderice mapas de obra personalizados y zonas de alerta geovalladas.",
+            "Salesforce (CRM, OAuth): Sincronice cuentas de cliente, proyectos e hitos de entrega.",
+            "HubSpot (CRM, OAuth): Mantenga contactos de propietarios y flujos de onboarding en HubSpot.",
+            "QuickBooks (Accounting, OAuth): Exporte facturas y eventos de facturación de suscripción a QuickBooks.",
+            "Xero (Accounting, OAuth): Sincronice contactos de facturación y líneas de factura con Xero."
+          ]
+        }
+      }
+    },
+    "security": {
+      "label": "Seguridad",
+      "description": "Resumen público de arquitectura de seguridad para revisores.",
+      "sections": {
+        "security-objectives": {
+          "title": "Objetivos de seguridad",
+          "paragraphs": [
+            "CurNext diseña para confidencialidad, integridad, autenticidad, disponibilidad, responsabilidad y privacidad en la pila de cinco capas. La página Security es la referencia pública extensa. Esta pestaña es el resumen Docs."
+          ],
+          "bullets": [
+            "Confidencialidad - telemetría y credenciales no legibles sin autorización",
+            "Integridad - firmware, config y mediciones protegidos contra manipulación no detectada",
+            "Autenticidad - dispositivos y servicios demuestran identidad antes de confiar",
+            "Disponibilidad - resiliencia ante cortes, replay e inundación",
+            "Responsabilidad - pista de auditoría para acceso, aprovisionamiento, OTA y acciones admin",
+            "Privacidad - tratamiento orientado al RGPD de datos personales y de obra en la nube"
+          ],
+          "links": [
+            {
+              "label": "Página de seguridad",
+              "href": "/security"
+            }
+          ]
+        },
+        "security-zones": {
+          "title": "Zonas y conductos",
+          "paragraphs": [
+            "Las zonas al estilo IEC 62443 mantienen separados radio de campo, LAN de planta, edge del edificio y nube. La energía no tiene conducto de datos."
+          ],
+          "bullets": [
+            "Z1 - sensores de campo L1 (sin pila IP en el nodo)",
+            "Z2 - pasarela de planta CN-FG en VLAN local",
+            "Z3 - CN-UPS solo energía",
+            "Z4 - DMZ de edificio CN-BC (WireGuard, MQTT, OTA)",
+            "Z5 - nube CurNext",
+            "C1 enlace aéreo: LoRaWAN MAC AES-128 + MIC, OTAA, claves de secure-element",
+            "C4 edificio a nube: WireGuard + MQTT TLS 1.3 con mTLS; broker no público",
+            "C5 instalación: enlace criptográfico NFC; asignación QR deshabilitada por defecto"
+          ]
+        },
+        "security-field": {
+          "title": "Controles de campo (L1-L4)",
+          "paragraphs": [
+            "Los nodos de campo usan claves únicas, secure boot, OTA firmada, diseño antimanipulación y detección de desplazamiento. CN-FG verifica el enlace aéreo. CN-BC es la única ruta de campo para actualizaciones firmadas a L1/L2."
+          ]
+        },
+        "security-cloud": {
+          "title": "Controles cloud (L5)",
+          "paragraphs": [
+            "Malla MQTT privada, acceso solo por invitación, RBAC, MFA privilegiado, límites de tasa, WAF en el edge, cifrado en tránsito y en reposo, aislamiento de inquilinos, copias cifradas y eventos de auditoría orientados al RGPD."
+          ]
+        },
+        "security-disclosure": {
+          "title": "Divulgación",
+          "paragraphs": [
+            "Reporte vulnerabilidades a security@curnext.app. Se prefiere la divulgación coordinada. No invente certificación ISO 27001 o SOC 2 de CurNext desde esta página Docs - las normas listadas en Security son alineación de diseño salvo confirmación por separado."
+          ],
+          "links": [
+            {
+              "label": "Página de seguridad",
+              "href": "/security"
+            },
+            {
+              "label": "DPA",
+              "href": "/data/data-processing-agreement"
+            }
+          ]
+        }
+      }
+    },
+    "hosting": {
+      "label": "Hosting",
+      "description": "Dónde se ejecuta CurNext, cómo fluye el tráfico y qué escala.",
+      "sections": {
+        "hosting-intro": {
+          "title": "Nube UE, anclada en Alemania",
+          "paragraphs": [
+            "El hosting de aplicaciones corre en Hetzner en Alemania. Base de datos y autenticación corren en Supabase en Fráncfort. El tráfico público se protege en el edge de Cloudflare y se distribuye entre réplicas equilibradas.",
+            "Esta es una explicación de confianza / residencia - no un panel de estado ni un inventario público de máquinas. Los clientes en Finlandia, Canadá y Camerún usan esta pila anclada en la UE salvo addendum empresarial en contrario."
+          ],
+          "links": [
+            {
+              "label": "Página de datacenters",
+              "href": "/datacenters"
+            }
+          ]
+        },
+        "hosting-layers": {
+          "title": "Hechos regionales publicables",
+          "paragraphs": [
+            "Use estas etiquetas en revisiones de compras. Coinciden con la página Datacenters."
+          ],
+          "bullets": [
+            "Orígenes de aplicación - Hetzner, Alemania - imágenes Docker para marketing, web SaaS, API",
+            "Base de datos + Auth - Supabase, Fráncfort - PostgreSQL y Auth",
+            "Edge - Cloudflare global - DNS, TLS, WAF, CDN y Turnstile",
+            "Almacenamiento de objetos cuando se usa - Cloudflare R2 con opción de jurisdicción UE",
+            "Ruta de escala - balanceadores delante de réplicas sin estado"
+          ]
+        },
+        "hosting-traffic": {
+          "title": "Cómo fluye el tráfico",
+          "paragraphs": [
+            "Internet a Cloudflare (DNS, TLS, WAF, CDN), luego balanceadores, luego réplicas Docker en Hetzner en Alemania. Supabase Postgres y Auth están en Fráncfort. Los health checks mantienen las réplicas no saludables fuera de rotación."
+          ]
+        },
+        "hosting-scale": {
+          "title": "Postura de escala",
+          "paragraphs": [
+            "Las réplicas web y API son sin estado detrás de los balanceadores. Los workers pueden añadir réplicas al crecer la carga. La base es Supabase gestionado con pooling para muchas réplicas. Las sesiones usan cookies auth gestionadas - sin requisito de sesión sticky en el balanceador.",
+            "No invente recuentos de réplicas, RPS o porcentajes de uptime desde esta página Docs."
+          ]
+        },
+        "hosting-honesty": {
+          "title": "Honestidad sobre la residencia",
+          "paragraphs": [
+            "La aplicación y base de datos centrales para Platform Client Data se alojan en Alemania / Fráncfort. Algunos terceros (CDN edge, facturación Stripe, correo SMTP2GO, API de IA) pueden procesar datos limitados fuera de ese límite. Consulte la tabla de subencargados del DPA para la lista pública."
+          ],
+          "links": [
+            {
+              "label": "Subencargados DPA",
+              "href": "/data/data-processing-agreement"
+            },
+            {
+              "label": "Política de privacidad",
+              "href": "/data/privacy-policy"
+            }
+          ]
+        }
+      }
+    },
+    "commercial": {
+      "label": "Comercial",
+      "description": "Modelo de precios, presupuestos y cómo contactar a CurNext.",
+      "sections": {
+        "pricing-model": {
+          "title": "Modelo de facturación",
+          "paragraphs": [
+            "CurNext factura por cantidad de nodos y duración de contrato - no por niveles de plan legados. Use Precios para estimar bandas de instalación y suscripción mensual por nodo para Finlandia, Canadá o Camerún, luego solicite presupuesto.",
+            "El impuesto se gestiona en el checkout y no se muestra como línea de calculadora en vivo en el estimador de marketing."
+          ],
+          "links": [
+            {
+              "label": "Precios",
+              "href": "/pricing"
+            },
+            {
+              "label": "Solicitar presupuesto",
+              "href": "/pricing#request-quote"
+            }
+          ]
+        },
+        "pricing-markets": {
+          "title": "Mercados",
+          "paragraphs": [
+            "Precios de lista independientes para Finlandia (EUR), Canadá (CAD) y Camerún (XAF). La expansión a mercados adicionales está en curso - no invente países no listados como mercados comerciales live aquí."
+          ]
+        },
+        "api-access-commercial": {
+          "title": "Acceso a API y SDK",
+          "paragraphs": [
+            "El acceso a API y SDK está ligado a la suscripción del sitio (cantidad de nodos y duración). Cree claves API de proyecto en el producto bajo Integration una vez el sitio esté en alcance."
+          ]
+        },
+        "contact": {
+          "title": "Vías de contacto",
+          "paragraphs": [
+            "Para producto general, API, partnership, soporte, seguridad y prensa use Contacto. Los presupuestos usan el formulario del estimador de Precios. Empleo usa el flujo de solicitud de carreras."
+          ],
+          "bullets": [
+            "sales@curnext.app - debates comerciales y de volumen",
+            "dev@curnext.app - API, SDK e integraciones",
+            "info@curnext.app - preguntas generales de la empresa",
+            "legal@curnext.app - DPA y legal",
+            "security@curnext.app - divulgación de vulnerabilidades e incidentes de seguridad",
+            "gdpr@curnext.app - solicitudes RGPD y de privacidad",
+            "support@curnext.app - soporte de producto"
+          ],
+          "links": [
+            {
+              "label": "Contacto",
+              "href": "/contact"
+            },
+            {
+              "label": "Empleo",
+              "href": "/careers"
+            },
+            {
+              "label": "DPA",
+              "href": "/data/data-processing-agreement"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

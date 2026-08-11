@@ -6,14 +6,19 @@ export type Partner = {
 
 export const partners: Partner[] = [
   {
-    name: "OpenAI",
-    src: "/partners/openai.svg",
-    href: "https://openai.com",
-  },
-  {
     name: "Gemini",
     src: "/partners/googlegemini.svg",
     href: "https://gemini.google.com",
+  },
+  {
+    name: "Groq",
+    src: "/partners/groq.svg",
+    href: "https://groq.com",
+  },
+  {
+    name: "TensorFlow.js",
+    src: "/partners/tensorflowjs.svg",
+    href: "https://www.tensorflow.org/js",
   },
   {
     name: "Cloudflare",

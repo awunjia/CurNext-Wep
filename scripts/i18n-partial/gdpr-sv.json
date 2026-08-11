@@ -1,0 +1,341 @@
+{
+  "emailGdpr": "Mejla gdpr@",
+  "readDpa": "Läs DPA",
+  "basisCol": "Rättslig grund",
+  "useCol": "Typisk användning",
+  "rightCol": "Rättighet",
+  "detailCol": "Vad det betyder",
+  "ctaTitle": "Behöver du hjälp med en integritetsförfrågan?",
+  "ctaLead": "Skriv till gdpr@curnext.app för registrerades begäranden, eller använd ämnet GDPR / integritet i kontaktformuläret. För ett undertecknat DPA, använd legal@curnext.app.",
+  "contactForm": "Kontaktformulär",
+  "relatedTitle": "Relaterade policyer",
+  "page": {
+    "title": "GDPR-policyer",
+    "description": "Hur CurNext tillämpar EU:s allmänna dataskyddsförordning (GDPR) på personuppgifter som behandlas via curnext.app, CurNext-instrumentpanelen, API:er och relaterade tjänster - roller, rättsliga grunder, registrerades rättigheter, lagring, överföringar och kontakt.",
+    "metaDescription": "CurNext GDPR-policyer: personuppgiftsansvarig, roller, rättsliga grunder, registrerades rättigheter, lagring, EU-hosting, överföringar, incidenter och gdpr@curnext.app.",
+    "leadNote": "Denna sida beskriver CurNexts GDPR-orienterade policyer för transparens enligt artiklarna 12-14 och relaterade skyldigheter. Den ersätter inte ett undertecknat personuppgiftsbiträdesavtal eller juridisk rådgivning. Om sidan och ett undertecknat avtal står i konflikt gäller avtalet för det förhållandet.",
+    "supportLine": "Personuppgiftsansvarig för CurNext-konton, marknadsföring och webbplatsdata: CurNext (Finland). Personuppgiftsbiträde för Client Data som instrueras via plattformen: CurNext under DPA. Primär produktionshosting: Tyskland / Frankfurt. Integritetsförfrågningar: gdpr@curnext.app.",
+    "lastUpdatedLabel": "Senast uppdaterad",
+    "lastUpdated": "11 augusti 2026",
+    "legalEyebrow": "Juridik"
+  },
+  "overview": {
+    "title": "Syftet med denna policy",
+    "lead": "CurNext bygger byggplatsintelligens - sensorer, gateways, molninstrumentpaneler och mognadsunderlag. Den stacken innebär oundvikligen personuppgifter: inbjudna, administratörer, supportkontakter, webbplatsbesökare och jobbsökande. GDPR är det primära integritetsregelverket för vår EU-förankrade plattformsbehandling.",
+    "bullets": [
+      "Förklara vem som ansvarar för vilken behandling (personuppgiftsansvarig vs personuppgiftsbiträde).",
+      "Beskriva kategorier av personuppgifter, ändamål och rättsliga grunder på policynivå.",
+      "Redogöra för registrerades rättigheter och en tydlig kanal för att utöva dem.",
+      "Sammanfatta lagringsteman, internationella överföringar, säkerhetsställning och hantering av incidenter.",
+      "Peka på relaterade dokument (DPA, Säkerhet, Efterlevnad, Audit Trail, Cookiepolicy) utan att duplicera varje klausul."
+    ],
+    "honesty": "Vi hävdar inte ISO 27001- eller SOC 2-certifiering för CurNext på offentliga sidor. Standarder som nämns på andra ställen är designanpassning om de inte bekräftats skriftligen separat."
+  },
+  "controller": {
+    "title": "Personuppgiftsansvarigs identitet och kontakt",
+    "lead": "För personuppgifter där CurNext bestämmer ändamål och medel för behandlingen (till exempel webbplatsanalys med samtycke, marknadsföringsprenumerationer, jobbansökningar och CurNexts egen B2B-kontoadministration) är den personuppgiftsansvarige:",
+    "privacyEmail": "gdpr@curnext.app",
+    "privacyEmailLabel": "GDPR / integritetsinkorg",
+    "legalEmail": "legal@curnext.app",
+    "legalEmailLabel": "Juridik / DPA",
+    "securityEmail": "security@curnext.app",
+    "securityEmailLabel": "Säkerhetsincidenter och sårbarhetsrapportering",
+    "note": "Använd gdpr@curnext.app för tillgång, rättelse, radering, begränsning, dataportabilitet, invändning och andra begäranden från registrerade. Använd legal@curnext.app för personuppgiftsbiträdesavtal. Använd security@curnext.app för sårbarhetsrapportering och bekräftade säkerhetsincidenter - inte för rutinmässiga registrerades begäranden."
+  },
+  "roles": {
+    "title": "Roller enligt GDPR",
+    "lead": "Tydlighet kring roller undviker felaktiga förväntningar om vem som besvarar en begäran.",
+    "items": [
+      {
+        "title": "CurNext som personuppgiftsansvarig",
+        "body": "CurNext är typiskt personuppgiftsansvarig för: den offentliga marknadsföringswebbplatsen; nyhetsbrev och produktuppdateringsprenumerationer; kontakt- och offertformulär när du skriver direkt till CurNext; karriär och rekrytering; CurNexts egen CRM och försäljningsregister; inbjudningsbaserade kontoidentiteter som CurNext upprätthåller för åtkomst till Tjänsterna; samt telemetri som behövs för att driva, säkra och förbättra CurNexts egna produkter (med förbehåll för avtal och produktinställningar)."
+      },
+      {
+        "title": "CurNext som personuppgiftsbiträde",
+        "body": "När en kund (Client) använder CurNext för att övervaka byggplatser och hantera projektanvändare agerar CurNext generellt som personuppgiftsbiträde för Client Data - personuppgifter som Client laddar upp, bjuder in eller genererar via Tjänsterna enligt Clients instruktioner. Client förblir personuppgiftsansvarig för den Client Data. Biträdesvillkor anges i personuppgiftsbiträdesavtalet."
+      },
+      {
+        "title": "Gemensamma eller blandade situationer",
+        "body": "Vissa operativa loggar och säkerhetshändelser kan innehålla identifierare som tjänar både Clients ansvarighet och CurNexts berättigade intresse av att säkra plattformen. Vi utformar för ansvarighet (RBAC, revisionshändelser, inbjudningsbaserad åtkomst) och dokumenterar uppdelningen i DPA och Säkerhetsmaterial. Om du är osäker på vem som ska svara, skriv till gdpr@curnext.app så dirigerar vi begäran."
+      }
+    ]
+  },
+  "scope": {
+    "title": "Omfattning av täckt behandling",
+    "lead": "Dessa policyer gäller personuppgifter som behandlas i samband med:",
+    "bullets": [
+      "curnext.app och lokaliserade marknadsföringssidor",
+      "dash.curnext.app och relaterade instrumentpanelsupplevelser",
+      "CurNext API:er, SDK:er och utvecklarportaler där personuppgifter förekommer (till exempel API-nycklar kopplade till konton)",
+      "Mobilapplikationer publicerade under CurNext-varumärket, när de är kopplade till samma identitetsplan",
+      "Support-, Docs- och kunskapsbasinteraktioner som identifierar en person",
+      "E-post, formulär och CRM-system som används för att besvara kommersiella och supportförfrågningar"
+    ],
+    "note": "Fältsensorer mäter främst miljö- och strukturella förhållanden. Personuppgiftsrisk uppstår vanligtvis i moln-, identitets- och samarbetslagret (vem kan se vilket projekt), inte från temperatur- eller fuktighetsavläsningar ensamma. BIM-kartor och uppladdade planer kan innehålla personuppgifter beroende på vad Client inkluderar."
+  },
+  "legalBases": {
+    "title": "Rättsliga grunder (artikel 6)",
+    "lead": "Beroende på behandlingen förlitar sig CurNext på en eller flera av följande grunder. Exakt kartläggning för en specifik produktfunktion kan preciseras i integritetspolicyn och kundavtal.",
+    "rows": [
+      {
+        "basis": "Avtal (art. 6(1)(b))",
+        "use": "Skapa och administrera konton, leverera beställda Tjänster, autentisera inbjudna, tillhandahålla avtalad support samt behandla information som behövs för offert- eller orderflöden."
+      },
+      {
+        "basis": "Berättigade intressen (art. 6(1)(f))",
+        "use": "Säkra plattformen (bedrägeri, missbruk, intrångsdetektering), förbättra tillförlitlighet, B2B-relationshantering med befintliga och potentiella kunder, begränsad produktanalys som inte åsidosätter rättigheter och friheter, samt försvara rättsliga anspråk. Vi balanserar intressen och erbjuder invändning där det krävs."
+      },
+      {
+        "basis": "Samtycke (art. 6(1)(a))",
+        "use": "Icke-nödvändiga cookies och liknande tekniker där samtycke krävs; valfria marknadsföringsmejl där samtycke är vald grund; kunskapsbasens AI-chatt där produktflöden kräver uttryckligt GDPR-samtycke innan en fråga skickas; andra valfria funktioner som vi markerar som samtyckesbaserade."
+      },
+      {
+        "basis": "Rättslig förpliktelse (art. 6(1)(c))",
+        "use": "Skatte-, redovisnings- och regulatorisk dokumentation; svara på lagliga begäranden från behöriga myndigheter; underrättelseskyldigheter vid personuppgiftsincidenter när CurNext är personuppgiftsansvarig."
+      }
+    ],
+    "special": "Vi eftersträvar inte att behandla särskilda kategorier av personuppgifter (art. 9) som en del av kärnövervakning av byggplatser. Skicka inte hälsouppgifter, biometriska uppgifter eller andra särskilda kategorier via allmänna kontaktformulär. Om ett kundprojekt kräver sådan data måste det avgränsas skriftligen med lämpliga skyddsåtgärder."
+  },
+  "categories": {
+    "title": "Kategorier av personuppgifter",
+    "lead": "Kategorierna varierar per produktyta. Typiska exempel:",
+    "items": [
+      {
+        "title": "Identitet och kontakt",
+        "body": "Namn, arbetsmejl, telefon, företag, roll, språkpreferens och liknande företagsKontaktuppgifter."
+      },
+      {
+        "title": "Konto och åtkomst",
+        "body": "Inbjudningsstatus, organisations- / projektmedlemskap, roller och behörigheter, autentiseringsmetadata, sessions- och enhetssignaler för säkerhet samt MFA-status för privilegierade roller."
+      },
+      {
+        "title": "Kommersiellt och support",
+        "body": "Meddelanden via kontakt-, offert-, demo- eller supportkanaler; ärendehistorik; avtals- och faktureringsreferenser som behövs för att betjäna kontot."
+      },
+      {
+        "title": "Användning och teknik",
+        "body": "IP-adresser, ungefärlig plats härledd från nätverksdata, webbläsare/user-agent, diagnostikloggar, rate-limit- och WAF-händelser samt produktanvändningsmått som behövs för att driva Tjänsterna."
+      },
+      {
+        "title": "Rekrytering",
+        "body": "CV / meritförteckning, ansvarssvar, intervjuanteckningar och relaterad kommunikation för öppna roller."
+      },
+      {
+        "title": "Client-kontrollerat projektinnehåll",
+        "body": "Användargenererat innehåll i projekt (anteckningar, uppladdningar, BIM-länkade annoteringar, samarbetslistningar) som Client kontrollerar som personuppgiftsansvarig. CurNext behandlar detta som personuppgiftsbiträde enligt dokumenterade instruktioner."
+      }
+    ]
+  },
+  "rights": {
+    "title": "Dina rättigheter enligt GDPR",
+    "lead": "När GDPR gäller och CurNext är personuppgiftsansvarig (eller måste bistå som personuppgiftsbiträde) kan du ha följande rättigheter, med förbehåll för lagstadgade gränser och undantag:",
+    "rows": [
+      {
+        "right": "Tillgång (art. 15)",
+        "detail": "Få bekräftelse på om vi behandlar dina personuppgifter och få en kopia tillsammans med relevant information om behandlingen."
+      },
+      {
+        "right": "Rättelse (art. 16)",
+        "detail": "Få felaktiga personuppgifter rättade och ofullständiga uppgifter kompletterade."
+      },
+      {
+        "right": "Radering (art. 17)",
+        "detail": "Begära radering när en grund gäller (till exempel återkallat samtycke eller uppgifter som inte längre behövs). Lagrings- och revisionskrav kan begränsa full radering av vissa säkerhets- eller ekonomiska register; vi förklarar när så är fallet."
+      },
+      {
+        "right": "Begränsning (art. 18)",
+        "detail": "Begära att behandlingen begränsas i särskilda omständigheter (till exempel medan riktigheten bestrids)."
+      },
+      {
+        "right": "Dataportabilitet (art. 20)",
+        "detail": "Få personuppgifter som du lämnat till oss i ett strukturerat, allmänt använt och maskinläsbart format, och överföra dem när behandlingen grundas på samtycke eller avtal och sker automatiserat."
+      },
+      {
+        "right": "Invändning (art. 21)",
+        "detail": "Invända mot behandling som grundas på berättigade intressen, inklusive profilering kopplad till sådan behandling, och invända mot direktmarknadsföring när som helst."
+      },
+      {
+        "right": "Återkalla samtycke",
+        "detail": "När behandling grundas på samtycke, återkalla det när som helst utan att påverka lagligheten av behandling före återkallelsen."
+      },
+      {
+        "right": "Klagomål",
+        "detail": "Lämna in ett klagomål till en tillsynsmyndighet, särskilt i den EES-stat där du har din vanliga vistelseort, arbetsplats eller där den påstådda överträdelsen skett."
+      }
+    ],
+    "clientNote": "Om din begäran gäller data i en kunds CurNext-projekt (till exempel en samarbetspartner inbjuden av en Client-admin) är Client vanligtvis rätt första kontakt. CurNext bistår Client enligt DPA och kan hjälpa till att dirigera begäranden som inkommer till gdpr@curnext.app."
+  },
+  "exercise": {
+    "title": "Hur du utövar dina rättigheter",
+    "lead": "Vi föredrar skriftliga begäranden så att vi kan autentisera begäranden och föra ett ansvarigt register.",
+    "steps": [
+      "Mejla gdpr@curnext.app från adressen kopplad till ditt konto eller med tillräckliga uppgifter för att identifiera dig.",
+      "Ange vilken rättighet du vill utöva och sammanhanget (webbplats, nyhetsbrev, instrumentpanelskonto, jobbansökan eller kundprojekt).",
+      "Inkludera ditt fullständiga namn, företag (om något) och eventuellt projekt- eller organisationsnamn som visas i instrumentpanelen.",
+      "För Client Data i en kundtenant, ange kundorganisationen om den är känd - vi kan behöva involvera Client som personuppgiftsansvarig."
+    ],
+    "timing": "Vi strävar efter att svara utan onödigt dröjsmål och inom en månad från mottagandet, förlängbart med ytterligare två månader för komplexa eller många begäranden enligt art. 12(3). Om vi behöver mer tid eller inte kan uppfylla en begäran förklarar vi varför.",
+    "identity": "Vi kan begära rimlig ytterligare information för att bekräfta identitet och behörighet (till exempel att du agerar för en företagsadmin). Vi uppfyller inte en begäran som skulle avslöja en annan persons uppgifter på ett oberättigat sätt.",
+    "email": "gdpr@curnext.app",
+    "formHint": "Du kan också välja \"GDPR / integritet\" i kontaktformuläret på /contact - det ämnet dirigeras till samma inkorg."
+  },
+  "retention": {
+    "title": "Lagring",
+    "lead": "Vi sparar personuppgifter endast så länge det behövs för de beskrivna ändamålen, inklusive rättsliga, redovisnings- och säkerhetsbehov.",
+    "items": [
+      {
+        "title": "Konto- och tjänstedata",
+        "body": "Behålls under kundrelationens livstid och en avvecklingsperiod som behövs för offboarding, tvisthantering och avtalsmässig avslutning, därefter raderas eller anonymiseras enligt produkt- och DPA-scheman."
+      },
+      {
+        "title": "Marknadsföringskontakter",
+        "body": "Behålls tills du avregistrerar dig eller invänder, eller tills listan rensas under rutinmässig hygien, om inte längre lagring krävs för suppression (så att vi minns att inte mejla dig igen)."
+      },
+      {
+        "title": "Support- och försäljningskorrespondens",
+        "body": "Behålls så länge det behövs för att fullfölja begäran och upprätthålla ett rimligt affärsregister, därefter reduceras eller raderas enligt interna scheman."
+      },
+      {
+        "title": "Rekrytering",
+        "body": "Ansökningsmaterial behålls under rekryteringsprocessen och en begränsad efterperiod (eller längre med ditt samtycke för framtida roller), därefter raderas eller arkiveras med begränsad åtkomst."
+      },
+      {
+        "title": "Säkerhets- och GDPR-revisionshändelser",
+        "body": "Säkerhetsloggar och GDPR-orienterade revisionshändelser kan behållas längre, ibland i append-only eller pseudonymiserad form, för att utreda incidenter och visa ansvarighet. Se Audit Trail."
+      },
+      {
+        "title": "Säkerhetskopior",
+        "body": "Krypterade säkerhetskopior följer rullande lagring. Radering från livesystem kan få effekt i säkerhetskopior först efter att säkerhetskopieringscykeln löpt ut."
+      }
+    ]
+  },
+  "transfers": {
+    "title": "Internationella överföringar",
+    "lead": "Kärnhosting för applikation och databas för plattformen är utformad kring Tyskland / Frankfurt (EU). Kommersiella marknader idag inkluderar Finland, Kanada och Kamerun - att sälja till en marknad är inte samma sak som att hosta en lokal produktionsregion där.",
+    "bullets": [
+      "EES / EU-behandling är standard för Client Data på produktionsstacken om inte ett skriftligt företagsresidensaddendum säger något annat.",
+      "Åtkomst av auktoriserad CurNext-personal eller underbiträden utanför EES, om någon, styrs av överföringsverktyg såsom Europeiska kommissionens standardavtalsklausuler (SCC), adekvansbeslut där tillämpligt samt avtalsmässiga / tekniska skyddsåtgärder som beskrivs i DPA.",
+      "Kanadensiska och kamerunska kunder kommer åt EU-hostad Client Data enligt instruktioner; Client förblir personuppgiftsansvarig för den Client Data.",
+      "Vissa support-, e-post- eller AI-assistansleverantörer kan behandla begränsade personuppgifter utanför EES - se den offentliga underbiträdeslistan på DPA-sidan."
+    ],
+    "note": "Uppgifter om underbiträden, platser och överföringsmekanismer underhålls på sidan för personuppgiftsbiträdesavtalet och kan ändras med den underrättelse som beskrivs där."
+  },
+  "subprocessors": {
+    "title": "Personuppgiftsbiträden och underbiträden",
+    "lead": "När CurNext agerar som personuppgiftsbiträde anlitar vi underbiträden under skriftliga villkor som ställer dataskyddskrav förenliga med art. 28. När CurNext agerar som personuppgiftsansvarig använder vi biträden under lämpliga avtal.",
+    "bullets": [
+      "Hosting- och databasinfrastruktur i EU (orientering Tyskland / Frankfurt).",
+      "Valfri objektlagring med EU-jurisdiktionsalternativ där det är aktiverat.",
+      "Leverantörer av e-postleverans, felövervakning och observability enligt offentlig lista.",
+      "Assisterade AI-funktioner (till exempel Gemini eller Groq när aktiverat) under produkt- och avtalskontroller - betongmognadsprediktion använder en intern TensorFlow.js-modell och är inte samma sak som chattassistans."
+    ],
+    "cta": "Granska aktuell offentlig underbiträdessammanfattning",
+    "href": "/data/data-processing-agreement"
+  },
+  "security": {
+    "title": "Säkerhetsåtgärder",
+    "lead": "Säkerhet är en del av GDPR-ansvarighet (art. 32). CurNexts offentligt beskrivna ställning inkluderar:",
+    "bullets": [
+      "Inbjudningsbaserad åtkomst till produktplanet",
+      "Rollbaserad åtkomstkontroll (RBAC) och privilegierad MFA",
+      "Kryptering under överföring; kryptering i vila för kärndatalager",
+      "Kantskydd såsom WAF och rate limiting",
+      "Fält- och byggnadskopplingskontroller (inklusive LoRaWAN AES-128-teman, WireGuard / MQTT mTLS för CN-BC enligt dokumentation på Säkerhet)",
+      "Signerade OTA-rutiner för firmware där tillämpligt",
+      "GDPR-orienterade revisions-, export- och raderingsvägar i produktdesign"
+    ],
+    "note": "Arkitekturdetaljer finns på Säkerhetssidan. Rapportera sårbarheter till security@curnext.app med koordinerad disclosure - skicka inte exploitdetaljer till support@ eller gdpr@.",
+    "href": "/security",
+    "cta": "Läs säkerhetsarkitektur"
+  },
+  "breach": {
+    "title": "Personuppgiftsincidenter",
+    "lead": "CurNext upprätthåller processer för att upptäcka, bedöma och hantera personuppgiftsincidenter.",
+    "items": [
+      {
+        "title": "När CurNext är personuppgiftsansvarig",
+        "body": "Vi bedömer risken för rättigheter och friheter och underrättar behörig tillsynsmyndighet utan onödigt dröjsmål och, där det är möjligt, inom 72 timmar efter att vi fått kännedom om en incident som kräver underrättelse enligt art. 33. Vi informerar berörda individer när art. 34 kräver det."
+      },
+      {
+        "title": "När CurNext är personuppgiftsbiträde",
+        "body": "Vi underrättar Client utan onödigt dröjsmål efter att ha fått kännedom om en personuppgiftsincident som påverkar Client Data, och bistår med information Client behöver för sina egna skyldigheter. Företagsavtal kan sätta ett stramare mål (till exempel 24 timmar till Clients säkerhetskontakt)."
+      },
+      {
+        "title": "Vad du bör inkludera om du rapporterar en incident",
+        "body": "Tidpunkt för observation, berörda system, om personuppgifter är inblandade och hur vi når dig. Använd security@curnext.app för misstänkta incidenter och sårbarhetsrapporter."
+      }
+    ]
+  },
+  "cookies": {
+    "title": "Cookies, marknadsföring och AI-assistenter",
+    "lead": "Icke-nödvändiga cookies och liknande tekniker hanteras enligt vår cookiepolicy och samtyckesverktyg där det krävs. Marknadsföringsmejl innehåller avregistreringskontroller.",
+    "bullets": [
+      "Nödvändiga cookies stöder säkerhet, lastbalansering och preferenslagring som behövs för att leverera webbplatsen.",
+      "Analys- eller marknadsföringstaggar, om de används, körs endast med giltig rättslig grund (ofta samtycke i EES).",
+      "Kunskapsbasens AI-chatt kräver uttryckligt GDPR-samtycke i produktflödet innan din fråga behandlas.",
+      "Du kan återkalla samtycke för valfria verktyg utan att förlora åtkomst till kärninformationssidor, även om vissa funktioner kan vara otillgängliga."
+    ],
+    "cookieHref": "/data/cookie-policy",
+    "cookieCta": "Cookiepolicy",
+    "privacyHref": "/data/privacy-policy",
+    "privacyCta": "Integritetspolicy"
+  },
+  "children": {
+    "title": "Barn och åldersbehörighet",
+    "lead": "CurNext-tjänster är utformade för professionell byggverksamhet och B2B-användning. De riktas inte till barn. Enligt CurNexts interna policyer onboardar, bjuder vi inte in eller registrerar produktanvändare under 18 år. Vi samlar heller inte medvetet in personuppgifter från barn under 16 år för CurNext-produkter. Om du tror att någon under 18 har onboardats, eller att ett barn har lämnat personuppgifter, kontakta gdpr@curnext.app så vidtar vi lämpliga åtgärder."
+  },
+  "automated": {
+    "title": "Automatiserat beslutsfattande och profilering",
+    "lead": "CurNext tillhandahåller mognadsprediktioner och assisterade insikter för byggytor (till exempel betonghärdningstidslinjer). Dessa utdata stöder professionellt omdöme; de är inte avsedda som enbart automatiserade beslut som ger rättsliga eller liknande betydande effekter för en individ enligt art. 22.",
+    "bullets": [
+      "Mognadssignaler för byggplatser gäller material och miljöer, inte kreditvärdighet eller anställning av en fysisk person.",
+      "Kontosäkerhet kan använda automatiserade risksignaler (till exempel rate limits eller anomalidetektering) för att skydda tjänsten.",
+      "Om vi inför funktioner som fattar enbart automatiserade beslut med rättsliga eller liknande betydande effekter för dig, ger vi meningsfull information och ett sätt att få mänsklig granskning där det krävs."
+    ]
+  },
+  "authority": {
+    "title": "Tillsynsmyndighet",
+    "lead": "Utan att det påverkar andra administrativa eller rättsliga rättsmedel kan du lämna in ett klagomål till en tillsynsmyndighet. För CurNext som finländsk personuppgiftsansvarig är den ledande tillsynsmyndighetskontexten typiskt:",
+    "name": "Dataombudsmannens byrå (Tietosuojavaltuutetun toimisto)",
+    "url": "https://tietosuoja.fi/en",
+    "urlLabel": "tietosuoja.fi",
+    "note": "Du kan också kontakta myndigheten i ditt bosättnings- eller arbetsland om du befinner dig i EES. Vi uppmuntrar dig att först kontakta gdpr@curnext.app så att vi kan försöka lösa frågorna direkt."
+  },
+  "updates": {
+    "title": "Ändringar av dessa policyer",
+    "lead": "Vi kan uppdatera denna sida för att återspegla produkt-, rättsliga eller organisatoriska förändringar. Datumet \"Senast uppdaterad\" högst upp ändras när vi publicerar väsentliga revisioner. För biträdesrelationer följer väsentliga underbiträdes- eller överföringsändringar underrättelseprocessen i DPA. Fortsatt användning av marknadsföringswebbplatsen efter en uppdatering innebär kännedom om den reviderade offentliga policytexten; avtalskunder styrs av sina avtal."
+  },
+  "related": [
+    {
+      "title": "Personuppgiftsbiträdesavtal",
+      "href": "/data/data-processing-agreement"
+    },
+    {
+      "title": "Integritetspolicy",
+      "href": "/data/privacy-policy"
+    },
+    {
+      "title": "Cookiepolicy",
+      "href": "/data/cookie-policy"
+    },
+    {
+      "title": "Säkerhet",
+      "href": "/security"
+    },
+    {
+      "title": "Efterlevnad",
+      "href": "/compliance"
+    },
+    {
+      "title": "Audit Trail",
+      "href": "/audit-trail"
+    },
+    {
+      "title": "Kontakt",
+      "href": "/contact"
+    }
+  ],
+  "controllerRegisteredIn": "Registrerad i {place}",
+  "controllerBusinessId": "Organisationsnummer {id}",
+  "controllerWebsite": "Webbplats: {url}"
+}

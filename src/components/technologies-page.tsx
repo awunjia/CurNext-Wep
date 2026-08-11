@@ -1,19 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { partners } from "@/config/partners";
 import { siteConfig } from "@/config/site";
-import {
-  technologiesConnectivity,
-  technologiesData,
-  technologiesEcosystem,
-  technologiesPage,
-  technologiesProducts,
-  technologiesSecurity,
-  technologiesSoftware,
-} from "@/config/technologies";
 import {
   itemHeadingClassName,
   sectionHeadingClassName,
@@ -23,7 +15,16 @@ import { cn } from "@/lib/utils";
 function partnerByName(name: string) {
   return partners.find((partner) => partner.name === name);
 }
-export function TechnologiesPage() {
+export async function TechnologiesPage() {
+  const t = await getTranslations("technologies");
+  const technologiesConnectivity = t.raw("technologiesConnectivity") as typeof import("@/config/technologies").technologiesConnectivity;
+  const technologiesData = t.raw("technologiesData") as typeof import("@/config/technologies").technologiesData;
+  const technologiesEcosystem = t.raw("technologiesEcosystem") as typeof import("@/config/technologies").technologiesEcosystem;
+  const technologiesPage = t.raw("technologiesPage") as typeof import("@/config/technologies").technologiesPage;
+  const technologiesProducts = t.raw("technologiesProducts") as typeof import("@/config/technologies").technologiesProducts;
+  const technologiesSecurity = t.raw("technologiesSecurity") as typeof import("@/config/technologies").technologiesSecurity;
+  const technologiesSoftware = t.raw("technologiesSoftware") as typeof import("@/config/technologies").technologiesSoftware;
+
   return (
     <main className="flex flex-1 flex-col">
       <section

@@ -1,0 +1,940 @@
+{
+  "eyebrow": "Dokumentation",
+  "onThisPage": "På den här sidan",
+  "sectionNav": "Avsnittsrubriker",
+  "title": "Dokumentation",
+  "description": "Lång produkt dokumentation för CurNext - arbetsplatsväg, lösningar, API, SDK:er, firmware, integrationer, säkerhet, hosting och kommersiell omfattning. Byggd från offentligt material på curnext.app.",
+  "tabs": {
+    "overview": {
+      "label": "Översikt",
+      "description": "Vad CurNext är, hur Docs är organiserad och vart du går härnäst.",
+      "sections": {
+        "what-is-curnext": {
+          "title": "Vad är CurNext?",
+          "paragraphs": [
+            "CurNext ger byggklar platsintelligens för byggytor och utrymmen. Fältnoder mäter förhållanden på själva arbetet. Plattformen svarar på om arbetet kan fortsätta - med beredskap, larm och ett revisionsspår kopplat till ditt projekt.",
+            "Produkten säljs som byggintelligens, inte som en radiomateriellista. Plats- och kontorsteam agerar på go / no-go-beslut. Utvecklare och operatörer utökar samma stack via REST API, SDK:er, Market Place-integrationer och firmware-drift.",
+            "Den här Docs-ytan sammanfattar offentligt produktmaterial som redan publicerats på curnext.app. Den är avsedd att läsas från början till slut. Detaljerade hårdvarusäkerhetsrunbooks, fabriksfixturer och privata ops-rutiner stannar i intern dokumentation."
+          ]
+        },
+        "who-it-is-for": {
+          "title": "För vem",
+          "paragraphs": [
+            "CurNext är byggt för entreprenörer, projektteam, BIM-koordinatorer, facility-roller efter överlämning och integratorer som behöver beredskapsbeslut i verktyg de redan kör."
+          ],
+          "bullets": [
+            "Platsteam som agerar på go / no-go-beredskap för plattor, väggar, luft, läckor, struktur och anläggning",
+            "Kontorsteam som spårar ytor mot tidplan och överlämningsbevis",
+            "Utvecklare som anropar REST API eller officiella SDK:er",
+            "Operatörer som granskar firmwarekatalog, rapporterade versioner och edge-OTA-kontext",
+            "Upphandlings- och säkerhetsgranskare som läser sidorna Security, Datacenters och DPA"
+          ]
+        },
+        "operating-markets": {
+          "title": "Verksamhetsmarknader",
+          "paragraphs": [
+            "CurNext säljer för närvarande till Finland, Kanada och Kamerun. Prissättningen är inhemsk listpris per marknad (EUR, CAD, XAF) - inte en enda FX-omvandlingstabell.",
+            "Platform Client Data för dessa marknader hostas på den EU-ankrade produktionsstacken (applikationsursprung i Tyskland, databas och auth i Frankfurt) om inte ett skriftligt enterprise-residensaddendum säger annat. Att sälja till Kanada eller Kamerun är inte samma sak som att hosta en lokal produktionsregion där."
+          ],
+          "links": [
+            {
+              "label": "Priser",
+              "href": "/pricing"
+            },
+            {
+              "label": "Datacenters",
+              "href": "/datacenters"
+            },
+            {
+              "label": "DPA",
+              "href": "/data/data-processing-agreement"
+            }
+          ]
+        },
+        "how-docs-is-organized": {
+          "title": "Hur den här dokumentationen är organiserad",
+          "paragraphs": [
+            "Använd flikarna högst upp för att växla mellan ämnen. På stora skärmar listar vänsterspåret avsnittsrubriker för den aktiva fliken och markerar avsnittet i vy när du rullar."
+          ],
+          "bullets": [
+            "Översikt - produktinramning och navigering",
+            "Arbetsplatsväg - L1 till L5 och anslutning",
+            "Lösningar - varje fabriksfixad SKU på djupet",
+            "API - bas-URL, auth, domäner, webhooks",
+            "SDK:er - språk, installation, mönster",
+            "Firmware - katalog, historik, edge-OTA",
+            "Integrationer - Market Place-katalog",
+            "Säkerhet - offentlig arkitektursammanfattning",
+            "Hosting - residens och skalningsläge",
+            "Kommersiellt - prismodell och kontaktvägar"
+          ]
+        },
+        "related-surfaces": {
+          "title": "Relaterade ytor",
+          "paragraphs": [
+            "Docs ligger bredvid andra offentliga ytor. Föredra Knowledge Base AI-chatten för snabba frågor förankrade i webbplatskunskap, och Contact när en guide saknas."
+          ],
+          "links": [
+            {
+              "label": "Hur det fungerar",
+              "href": "/how-it-works"
+            },
+            {
+              "label": "Teknologier",
+              "href": "/technologies"
+            },
+            {
+              "label": "Resurser",
+              "href": "/resources"
+            },
+            {
+              "label": "Fallstudier",
+              "href": "/case-studies"
+            },
+            {
+              "label": "Knowledge Base",
+              "href": "/knowledge-base"
+            },
+            {
+              "label": "Kontakt",
+              "href": "/contact"
+            }
+          ]
+        }
+      }
+    },
+    "site-path": {
+      "label": "Arbetsplatsväg",
+      "description": "Från fältnoder till CurNext-molnet - lager, ström, uplink och utfall.",
+      "sections": {
+        "path-intro": {
+          "title": "En väg för varje yta",
+          "paragraphs": [
+            "Härdning, torkning, luft, läcka, struktur och MEP delar samma väg till molnet. Enheter fångar förhållanden på arbetet. Golvsamling håller ett plan organiserat. Dedikerad ström håller golv- och byggnadshårdvara online. Byggnadens uplink är den säkra bron bort från byggarbetsplatsen. CurNext-molnet omvandlar platsdata till beredskap, larm och nästa åtgärder - med ett revisionsspår för kunder och efterlevnad.",
+            "Detta är en industriell byggstack, inte konsument-IoT-leksaker. Offentliga sidor namnger förmågor på en nivå som passar köpare och integratorer. De är inte en attackytguide."
+          ],
+          "links": [
+            {
+              "label": "Hur det fungerar",
+              "href": "/how-it-works"
+            },
+            {
+              "label": "Teknologier",
+              "href": "/technologies"
+            }
+          ]
+        },
+        "layers": {
+          "title": "Lager L1-L5",
+          "paragraphs": [
+            "Varje lager har ett jobb. Ström tolkar inte mätningar. Golvgateways vetter inte mot det publika internetet. Byggnadskontrollern är säkerhetsgränsen för uplink och signerad fält-OTA."
+          ],
+          "subsections": [
+            {
+              "title": "L1 - Sense (fältnoder)",
+              "paragraphs": [
+                "Installera på själva arbetet - härdande plattor, torkande väggar, inomhusluft, läckor, struktur eller anläggningssystem. Enheter fångar förhållandena som driver tidplan och kvalitet."
+              ],
+              "bullets": [
+                "SKU-koder: CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP",
+                "Unik enhetsidentitet och nyckelmaterial i secure-element",
+                "Manipulationssäker design och förskjutningsdetektering på fältnoder",
+                "LoRaWAN Class A (EU868) för batteridrivna trådlösa noder där det är tillämpligt"
+              ]
+            },
+            {
+              "title": "L2 - Aggregate (CN-FG)",
+              "paragraphs": [
+                "Varje våning koncentrerar enhetstrafik till en uppsamlingspunkt så att ett plan förblir organiserat när projektet växer över flyglar och zoner."
+              ],
+              "bullets": [
+                "Tillitsankare för verifiering av radioförbindelsen (MIC, räknare, join)",
+                "Endast golv-VLAN - inget molnvänt gränssnitt",
+                "OTA endast från CN-BC"
+              ]
+            },
+            {
+              "title": "L3 - Power (CN-UPS)",
+              "paragraphs": [
+                "Dedikerad ström håller golv- och byggnadshårdvara online vid avbrott. Det här lagret levererar bara ström - det tolkar inte mätningar och bär ingen dataplan på management-VLAN."
+              ]
+            },
+            {
+              "title": "L4 - Bridge (CN-BC)",
+              "paragraphs": [
+                "Byggnadsenheten är den säkra länken från platsnätet till CurNext. Den upprätthåller en skyddad väg bort från byggarbetsplatsen, avslutar fält-OTA-orkestrering och talar med den privata molnbroker-vägen."
+              ],
+              "bullets": [
+                "WireGuard-klient vid byggnadens säkerhetsgräns",
+                "MQTT över TLS med ömsesidig mTLS till den privata brokern",
+                "Signerade OTA-jobb för L1/L2-mål",
+                "Krypterad store-and-forward när uplinken är nere"
+              ]
+            },
+            {
+              "title": "L5 - Decide (CurNext-molnet)",
+              "paragraphs": [
+                "Plattformen omvandlar platsdata till beredskapsstatus, larm och nästa åtgärder - i webbpanelen och mobilappen - med ett revisionsspår för kunder och efterlevnad."
+              ],
+              "bullets": [
+                "Projektdashboards, larm, BIM-mappad beredskap",
+                "REST API, SDK:er, Market Place, firmwarekatalog",
+                "Endast inbjudan, RBAC, privilegierad MFA"
+              ]
+            }
+          ]
+        },
+        "connectivity": {
+          "title": "Anslutning",
+          "paragraphs": [
+            "Namngivna på förmågenivå - standard industriprotokoll för hårdvaruvägen och HTTPS för köparintegrationer."
+          ],
+          "bullets": [
+            "LoRaWAN (EU868) för batteridrivna fältnoder - lång räckvidd, platsvänlig radio in i golvvägen",
+            "MQTT över TLS för enhets- och gatewaytelemetri på hårdvaruvägen",
+            "WireGuard-teman för byggnads-edge-anslutning till CurNext-molntjänster",
+            "HTTPS REST för köparintegrationer på api.curnext.app - beredskap, BIM, enheter, larm, webhooks"
+          ]
+        },
+        "outcomes": {
+          "title": "Utfall på plats",
+          "paragraphs": [
+            "Team bör lämna CurNext med beslut och bevis, inte bara diagram."
+          ],
+          "bullets": [
+            "En stack för varje yta - härdning, torkning, luft, läcka, struktur och MEP",
+            "Beslut, inte bara dashboards - vad som är klart, vad som är i risk, vad som ska göras härnäst",
+            "Bevis som följer med - överlämningar, krav och revisioner utan att bygga om rapporter för hand"
+          ]
+        }
+      }
+    },
+    "solutions": {
+      "label": "Lösningar",
+      "description": "Fabriksfixade produktlinjer för platsjobb på samma stack.",
+      "sections": {
+        "solution-catalog": {
+          "title": "Lösningskatalog",
+          "paragraphs": [
+            "Varje SKU är syftesfixad för ett platsjobb på samma CurNext-stack. Välj produktlinjen som matchar ytan, skala sedan noder och längd under Priser."
+          ],
+          "bullets": [
+            "CN-CC - Concrete Curing: platthärdning, mognad, beredskap",
+            "CN-WD - Wall Drying: gips, våtrum, kakelunderlag",
+            "CN-IAQ - Indoor Air: CO₂, PM, VOC (inkl. efter överlämning)",
+            "CN-LEAK - Leak Detection: teknikrum, badrum, schakt",
+            "CN-SHM - Structural Health: töjning, spricka, lutning, vibration",
+            "CN-MEP - MEP: flöde, tryck, energi (PoE-panel)"
+          ],
+          "links": [
+            {
+              "label": "Alla lösningar",
+              "href": "/solutions"
+            }
+          ]
+        },
+        "solution-cn-cc": {
+          "title": "CN-CC - Concrete Curing",
+          "paragraphs": [
+            "Betonghärdning övervakar plattans mognad med luft-, yt- och kärnprober. En förseglad edge-nod stannar utanför gjutningen; robusta prober sitter där plattan behöver mätas. CurNexts interna TensorFlow.js-modell omvandlar temperaturerna till härdningsprognoser och byggklar timing, med revisionsspår för gjutpaketet."
+          ],
+          "bullets": [
+            "Luft-, yt- och kärnproberoller på samma selemodell",
+            "Intern TensorFlow.js-härdningsprognos för beredskap",
+            "Go / no-go-beredskap istället för enbart kalenderbaserade härdningsregler",
+            "Dokumenterat härdningsspår för formar och efterföljande yrkesgrupper",
+            "LoRaWAN-fältväg in till CN-FG och CN-BC"
+          ],
+          "links": [
+            {
+              "label": "Öppna CN-CC-sidan",
+              "href": "/solutions/concrete-curing"
+            }
+          ]
+        },
+        "solution-cn-wd": {
+          "title": "CN-WD - Wall Drying",
+          "paragraphs": [
+            "Väggorkning täcker gips, våtrum och kakelunderlag. Noder övervakar fukt och torkfönster så att finishteam inte stänger in våta konstruktioner bakom ytskikt under tidplanspress."
+          ],
+          "bullets": [
+            "Finishberedskap för gips- och våtrumskonstruktioner",
+            "Larm när ytor ligger utanför bandet",
+            "Delade torrt / vänta-anrop för yrkespaket",
+            "Spår av förhållanden före täckningsarbete"
+          ],
+          "links": [
+            {
+              "label": "Öppna CN-WD-sidan",
+              "href": "/solutions/wall-drying"
+            }
+          ]
+        },
+        "solution-cn-iaq": {
+          "title": "CN-IAQ - Indoor Air",
+          "paragraphs": [
+            "Inomhusluft ger CO2-, partikel-, VOC- och klimatkontext på samma platsstack - inklusive efter överlämning och tidig occupancy när team behöver delad luftkvalitet utan en separat labbkampanj för varje klagomål."
+          ],
+          "bullets": [
+            "Representativa zonnoder för överlämning och occupancy",
+            "Trösklar och larm för plats- och facility-roller",
+            "Mätningar kopplade till utrymmen, inte engångsanteckningar från rundvandringar",
+            "Samma byggnadsuplink och projektvy som övriga SKU:er"
+          ],
+          "links": [
+            {
+              "label": "Öppna CN-IAQ-sidan",
+              "href": "/solutions/indoor-air"
+            }
+          ]
+        },
+        "solution-cn-leak": {
+          "title": "CN-LEAK - Leak Detection",
+          "paragraphs": [
+            "Läckagedetektering övervakar teknikrum, badrum och schakt för fukthändelser som ofta upptäcks sent - efter att ytskikt och utrustning redan är i risk."
+          ],
+          "bullets": [
+            "Händelsedrivna larm för högrisk våtzoner",
+            "Tidigare medvetenhet för plats- och MEP-ledare",
+            "Edge-uplink med projektmappade platser",
+            "Svarsväg innan skadan sprider sig"
+          ],
+          "links": [
+            {
+              "label": "Öppna CN-LEAK-sidan",
+              "href": "/solutions/leak-detection"
+            }
+          ]
+        },
+        "solution-cn-shm": {
+          "title": "CN-SHM - Strukturell hälsa",
+          "paragraphs": [
+            "Strukturell hälsa övervakar lutning, sprickor, töjning och vibrationskontext under kritiska och tillfälliga arbeten - kontinuerlig kontext mellan periodiska mätbesök."
+          ],
+          "bullets": [
+            "Överenskomna strukturella punkter instrumenterade på byggnadsvägen",
+            "Trösklar och historik för ingenjörer och platschefer",
+            "Händelser sparas när arbeten ändrar platsförhållanden",
+            "Kompletterar, ersätter inte, mätpraxis"
+          ],
+          "links": [
+            {
+              "label": "Öppna CN-SHM-sidan",
+              "href": "/solutions/structural-health"
+            }
+          ]
+        },
+        "solution-cn-mep": {
+          "title": "CN-MEP - MEP",
+          "paragraphs": [
+            "MEP-sensing täcker flöde, tryck och energi där högre samplingshastigheter eller trådbundna anläggningssignaler behövs - inklusive PoE-panelvägar under idrifttagning och balansering."
+          ],
+          "bullets": [
+            "Trådbundna anläggningssignaler på överenskomna kretsar",
+            "Delad journal under idrifttagningsfönster",
+            "Molnberedskap och historik för MEP-ledare",
+            "Passar samma projekt- och API-modell som trådlösa SKU:er"
+          ],
+          "links": [
+            {
+              "label": "Öppna CN-MEP-sidan",
+              "href": "/solutions/mep"
+            }
+          ]
+        },
+        "solution-patterns": {
+          "title": "Anonyma platsmönster",
+          "paragraphs": [
+            "Fallstudier på marknadsföringssajten är anonyma distributionsmönster per SKU - utmaning, approach och utfall - utan påhittade kundlogotyper eller falska procent. Namngivna referenser finns via sälj under NDA."
+          ],
+          "links": [
+            {
+              "label": "Fallstudier",
+              "href": "/case-studies"
+            }
+          ]
+        }
+      }
+    },
+    "api": {
+      "label": "API",
+      "description": "Versionshanterad REST för beredskap, BIM, enheter, mätningar och händelser.",
+      "sections": {
+        "api-intro": {
+          "title": "API-översikt",
+          "paragraphs": [
+            "CurNext REST API är integrationsytan för beredskapsintelligens. Rama in anrop kring beslut och projektkontext - inte en rå sensordump. Officiella SDK:er wrappar samma /api/v1-vägar.",
+            "Interaktiv OpenAPI-dokumentation och playground finns på api.curnext.app/docs. Marknadsöversikten finns på /api."
+          ],
+          "links": [
+            {
+              "label": "API-översikt",
+              "href": "/api"
+            },
+            {
+              "label": "OpenAPI-playground",
+              "href": "https://api.curnext.app/docs",
+              "external": true
+            }
+          ]
+        },
+        "api-base": {
+          "title": "Bas-URL och versionering",
+          "paragraphs": [
+            "Produktions-API-värden är api.curnext.app. Skicka endast värden till SDK:er - vägarna prefixas med /api/v1 på tråden."
+          ]
+        },
+        "api-auth": {
+          "title": "Autentisering och åtkomst",
+          "paragraphs": [
+            "Skapa en projekt-API-nyckel i produkten under Integration. Skicka den som Bearer-token på varje begäran.",
+            "API-åtkomst följer din platsprenumeration - nodantal och längd - inte ett separat äldre \"Professional\"-plansnamn. Nycklar är begränsade till projektet som utfärdade dem."
+          ],
+          "bullets": [
+            "Lagra nycklar i en secrets manager - aldrig i klientkod eller publika repo",
+            "Rotera nycklar när personer lämnar projektet eller läcka misstänks",
+            "Föredra kortlivade operativa skript framför att bädda in nycklar i mobilappar"
+          ]
+        },
+        "api-domains": {
+          "title": "Domäner du kan anropa",
+          "paragraphs": [
+            "Använd dessa domäner som mental modell när du designar en integration."
+          ],
+          "subsections": [
+            {
+              "title": "Health",
+              "paragraphs": [
+                "Tjänstestatus för lastbalanserare och uptime-kontroller."
+              ]
+            },
+            {
+              "title": "Projects",
+              "paragraphs": [
+                "Lista projekt, medlemmar, revisionshändelser, prenumerationskontext och beredskapsvyer kopplade till byggnadsstrukturen."
+              ]
+            },
+            {
+              "title": "Devices",
+              "paragraphs": [
+                "Lista och hämta enheter bundna till projektet."
+              ]
+            },
+            {
+              "title": "Alerts",
+              "paragraphs": [
+                "Lista, hämta och lös operativa larm."
+              ]
+            },
+            {
+              "title": "Measurements",
+              "paragraphs": [
+                "Mätcykler och senaste enhetsavläsningar för ytorna du instrumenterat."
+              ]
+            },
+            {
+              "title": "Webhooks",
+              "paragraphs": [
+                "Lista webhook-endpoints via API. Skapa och hantera mottagare i produktens UI för händelser som SURFACE_READY, ALERT_CREATED och DEVICE_DISPLACED."
+              ]
+            },
+            {
+              "title": "BIM",
+              "paragraphs": [
+                "Projekthierarkiträd så att beredskap förblir mappad till våningar, rum och ytor."
+              ]
+            }
+          ]
+        },
+        "api-errors": {
+          "title": "Fel och hastighetsbeteende",
+          "paragraphs": [
+            "Behandla 401 som ogiltig eller saknad nyckel, 404 som saknad resurs och 429 som rate limiting. Försök 429 igen med backoff. Försök inte 401 igen utan att rotera uppgifter.",
+            "Exakta hastighetsgränser beror på projekt och prenumerationskontext - hårdkoda inte påhittade RPS-siffror från den här Docs-sidan."
+          ]
+        }
+      }
+    },
+    "sdks": {
+      "label": "SDK:er",
+      "description": "Officiella klienter för samma REST-yta över språk.",
+      "sections": {
+        "sdk-intro": {
+          "title": "Vad du kan bygga",
+          "paragraphs": [
+            "Att begränsa upplevelsen till CurNext-klienten räcker inte. Officiella SDK:er ger team frihet att utöka beredskapsintelligens till appar, arbetsflöden och stackar de redan kör."
+          ],
+          "bullets": [
+            "Hämta beredskap och telemetri till dashboards eller rapporter",
+            "Automatisera platsarbetsflöden - lös larm, lista revisionshändelser, driv ops från skript",
+            "Integrera med Node-, PHP-, Go-, Python-, Java- eller Flutter-appar ni redan kör",
+            "Arbeta med webhooks - lista endpoints via SDK; skapa mottagare i dashboarden"
+          ],
+          "links": [
+            {
+              "label": "SDK-sida",
+              "href": "/sdks"
+            }
+          ]
+        },
+        "sdk-languages": {
+          "title": "Officiella språk",
+          "paragraphs": [
+            "Installera från publika register. Live-versioner på SDK-sidan löses från npm, Packagist, pkg.go.dev, PyPI och Maven Central där de publicerats. Flutter planeras på pub.dev och markeras coming soon tills den publiceras."
+          ],
+          "bullets": [
+            "JavaScript / TypeScript - @curnext/sdk (npm, tillgänglig)",
+            "PHP - curnext/sdk (Packagist, tillgänglig)",
+            "Go - github.com/awunjia/curnext-go (pkg.go.dev, tillgänglig)",
+            "Python - curnext (PyPI, tillgänglig)",
+            "Java - app.curnext:curnext-sdk (Maven Central, tillgänglig)",
+            "Flutter - curnext (planerad) (pub.dev, kommer snart)"
+          ]
+        },
+        "sdk-auth": {
+          "title": "Auth-mönster",
+          "paragraphs": [
+            "Skicka CURNEXT_API_KEY och valfri baseUrl (endast host). Standardbas är https://api.curnext.app."
+          ]
+        },
+        "sdk-javascript": {
+          "title": "JavaScript / TypeScript",
+          "paragraphs": [
+            "Typad Fetch-klient för webbappar, Node-tjänster och TypeScript-backends som behöver beredskap och projektkontext."
+          ],
+          "bullets": [
+            "Typad klient",
+            "Node och webbläsare",
+            "Fetch API"
+          ],
+          "links": [
+            {
+              "label": "Öppna på npm",
+              "href": "https://www.npmjs.com/package/@curnext/sdk",
+              "external": true
+            }
+          ]
+        },
+        "sdk-php": {
+          "title": "PHP",
+          "paragraphs": [
+            "PHP 8.1+-klient för Laravel, Symfony och ren PHP som hämtar beredskap till portaler, ERP och automation."
+          ],
+          "bullets": [
+            "PHP 8.1+",
+            "cURL + JSON",
+            "Laravel och Symfony"
+          ],
+          "links": [
+            {
+              "label": "Öppna på Packagist",
+              "href": "https://packagist.org/packages/curnext/sdk",
+              "external": true
+            }
+          ]
+        },
+        "sdk-go": {
+          "title": "Go",
+          "paragraphs": [
+            "Idiomatisk Go-klient för gateways, platstjänster och mikrotjänster som pratar med CurNext över HTTPS."
+          ],
+          "bullets": [
+            "context.Context",
+            "Typade fel",
+            "net/http"
+          ],
+          "links": [
+            {
+              "label": "Öppna på pkg.go.dev",
+              "href": "https://pkg.go.dev/github.com/awunjia/curnext-go",
+              "external": true
+            }
+          ]
+        },
+        "sdk-python": {
+          "title": "Python",
+          "paragraphs": [
+            "Python-klient för datapipelines, FastAPI-tjänster och skript som hämtar beredskap och telemetri."
+          ],
+          "bullets": [
+            "pip install",
+            "Dict-svar",
+            "Django och FastAPI"
+          ],
+          "links": [
+            {
+              "label": "Öppna på PyPI",
+              "href": "https://pypi.org/project/curnext/",
+              "external": true
+            }
+          ]
+        },
+        "sdk-java": {
+          "title": "Java",
+          "paragraphs": [
+            "JVM-klient för Spring Boot, Quarkus och företagstjänster. Maven groupId app.curnext; importer förblir io.curnext.sdk.*."
+          ],
+          "bullets": [
+            "Java 17+",
+            "Gradle och Maven",
+            "Jackson"
+          ],
+          "links": [
+            {
+              "label": "Öppna på Maven Central",
+              "href": "https://central.sonatype.com/artifact/app.curnext/curnext-sdk",
+              "external": true
+            }
+          ]
+        },
+        "sdk-flutter": {
+          "title": "Flutter",
+          "paragraphs": [
+            "Flutter / Dart-klient för mobil- och skrivbordsappar som behöver beredskap, enheter och larm i fält. Samma REST-yta som live-SDK:erna - paketet finns ännu inte på pub.dev."
+          ],
+          "bullets": [
+            "Kommer snart",
+            "Dart",
+            "Mobil och skrivbord"
+          ]
+        }
+      }
+    },
+    "firmware": {
+      "label": "Firmware",
+      "description": "Katalog, rapporterade versioner, installationshistorik och edge-OTA.",
+      "sections": {
+        "firmware-model": {
+          "title": "Vad som finns idag",
+          "paragraphs": [
+            "CurNext spårar en firmwareversionskatalog, rapporterade enhetsversionssträngar och installationshistorik. Fält-OTA orkestreras i edgen på CN-BC.",
+            "Molnuppladdning, publiceringskanaler och one-click fleet-rollout-UI ingår inte i den publika marknadsytan. Detta är ingen webbläsarflasher."
+          ],
+          "bullets": [
+            "Bläddra i katalogmodellen: version, enhetstyp, produktions- och CE-flaggor",
+            "Förstå rapporterade fleet-strängar kontra katalograder",
+            "Se hur installationshistoriken registrerar factory-, OTA-, USB- och manual-metoder",
+            "Fält-OTA körs som signerade jobb på CN-BC"
+          ],
+          "links": [
+            {
+              "label": "Firmwaresida",
+              "href": "/firmware"
+            }
+          ]
+        },
+        "firmware-catalog": {
+          "title": "Katalogflaggor",
+          "paragraphs": [
+            "Katalograder bär produktions- och CE-märkningsflaggor. Det finns ingen draft/beta-kanal-enum i den publika modell som beskrivs här."
+          ],
+          "bullets": [
+            "isProduction - om katalograden är markerad för produktionsbruk",
+            "ceMarked - CE-märkningsflagga på katalograden",
+            "Enhetstyp knyter raden till CN-CC, CN-FG, CN-BC, CN-UPS och relaterade klasser"
+          ]
+        },
+        "firmware-history": {
+          "title": "Installationshistorik",
+          "paragraphs": [
+            "Installationshistoriken registrerar hur en version nådde en enhet. Metoder inkluderar FACTORY, OTA, USB och MANUAL."
+          ]
+        },
+        "firmware-ota": {
+          "title": "Edge-OTA på CN-BC",
+          "paragraphs": [
+            "Signerade jobb når CN-BC. Edge-agenten verifierar, förbereder och uppdaterar mål. Avbildningar adresseras med checksum. Utbyggnader kan gå genom tillstånden accepted, rejected, canary, rolling, done och failed."
+          ],
+          "subsections": [
+            {
+              "title": "Mål",
+              "bullets": [
+                "bc - CN-BC själuppdatering",
+                "fg - CN-FG golvuppdatering",
+                "cc - fältnoder via FUOTA / LoRaWAN",
+                "ups - CN-UPS UART-ramad uppdatering"
+              ]
+            }
+          ]
+        },
+        "firmware-security": {
+          "title": "Säkerhetsteman",
+          "paragraphs": [
+            "Signerad OTA, secure-element-identitet och anti-rollback-teman ingår i hårdvarusäkerhetsmodellen. Fabriksprovisionering och fält-NFC-installation dokumenteras för drift separat från den här publika Docs-sidan."
+          ],
+          "links": [
+            {
+              "label": "Säkerhetsarkitektur",
+              "href": "/security"
+            }
+          ]
+        }
+      }
+    },
+    "integrations": {
+      "label": "Integrationer",
+      "description": "Market Place-tredjepartsanslutningar per kategori.",
+      "sections": {
+        "marketplace": {
+          "title": "Market Place",
+          "paragraphs": [
+            "Anslut meddelanden, schemaläggning, övervakning, produktivitet, lagring, BIM, bygg, enterprise, IoT, kartor, CRM och redovisning från produktens Market Place.",
+            "De flesta appar använder one-click OAuth i dashboarden. Datadog ansluts med API-nycklar (inte OAuth). Projektägare hanterar anslutningar i produkten. Marknadsföringssidans Integrations är en katalog - anslutningsåtgärder körs i dashboarden."
+          ],
+          "links": [
+            {
+              "label": "Integrationssida",
+              "href": "/integrations"
+            },
+            {
+              "label": "Öppna dashboardens Market Place",
+              "href": "https://dash.curnext.app/addon",
+              "external": true
+            }
+          ]
+        },
+        "marketplace-categories": {
+          "title": "Kategorier",
+          "paragraphs": [
+            "Filtrera katalogen efter kategori när du känner jobbet - meddelanden för larm, BIM för modeller, CRM för kontots arbetsflöden."
+          ],
+          "bullets": [
+            "Meddelanden",
+            "Schemaläggning",
+            "Övervakning",
+            "Produktivitet",
+            "Lagring",
+            "BIM",
+            "Bygg",
+            "Enterprise",
+            "IoT",
+            "Kartor",
+            "CRM",
+            "Redovisning"
+          ]
+        },
+        "marketplace-catalog": {
+          "title": "Katalog (18 integrationer)",
+          "paragraphs": [
+            "Den publika katalogen listar för närvarande dessa integrationer. Beskrivningarna hålls korta - öppna leverantörssajten för produktdetaljer."
+          ],
+          "bullets": [
+            "WhatsApp (Messaging, OAuth): Skicka kritiska platsalarm och beredskapsuppdateringar till ditt WhatsApp-nummer.",
+            "Slack (Messaging, OAuth): Publicera larm och dagliga digester till kanaler i din Slack-arbetsyta.",
+            "Microsoft Teams (Messaging, OAuth): Leverera operativa larm och beredskapsuppdateringar till Teams-kanaler.",
+            "Google Calendar (Scheduling, OAuth): Synka inspektionsfönster, härdningsmilstolpar och platsbesök.",
+            "Calendly (Scheduling, OAuth): Låt inspektionärer och ägare boka platsbesök från delad tillgänglighet.",
+            "Datadog (Monitoring, API key): Vidarebefordra enhetshälsomått och larmhändelser till din Datadog-stack.",
+            "Google Sheets (Productivity, OAuth): Exportera beredskapsögonblicksbilder och telemetrisammanställningar till ett delat kalkylblad.",
+            "Dropbox (Storage, OAuth): Arkivera rapporter, certifikat och platsfoton till delade projektmappar.",
+            "Autodesk Revit (BIM, OAuth): Synka BIM-modeller, rum och ytor med härdningsberedskapskontext.",
+            "Procore (Construction, OAuth): Skjut beredskapsstatus och larm till Procore-projektposter.",
+            "IBM Maximo (Enterprise, OAuth): Länka sondtillgångar och underhållsarbetsordrar med platstelemetri.",
+            "Azure IoT Hub (IoT, OAuth): Ta in enhetstelemetri och kommandon via din Azure IoT-miljö.",
+            "Google Maps (Maps, OAuth): Rita byggnader, prober och väderkontext på projektkartor.",
+            "Mapbox (Maps, OAuth): Rendera anpassade platskartor och geofenceade larmzoner.",
+            "Salesforce (CRM, OAuth): Synka kundkonton, projekt och överlämningsmilstolpar.",
+            "HubSpot (CRM, OAuth): Håll ägarkontakter och onboarding-arbetsflöden i HubSpot.",
+            "QuickBooks (Accounting, OAuth): Exportera fakturor och prenumerationsfaktureringshändelser till QuickBooks.",
+            "Xero (Accounting, OAuth): Synka faktureringskontakter och fakturaraderader med Xero."
+          ]
+        }
+      }
+    },
+    "security": {
+      "label": "Säkerhet",
+      "description": "Offentlig säkerhetsarkitektursammanfattning för granskare.",
+      "sections": {
+        "security-objectives": {
+          "title": "Säkerhetsmål",
+          "paragraphs": [
+            "CurNext designar för konfidentialitet, integritet, autenticitet, tillgänglighet, ansvarighet och integritetsskydd över den femlagrade stacken. Security-sidan är den långa publika referensen. Den här fliken är Docs-sammandraget."
+          ],
+          "bullets": [
+            "Konfidentialitet - telemetri och uppgifter oläsbara utan auktorisering",
+            "Integritet - firmware, config och mätningar skyddade mot oupptäckt manipulation",
+            "Autenticitet - enheter och tjänster bevisar identitet innan tillit",
+            "Tillgänglighet - motståndskraft mot avbrott, replay och översvämning",
+            "Ansvarighet - revisionsspår för åtkomst, provisionering, OTA och adminåtgärder",
+            "Integritet - GDPR-orienterad hantering av person- och platsdata i molnet"
+          ],
+          "links": [
+            {
+              "label": "Säkerhetssida",
+              "href": "/security"
+            }
+          ]
+        },
+        "security-zones": {
+          "title": "Zoner och kanaler",
+          "paragraphs": [
+            "IEC 62443-stil zoner håller fältradio, golv-LAN, byggnads-edge och moln åtskilda. Ström har ingen datakanal."
+          ],
+          "bullets": [
+            "Z1 - L1-fältgivare (ingen IP-stack på noden)",
+            "Z2 - CN-FG golvgateway på lokal VLAN",
+            "Z3 - CN-UPS endast ström",
+            "Z4 - CN-BC byggnads-DMZ (WireGuard, MQTT, OTA)",
+            "Z5 - CurNext-molnet",
+            "C1 radiolänk: LoRaWAN MAC AES-128 + MIC, OTAA, secure-element-nycklar",
+            "C4 byggnad till moln: WireGuard + MQTT TLS 1.3 med mTLS; broker inte publik",
+            "C5 installation: NFC-kryptografisk bindning; QR-tilldelning inaktiverad som standard"
+          ]
+        },
+        "security-field": {
+          "title": "Fältkontroller (L1-L4)",
+          "paragraphs": [
+            "Fältnoder använder unika nycklar, secure boot, signerad OTA, manipulationssäker design och förskjutningsdetektering. CN-FG verifierar radiolänken. CN-BC är den enda fältvägen för signerade uppdateringar till L1/L2."
+          ]
+        },
+        "security-cloud": {
+          "title": "Molnkontroller (L5)",
+          "paragraphs": [
+            "Privat MQTT-mesh, endast inbjudan, RBAC, privilegierad MFA, hastighetsgränser, edge-WAF, kryptering i transit och i vila, hyresgästisolering, krypterade säkerhetskopior och GDPR-orienterade revisionshändelser."
+          ]
+        },
+        "security-disclosure": {
+          "title": "Disclosure",
+          "paragraphs": [
+            "Rapportera sårbarheter till security@curnext.app. Koordinerad disclosure föredras. Hitta inte på CurNext ISO 27001- eller SOC 2-certifiering från den här Docs-sidan - standarder listade på Security är designalignment om de inte bekräftats separat."
+          ],
+          "links": [
+            {
+              "label": "Säkerhetssida",
+              "href": "/security"
+            },
+            {
+              "label": "DPA",
+              "href": "/data/data-processing-agreement"
+            }
+          ]
+        }
+      }
+    },
+    "hosting": {
+      "label": "Hosting",
+      "description": "Var CurNext kör, hur trafik flödar och vad som skalar.",
+      "sections": {
+        "hosting-intro": {
+          "title": "EU-moln, förankrat i Tyskland",
+          "paragraphs": [
+            "Applikationshosting körs på Hetzner i Tyskland. Databas och autentisering körs på Supabase i Frankfurt. Publik trafik skyddas i Cloudflare-edgen och fördelas över lastbalanserade replikor.",
+            "Detta är en tillits- / residensförklaring - inte en statusdashboard eller en publik inventering av maskiner. Kunder i Finland, Kanada och Kamerun använder den här EU-ankrade stacken om inte ett enterprise-addendum säger annat."
+          ],
+          "links": [
+            {
+              "label": "Datacenters-sida",
+              "href": "/datacenters"
+            }
+          ]
+        },
+        "hosting-layers": {
+          "title": "Publicerbara regionsfakta",
+          "paragraphs": [
+            "Använd dessa etiketter i upphandlingsgranskningar. De matchar Datacenters-sidan."
+          ],
+          "bullets": [
+            "Applikationsursprung - Hetzner, Tyskland - Docker-images för marknadsföring, SaaS-webb, API",
+            "Databas + Auth - Supabase, Frankfurt - PostgreSQL och Auth",
+            "Edge - Cloudflare globalt - DNS, TLS, WAF, CDN, Turnstile",
+            "Objektlagring när det används - Cloudflare R2 med EU-jurisdiktionsalternativ",
+            "Skalningsväg - lastbalanserare framför tillståndslösa replikor"
+          ]
+        },
+        "hosting-traffic": {
+          "title": "Hur trafik flödar",
+          "paragraphs": [
+            "Internet till Cloudflare (DNS, TLS, WAF, CDN), sedan lastbalanserare, sedan Docker-replikor på Hetzner i Tyskland. Supabase Postgres och Auth ligger i Frankfurt. Health checks håller ohälsosamma replikor utanför rotation."
+          ]
+        },
+        "hosting-scale": {
+          "title": "Skalningsläge",
+          "paragraphs": [
+            "Web- och API-replikor är tillståndslösa bakom lastbalanserare. Workers kan lägga till replikor när belastningen växer. Databasen är managed Supabase med pooling för många replikor. Sessioner använder managed auth-cookies - inget sticky-sessionskrav på lastbalanseraren.",
+            "Hitta inte på replikaantal, RPS eller uptime-procent från den här Docs-sidan."
+          ]
+        },
+        "hosting-honesty": {
+          "title": "Residensärlighet",
+          "paragraphs": [
+            "Kärnapplikation och databas för Platform Client Data hostas i Tyskland / Frankfurt. Vissa tredje parter (edge-CDN, Stripe-fakturering, SMTP2GO-e-post, AI-API:er) kan behandla begränsad data utanför den gränsen. Se DPA-underbiträdestabellen för den publika listan."
+          ],
+          "links": [
+            {
+              "label": "DPA-underbiträden",
+              "href": "/data/data-processing-agreement"
+            },
+            {
+              "label": "Integritetspolicy",
+              "href": "/data/privacy-policy"
+            }
+          ]
+        }
+      }
+    },
+    "commercial": {
+      "label": "Kommersiellt",
+      "description": "Prismodell, offerter och hur du når CurNext.",
+      "sections": {
+        "pricing-model": {
+          "title": "Faktureringsmodell",
+          "paragraphs": [
+            "CurNext fakturerar efter nodantal och avtalslängd - inte äldre plannivåer. Använd Priser för att uppskatta installationsband och månadsprenumeration per nod för Finland, Kanada eller Kamerun, begär sedan offert.",
+            "Skatt hanteras i checkout och visas inte som en live-kalkylatorrad på marknadsestimatotorn."
+          ],
+          "links": [
+            {
+              "label": "Priser",
+              "href": "/pricing"
+            },
+            {
+              "label": "Begär offert",
+              "href": "/pricing#request-quote"
+            }
+          ]
+        },
+        "pricing-markets": {
+          "title": "Marknader",
+          "paragraphs": [
+            "Oberoende listpriser för Finland (EUR), Kanada (CAD) och Kamerun (XAF). Expansion till ytterligare marknader pågår - hitta inte på olistade länder som live kommersiella marknader här."
+          ]
+        },
+        "api-access-commercial": {
+          "title": "API- och SDK-åtkomst",
+          "paragraphs": [
+            "API- och SDK-åtkomst är knuten till platsprenumerationen (nodantal och längd). Skapa projekt-API-nycklar i produkten under Integration efter att platsen är i scope."
+          ]
+        },
+        "contact": {
+          "title": "Kontaktvägar",
+          "paragraphs": [
+            "För allmän produkt, API, partnerskap, support, säkerhet och press använd Kontakt. Offerter använder Priser-estimatoformuläret. Karriärer använder karriäransökningsflödet."
+          ],
+          "bullets": [
+            "sales@curnext.app - kommersiella och volymdiskussioner",
+            "dev@curnext.app - API, SDK:er och integrationer",
+            "info@curnext.app - allmänna företagsfrågor",
+            "legal@curnext.app - DPA och juridik",
+            "security@curnext.app - sårbarhetsdisclosure och säkerhetsincidenter",
+            "gdpr@curnext.app - GDPR- och integritetsförfrågningar",
+            "support@curnext.app - produktsupport"
+          ],
+          "links": [
+            {
+              "label": "Kontakt",
+              "href": "/contact"
+            },
+            {
+              "label": "Karriärer",
+              "href": "/careers"
+            },
+            {
+              "label": "DPA",
+              "href": "/data/data-processing-agreement"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

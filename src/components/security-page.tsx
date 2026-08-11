@@ -1,20 +1,8 @@
-import Link from "next/link";
 import { ArrowRight, Mail } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { buttonVariants } from "@/components/ui/button";
-import {
-  securityContact,
-  securityCrypto,
-  securityLayers,
-  securityLevels,
-  securityObjectives,
-  securityOta,
-  securityPage,
-  securityProvisioning,
-  securityStandards,
-  securityVerification,
-  securityZones,
-} from "@/config/security";
+import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import {
   itemHeadingClassName,
@@ -22,7 +10,34 @@ import {
 } from "@/lib/typography";
 import { cn } from "@/lib/utils";
 
-export function SecurityPage() {
+export async function SecurityPage() {
+  const t = await getTranslations("security");
+  const tCommon = await getTranslations("common");
+  const securityPage = {
+    title: t("title"),
+    description: t("description"),
+    leadNote: t("leadNote"),
+  };
+  const securityObjectives = t.raw("objectives") as Array<{
+    title: string;
+    body: string;
+  }>;
+  const securityStandards = t.raw("standards") as typeof import("@/config/security").securityStandards;
+  const securityLevels = t.raw("levels") as typeof import("@/config/security").securityLevels;
+  const securityZones = t.raw("zones") as typeof import("@/config/security").securityZones;
+  const securityLayers = t.raw("layers") as typeof import("@/config/security").securityLayers;
+  const securityCrypto = t.raw("crypto") as typeof import("@/config/security").securityCrypto;
+  const securityProvisioning = t.raw(
+    "provisioning",
+  ) as typeof import("@/config/security").securityProvisioning;
+  const securityOta = t.raw("ota") as typeof import("@/config/security").securityOta;
+  const securityVerification = t.raw(
+    "verification",
+  ) as typeof import("@/config/security").securityVerification;
+  const securityContact = t.raw(
+    "contactSection",
+  ) as typeof import("@/config/security").securityContact;
+
   return (
     <main className="flex flex-1 flex-col">
       <section
@@ -57,7 +72,7 @@ export function SecurityPage() {
               id="security-objectives-heading"
               className={sectionHeadingClassName}
             >
-              Security objectives
+              {t("objectivesTitle")}
             </h2>
           </div>
           <ul className="mt-10 grid gap-8 sm:mt-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-8 lg:grid-cols-3">
@@ -559,6 +574,13 @@ export function SecurityPage() {
               <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>
+        </div>
+      </section>
+          <section className="border-border/60 relative w-full border-t bg-background">
+        <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
+          <p className="text-muted-foreground text-xs leading-relaxed">
+            {tCommon("legalTranslationNote")}
+          </p>
         </div>
       </section>
     </main>

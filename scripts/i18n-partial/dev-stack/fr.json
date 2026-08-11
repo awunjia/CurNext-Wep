@@ -1,0 +1,1178 @@
+{
+  "security": {
+    "title": "Architecture de sécurité",
+    "description": "Contrôles de niveau industriel sur la pile à cinq couches CurNext - des capteurs de terrain au cloud - conçus pour l'IoT industriel, l'OT bâtiment et les attentes européennes en matière de confidentialité.",
+    "leadNote": "Cette page résume comment CurNext conçoit la confidentialité, l'intégrité, l'authenticité, la disponibilité, la responsabilité et la vie privée. Ce n'est pas un runbook public, une page de statut ni un coffre de certificats.",
+    "objectivesTitle": "Objectifs de sécurité",
+    "objectives": [
+      {
+        "title": "Confidentialité",
+        "body": "La télémétrie et les identifiants ne sont pas lisibles en transit ou au repos sans autorisation."
+      },
+      {
+        "title": "Intégrité",
+        "body": "Le micrologiciel, la configuration et les mesures sont protégés contre toute altération non détectée."
+      },
+      {
+        "title": "Authenticité",
+        "body": "Chaque appareil et chaque service prouve son identité avant que la confiance ne soit accordée."
+      },
+      {
+        "title": "Disponibilité",
+        "body": "Résilience aux pannes, aux rejeux et aux saturations, avec dégradation progressive lorsque c'est possible."
+      },
+      {
+        "title": "Responsabilité",
+        "body": "Piste d'audit pour l'accès, le provisioning, l'OTA et les actions d'administration."
+      },
+      {
+        "title": "Vie privée",
+        "body": "Traitement orienté RGPD des données personnelles et de chantier dans la couche cloud."
+      }
+    ],
+    "standards": {
+      "title": "Normes auxquelles nous nous alignons",
+      "lead": "Les contrôles sont cartographiés sur des cadres industriels, IoT et européens largement utilisés. Lister une norme ici signifie un alignement de conception - pas que CurNext a terminé chaque certification tierce pour ce cadre.",
+      "rows": [
+        {
+          "standard": "IEC 62443",
+          "scope": "Zones IoT industrielles / bâtiment",
+          "note": "Modèle zones et conduits ; cibles de niveau de sécurité par couche"
+        },
+        {
+          "standard": "NIST SP 800-82",
+          "scope": "ICS / OT bâtiment",
+          "note": "Segmentation, surveillance, accès distant via WireGuard uniquement en bordure bâtiment"
+        },
+        {
+          "standard": "NIST SP 800-213",
+          "scope": "Cybersécurité des appareils IoT",
+          "note": "Identité appareil, mise à jour sécurisée et configuration"
+        },
+        {
+          "standard": "ENISA IoT / OT",
+          "scope": "Socle IoT UE",
+          "note": "Crypto, mises à jour et surface d'attaque minimale"
+        },
+        {
+          "standard": "EU CRA",
+          "scope": "Cycle de vie sécurité produit",
+          "note": "SBOM, divulgation des vulnérabilités, mises à jour signées"
+        },
+        {
+          "standard": "EU RED 3.3(d)",
+          "scope": "Cybersécurité des produits radio",
+          "note": "Chemin radio et mise à jour sécurisés pour les nœuds terrain, CN-FG et CN-BC"
+        },
+        {
+          "standard": "ISO 27001",
+          "scope": "SMSI organisationnel",
+          "note": "Cible de conception pour le cloud et les opérations CurNext - non revendiqué comme certifié ici"
+        },
+        {
+          "standard": "GDPR",
+          "scope": "Données personnelles",
+          "note": "Journalisation d'audit, contrôle d'accès, chemins d'effacement et d'export"
+        },
+        {
+          "standard": "OWASP IoT Top 10",
+          "scope": "Pièges appareil et cloud",
+          "note": "Traités par couche dans les contrôles terrain et cloud"
+        }
+      ]
+    },
+    "zones": {
+      "title": "Zones de sécurité et conduits",
+      "lead": "Des zones de style IEC 62443 séparent la radio terrain, le LAN d'étage, la bordure bâtiment et le cloud. L'alimentation n'a aucun conduit de données.",
+      "zones": [
+        {
+          "id": "Z1",
+          "title": "Zone Z1 - Capteurs terrain L1",
+          "body": "Nœuds terrain (CN-CC, CN-WD et SKU associés). MAC LoRaWAN avec AES-128, élément sécurisé pour les clés, NFC pour l'installation. Pas de pile IP sur le nœud."
+        },
+        {
+          "id": "Z2",
+          "title": "Zone Z2 - Étage (CN-FG)",
+          "body": "La passerelle d'étage vérifie les trames, reste sur le VLAN local et n'a aucune interface exposée au cloud."
+        },
+        {
+          "id": "Z3",
+          "title": "Zone Z3 - Alimentation (CN-UPS)",
+          "body": "Alimente le matériel d'étage et de bordure bâtiment. Aucun conduit de données."
+        },
+        {
+          "id": "Z4",
+          "title": "Zone Z4 - DMZ bâtiment (CN-BC)",
+          "body": "Contrôleur bâtiment : client WireGuard, client MQTT, orchestrateur OTA. Chemin cellulaire sortant uniquement pour le tunnel et le trafic broker."
+        },
+        {
+          "id": "Z5",
+          "title": "Zone Z5 - Cloud CurNext (L5)",
+          "body": "Application, base de données et auth gérées, broker MQTT privé, IA et stockage objet derrière une protection en périphérie."
+        }
+      ],
+      "conduits": [
+        {
+          "id": "C1",
+          "path": "L1 ↔ CN-FG",
+          "controls": "AES-128 au niveau MAC LoRaWAN (chiffrement de charge utile + MIC), OTAA, clés appareil uniques dans l'élément sécurisé, compteurs de trames, rejet des rejeux"
+        },
+        {
+          "id": "C2",
+          "path": "CN-FG ↔ CN-FG",
+          "controls": "Chaîne Ethernet en daisy-chain sur le VLAN d'étage uniquement ; aucune route Internet"
+        },
+        {
+          "id": "C3",
+          "path": "CN-FG ↔ CN-BC",
+          "controls": "VLAN Ethernet ; le pare-feu bâtiment refuse aux passerelles d'étage un chemin vers Internet public"
+        },
+        {
+          "id": "C4",
+          "path": "CN-BC ↔ L5",
+          "controls": "WireGuard plus MQTT sur TLS 1.3 avec TLS mutuel ; broker hors Internet public"
+        },
+        {
+          "id": "C5",
+          "path": "Installer ↔ L1",
+          "controls": "Tap NFC uniquement avec preuve cryptographique ; provisionnement par scan QR désactivé ; les interfaces de debug usine ne restent pas ouvertes sur le terrain"
+        }
+      ],
+      "wireguard": [
+        {
+          "layer": "L1-L2",
+          "role": "Pas de WireGuard"
+        },
+        {
+          "layer": "L3",
+          "role": "Pas de WireGuard"
+        },
+        {
+          "layer": "L4 CN-BC",
+          "role": "Client WireGuard - frontière de sécurité du bâtiment"
+        },
+        {
+          "layer": "L5 Cloud",
+          "role": "Hub WireGuard - MQTT uniquement sur le maillage privé"
+        }
+      ]
+    },
+    "levels": {
+      "title": "Cibles de niveau de sécurité IEC 62443",
+      "lead": "Les niveaux de sécurité cibles (SL-T) guident la conception produit. Ce sont des cibles d'ingénierie, pas des résultats d'évaluation tierce.",
+      "rows": [
+        {
+          "component": "Nœuds capteurs L1",
+          "target": "SL 2 (ambition SL 3)",
+          "rationale": "Sans surveillance, longue durée de vie, accès physique possible"
+        },
+        {
+          "component": "CN-FG (L2)",
+          "target": "SL 2",
+          "rationale": "Passerelle terrain sur un chantier"
+        },
+        {
+          "component": "CN-UPS (L3)",
+          "target": "SL 1",
+          "rationale": "Alimentation uniquement - aucun traitement de données"
+        },
+        {
+          "component": "CN-BC (L4)",
+          "target": "SL 3",
+          "rationale": "Frontière de sécurité du bâtiment, chemin exposé à Internet"
+        },
+        {
+          "component": "Cloud CurNext (L5)",
+          "target": "SL 3",
+          "rationale": "Plateforme multi-locataires avec données clients"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "id": "L1",
+        "title": "L1 - Capteurs terrain",
+        "lead": "Identité appareil unique, crypto de liaison radio LoRaWAN, démarrage sécurisé, OTA signé, conception anti-intrusion et détection de déplacement.",
+        "bullets": [
+          "Clé racine unique par sonde dans un élément sécurisé - jamais partagée dans la flotte",
+          "Les étiquettes peuvent afficher le numéro de série public / DevEUI pour la logistique - jamais la clé racine",
+          "LoRaWAN Class A (EU868) : chiffrement de charge utile AES-128 et MIC via la pile MAC",
+          "Join OTAA uniquement ; compteurs de trames et rejet des rejeux à la passerelle d'étage",
+          "Démarrage sécurisé, micrologiciel signé, anti-retour arrière, debug de production verrouillé",
+          "Boîtier terrain et chemin de mesure anti-intrusion - toute interférence physique est détectable et signalée",
+          "Détection de déplacement lorsqu'un nœud quitte sa position d'installation assignée",
+          "Affectation terrain via liaison cryptographique NFC - affectation QR désactivée par défaut"
+        ]
+      },
+      {
+        "id": "L2",
+        "title": "L2 - Passerelle d'étage CN-FG",
+        "lead": "Ancre de confiance pour la liaison radio. Valide le join, le MIC et les compteurs avant transfert.",
+        "bullets": [
+          "Micrologiciel signé avec démarrage sécurisé et identité d'élément sécurisé",
+          "Aucune route Internet par défaut ; liaison montante uniquement vers CN-BC sur le VLAN d'étage",
+          "OTA uniquement depuis CN-BC",
+          "Événements de join et de vérification conservés pour téléversement d'audit",
+          "Ports de service restreints dans les images de production"
+        ]
+      },
+      {
+        "id": "L3",
+        "title": "L3 - Alimentation CN-UPS",
+        "lead": "Chemin d'alimentation uniquement - aucun plan de données sur le VLAN de gestion.",
+        "bullets": [
+          "Aucun IP ni API de gestion sur le VLAN de données",
+          "Pratiques de boîtier verrouillé à l'installation",
+          "L'indication de défaut reste locale - aucune fuite réseau depuis les défauts d'alimentation"
+        ]
+      },
+      {
+        "id": "L4",
+        "title": "L4 - Contrôleur bâtiment CN-BC",
+        "lead": "Frontière de sécurité du bâtiment entre le LAN d'étage et le cloud.",
+        "bullets": [
+          "WireGuard sortant depuis le bâtiment (compatible CGNAT)",
+          "MQTT sur TLS 1.3 avec certificats client par bâtiment",
+          "Pare-feu hôte en refus par défaut ; pas de SSH, MQTT ou API publics sur le cellulaire",
+          "Seul chemin OTA vers L1/L2 : vérifier le manifeste et l'image signés, déploiement progressif, rapporter le résultat",
+          "Tampon de télémétrie store-and-forward chiffré au repos ; purge après livraison réussie"
+        ]
+      },
+      {
+        "id": "L5",
+        "title": "L5 - Cloud CurNext",
+        "lead": "Application et données multi-locataires avec entrée terrain privée.",
+        "bullets": [
+          "Broker MQTT accessible uniquement sur le maillage privé - pas sur Internet public",
+          "Autorisation par bâtiment ; refus des jokers inter-locataires",
+          "Auth utilisateur avec jetons à courte durée ; MFA requis pour les rôles privilégiés",
+          "RBAC appliqué sur les routes API ; limites de débit et WAF en périphérie en production",
+          "Chiffrement en transit et au repos ; isolation des locataires sur les requêtes",
+          "Sauvegardes chiffrées avec exercices de restauration ; chemins d'audit, d'export et d'effacement RGPD",
+          "Secrets conservés dans un gestionnaire de secrets - pas dans le contrôle de source"
+        ]
+      }
+    ],
+    "crypto": {
+      "title": "Cryptographie en un coup d'œil",
+      "rows": [
+        {
+          "use": "Transport (cloud / MQTT)",
+          "algorithm": "TLS 1.3"
+        },
+        {
+          "use": "Tunnel bâtiment",
+          "algorithm": "WireGuard - Curve25519, ChaCha20-Poly1305"
+        },
+        {
+          "use": "Liaison radio (L1 ↔ CN-FG)",
+          "algorithm": "Chiffrement AES-128 MAC LoRaWAN + MIC"
+        },
+        {
+          "use": "Signature micrologiciel",
+          "algorithm": "ECDSA P-256"
+        },
+        {
+          "use": "Tampon de télémétrie local",
+          "algorithm": "AES-256-GCM au repos en bordure bâtiment"
+        },
+        {
+          "use": "Intégrité d'audit",
+          "algorithm": "SHA-256"
+        }
+      ],
+      "deprecated": "Non utilisés : TLS 1.0/1.1, MD5, SHA-1 pour les signatures, ou clés de session radio statiques sans OTAA."
+    },
+    "provisioning": {
+      "title": "Provisioning",
+      "factory": [
+        "Le HSM d'usine injecte un matériel d'identité appareil unique dans l'élément sécurisé",
+        "Démarrage sécurisé activé avant expédition",
+        "Personnalisation NFC avec preuve cryptographique",
+        "Appareil enregistré comme fabriqué ; les clés ne sont jamais expédiées dans des tableurs ou des e-mails"
+      ],
+      "field": [
+        "Le tap NFC de l'installateur vérifie la liaison cryptographique",
+        "La liaison de surface exige une session d'app authentifiée et une permission d'affectation d'appareil",
+        "Le scan QR n'est pas fiable pour une affectation cryptographique",
+        "La mise en service du bâtiment émet le pair WireGuard et les identifiants client MQTT à l'installation"
+      ]
+    },
+    "ota": {
+      "title": "OTA et chaîne d'approvisionnement logicielle",
+      "lead": "Aligné sur les attentes du Cyber Resilience Act de l'UE pour les mises à jour signées, le SBOM et la divulgation coordonnée.",
+      "signing": [
+        "CA racine hors ligne",
+        "CA de signature OTA",
+        "Images / manifestes L1, CN-FG et CN-BC signés"
+      ],
+      "bullets": [
+        "Signatures de micrologiciel avec ECDSA P-256 (ou RSA plus fort si requis)",
+        "Le manifeste inclut la classe d'appareil, la version, la version minimale, le hash, la signature et l'époque de révocation",
+        "Matériel de signature compromis tourné via un chemin d'urgence",
+        "Partitions A/B sur les appareils terrain avec retour arrière en cas d'échec au démarrage",
+        "Déploiement progressif avant application à toute la flotte",
+        "SBOM par micrologiciel et version cloud ; surveillance continue des vulnérabilités",
+        "Mises à jour de sécurité critiques visées sous 14 jours ; élevées sous 30 jours"
+      ]
+    },
+    "verification": {
+      "title": "Comment nous vérifions",
+      "lead": "Les versions et les opérations annuelles suivent une barre de sécurité fixe avant usage entreprise.",
+      "items": [
+        "Mise à jour du modèle de menaces par zone pour les versions matérielles",
+        "Listes de contrôle par couche pour L1, CN-FG, CN-BC et cloud",
+        "Analyse statique et scan des dépendances sans CVE critique ouverte à la publication",
+        "Artefact signé et SBOM joints à la version",
+        "Test de pénétration externe annuel et exercices de rotation de clés / restauration de sauvegarde",
+        "Préparation à la certification (évaluation IEC 62443, SMSI ISO 27001, dossier technique RED) suivie séparément - non revendiquée comme complète sur cette page"
+      ]
+    },
+    "contactSection": {
+      "title": "Divulgation et contact",
+      "lead": "Signalez les vulnérabilités à la boîte de sécurité CurNext. Pour le détail confidentialité et résidence, utilisez les politiques liées et la page des centres de données.",
+      "email": "security@curnext.app",
+      "bullets": [
+        "Divulgation coordonnée : security@curnext.app",
+        "Entité juridique : CurNext, Helsinki, Finlande",
+        "La politique de confidentialité couvre le traitement des données personnelles",
+        "La page Centres de données couvre la résidence d'hébergement UE (Allemagne / Francfort)"
+      ]
+    }
+  },
+  "technologies": {
+    "technologiesConnectivity": {
+      "title": "Connectivité",
+      "lead": "Protocoles industriels standards - nommés au niveau des capacités, pas comme un guide de surface d'attaque.",
+      "items": [
+        {
+          "title": "LoRaWAN",
+          "body": "Liaisons montantes terrain EU868 pour nœuds sur batterie - radio longue portée, adaptée au chantier, vers le chemin d'étage CurNext."
+        },
+        {
+          "title": "MQTT over TLS",
+          "body": "Télémétrie appareils et passerelles vers la plateforme via MQTT chiffré pour le chemin matériel."
+        },
+        {
+          "title": "WireGuard",
+          "body": "Thèmes de tunnel sécurisé pour la connectivité de bordure bâtiment vers les services cloud CurNext."
+        },
+        {
+          "title": "HTTPS REST",
+          "body": "Intégrations acheteurs versionnées sur api.curnext.app - maturité, BIM, appareils, alertes, webhooks."
+        }
+      ]
+    },
+    "technologiesData": {
+      "title": "Couche d'intelligence",
+      "lead": "CurNext transforme les mesures de chantier en décisions prêtes à construire, cartographiées sur votre projet.",
+      "items": [
+        {
+          "title": "Maturité des surfaces",
+          "body": "Scores, statut et estimation du moment prêt pour les surfaces surveillées."
+        },
+        {
+          "title": "Modèle de cure du béton",
+          "body": "Prédiction interne pour la maturité des dalles CN-CC, entraînée et servie avec TensorFlow.js."
+        },
+        {
+          "title": "Contexte BIM",
+          "body": "Bâtiments, espaces et appareils pour la coordination - pas un dumping de capteurs détaché."
+        },
+        {
+          "title": "Alertes et événements",
+          "body": "Alertes opérationnelles et événements webhook dans les outils que vos équipes utilisent déjà."
+        },
+        {
+          "title": "Contexte météo",
+          "body": "Contexte extérieur lorsqu'il aide les décisions de cure et de séchage sur le chantier."
+        }
+      ]
+    },
+    "technologiesEcosystem": [
+      {
+        "title": "Radio et détection",
+        "names": [
+          "Semtech",
+          "LoRa Alliance",
+          "Sensirion",
+          "NFC",
+          "Texas Instruments"
+        ]
+      },
+      {
+        "title": "Bordure et connectivité",
+        "names": [
+          "MQTT",
+          "WireGuard",
+          "Espressif",
+          "Victron"
+        ]
+      },
+      {
+        "title": "Cloud et ops",
+        "names": [
+          "Cloudflare",
+          "Supabase",
+          "Hetzner",
+          "Google Cloud",
+          "Datadog",
+          "Grafana"
+        ]
+      },
+      {
+        "title": "IA et intelligence",
+        "names": [
+          "TensorFlow.js",
+          "Gemini",
+          "Groq",
+          "OpenWeather"
+        ]
+      },
+      {
+        "title": "BIM, identité et commerce",
+        "names": [
+          "Autodesk Revit",
+          "Signicat",
+          "Stripe"
+        ]
+      },
+      {
+        "title": "Fabrication et supply",
+        "names": [
+          "JLCPCB",
+          "Digi-Key"
+        ]
+      }
+    ],
+    "technologiesPage": {
+      "title": "Technologies",
+      "description": "La pile CurNext des nœuds terrain au cloud - connectivité industrielle, maturité cartographiée BIM et API que vos équipes peuvent appeler.",
+      "leadNote": "Cette page couvre les capacités publiques de la plateforme. Les procédures détaillées de sécurité matérielle restent dans la documentation d'exploitation privée."
+    },
+    "technologiesProducts": [
+      {
+        "sku": "CN-CC",
+        "name": "Cure du béton",
+        "href": "/solutions/concrete-curing",
+        "body": "Sondes air, surface et cœur avec intelligence de maturité de dalle et modèle de prédiction de cure TensorFlow.js interne."
+      },
+      {
+        "sku": "CN-WD",
+        "name": "Séchage des murs",
+        "href": "/solutions/wall-drying",
+        "body": "Maturité de finition pour plâtre, pièces humides et supports carrelage."
+      },
+      {
+        "sku": "CN-IAQ",
+        "name": "Air intérieur",
+        "href": "/solutions/indoor-air",
+        "body": "Contexte PM, COV et climat sur la même pile de chantier."
+      },
+      {
+        "sku": "CN-LEAK",
+        "name": "Détection de fuites",
+        "href": "/solutions/leak-detection",
+        "body": "Alertes événementielles pour locaux techniques, zones humides et colonnes montantes."
+      },
+      {
+        "sku": "CN-SHM",
+        "name": "Santé structurelle",
+        "href": "/solutions/structural-health",
+        "body": "Surveillance d'inclinaison et de vibration dans le chemin bâtiment."
+      },
+      {
+        "sku": "CN-MEP",
+        "name": "MEP",
+        "href": "/solutions/mep",
+        "body": "Signaux filaires d'installations lorsque des cadences d'échantillonnage plus élevées sont nécessaires."
+      }
+    ],
+    "technologiesSecurity": {
+      "title": "Posture de sécurité",
+      "lead": "Thèmes que nous pouvons énoncer publiquement. Le détail d'implémentation reste dans la documentation de sécurité privée.",
+      "items": [
+        {
+          "title": "Transport chiffré",
+          "body": "TLS pour les API cloud et les chemins MQTT ; WireGuard pour les thèmes de tunnel en bordure."
+        },
+        {
+          "title": "Mises à jour terrain signées",
+          "body": "L'OTA est préparé en bordure sur CN-BC avec des images adressées par checksum - pas un flasheur navigateur public."
+        },
+        {
+          "title": "Identité appareil",
+          "body": "Thèmes d'identité matérielle et de vérification pour les unités terrain ; les procédures d'usine et d'installation sont contrôlées par les ops."
+        },
+        {
+          "title": "Piste d'audit",
+          "body": "L'activité projet et les décisions de maturité laissent une piste claire pour la remise et les échanges de conformité."
+        }
+      ]
+    },
+    "technologiesSoftware": {
+      "title": "Surfaces logicielles",
+      "lead": "Points d'entrée produit cloud et développeur que vos équipes utilisent déjà.",
+      "items": [
+        {
+          "title": "Web et mobile",
+          "body": "Tableaux de bord projet, alertes, vues de maturité et apps terrain sur la plateforme CurNext.",
+          "href": "https://dash.curnext.app",
+          "external": true
+        },
+        {
+          "title": "API REST",
+          "body": "Maturité, hiérarchie BIM, appareils, mesures et webhooks sous /api/v1.",
+          "href": "/api",
+          "external": false
+        },
+        {
+          "title": "SDK",
+          "body": "Clients officiels pour JavaScript/TypeScript, PHP, Go, Python, Java et Flutter.",
+          "href": "/sdks",
+          "external": false
+        },
+        {
+          "title": "Market Place",
+          "body": "Connectez messagerie, planification, monitoring, BIM, CRM et outils comptables.",
+          "href": "/integrations",
+          "external": false
+        },
+        {
+          "title": "Opérations micrologiciel",
+          "body": "Catalogue de versions, chaînes de flotte rapportées et aperçu OTA en bordure.",
+          "href": "/firmware",
+          "external": false
+        },
+        {
+          "title": "Docs",
+          "body": "Documentation produit pour opérateurs et intégrateurs.",
+          "href": "/docs",
+          "external": false
+        },
+        {
+          "title": "Base de connaissances",
+          "body": "Chat IA ancré dans la connaissance du site public, avec consentement RGPD.",
+          "href": "/knowledge-base",
+          "external": false
+        }
+      ]
+    }
+  },
+  "firmware": {
+    "firmwareCatalogSamples": [
+      {
+        "version": "1.2.0",
+        "deviceType": "CN-CC",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-03-12",
+        "checksumSha256": "a3f1...9c2e",
+        "notes": "Corrections de stabilité et de cycle de service LoRaWAN pour les nœuds de dalle."
+      },
+      {
+        "version": "1.1.4",
+        "deviceType": "CN-FG",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-02-28",
+        "checksumSha256": "b7d0...4a11",
+        "notes": "Améliorations de la poignée de main OTA et du cache de la passerelle d'étage."
+      },
+      {
+        "version": "2.0.1",
+        "deviceType": "CN-BC",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-04-02",
+        "checksumSha256": "c91e...77b4",
+        "notes": "États de jobs canary/rolling de l'orchestrateur en bordure."
+      },
+      {
+        "version": "1.0.3",
+        "deviceType": "CN-UPS",
+        "isProduction": true,
+        "ceMarked": false,
+        "releasedAt": "2026-01-18",
+        "checksumSha256": "d2aa...08f6",
+        "notes": "Fiabilité des mises à jour trame UART."
+      },
+      {
+        "version": "1.3.0-rc",
+        "deviceType": "CN-CC",
+        "isProduction": false,
+        "ceMarked": false,
+        "releasedAt": "2026-05-01",
+        "checksumSha256": "e44b...c1d9",
+        "notes": "Build de soak interne - non marqué production."
+      }
+    ],
+    "firmwareFlags": [
+      {
+        "title": "Production",
+        "body": "Les lignes du catalogue utilisent un indicateur isProduction. Il n'y a pas d'enum séparée de canal draft/beta."
+      },
+      {
+        "title": "Marquage CE",
+        "body": "ceMarked enregistre le marquage CE sur la version catalogue lorsque applicable."
+      },
+      {
+        "title": "Méthodes d'installation",
+        "body": "L'historique enregistre FACTORY, OTA, USB ou MANUAL - y compris la lignée de version précédente lorsque connue."
+      }
+    ],
+    "firmwareHistorySamples": [
+      {
+        "deviceCode": "CN-CC-DEMO-001",
+        "version": "1.2.0",
+        "previousVersion": "1.1.8",
+        "method": "OTA",
+        "installedAt": "2026-03-15"
+      },
+      {
+        "deviceCode": "CN-FG-DEMO-014",
+        "version": "1.1.4",
+        "previousVersion": "1.1.2",
+        "method": "OTA",
+        "installedAt": "2026-03-01"
+      },
+      {
+        "deviceCode": "CN-BC-DEMO-002",
+        "version": "2.0.1",
+        "previousVersion": "2.0.0",
+        "method": "OTA",
+        "installedAt": "2026-04-03"
+      },
+      {
+        "deviceCode": "CN-CC-DEMO-009",
+        "version": "1.2.0",
+        "previousVersion": "-",
+        "method": "FACTORY",
+        "installedAt": "2026-03-20"
+      }
+    ],
+    "firmwareHonesty": {
+      "title": "Ce que couvre cette page",
+      "body": "CurNext suit un catalogue de versions de micrologiciel, les versions rapportées par les appareils et l'historique d'installation dans les opérations. L'OTA terrain est orchestré en bordure sur CN-BC. Le téléversement cloud, les canaux de publication et l'UI de déploiement flotte en un clic ne font pas partie de la surface marketing publique.",
+      "bullets": [
+        "Parcourir le modèle de catalogue : version, type d'appareil, indicateurs production et CE",
+        "Comprendre les chaînes de flotte rapportées vs les lignes du catalogue",
+        "Voir comment l'historique d'installation enregistre les méthodes usine, OTA, USB et manuelles",
+        "L'OTA terrain s'exécute comme jobs signés sur CN-BC - pas un flasheur navigateur"
+      ]
+    },
+    "firmwareOta": {
+      "title": "OTA en bordure (CN-BC)",
+      "lead": "Des jobs signés atteignent CN-BC. L'agent en bordure vérifie, prépare et déploie vers les cibles. Les images sont adressées par checksum. Canary optionnel puis rolling sur l'orchestrateur.",
+      "targets": [
+        {
+          "id": "bc",
+          "label": "bc",
+          "detail": "Auto-mise à jour CN-BC"
+        },
+        {
+          "id": "fg",
+          "label": "fg",
+          "detail": "CN-FG via contrôle HMAC d'étage"
+        },
+        {
+          "id": "cc",
+          "label": "cc",
+          "detail": "Nœuds terrain via FUOTA / LoRaWAN"
+        },
+        {
+          "id": "ups",
+          "label": "ups",
+          "detail": "CN-UPS via trame UART"
+        }
+      ],
+      "edgeStates": [
+        "accepted",
+        "rejected",
+        "canary",
+        "rolling",
+        "done",
+        "failed"
+      ],
+      "note": "Les workflows draft/publish cloud et les API dashboard d'assignation/rollback ne sont pas livrés. N'attendez pas un flash flotte en un clic depuis le navigateur."
+    },
+    "firmwarePage": {
+      "title": "Micrologiciel",
+      "description": "Cataloguez les versions de micrologiciel, voyez ce que la flotte rapporte et consultez l'historique d'installation. L'OTA terrain est géré par les contrôleurs en bordure.",
+      "supportLine": "Catalogue de versions et historique d'installation de la flotte. Les mises à jour terrain passent par l'OTA signé en bordure sur CN-BC."
+    },
+    "firmwareSecurity": {
+      "title": "Thèmes de sécurité",
+      "lead": "OTA signé, identité d'élément sécurisé et thèmes anti-retour arrière font partie du modèle de sécurité matérielle. Le provisioning SWD usine et l'installation NFC terrain sont documentés séparément pour les opérations.",
+      "items": [
+        "Élément sécurisé pour l'identité appareil et la vérification",
+        "Images OTA signées adressées par checksum",
+        "Contrôles anti-retour arrière décrits dans l'architecture de sécurité",
+        "Protocoles : LoRaWAN OTAA (EU868), MQTT/TLS, WireGuard, topics HMAC d'étage"
+      ]
+    },
+    "firmwareStack": {
+      "title": "Chemin matériel",
+      "lead": "Le micrologiciel emprunte la même pile bâtiment que la télémétrie - des nœuds terrain à l'agent en bordure qui prépare les mises à jour signées.",
+      "layers": [
+        {
+          "id": "L1",
+          "title": "Nœuds terrain L1",
+          "body": "Nœuds : CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP"
+        },
+        {
+          "id": "L2",
+          "title": "Passerelle d'étage L2",
+          "body": "Concentrateur LoRaWAN CN-FG"
+        },
+        {
+          "id": "L3",
+          "title": "Alimentation L3",
+          "body": "Alimentation et statut CN-UPS"
+        },
+        {
+          "id": "L4",
+          "title": "Agent en bordure L4",
+          "body": "CN-BC - tunnel, MQTT, orchestration OTA"
+        },
+        {
+          "id": "L5",
+          "title": "Cloud L5",
+          "body": "Cloud CurNext - catalogue, historique, enregistrements appareils"
+        }
+      ]
+    },
+    "firmwareTrees": [
+      {
+        "id": "cn-cc",
+        "name": "CN-CC",
+        "path": "firmware/cn-cc",
+        "role": "Nœud terrain cure du béton",
+        "ota": "FUOTA via CN-FG / LoRaWAN"
+      },
+      {
+        "id": "cn-fg",
+        "name": "CN-FG",
+        "path": "firmware/cn-fg",
+        "role": "Concentrateur LoRaWAN d'étage",
+        "ota": "OTA HMAC d'étage depuis CN-BC"
+      },
+      {
+        "id": "cn-bc",
+        "name": "CN-BC",
+        "path": "firmware/cn-bc",
+        "role": "Agent de bordure bâtiment et orchestrateur OTA",
+        "ota": "Auto-mise à jour (cible bc)"
+      },
+      {
+        "id": "cn-ups",
+        "name": "CN-UPS",
+        "path": "firmware/cn-ups",
+        "role": "Unité UPS / statut d'alimentation",
+        "ota": "Mise à jour trame UART depuis CN-BC"
+      }
+    ],
+    "tabs": {
+      "versions": "Versions",
+      "architecture": "Architecture",
+      "history": "Historique"
+    }
+  },
+  "sdks": {
+    "hero": {
+      "eyebrow": "SDK",
+      "title": "Intégrez CurNext dans les apps que vous utilisez déjà",
+      "lead": "Limiter l'expérience à notre client ne suffit pas. Les SDK CurNext donnent à vos équipes la liberté d'étendre l'intelligence de maturité dans les applications, workflows et piles que vous opérez déjà."
+    },
+    "header": {
+      "title": "SDK",
+      "description": "Bibliothèques clientes officielles pour l'API REST CurNext. Choisissez un langage ci-dessous pour les étapes d'installation et les exemples."
+    },
+    "intro": {
+      "heading": "Ce que vous pouvez construire",
+      "paragraph": "Les SDK encapsulent l'API REST versionnée. Créez une clé API projet, puis appelez maturité, projets, appareils, alertes, mesures et webhooks depuis votre propre pile.",
+      "docsLabel": "api.curnext.app/docs",
+      "useCases": [
+        {
+          "title": "Récupérer maturité et télémétrie",
+          "body": "Récupérez maturité des surfaces, prédictions, appareils et dernières mesures dans des tableaux de bord ou rapports."
+        },
+        {
+          "title": "Automatiser les workflows chantier",
+          "body": "Résolvez les alertes, listez les événements d'audit et pilotez les ops depuis scripts et outils internes."
+        },
+        {
+          "title": "Intégrer avec votre pile",
+          "body": "Utilisez la même surface REST depuis des apps Node, PHP, Go, Python, Java ou Flutter que vous exécutez déjà."
+        },
+        {
+          "title": "Travailler avec les webhooks",
+          "body": "Listez les points de terminaison webhook via le SDK. Créez et gérez les récepteurs dans le tableau de bord pour des événements comme SURFACE_READY, ALERT_CREATED et DEVICE_DISPLACED."
+        }
+      ]
+    },
+    "packages": {
+      "javascript": {
+        "name": "JavaScript / TypeScript",
+        "short": "JS / TS",
+        "stack": "Node, React, Next.js et navigateurs",
+        "summary": "Client Fetch typé pour apps web, services Node et backends TypeScript qui ont besoin de maturité et de contexte projet.",
+        "highlights": [
+          "Client typé",
+          "Node et navigateurs",
+          "Fetch API"
+        ],
+        "quickStart": "import { CurNext } from \"@curnext/sdk\";\n\nconst client = new CurNext({\n  apiKey: process.env.CURNEXT_API_KEY!,\n  // baseUrl par défaut : https://api.curnext.app\n  // baseUrl: \"http://localhost:4000\",\n});\n\nconst health = await client.health.get();\n// { status: \"ok\", service: \"curnext-api\", version: \"...\", api: \"/api/v1\" }\n\nconst { projects } = await client.projects.list();\nconst readiness = await client.projects.getReadiness(\"SURFACE_EXTERNAL_ID\");\n\nconsole.log(readiness.status, readiness.readiness_score);",
+        "errorHandling": "import { CurNextApiError } from \"@curnext/sdk\";\n\ntry {\n  const readiness = await client.projects.getReadiness(\"SURFACE_ID\");\n  console.log(readiness.status);\n} catch (error) {\n  if (error instanceof CurNextApiError) {\n    // 401 clé invalide | 404 introuvable | 429 limité en débit\n    console.error(error.statusCode, error.message, error.code, error.body);\n    return;\n  }\n  throw error;\n}",
+        "status": "live"
+      },
+      "php": {
+        "name": "PHP",
+        "short": "PHP",
+        "stack": "Laravel et Symfony",
+        "summary": "Client PHP 8.1+ pour Laravel, Symfony et PHP pur qui tire la maturité dans portails, ERP et automatisation.",
+        "highlights": [
+          "PHP 8.1+",
+          "cURL + JSON",
+          "Laravel et Symfony"
+        ],
+        "quickStart": "<?php\n\nuse Curnext\\Sdk\\CurNext;\n\n$client = new CurNext(\n    apiKey: getenv('CURNEXT_API_KEY') ?: '',\n    // baseUrl par défaut : https://api.curnext.app\n    // baseUrl: 'http://localhost:4000',\n);\n\n$health = $client->health->get();\n$projects = $client->projects->list();\n$readiness = $client->projects->getReadiness('SURFACE_EXTERNAL_ID');\n\necho $readiness['status'], ' ', $readiness['readiness_score'] ?? '', PHP_EOL;",
+        "errorHandling": "use Curnext\\Sdk\\CurNextApiException;\n\ntry {\n    $readiness = $client->projects->getReadiness('SURFACE_ID');\n    echo $readiness['status'];\n} catch (CurNextApiException $e) {\n    // 401 clé invalide | 404 introuvable | 429 limité en débit\n    error_log($e->getStatusCode() . ' ' . $e->getMessage());\n    var_export($e->getBody());\n    throw $e;\n}",
+        "status": "live"
+      },
+      "go": {
+        "name": "Go",
+        "short": "Go",
+        "stack": "net/http, Gin et Echo",
+        "summary": "Client Go idiomatique pour passerelles, services chantier et microservices qui parlent à CurNext en HTTPS.",
+        "highlights": [
+          "context.Context",
+          "Erreurs typées",
+          "net/http"
+        ],
+        "quickStart": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"log\"\n\t\"os\"\n\n\tcurnext \"github.com/awunjia/curnext-go\"\n)\n\nfunc main() {\n\tclient, err := curnext.NewClient(curnext.Config{\n\t\tAPIKey: os.Getenv(\"CURNEXT_API_KEY\"),\n\t\t// BaseURL par défaut : https://api.curnext.app\n\t\t// BaseURL: \"http://localhost:4000\",\n\t})\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\n\tctx := context.Background()\n\thealth, err := client.Health.Get(ctx)\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\tfmt.Println(health.Status, health.Service)\n\n\treadiness, err := client.Projects.GetReadiness(ctx, \"SURFACE_EXTERNAL_ID\")\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\tfmt.Println(readiness.Status, readiness.ReadinessScore)\n}",
+        "errorHandling": "import (\n\t\"context\"\n\t\"errors\"\n\t\"log\"\n\n\tcurnext \"github.com/awunjia/curnext-go\"\n)\n\nreadiness, err := client.Projects.GetReadiness(ctx, \"SURFACE_ID\")\nif err != nil {\n\tvar apiErr *curnext.APIError\n\tif errors.As(err, &apiErr) {\n\t\t// 401 clé invalide | 404 introuvable | 429 limité en débit\n\t\tlog.Printf(\"%d %s %#v\", apiErr.StatusCode, apiErr.Message, apiErr.Body)\n\t\treturn\n\t}\n\tlog.Fatal(err)\n}\n_ = readiness.Status",
+        "status": "live"
+      },
+      "python": {
+        "name": "Python",
+        "short": "Python",
+        "stack": "Django, FastAPI et scripts",
+        "summary": "Client Python pour pipelines de données, services FastAPI et scripts qui tirent maturité et télémétrie.",
+        "highlights": [
+          "pip install",
+          "Réponses dict",
+          "Django et FastAPI"
+        ],
+        "quickStart": "import os\nfrom curnext import CurNext\n\nclient = CurNext(\n    api_key=os.environ[\"CURNEXT_API_KEY\"],\n    # base_url par défaut : https://api.curnext.app\n    # base_url=\"http://localhost:4000\",\n)\n\nhealth = client.health.get()\nprojects = client.projects.list()\nreadiness = client.projects.get_readiness(\"SURFACE_EXTERNAL_ID\")\n\nprint(readiness[\"status\"], readiness.get(\"readiness_score\"))",
+        "errorHandling": "from curnext import CurNextApiError\n\ntry:\n    readiness = client.projects.get_readiness(\"SURFACE_ID\")\n    print(readiness[\"status\"])\nexcept CurNextApiError as exc:\n    # 401 clé invalide | 404 introuvable | 429 limité en débit\n    print(exc.status_code, exc.message, exc.code, exc.body)\n    raise",
+        "status": "live"
+      },
+      "java": {
+        "name": "Java",
+        "short": "Java",
+        "stack": "Spring Boot et Quarkus",
+        "summary": "Client JVM pour Spring Boot, Quarkus et services entreprise. groupId Maven app.curnext ; les imports restent io.curnext.sdk.*.",
+        "highlights": [
+          "Java 17+",
+          "Gradle et Maven",
+          "Jackson"
+        ],
+        "quickStart": "// Exemple client Java CurNext\nimport io.curnext.sdk.CurNext;\nimport io.curnext.sdk.ApiObject;\n\nvar client = CurNext.builder()\n    .apiKey(System.getenv(\"CURNEXT_API_KEY\"))\n    // .baseUrl(\"https://api.curnext.app\")\n    // .baseUrl(\"http://localhost:4000\")\n    .build();\n\nApiObject health = client.health().get();\nApiObject readiness = client.projects().getReadiness(\"SURFACE_EXTERNAL_ID\");\nSystem.out.println(readiness.status() + \" \" + readiness.readinessScore());",
+        "errorHandling": "import io.curnext.sdk.CurNextApiException;\n\ntry {\n  var readiness = client.projects().getReadiness(\"SURFACE_ID\");\n  System.out.println(readiness.status());\n} catch (CurNextApiException e) {\n  // 401 clé invalide | 404 introuvable | 429 limité en débit\n  System.err.println(e.getStatusCode() + \" \" + e.getMessage());\n  throw e;\n}",
+        "status": "live"
+      },
+      "flutter": {
+        "name": "Flutter",
+        "short": "Flutter",
+        "stack": "Dart, iOS, Android et desktop",
+        "summary": "Client Flutter / Dart pour apps mobiles et desktop qui ont besoin de maturité, appareils et alertes sur le terrain. Même surface REST que les SDK live - le package n'est pas encore sur pub.dev.",
+        "highlights": [
+          "Bientôt disponible",
+          "Dart",
+          "Mobile et desktop"
+        ],
+        "quickStart": "// Aperçu uniquement - le SDK Flutter n'est pas encore publié\nimport 'package:curnext/curnext.dart';\n\nfinal client = CurNext(\n  apiKey: const String.fromEnvironment('CURNEXT_API_KEY'),\n  // baseUrl par défaut : https://api.curnext.app\n  // baseUrl: 'http://localhost:4000',\n);\n\nfinal health = await client.health.get();\nfinal projects = await client.projects.list();\nfinal readiness =\n    await client.projects.getReadiness('SURFACE_EXTERNAL_ID');\n\nprint('${health.status} ${readiness.status}');",
+        "errorHandling": "// Aperçu uniquement - le SDK Flutter n'est pas encore publié\ntry {\n  final readiness =\n      await client.projects.getReadiness('SURFACE_ID');\n  print(readiness.status);\n} on CurNextApiException catch (e) {\n  // 401 clé invalide | 404 introuvable | 429 limité en débit\n  print('${e.statusCode} ${e.message} ${e.code}');\n  rethrow;\n}",
+        "status": "coming_soon"
+      }
+    },
+    "status": {
+      "live": "Disponible",
+      "beta": "Bêta",
+      "coming_soon": "Bientôt disponible"
+    },
+    "registry": {
+      "npm": "Voir sur npm",
+      "Packagist": "Voir sur Packagist",
+      "pkg_go_dev": "Voir sur pkg.go.dev",
+      "PyPI": "Voir sur PyPI",
+      "Maven Central": "Voir sur Maven Central",
+      "pub_dev": "Voir sur pub.dev"
+    },
+    "notPublished": "Non publié",
+    "versionLine": "{version}",
+    "betaVersionLine": "{version} (bêta)"
+  },
+  "api": {
+    "apiAccess": {
+      "eyebrow": "Accès",
+      "title": "Professional inclut l'accès API",
+      "lead": "L'accès API est inclus avec Professional et disponible pour les programmes Enterprise. Les clés API projet et les webhooks sont gérés dans le produit CurNext sous les paramètres développeur du projet.",
+      "points": [
+        "L'accès est limité au projet (et peut l'être au bâtiment).",
+        "Les clés actives et les webhooks sont limités par projet.",
+        "Les clés utilisent un préfixe live tel que cn_live_... dans le produit.",
+        "Demandez l'accès et nous activerons l'intégration pour votre projet - puis nous parcourrons clés, scopes et événements dans la plateforme."
+      ],
+      "enterpriseNote": "Les programmes Enterprise peuvent inclure des limites de débit API renforcées et un bac à sable sur demande - piloté par les ventes, pas en libre-service."
+    },
+    "apiAudience": {
+      "eyebrow": "Pour qui",
+      "title": "Conçu pour les acheteurs techniques et les intégrateurs",
+      "items": [
+        "Coordinateurs projet et BIM qui ont besoin de la maturité dans les outils de planification",
+        "IT entreprise connectant CurNext aux tableaux de bord internes",
+        "Entrepreneurs multi-sites qui veulent des workflows événementiels",
+        "Partenaires intégrant CurNext dans des piles logicielles de construction"
+      ]
+    },
+    "apiBuiltNote": "L'API CurNext est un service REST NestJS qui alimente les intégrations web, mobile et chantier.",
+    "apiCapabilities": {
+      "eyebrow": "Capacités",
+      "title": "Ce que vous pouvez appeler",
+      "lead": "Cadrez l'intégration autour des domaines - maturité, BIM, flotte, télémétrie et événements - pas un flux brut de capteurs.",
+      "items": [
+        {
+          "title": "Maturité des surfaces",
+          "body": "Récupérez score de maturité, statut, date prête estimée, confiance et recommandation pour une surface."
+        },
+        {
+          "title": "Contexte BIM",
+          "body": "Récupérez la hiérarchie projet - bâtiments, espaces et appareils - pour le mapping et la coordination."
+        },
+        {
+          "title": "Flotte d'appareils",
+          "body": "Listez et inspectez les appareils liés à un projet."
+        },
+        {
+          "title": "Ingestion de télémétrie",
+          "body": "Le matériel de chantier et les passerelles publient des mesures dans CurNext."
+        },
+        {
+          "title": "Événements (webhooks)",
+          "body": "Poussez alertes et jalons projet vers votre point de terminaison HTTPS."
+        }
+      ]
+    },
+    "apiEndpoints": {
+      "eyebrow": "Surfaces illustratives",
+      "title": "Exemples de chemins REST",
+      "lead": "Tous les exemples sont sous https://api.curnext.app/api/v1. La plateforme continue d'évoluer - contactez les ventes pour un périmètre d'intégration au-delà de ces surfaces.",
+      "rows": [
+        {
+          "method": "GET",
+          "path": "/health",
+          "purpose": "Santé du service"
+        },
+        {
+          "method": "GET",
+          "path": "/surfaces/:id/readiness",
+          "purpose": "Maturité d'une surface"
+        },
+        {
+          "method": "GET",
+          "path": "/bim/:projectId",
+          "purpose": "Arbre BIM / projet"
+        },
+        {
+          "method": "GET",
+          "path": "/devices",
+          "purpose": "Liste d'appareils (query project_id optionnelle)"
+        },
+        {
+          "method": "GET",
+          "path": "/devices/:id",
+          "purpose": "Appareil unique"
+        },
+        {
+          "method": "POST",
+          "path": "/telemetry",
+          "purpose": "Ingérer la télémétrie"
+        }
+      ]
+    },
+    "apiFaqs": [
+      {
+        "q": "Y a-t-il un site OpenAPI / Swagger public ?",
+        "a": "Oui - explorez le playground API interactif sur https://api.curnext.app/docs. Les clés projet et les scopes restent activés par abonnement dans la plateforme CurNext."
+      },
+      {
+        "q": "Qu'est-ce qui est inclus avec Professional ?",
+        "a": "L'accès API avec le tableau de bord, le BIM, les alertes, les rapports de conformité et le reste de la pile Professional. Voir Tarifs pour le détail commercial."
+      },
+      {
+        "q": "Comment obtenir une clé API ?",
+        "a": "Ouvrez la plateforme CurNext pour votre projet (développeur / clés API) après que votre abonnement inclut l'accès API - ou demandez l'activation via Contact."
+      },
+      {
+        "q": "Pouvons-nous avoir des webhooks ?",
+        "a": "Oui - webhooks projet pour maturité, alertes, appareil et événements de type remise. Configurez des points de terminaison HTTPS dans le produit."
+      },
+      {
+        "q": "Supportez-vous les outils BIM ?",
+        "a": "L'API expose le BIM et la hiérarchie projet pour la coordination. La visualisation BIM vit aussi dans l'UI produit."
+      },
+      {
+        "q": "GraphQL ? SDK ?",
+        "a": "REST /api/v1 est le cadrage public. Il n'y a pas de surface GraphQL ni de catalogue SDK public officiel sur cette page."
+      }
+    ],
+    "apiMarketingHost": "curnext.app",
+    "apiMqttFootnote": "Les appareils terrain publient aussi de la télémétrie via MQTT (curnext/.../telemetry). Le matériel de chantier utilise ce chemin ; les intégrations acheteurs devraient commencer par REST.",
+    "apiPage": {
+      "eyebrow": "API",
+      "title": "Intelligence de maturité, sous forme d'API",
+      "lead": "REST versionné sur https://api.curnext.app - maturité des surfaces, contexte projet BIM, appareils et télémétrie. Inclus avec Professional.",
+      "primaryCta": {
+        "label": "Demander l'accès API",
+        "href": "/contact"
+      },
+      "secondaryCta": {
+        "label": "Ouvrir la plateforme",
+        "href": "https://curnext.app",
+        "external": true
+      },
+      "tertiaryCta": {
+        "label": "Voir les tarifs",
+        "href": "/pricing"
+      },
+      "hosts": {
+        "production": "https://api.curnext.app",
+        "versionPrefix": "/api/v1",
+        "exampleBase": "https://api.curnext.app/api/v1",
+        "product": "https://curnext.app"
+      }
+    },
+    "apiPlatformUrl": "https://curnext.app",
+    "apiReadinessSample": "{\n    \"surface_id\": \"...\",\n    \"readiness_score\": 0.0,\n    \"status\": \"...\",\n    \"estimated_ready_date\": \"...\",\n    \"confidence\": 0.0,\n    \"recommendation\": \"...\"\n}",
+    "apiWebhooks": {
+      "eyebrow": "Webhooks",
+      "title": "Intégration événementielle",
+      "lead": "Configurez des points de terminaison HTTPS dans le projet pour les alertes et jalons. L'historique de livraison est disponible dans le produit.",
+      "events": [
+        "SURFACE_READY",
+        "READY_DATE_CHANGED",
+        "ALERT_CREATED",
+        "ALERT_RESOLVED",
+        "FREEZE_RISK_DETECTED",
+        "CONDENSATION_RISK_DETECTED",
+        "DRYING_PAUSED",
+        "DEVICE_OFFLINE",
+        "DEVICE_LOW_BATTERY",
+        "DEVICE_SENSOR_FAILURE",
+        "DEVICE_DISPLACED",
+        "PROJECT_DELAY_RISK_DETECTED",
+        "COMPLIANCE_REPORT_READY",
+        "PROJECT_HANDOVER_READY"
+      ]
+    },
+    "apiWhy": {
+      "eyebrow": "Pourquoi une API",
+      "title": "Des décisions qui quittent le tableau de bord",
+      "lead": "L'API CurNext est la façon dont les décisions de maturité entrent dans la pile de l'entrepreneur - plannings, outils BIM, archives de conformité et systèmes ops. Ce n'est pas un autre dumping de capteurs IoT.",
+      "outcomes": [
+        {
+          "title": "Plannings qui suivent le travail",
+          "body": "Tirez scores de maturité et dates prêtes estimées dans les outils de planification pour que terrain et bureau partagent une seule image de ce qui peut avancer."
+        },
+        {
+          "title": "BIM avec contexte live",
+          "body": "Cartographiez bâtiments, espaces et appareils pour la coordination - sans reconstruire la hiérarchie projet à la main."
+        },
+        {
+          "title": "Workflows ops et conformité",
+          "body": "Faites entrer alertes, jalons et preuves de remise dans les systèmes que vos équipes utilisent déjà."
+        }
+      ]
+    }
+  },
+  "contact": {
+    "metaTitle": "Nous contacter",
+    "metaDescription": "Contactez les équipes CurNext commerciales, partenariats et produit. Canaux e-mail et formulaire sécurisé.",
+    "channelsTitle": "E-mail direct",
+    "channelsLead": "Vous préférez l'échange par e-mail ? Utilisez les adresses ci-dessous.",
+    "tableCaption": "Adresses e-mail de contact CurNext",
+    "team": "Équipe",
+    "email": "E-mail",
+    "useFor": "Utiliser pour",
+    "channels": {
+      "sales": {
+        "title": "Commercial",
+        "body": "Déploiement projet, questions commerciales et discussions volume."
+      },
+      "general": {
+        "title": "Général",
+        "body": "Questions société, partenariats et tout ce qui ne rentre pas dans une boîte dédiée."
+      },
+      "api": {
+        "title": "API et intégrations",
+        "body": "Accès SDK, clés API et cadrage d'intégration."
+      },
+      "security": {
+        "title": "Sécurité",
+        "body": "Divulgation de vulnérabilités et incidents de sécurité."
+      },
+      "gdpr": {
+        "title": "RGPD / confidentialité",
+        "body": "Demandes des personnes concernées, questions RGPD et confidentialité."
+      }
+    },
+    "offices": {
+      "registered": {
+        "title": "Société enregistrée",
+        "line1": "CurNext",
+        "line2": "Finlande",
+        "line3": "ID entreprise {id}"
+      },
+      "response": {
+        "title": "Délai de réponse",
+        "line1": "Jours ouvrables, en général sous un jour ouvré",
+        "line2": "Les devis suivent la taille du site et les surfaces sur Tarifs"
+      }
+    },
+    "formTitle": "Envoyer un message",
+    "formLead": "Nous lisons chaque message et répondons depuis une adresse CurNext. La plupart des demandes reçoivent une première réponse sous un jour ouvré. Les questions produit, API ou conformité complexes peuvent prendre plus longtemps le temps que la bonne équipe examine le contexte de votre chantier ou de votre stack.",
+    "form": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "workEmail": "E-mail professionnel",
+      "phone": "Téléphone",
+      "company": "Entreprise",
+      "topic": "Sujet",
+      "selectTopic": "Sélectionnez un sujet",
+      "message": "Message",
+      "messagePlaceholder": "Parlez-nous de votre projet, de votre calendrier ou de votre question.",
+      "securityCheck": "Vérification de sécurité",
+      "consent": "En envoyant, vous acceptez d'être contacté au sujet de votre demande. Nous ne vendons pas vos données.",
+      "send": "Envoyer le message",
+      "sending": "Envoi",
+      "selectTopicError": "Sélectionnez un sujet",
+      "turnstileRequired": "Terminez la vérification de sécurité",
+      "sendError": "Impossible d'envoyer votre message",
+      "toastSuccess": "Message envoyé - vérifiez votre boîte pour la confirmation",
+      "subjects": {
+        "general": "Demande générale",
+        "product": "Information produit",
+        "api": "API et SDK",
+        "integrations": "Intégrations",
+        "partnership": "Partenariat",
+        "support": "Support produit",
+        "security": "Sécurité",
+        "gdpr": "RGPD / confidentialité",
+        "press": "Presse / médias",
+        "other": "Autre"
+      }
+    }
+  }
+}

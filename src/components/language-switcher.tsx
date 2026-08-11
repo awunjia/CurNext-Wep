@@ -1,7 +1,8 @@
 "use client";
 
 import { CheckIcon, Languages } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useTransition } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -10,37 +11,27 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  LANGUAGE_STORAGE_KEY,
-  languages,
-  type LanguageCode,
-} from "@/config/languages";
+import { languages, type LanguageCode } from "@/config/languages";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 export function LanguageSwitcher() {
-  const [language, setLanguage] = useState<LanguageCode>("en");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem(
-      LANGUAGE_STORAGE_KEY,
-    ) as LanguageCode | null;
-    if (stored && languages.some((item) => item.code === stored)) {
-      setLanguage(stored);
-      document.documentElement.lang = stored;
-      document.documentElement.dir = "ltr";
-    }
-    setMounted(true);
-  }, []);
+  const t = useTranslations("common");
+  const locale = useLocale() as LanguageCode;
+  const pathname = usePathname();
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
 
   function selectLanguage(code: LanguageCode) {
-    setLanguage(code);
-    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, code);
+    if (code === locale) return;
     document.documentElement.lang = code;
     document.documentElement.dir = "ltr";
+    startTransition(() => {
+      router.replace(pathname, { locale: code });
+    });
   }
 
-  const current = languages.find((item) => item.code === language) ?? languages[0];
+  const current = languages.find((item) => item.code === locale) ?? languages[0];
 
   return (
     <DropdownMenu>
@@ -51,12 +42,13 @@ export function LanguageSwitcher() {
             variant="ghost"
             size="sm"
             className="gap-1.5 px-2"
-            aria-label="Choose language"
+            aria-label={t("chooseLanguage")}
+            disabled={pending}
           />
         }
       >
         <Languages className="size-4" aria-hidden />
-        <span className="hidden sm:inline">{mounted ? current.label : "English"}</span>
+        <span className="hidden sm:inline">{current.label}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-44">
         {languages.map((item) => (
@@ -69,7 +61,7 @@ export function LanguageSwitcher() {
             <CheckIcon
               className={cn(
                 "size-4",
-                language === item.code ? "opacity-100" : "opacity-0",
+                locale === item.code ? "opacity-100" : "opacity-0",
               )}
               aria-hidden
             />

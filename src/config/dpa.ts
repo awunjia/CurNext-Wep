@@ -1,11 +1,11 @@
 export const dpaPage = {
   title: "Data Processing Agreement",
   description:
-    "CurNext Oy provides a Data Processing Agreement for customers who need processor terms when CurNext processes personal data for the Client's use of the platform - including customers in Finland (EU), Canada, and Cameroon.",
+    "CurNext provides a Data Processing Agreement for customers who need processor terms when CurNext processes personal data for the Client's use of the platform - including customers in Finland (EU), Canada, and Cameroon.",
   leadNote:
     "This page is a procurement-oriented summary aligned with GDPR Art. 28 practice (roles, scope, TOMs, public subprocessors, transfer and notice language). A signed DPA is a legal instrument - final clause language should be reviewed by counsel. Do not treat this page as the executed agreement body.",
   supportLine:
-    "CurNext Oy acts as processor for Client Data instructed through the Services. Core application and database hosting for the platform is in Germany / Frankfurt. Commercial markets today: Finland, Canada, and Cameroon. Enterprise programs execute the DPA within 30 days of schedule signature.",
+    "CurNext acts as processor for Client Data instructed through the Services. Core application and database hosting for the platform is in Germany / Frankfurt. Commercial markets today: Finland, Canada, and Cameroon. Enterprise programs execute the DPA within 30 days of schedule signature.",
 } as const;
 
 export const dpaAudience = {
@@ -57,7 +57,7 @@ export const dpaRoles = {
   rows: [
     {
       role: "Provider / Processor",
-      party: "CurNext Oy, Helsinki, Finland",
+      party: "CurNext, Helsinki, Finland",
       note: "Processes personal data on Client instructions to deliver the Services",
     },
     {
@@ -199,14 +199,6 @@ export const dpaSubprocessors = {
       group: "Payments",
     },
     {
-      name: "OpenAI, L.L.C.",
-      purpose: "AI features in the product (for example readiness assistance) when enabled",
-      dataCategories: "Prompts and context required for the AI feature",
-      location: "United States and regions per OpenAI's DPA / data controls",
-      privacyUrl: "https://openai.com/policies/privacy-policy",
-      group: "AI",
-    },
-    {
       name: "Google LLC (Gemini / Google AI)",
       purpose: "AI features in the product when Gemini is enabled",
       dataCategories: "Prompts and context required for the AI feature",
@@ -217,8 +209,8 @@ export const dpaSubprocessors = {
     {
       name: "Groq, Inc.",
       purpose:
-        "Inference for the public Knowledge Base assistant on curnext.app (after user consent)",
-      dataCategories: "Chat questions and short conversation context",
+        "Inference for the public Knowledge Base assistant on curnext.app (after user consent), and other product AI features when Groq is enabled",
+      dataCategories: "Prompts, chat questions, and short conversation context required for the feature",
       location: "Per provider data processing / privacy terms",
       privacyUrl: "https://groq.com/privacy-policy/",
       group: "AI",
@@ -265,7 +257,7 @@ export const dpaTransfers = {
   bullets: [
     "Primary storage and application processing for Client Data is designed around EU hosting (Germany / Frankfurt), including for Clients in Canada and Cameroon",
     "Access by Client users in Canada or Cameroon is an international transfer / remote access pattern - Client remains controller for how it invites users in those markets",
-    "Where a subprocessor transfers or accesses data outside the EEA/UK (for example OpenAI, Stripe, or Cloudflare edge), Provider will use an appropriate transfer mechanism (for example EU SCCs or an adequacy decision) as required by law",
+    "Where a subprocessor transfers or accesses data outside the EEA/UK (for example Gemini, Groq, Stripe, or Cloudflare edge), Provider will use an appropriate transfer mechanism (for example EU SCCs or an adequacy decision) as required by law",
     "Canadian Clients: Provider supports PIPEDA / Law 25 vendor diligence with this list, TOMs, and counsel-approved DPA exhibits - local hosting in Canada is not claimed here",
     "Cameroon Clients: Provider supports local diligence with this list and DPA - local hosting in Cameroon is not claimed here",
     "SCC exhibits and transfer assessments are attached in counsel-approved DPA packages",
@@ -308,7 +300,7 @@ export const dpaToms = {
     {
       control: "AI controls",
       summary:
-        "AI vendors used only for enabled product features; minimize prompt context; no sale of Client Data",
+        "In-house curing prediction (TensorFlow.js) runs in the product; Gemini and Groq used only for enabled assisted features; minimize prompt context; no sale of Client Data",
     },
     {
       control: "Incident path",

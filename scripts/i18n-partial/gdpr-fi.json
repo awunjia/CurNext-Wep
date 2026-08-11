@@ -1,0 +1,341 @@
+{
+  "emailGdpr": "Lähetä gdpr@",
+  "readDpa": "Lue DPA",
+  "basisCol": "Oikeusperuste",
+  "useCol": "Tyypillinen käyttö",
+  "rightCol": "Oikeus",
+  "detailCol": "Mitä se tarkoittaa",
+  "ctaTitle": "Tarvitsetko apua tietosuojapyynnössä?",
+  "ctaLead": "Kirjoita gdpr@curnext.app rekisteröidyn pyyntöjä varten tai valitse yhteydenottolomakkeesta aihe GDPR / tietosuoja. Allekirjoitettua DPA:ta varten käytä legal@curnext.app.",
+  "contactForm": "Yhteydenottolomake",
+  "relatedTitle": "Liittyvät käytännöt",
+  "page": {
+    "title": "GDPR-käytännöt",
+    "description": "Miten CurNext soveltaa EU:n yleistä tietosuoja-asetusta (GDPR) henkilötietoihin, joita käsitellään curnext.appissa, CurNext-hallintapaneelissa, API:issa ja niihin liittyvissä palveluissa - roolit, oikeusperusteet, rekisteröidyn oikeudet, säilytys, siirrot ja yhteystiedot.",
+    "metaDescription": "CurNext GDPR-käytännöt: rekisterinpitäjän henkilöllisyys, roolit, oikeusperusteet, rekisteröidyn oikeudet, säilytys, EU-hosting, siirrot, tietoturvaloukkaukset ja gdpr@curnext.app.",
+    "leadNote": "Tämä sivu kuvaa CurNextin GDPR-suuntautuneita käytäntöjä avoimuuden (artiklat 12-14) ja niihin liittyvien velvoitteiden osalta. Se ei korvaa allekirjoitettua tietojenkäsittelysopimusta eikä oikeudellista neuvontaa. Jos tämä sivu ja allekirjoitettu sopimus ovat ristiriidassa, sopimus ratkaisee kyseisen suhteen osalta.",
+    "supportLine": "Rekisterinpitäjä CurNext:n tilien, markkinoinnin ja verkkosivuston tietojen osalta: CurNext (Suomi). Käsittelijä alustan kautta ohjeistetulle Client Datalle: CurNext DPA:n nojalla. Tuotannon päähosting: Saksa / Frankfurt. Tietosuojapyynnöt: gdpr@curnext.app.",
+    "lastUpdatedLabel": "Päivitetty",
+    "lastUpdated": "11. elokuuta 2026",
+    "legalEyebrow": "Juridinen"
+  },
+  "overview": {
+    "title": "Tämän käytännön tarkoitus",
+    "lead": "CurNext rakentaa työmaan älykkyyttä - sensoreita, yhdyskäytäviä, pilvihallintapaneeleita ja valmiustodisteita. Tämä kokonaisuus sisältää väistämättä henkilötietoja: kutsuttuja, ylläpitäjiä, tukiyhteyshenkilöitä, sivuston kävijöitä ja työnhakijoita. GDPR on ensisijainen tietosuojajärjestelmä EU-ankkuroidulle alustakäsittelyllemme.",
+    "bullets": [
+      "Selittää, kuka vastaa mistäkin käsittelystä (rekisterinpitäjä vs käsittelijä).",
+      "Kuvata henkilötietoryhmät, tarkoitukset ja oikeusperusteet käytäntötasolla.",
+      "Esittää rekisteröidyn oikeudet ja selkeä kanava niiden käyttämiseen.",
+      "Tiivistää säilytysteemat, kansainväliset siirrot, tietoturva-asenne ja loukkausten käsittely.",
+      "Ohjata liittyviin asiakirjoihin (DPA, Tietoturva, Vaatimustenmukaisuus, Audit Trail, Evästekäytäntö) ilman jokaisen lausekkeen toistamista."
+    ],
+    "honesty": "Emme väitä ISO 27001- tai SOC 2 -sertifiointia CurNextille julkisilla sivuilla. Mualla nimetyt standardit tarkoittavat suunnittelun yhdenmukaisuutta, ellei niitä ole erikseen vahvistettu kirjallisesti."
+  },
+  "controller": {
+    "title": "Rekisterinpitäjän henkilöllisyys ja yhteystiedot",
+    "lead": "Henkilötietojen osalta, joissa CurNext määrittää käsittelyn tarkoitukset ja keinot (esimerkiksi sivuston analytiikka suostumuksella, markkinointitilaukset, työhakemukset ja CurNextin oma B2B-tilien hallinta), rekisterinpitäjä on:",
+    "privacyEmail": "gdpr@curnext.app",
+    "privacyEmailLabel": "GDPR / tietosuojapostilaatikko",
+    "legalEmail": "legal@curnext.app",
+    "legalEmailLabel": "Juridinen / DPA",
+    "securityEmail": "security@curnext.app",
+    "securityEmailLabel": "Tietoturvapoikkeamat ja haavoittuvuuksien ilmoittaminen",
+    "note": "Käytä gdpr@curnext.app:ia tarkastukseen, oikaisuun, poistoon, rajoittamiseen, siirtämiseen, vastustamiseen ja muihin rekisteröidyn pyyntöihin. Käytä legal@curnext.app:ia tietojenkäsittelysopimuksiin. Käytä security@curnext.app:ia haavoittuvuuksien ilmoittamiseen ja vahvistettuihin tietoturvapoikkeamiin - ei rutiininomaisiin rekisteröidyn pyyntöihin."
+  },
+  "roles": {
+    "title": "Roolit GDPR:n mukaan",
+    "lead": "Roolien selkeys estää vääriä odotuksia siitä, kuka vastaa pyyntöön.",
+    "items": [
+      {
+        "title": "CurNext rekisterinpitäjänä",
+        "body": "CurNext on tyypillisesti rekisterinpitäjä seuraaville: julkinen markkinointisivusto; uutiskirje- ja tuoteuutistilaukset; yhteydenotto- ja tarjouslomakkeet, kun kirjoitat suoraan CurNextille; ura ja rekrytointi; CurNextin oma CRM ja myyntirekisterit; kutsuihin perustuvat tilitunnisteet, joita CurNext ylläpitää Palveluiden käyttöoikeuden osana; sekä telemetria, jota tarvitaan CurNextin omien tuotteiden käyttöön, turvaamiseen ja parantamiseen (sopimusten ja tuoteasetusten mukaisesti)."
+      },
+      {
+        "title": "CurNext käsittelijänä",
+        "body": "Kun asiakas (Client) käyttää CurNextiä työmaiden seurantaan ja projektikäyttäjien hallintaan, CurNext toimii yleensä käsittelijänä Client Datan osalta - henkilötietoja, joita Client lataa, kutsuu tai tuottaa Palveluiden kautta Clientin ohjeiden mukaan. Client säilyy rekisterinpitäjänä kyseiselle Client Datalle. Käsittelijän ehdot määritellään tietojenkäsittelysopimuksessa."
+      },
+      {
+        "title": "Yhteiset tai sekoitetut tilanteet",
+        "body": "Joissain operatiivisissa lokeissa ja tietoturvatapahtumissa voi olla tunnisteita, jotka palvelevat sekä Clientin vastuullisuutta että CurNextin oikeutettua etua alustan turvaamisessa. Suunnittelemme vastuullisuutta (RBAC, auditointitapahtumat, kutsuihin perustuva pääsy) ja dokumentoimme jaon DPA:ssa ja Tietoturva-aineistoissa. Jos et ole varma, kenen pitäisi vastata, kirjoita gdpr@curnext.app:iin, niin ohjaamme pyynnön."
+      }
+    ]
+  },
+  "scope": {
+    "title": "Katettavan käsittelyn laajuus",
+    "lead": "Nämä käytännöt koskevat henkilötietoja, joita käsitellään yhteydessä seuraaviin:",
+    "bullets": [
+      "curnext.app ja lokalisoidut markkinointisivut",
+      "dash.curnext.app ja siihen liittyvät hallintapaneelikokemukset",
+      "CurNext API:t, SDK:t ja kehittäjäportaalit, joissa henkilötietoja esiintyy (esimerkiksi tileihin sidotut API-avaimet)",
+      "CurNext-brändillä julkaistut mobiilisovellukset, kun ne on kytketty samaan identiteettitasoon",
+      "Tuki-, Docs- ja tietopankkivuorovaikutukset, jotka tunnistavat henkilön",
+      "Sähköposti, lomakkeet ja CRM-järjestelmät, joilla vastataan kaupallisiin ja tukipyyntöihin"
+    ],
+    "note": "Kenttäsensorit mittaavat ensisijaisesti ympäristö- ja rakenneolosuhteita. Henkilötietoriski syntyy yleensä pilvi-, identiteetti- ja yhteistyökerroksessa (kuka näkee minkä projektin), ei pelkistä lämpötila- tai kosteuslukemista. BIM-kartat ja ladatut suunnitelmat voivat sisältää henkilötietoja riippuen siitä, mitä Client niihin sisällyttää."
+  },
+  "legalBases": {
+    "title": "Oikeusperusteet (artikla 6)",
+    "lead": "Käsittelemästä riippuen CurNext nojaa yhteen tai useampaan seuraavista perusteista. Tietyn tuoteominaisuuden tarkka kartoitus voidaan täsmentää tietosuojaselosteessa ja asiakassopimuksissa.",
+    "rows": [
+      {
+        "basis": "Sopimus (art. 6(1)(b))",
+        "use": "Tilien luominen ja hallinta, tilatun Palvelun toimittaminen, kutsuttujen todentaminen, sopimuksen mukainen tuki sekä tarjous- tai tilausprosessiin tarvittavien tietojen käsittely."
+      },
+      {
+        "basis": "Oikeutetut edut (art. 6(1)(f))",
+        "use": "Alustan turvaaminen (petos, väärinkäyttö, tunkeutumisen havaitseminen), luotettavuuden parantaminen, B2B-suhteiden hallinta nykyisten ja potentiaalisten asiakkaiden kanssa, rajoitettu tuoteanalytiikka, joka ei syrjäytä oikeuksia ja vapauksia, sekä oikeudellisten vaatimusten puolustaminen. Tasapainotamme edut ja tarjoamme vastustamisoikeuden tarvittaessa."
+      },
+      {
+        "basis": "Suostumus (art. 6(1)(a))",
+        "use": "Ei-välttämättömät evästeet ja vastaavat teknologiat, kun suostumus vaaditaan; valinnaiset markkinointisähköpostit, kun suostumus on valittu peruste; tietopankin tekoälychat, jossa tuotevirta vaatii nimenomaisen GDPR-suostumuksen ennen kysymyksen lähettämistä; muut valinnaiset ominaisuudet, jotka merkitsemme suostumukseen perustuviksi."
+      },
+      {
+        "basis": "Lakisääteinen velvoite (art. 6(1)(c))",
+        "use": "Vero-, kirjanpito- ja sääntelyyn liittyvä säilytys; vastaaminen toimivaltaisten viranomaisten laillisiin pyyntöihin; loukkauksen ilmoitusvelvollisuudet, kun CurNext on rekisterinpitäjä."
+      }
+    ],
+    "special": "Emme pyri käsittelemään erityisiä henkilötietoryhmiä (art. 9) osana ydinseurantaa. Älä lähetä terveys-, biometrisiä tai muita erityisiä tietoja yleisten yhteydenottolomakkeiden kautta. Jos asiakasprojekti edellyttää tällaisia tietoja, se on rajattava kirjallisesti asianmukaisin turvatoimin."
+  },
+  "categories": {
+    "title": "Henkilötietoryhmät",
+    "lead": "Ryhmät vaihtelevat tuotealueittain. Tyypillisiä esimerkkejä:",
+    "items": [
+      {
+        "title": "Identiteetti ja yhteystiedot",
+        "body": "Nimi, työähköposti, puhelin, yritys, rooli, kielivalinta ja vastaavat yritysyhteystiedot."
+      },
+      {
+        "title": "Tili ja käyttöoikeudet",
+        "body": "Kutsun tila, organisaatio- / projektijäsenyys, roolit ja oikeudet, todentamismetatiedot, istunto- ja laitesignaalit tietoturvaa varten sekä MFA-tila etuoikeutetuille rooleille."
+      },
+      {
+        "title": "Kaupallinen ja tuki",
+        "body": "Yhteydenotto-, tarjous-, demo- tai tukikanavien kautta lähetetyt viestit; tikettihistoria; sopimus- ja laskutusviitteet, joita tarvitaan tilin palvelemiseen."
+      },
+      {
+        "title": "Käyttö ja tekninen",
+        "body": "IP-osoitteet, verkosta johdettu likimääräinen sijainti, selain/user-agent, diagnostiikkalokit, rate-limit- ja WAF-tapahtumat sekä Palveluiden käyttöön tarvittavat tuotemittarit."
+      },
+      {
+        "title": "Rekrytointi",
+        "body": "CV / ansioluettelo, hakemuksen vastaukset, haastattelumuistiinpanot ja avoimiin rooleihin liittyvä viestintä."
+      },
+      {
+        "title": "Clientin hallitsema projektisisältö",
+        "body": "Käyttäjien tuottama sisältö projekteissa (muistiinpanot, lataukset, BIM-linkitetyt huomautukset, yhteistyölistat), jota Client hallitsee rekisterinpitäjänä. CurNext käsittelee tätä käsittelijänä dokumentoitujen ohjeiden mukaan."
+      }
+    ]
+  },
+  "rights": {
+    "title": "Oikeutesi GDPR:n mukaan",
+    "lead": "Kun GDPR soveltuu ja CurNext on rekisterinpitäjä (tai sen on avustettava käsittelijänä), sinulla voi olla seuraavat oikeudet lakisääteisten rajojen ja poikkeusten mukaisesti:",
+    "rows": [
+      {
+        "right": "Tarkastus (art. 15)",
+        "detail": "Saada vahvistus siitä, käsittelemmekö henkilötietojasi, sekä kopio yhdessä käsittelyä koskevien olennaisten tietojen kanssa."
+      },
+      {
+        "right": "Oikaisu (art. 16)",
+        "detail": "Saada epätarkat henkilötiedot korjatuiksi ja puutteelliset tiedot täydennettyä."
+      },
+      {
+        "right": "Poisto (art. 17)",
+        "detail": "Pyytää poistoa, kun peruste täyttyy (esimerkiksi suostumuksen peruuttaminen tai tietoja ei enää tarvita). Säilytys- ja auditointivaatimukset voivat rajoittaa tiettyjen tietoturva- tai talousrekisterien täyttä poistoa; selitämme, milloin näin on."
+      },
+      {
+        "right": "Rajoittaminen (art. 18)",
+        "detail": "Pyytää käsittelyn rajoittamista tietyissä tilanteissa (esimerkiksi kun tarkkuutta kiistetään)."
+      },
+      {
+        "right": "Siirrettävyys (art. 20)",
+        "detail": "Vastaanottaa meille toimittamasi henkilötiedot jäsennellyssä, yleisesti käytetyssä ja koneellisesti luettavassa muodossa sekä siirtää ne, kun käsittely perustuu suostumukseen tai sopimukseen ja toteutetaan automaattisesti."
+      },
+      {
+        "right": "Vastustaminen (art. 21)",
+        "detail": "Vastustaa oikeutettuihin etuihin perustuvaa käsittelyä, mukaan lukien siihen liittyvä profilointi, sekä vastustaa suoramarkkinointia milloin tahansa."
+      },
+      {
+        "right": "Suostumuksen peruuttaminen",
+        "detail": "Kun käsittely perustuu suostumukseen, peruuttaa se milloin tahansa vaikuttamatta ennen peruuttamista tapahtuneen käsittelyn lainmukaisuuteen."
+      },
+      {
+        "right": "Valitus",
+        "detail": "Tehdä valitus valvontaviranomaiselle, erityisesti ETA-valtiossa, jossa asut vakinaisesti, työskentelet tai jossa väitetty loukkaus on tapahtunut."
+      }
+    ],
+    "clientNote": "Jos pyyntösi koskee tietoja asiakkaan CurNext-projektissa (esimerkiksi Client-ylläpitäjän kutsuma yhteistyökumppani), Client on yleensä oikea ensikontakti. CurNext avustaa Clientia DPA:n nojalla ja voi auttaa ohjaamaan gdpr@curnext.app:iin saapuneet pyynnöt."
+  },
+  "exercise": {
+    "title": "Miten käytät oikeuksiasi",
+    "lead": "Suosimme kirjallisia pyyntöjä, jotta voimme todentaa pyytäjän ja pitää vastuullisen kirjanpidon.",
+    "steps": [
+      "Lähetä sähköposti gdpr@curnext.app:iin tilisi liittyvästä osoitteesta tai riittävillä tiedoilla tunnistamiseesi.",
+      "Kerro, mitä oikeutta haluat käyttää, ja konteksti (sivusto, uutiskirje, hallintapaneelitili, työhakemus tai asiakasprojekti).",
+      "Sisällytä koko nimesi, yrityksesi (jos on) sekä hallintapaneelissa näkyvä projekti- tai organisaationimi.",
+      "Asiakastenantin Client Datan osalta kerro asiakasorganisaatio, jos tiedät sen - saatamme joutua ottamaan Client-rekisterinpitäjän mukaan."
+    ],
+    "timing": "Pyrimme vastaamaan ilman aiheetonta viivytystä ja kuukauden kuluessa vastaanotosta; määräaikaa voidaan pidentää kahdella kuukaudella monimutkaisissa tai lukuisissa pyynnöissä art. 12(3) mukaisesti. Jos tarvitsemme lisää aikaa tai emme voi täyttää pyyntöä, selitämme miksi.",
+    "identity": "Voimme pyytää kohtuullisia lisätietoja henkilöllisyyden ja toimivallan vahvistamiseksi (esimerkiksi että toimit yrityksen ylläpitäjänä). Emme täytä pyyntöä, joka paljastaisi perusteettomasti toisen henkilön tietoja.",
+    "email": "gdpr@curnext.app",
+    "formHint": "Voit myös valita \"GDPR / tietosuoja\" yhteydenottolomakkeessa osoitteessa /contact - aihe ohjataan samaan postilaatikkoon."
+  },
+  "retention": {
+    "title": "Säilytys",
+    "lead": "Säilytämme henkilötietoja vain niin kauan kuin kuvattuihin tarkoituksiin tarvitaan, mukaan lukien oikeudelliset, kirjanpidolliset ja tietoturvatarpeet.",
+    "items": [
+      {
+        "title": "Tili- ja palvelutiedot",
+        "body": "Säilytetään asiakassuhteen ajan sekä purkamiseen, riitojen käsittelyyn ja sopimuksen päättämiseen tarvittavan siirtymäkauden ajan, sitten poistetaan tai anonymisoidaan tuote- ja DPA-aikataulujen mukaan."
+      },
+      {
+        "title": "Markkinointiyhteystiedot",
+        "body": "Säilytetään, kunnes peruutat tilauksen tai vastustat, tai kunnes lista siivotaan rutiininomaisesti, ellei pidempää säilytystä tarvita estoja varten (jotta muistamme olla lähettämättä sinulle uudelleen)."
+      },
+      {
+        "title": "Tuki- ja myyntikirjeenvaihto",
+        "body": "Säilytetään pyynnön hoitamiseen ja kohtuulliseen liiketoimintakirjanpitoon tarvittavan ajan, sitten vähennetään tai poistetaan sisäisten aikataulujen mukaan."
+      },
+      {
+        "title": "Rekrytointi",
+        "body": "Hakemukset säilytetään rekrytointiprosessin ja rajoitetun jälkijakson ajan (tai pidempään suostumuksellasi tulevia rooleja varten), sitten poistetaan tai arkistoidaan rajoitetulla pääsyllä."
+      },
+      {
+        "title": "Tietoturva- ja GDPR-auditointitapahtumat",
+        "body": "Tietoturvalokeja ja GDPR-suuntautuneita auditointitapahtumia voidaan säilyttää pidempään, joskus append-only- tai pseudonymisoidussa muodossa, poikkeamien tutkintaan ja vastuullisuuden osoittamiseen. Katso Audit Trail."
+      },
+      {
+        "title": "Varmuuskopiot",
+        "body": "Salatut varmuuskopiot noudattavat pyörivää säilytystä. Poisto live-järjestelmistä voi tulla voimaan varmuuskopioissa vasta varmuuskopiosyklin päätyttyä."
+      }
+    ]
+  },
+  "transfers": {
+    "title": "Kansainväliset siirrot",
+    "lead": "Alustan keskeinen sovellus- ja tietokantahosting on suunniteltu Saksan / Frankfurtin (EU) ympärille. Nykyisiin kaupallisiin markkinoihin kuuluvat Suomi, Kanada ja Kamerun - myynti markkinaan ei ole sama kuin paikallisen tuotantoalueen hostaus siellä.",
+    "bullets": [
+      "ETA / EU -käsittely on oletus Client Datalle tuotantopinossa, ellei kirjallinen yritysasuinlisäys toisin sano.",
+      "Valtuutetun CurNext-henkilöstön tai mahdollisten ETA:n ulkopuolisten alikäsittelijöiden pääsyä hallitaan siirtotyökaluilla, kuten Euroopan komission vakiosopimuslausekkeilla (SCC), soveltuvilla riittävyyspäätöksillä sekä DPA:ssa kuvatuilla sopimus- / teknisillä turvatoimilla.",
+      "Kanadalaiset ja kamerunilaiset asiakkaat käyttävät EU:ssa hostattua Client Dataa ohjeiden mukaan; Client säilyy rekisterinpitäjänä kyseiselle Client Datalle.",
+      "Jotkin tuki-, sähköposti- tai tekoälyavustajatoimittajat voivat käsitellä rajoitetusti henkilötietoja ETA:n ulkopuolella - katso julkinen alikäsittelijälista DPA-sivulla."
+    ],
+    "note": "Alikäsittelijöiden, sijaintien ja siirtomekanismien tiedot ylläpidetään tietojenkäsittelysopimussivulla ja voivat muuttua siellä kuvatulla ilmoitusmenettelyllä."
+  },
+  "subprocessors": {
+    "title": "Käsittelijät ja alikäsittelijät",
+    "lead": "Kun CurNext toimii käsittelijänä, käytämme alikäsittelijöitä kirjallisilla ehdoilla, jotka asettavat art. 28:n mukaisia tietosuojavelvoitteita. Kun CurNext toimii rekisterinpitäjänä, käytämme käsittelijöitä asianmukaisilla sopimuksilla.",
+    "bullets": [
+      "Hostaus- ja tietokantainfrastruktuuri EU:ssa (Saksa / Frankfurt -suuntaus).",
+      "Valinnainen objektitallennus EU-toimivaltaoptioilla, kun käytössä.",
+      "Sähköpostitoimitus-, virheseuranta- ja havainnoitavuustoimittajat julkisesti listattuina.",
+      "Avustavat tekoälyominaisuudet (esimerkiksi Gemini tai Groq, kun käytössä) tuote- ja sopimusohjauksella - betonin kypsymisennuste käyttää sisäistä TensorFlow.js -mallia eikä ole sama kuin chat-avustus."
+    ],
+    "cta": "Tarkastele nykyistä julkista alikäsittelijäyhteenvetoa",
+    "href": "/data/data-processing-agreement"
+  },
+  "security": {
+    "title": "Tietoturvatoimenpiteet",
+    "lead": "Tietoturva on osa GDPR-vastuullisuutta (art. 32). CurNextin julkisesti kuvattu asenne sisältää:",
+    "bullets": [
+      "Tuotetason käyttöoikeus vain kutsulla",
+      "Roolipohjainen käyttöoikeuksien hallinta (RBAC) ja etuoikeutettu MFA",
+      "Salaus siirrossa; salaus levossa ydintietovarastoille",
+      "Reunasuojaukset kuten WAF ja rate limiting",
+      "Kenttä- ja rakennusyhteyden hallinta (mukaan lukien LoRaWAN AES-128 -teemat, WireGuard / MQTT mTLS CN-BC:lle kuten Tietoturva-sivulla dokumentoitu)",
+      "Allekirjoitetut OTA-käytännöt firmwaren osalta tarvittaessa",
+      "GDPR-suuntautuneet auditointi-, vienti- ja poistopolut tuotesuunnittelussa"
+    ],
+    "note": "Arkkitehtuurin yksityiskohdat ovat Tietoturva-sivulla. Ilmoita haavoittuvuudet security@curnext.app:iin koordinoidulla ilmoituksella - älä lähetä exploit-yksityiskohtia osoitteisiin support@ tai gdpr@.",
+    "href": "/security",
+    "cta": "Lue tietoturva-arkkitehtuuri"
+  },
+  "breach": {
+    "title": "Henkilötietojen tietoturvaloukkaukset",
+    "lead": "CurNext ylläpitää prosesseja henkilötietojen tietoturvaloukkausten havaitsemiseen, arviointiin ja niihin vastaamiseen.",
+    "items": [
+      {
+        "title": "Kun CurNext on rekisterinpitäjä",
+        "body": "Arvioimme riskin oikeuksille ja vapauksille ja ilmoitamme toimivaltaiselle valvontaviranomaiselle ilman aiheetonta viivytystä ja, kun mahdollista, 72 tunnin kuluessa siitä, kun olemme saaneet tietää art. 33:n mukaista ilmoitusta edellyttävästä loukkauksesta. Ilmoitamme asianomaisille henkilöille, kun art. 34 sitä edellyttää."
+      },
+      {
+        "title": "Kun CurNext on käsittelijä",
+        "body": "Ilmoitamme Clientille ilman aiheetonta viivytystä saatuaamme tietää Client Dataa koskevasta henkilötietojen tietoturvaloukkauksesta ja avustamme Clientia sen omia velvoitteita varten tarvittavilla tiedoilla. Yrityssopimukset voivat asettaa tiukemman tavoitteen (esimerkiksi 24 tuntia Clientin tietoturvayhteyshenkilölle)."
+      },
+      {
+        "title": "Mitä sisällyttää, jos ilmoitat poikkeamasta",
+        "body": "Havaintoaika, vaikutetut järjestelmät, onko henkilötietoja mukana ja miten sinuun saa yhteyden. Käytä security@curnext.app:ia epäiltyihin loukkauksiin ja haavoittuvuusilmoituksiin."
+      }
+    ]
+  },
+  "cookies": {
+    "title": "Evästeet, markkinointi ja tekoälyavustajat",
+    "lead": "Ei-välttämättömät evästeet ja vastaavat teknologiat käsitellään evästekäytäntömme ja suostumustyökalujen mukaisesti tarvittaessa. Markkinointisähköposteissa on peruutusohjaus.",
+    "bullets": [
+      "Välttämättömät evästeet tukevat tietoturvaa, kuormanjakoa ja sivuston toimittamiseen tarvittavaa preferenssien tallennusta.",
+      "Analytiikka- tai markkinointitagit, jos käytössä, toimivat vain pätevällä oikeusperusteella (usein suostumus ETA:ssa).",
+      "Tietopankin tekoälychat edellyttää nimenomaista GDPR-suostumusta tuotevirrassa ennen kysymyksesi käsittelyä.",
+      "Voit peruuttaa suostumuksen valinnaisiin työkaluihin menettämättä pääsyä keskeisiin tietosivuihin, vaikka jotkin ominaisuudet voivat olla poissa käytöstä."
+    ],
+    "cookieHref": "/data/cookie-policy",
+    "cookieCta": "Evästekäytäntö",
+    "privacyHref": "/data/privacy-policy",
+    "privacyCta": "Tietosuojaseloste"
+  },
+  "children": {
+    "title": "Lapset ja ikäraja",
+    "lead": "CurNext-palvelut on suunniteltu ammattimaiseen rakentamiseen ja B2B-käyttöön. Niitä ei ole suunnattu lapsille. CurNextin sisäisten käytäntöjen mukaan emme ota käyttöön, kutsu emmekä rekisteröi alle 18-vuotiaita tuotteen käyttäjiä. Emme myöskään tietoisesti kerää alle 16-vuotiaiden lasten henkilötietoja CurNext-tuotteisiin. Jos uskot, että alle 18-vuotias on otettu käyttöön tai että lapsi on antanut henkilötietoja, ota yhteyttä gdpr@curnext.app:iin, niin ryhdymme asianmukaisiin toimiin."
+  },
+  "automated": {
+    "title": "Automaattinen päätöksenteko ja profilointi",
+    "lead": "CurNext tarjoaa valmiusennusteita ja avustettuja näkemyksiä rakennuspinnoille (esimerkiksi betonin kypsymisaikataulut). Nämä tulokset tukevat ammatillista harkintaa; niitä ei ole tarkoitettu pelkästään automatisoiduiksi päätöksiksi, joilla on oikeudellisia tai vastaavia merkittäviä vaikutuksia yksilöön art. 22:n mukaan.",
+    "bullets": [
+      "Työmaan valmiussignaalit koskevat materiaaleja ja ympäristöjä, ei luonnollisen henkilön luottokelpoisuutta tai työllistämistä.",
+      "Tilin tietoturva voi käyttää automatisoituja riskisignaaleja (esimerkiksi rate limit tai poikkeamien havaitseminen) palvelun suojaamiseen.",
+      "Jos otamme käyttöön ominaisuuksia, jotka tekevät pelkästään automatisoituja päätöksiä, joilla on oikeudellisia tai vastaavia merkittäviä vaikutuksia sinuun, annamme olennaiset tiedot ja tavan saada ihmisen tekemä tarkastelu tarvittaessa."
+    ]
+  },
+  "authority": {
+    "title": "Valvontaviranomainen",
+    "lead": "Rajoittamatta muita hallinnollisia tai oikeudellisia oikeussuojakeinoja voit tehdä valituksen valvontaviranomaiselle. CurNextille suomalaisena rekisterinpitäjänä johtava valvontaviranomaiskonteksti on tyypillisesti:",
+    "name": "Tietosuojavaltuutetun toimisto (Office of the Data Protection Ombudsman)",
+    "url": "https://tietosuoja.fi/en",
+    "urlLabel": "tietosuoja.fi",
+    "note": "Voit myös ottaa yhteyttä asuin- tai työskentelymaasi viranomaiseen, jos olet ETA-alueella. Suosittelemme ottamaan ensin yhteyttä gdpr@curnext.app:iin, jotta voimme yrittää ratkaista huolet suoraan."
+  },
+  "updates": {
+    "title": "Muutokset näihin käytäntöihin",
+    "lead": "Voimme päivittää tätä sivua tuote-, oikeudellisten tai organisaatiomuutosten vuoksi. Yläreunan \"Päivitetty\"-päivämäärä muuttuu, kun julkaisemme olennaisia tarkistuksia. Käsittelijäsuhteissa olennaiset alikäsittelijä- tai siirtomuutokset noudattavat DPA:n ilmoitusmenettelyä. Markkinointisivuston käytön jatkaminen päivityksen jälkeen merkitsee tietoisuutta päivitetystä julkisesta käytäntötekstistä; sopimusasiakkaita koskevat heidän sopimuksensa."
+  },
+  "related": [
+    {
+      "title": "Tietojenkäsittelysopimus",
+      "href": "/data/data-processing-agreement"
+    },
+    {
+      "title": "Tietosuojaseloste",
+      "href": "/data/privacy-policy"
+    },
+    {
+      "title": "Evästekäytäntö",
+      "href": "/data/cookie-policy"
+    },
+    {
+      "title": "Tietoturva",
+      "href": "/security"
+    },
+    {
+      "title": "Vaatimustenmukaisuus",
+      "href": "/compliance"
+    },
+    {
+      "title": "Audit Trail",
+      "href": "/audit-trail"
+    },
+    {
+      "title": "Yhteystiedot",
+      "href": "/contact"
+    }
+  ],
+  "controllerRegisteredIn": "Rekisteröity {place}",
+  "controllerBusinessId": "Y-tunnus {id}",
+  "controllerWebsite": "Verkkosivusto: {url}"
+}

@@ -1,0 +1,344 @@
+{
+  "page": {
+    "title": "Personuppgiftsbiträdesavtal",
+    "description": "CurNext tillhandahåller ett personuppgiftsbiträdesavtal för kunder som behöver biträdesvillkor när CurNext behandlar personuppgifter för Kundens användning av plattformen - inklusive kunder i Finland (EU), Kanada och Kamerun.",
+    "leadNote": "Denna sida är en upphandlingsinriktad sammanfattning i linje med praxis enligt GDPR art. 28 (roller, omfattning, TOMs, offentliga underbiträden, överförings- och underrättelsespråk). Ett undertecknat DPA är ett rättsligt instrument - slutlig klausulformulering bör granskas av juridiskt ombud. Behandla inte denna sida som den undertecknade avtalstexten.",
+    "supportLine": "CurNext agerar som personuppgiftsbiträde för Kunddata som instrueras via Tjänsterna. Plattformens kärnapplikation och databashosting finns i Tyskland / Frankfurt. Kommersiella marknader i dag: Finland, Kanada och Kamerun. Företagsprogram verkställer DPA inom 30 dagar efter schemaunderskrift."
+  },
+  "dpaAudience": {
+    "title": "Vem detta riktar sig till",
+    "lead": "B2B-kunder, upphandling och juridiska / säkerhetsgranskare som behöver biträdesvillkor för CurNext SaaS och platsövervakning.",
+    "bullets": [
+      "EU-kunder som behöver villkor enligt GDPR art. 28 (Finland och andra EES-Kunder)",
+      "Kanadensiska kunder som behöver transparens för leverantörsgranskningar enligt PIPEDA / Quebecs lag 25",
+      "Kamerunska kunder som behöver en tydlig uppdelning personuppgiftsansvarig / biträde och en karta över underbiträden",
+      "IT- och säkerhetsgranskare som kartlägger underbiträden, AI-leverantörer och hostingregioner"
+    ]
+  },
+  "dpaBreach": {
+    "title": "Incidentanmälan och bistånd",
+    "rows": [
+      {
+        "context": "Standardavtal",
+        "target": "Utan oskäligt dröjsmål efter bekräftad personuppgiftsincident som påverkar Kunddata"
+      },
+      {
+        "context": "Företag",
+        "target": "Inom 24 timmar till Kundens utsedda säkerhetskontakt efter bekräftelse av en personuppgiftsincident eller företagsrelaterad säkerhetsincident som påverkar Kunddata"
+      },
+      {
+        "context": "Regulatoriskt",
+        "target": "GDPR art. 33-väg (72 h till myndighet där tillämpligt) - Kundens/personuppgiftsansvariges skyldigheter kan skilja sig mellan marknader (EU, Kanada, Kamerun)"
+      }
+    ],
+    "assistance": [
+      "Åtkomst / export (plattformens exportverktyg + supportkanal)",
+      "Rättelse (konto- / administratörsverktyg)",
+      "Radering / begränsning (support + avtalsprocess; revisionsloggar kan vara endast tillägg eller pseudonymiserade enligt design)",
+      "Dataportabilitet (maskinläsbar export där tillgängligt)"
+    ],
+    "note": "Kunden förblir den primära kontaktpunkten för de flesta registrerades begäranden om Kundkontrollerade data på varje verksamhetsmarknad.",
+    "securityEmail": "security@curnext.app"
+  },
+  "dpaExecute": {
+    "title": "Hur DPA verkställs",
+    "lead": "Standardvillkor: parterna verkställer ett DPA på begäran när Leverantören behandlar personuppgifter för Kundens räkning. Företagsschema: verkställ Leverantörens DPA inom trettio (30) dagar efter Schemaunderskrift (om inte ett befintligt DPA redan gäller).",
+    "bullets": [
+      "Begär det verkställbara DPA från legal@curnext.app eller via Contact (Kunder i Finland, Kanada och Kamerun välkomna)",
+      "Säkerhetsöversikt och aktuell underbiträdeslista tillgänglig på begäran; väsentliga ändringar: 30 dagars företagsförhandsmeddelande",
+      "Tillämplig lag för kommersiella avtal: Finlands lagar; domstolar i Helsingfors, Finland (med förbehåll för tvingande skydd) - stäm av slutlig lagvalsklausul i DPA med juridiskt ombud"
+    ],
+    "legalEmail": "legal@curnext.app",
+    "supportEmail": "support@curnext.app"
+  },
+  "dpaHosting": {
+    "title": "Var behandlingen sker",
+    "lead": "Kärnapplikationens beräkning körs på Hetzner i Tyskland. Hanterad PostgreSQL och Auth körs på Supabase i Frankfurt, Tyskland. Kunder i Kanada och Kamerun använder samma EU-produktionsstack för Kunddata om inte ett företagsaddendum anger annat."
+  },
+  "dpaInstructions": {
+    "title": "Instruktioner och Kundens ansvar",
+    "bullets": [
+      "Kunden instruerar behandling via plattformens UI, API:er, avtal och skriftliga supportförfrågningar",
+      "Kunden ansvarar för rättslig grund, information till registrerade och svar på registrerades begäranden för data Kunden kontrollerar på sin marknad (EU, Kanada, Kamerun eller annan)",
+      "Kunden hanterar användarinbjudningar och RBAC inom sin tenant",
+      "Plattformen stöder export av personuppgifter för den inloggade användaren (profil, medlemskap, preferenser). En fullständig självbetjäningsportal för radering hävdas inte här förrän den levererats - radering följer support och avtalsprocess"
+    ]
+  },
+  "dpaMarkets": {
+    "title": "Försäljningsmarknader vs var data hostas",
+    "lead": "CurNext säljer till Finland, Kanada och Kamerun. Plattformens Kunddata för dessa marknader behandlas på samma EU-förankrade produktionsstack om inte ett skriftligt företagsaddendum om residens anger annat. Att sälja till ett land är inte samma sak som att hosta en lokal produktionsregion där.",
+    "rows": [
+      {
+        "market": "Finland (EU)",
+        "commercial": "Verksamhetsmarknad",
+        "hosting": "Kärnapp + databas i Tyskland / Frankfurt; GDPR gäller som EU-behandling",
+        "frameworks": "GDPR; finsk tillsynsmyndighet där tillämpligt"
+      },
+      {
+        "market": "Kanada",
+        "commercial": "Verksamhetsmarknad",
+        "hosting": "Samma EU-produktionsstack - Kunddata hostas i EU och nås av kanadensiska användare/administratörer enligt instruktion",
+        "frameworks": "PIPEDA och provinsiella regler (inklusive Quebecs lag 25 där tillämpligt) - Kunden förblir personuppgiftsansvarig för Kunddata; överföringar dokumenteras nedan"
+      },
+      {
+        "market": "Kamerun",
+        "commercial": "Verksamhetsmarknad",
+        "hosting": "Samma EU-produktionsstack - Kunddata hostas i EU och nås av kamerunska användare/administratörer enligt instruktion",
+        "frameworks": "Lokala dataskyddsskyldigheter där tillämpligt - Kunden förblir personuppgiftsansvarig för Kunddata; överföringar dokumenteras nedan"
+      }
+    ],
+    "honesty": "CurNext annonserar för närvarande inte separata produktionsregioner i Kanada eller Kamerun. Edge-CDN, e-postleverans, betalningar, AI-API:er och observabilitet kan behandla begränsade data utanför Tyskland - se underbiträden."
+  },
+  "dpaRelated": [
+    {
+      "title": "Integritetspolicy",
+      "href": "/data/privacy-policy"
+    },
+    {
+      "title": "GDPR-policyer",
+      "href": "/data/gdpr"
+    },
+    {
+      "title": "Säkerhetspolicy",
+      "href": "/data/security-policy"
+    },
+    {
+      "title": "Användarvillkor",
+      "href": "/data/terms-of-service"
+    },
+    {
+      "title": "Säkerhetsarkitektur",
+      "href": "/security"
+    },
+    {
+      "title": "Datacenter",
+      "href": "/datacenters"
+    },
+    {
+      "title": "Prissättningsmarknader",
+      "href": "/pricing"
+    }
+  ],
+  "dpaRoles": {
+    "title": "Parter och roller",
+    "lead": "När CurNext behandlar personuppgifter för Kundens räkning är CurNext personuppgiftsbiträde och Kunden förblir personuppgiftsansvarig för den Kunddata.",
+    "rows": [
+      {
+        "role": "Leverantör / Personuppgiftsbiträde",
+        "party": "CurNext, Helsingfors, Finland",
+        "note": "Behandlar personuppgifter enligt Kundens instruktioner för att leverera Tjänsterna"
+      },
+      {
+        "role": "Kund / Personuppgiftsansvarig",
+        "party": "Kundorganisation (Finland, Kanada, Kamerun eller annan avtalad Kund)",
+        "note": "Bestämmer ändamål och medel för personuppgifter som den instruerar CurNext att behandla"
+      },
+      {
+        "role": "Registrerade",
+        "party": "Vanligtvis Kundens anställda, entreprenörer, inbjudna och platskontakter",
+        "note": "B2B-plattformsanvändare endast på inbjudan - inte en B2C-konsumentapp-publik"
+      }
+    ],
+    "honesty": [
+      "CurNext kan också vara personuppgiftsansvarig för eget konto, fakturering, HR, säkerhetsloggar för sina system och marknadsföringsleads - se Integritetspolicyn.",
+      "Läs inte denna sida som att « CurNext alltid bara är biträde »."
+    ]
+  },
+  "dpaScope": {
+    "title": "Vad vi behandlar",
+    "lead": "Art och ändamål: platsövervakning och beredskap för bygg och fastigheter - enhetstelemetri, BIM-/platskonfiguration, instrumentpaneler, larm, efterlevnadsbevis, teamåtkomst, API:er/webhooks, AI-assisterade funktioner när aktiverade, och support.",
+    "categories": [
+      {
+        "category": "Konto / identitet",
+        "examples": "Namn, arbets-e-post, roll, organisationsmedlemskap, inbjudningsstatus"
+      },
+      {
+        "category": "Autentiseringskontext",
+        "examples": "Sessions- och MFA-status (inte lösenord - hanterad autentisering)"
+      },
+      {
+        "category": "Projekt- / platsmetadata",
+        "examples": "Projektnamn, byggnadsadresser Kunden anger, vånings- och rumsetiketter"
+      },
+      {
+        "category": "Operativt innehåll",
+        "examples": "Larmmottagare, ärenden, uppladdade ritningar/BIM-filer, anteckningar"
+      },
+      {
+        "category": "Enhet / telemetri",
+        "examples": "Sensoravläsningar, enhets-ID:n, beredskapspoäng (i regel inte installatörs-PII om inte Kunden lägger till det)"
+      },
+      {
+        "category": "AI-funktionskontext",
+        "examples": "Prompter och kontext som Kunden eller Tjänsterna skickar till AI-funktioner (till exempel beredskapshjälp) - minimerade och används inte för att träna CurNext-modeller utanför produktbehov"
+      },
+      {
+        "category": "Revision / säkerhet",
+        "examples": "Åtkomstloggar, behörighetsnekanden, GDPR-revisionshändelser (ID:n föredras; e-postadress maskeras i loggar)"
+      }
+    ],
+    "specialCategory": "CurNext är inte utformat för att behandla särskilda kategorier av uppgifter (till exempel hälsa eller biometri för identifiering) som kärnfunktion. Om Kunden laddar upp sådana uppgifter krävs uttryckliga skriftliga instruktioner.",
+    "duration": "Behandlingen fortsätter under Tjänsternas / prenumerationens löptid, därefter följer återlämnande eller radering DPA och uppsägningsklausuler.",
+    "minimization": [
+      "Enhetstelemetri bör utesluta installatörs-PII om det inte krävs",
+      "Loggar får inte innehålla lösenord, JWT:er, API-nycklar eller hela e-postmeddelanden",
+      "AI-funktioner bör få den minsta kontext som behövs för uppgiften",
+      "Leverantören kommer inte att behandla Kunddata för orelaterade ändamål (till exempel försäljning av personuppgifter)"
+    ]
+  },
+  "dpaSubprocessors": {
+    "title": "Underbiträden",
+    "lastUpdated": "9 augusti 2026",
+    "lead": "Offentlig lista över tredje parter som kan behandla Kundens personuppgifter för att leverera Tjänsterna. Branschpraxis är en tabell med ändamål, datakategorier och plats. Företagsvillkor: väsentliga nya underbiträden får minst trettio (30) dagars förhandsmeddelande; Kunden kan invända på skäliga dataskyddsskäl. Prenumerera på ändringar via legal@curnext.app.",
+    "rows": [
+      {
+        "name": "Hetzner Online GmbH",
+        "purpose": "Applikationshosting (Docker-originer bakom lastbalanserare)",
+        "dataCategories": "Applikationsdata, kontoidentifierare i app-arbetsbelastningar",
+        "location": "Tyskland",
+        "privacyUrl": "https://www.hetzner.com/legal/privacy-policy",
+        "group": "Infrastruktur"
+      },
+      {
+        "name": "Supabase, Inc.",
+        "purpose": "Hanterad PostgreSQL-databas och autentisering",
+        "dataCategories": "Konto, projekt, telemetrimetadata, autentiseringskontext",
+        "location": "Frankfurt, Tyskland (eu-central)",
+        "privacyUrl": "https://supabase.com/privacy",
+        "group": "Infrastruktur"
+      },
+      {
+        "name": "Cloudflare, Inc.",
+        "purpose": "DNS, TLS, WAF, CDN, Turnstile; valfri R2-objektlagring",
+        "dataCategories": "Anslutningsmetadata, formulärskyddssignaler; objekt/uppladdningar när R2 används",
+        "location": "Global edge; R2 EU-jurisdiktionsalternativ för objekt / revisionsarkiv",
+        "privacyUrl": "https://www.cloudflare.com/privacypolicy/",
+        "group": "Infrastruktur"
+      },
+      {
+        "name": "SMTP2GO",
+        "purpose": "Transaktions-e-post (inbjudningar, lösenordsflöden, aviseringar)",
+        "dataCategories": "E-postadress, namn, meddelandeinnehåll som krävs för leverans",
+        "location": "EU-datacenter (Amsterdam) när CurNext-kontot är EU-hostat; mottagarleverans kan nå MTA:er världen över",
+        "privacyUrl": "https://www.smtp2go.com/privacy/",
+        "group": "E-post"
+      },
+      {
+        "name": "Stripe, Inc.",
+        "purpose": "Betalningar och fakturering när det används",
+        "dataCategories": "Faktureringskontakt och betalningsmetadata enligt Stripes villkor",
+        "location": "Enligt Stripes villkor (ofta US/EES-behandling)",
+        "privacyUrl": "https://stripe.com/privacy",
+        "group": "Betalningar"
+      },
+      {
+        "name": "Google LLC (Gemini / Google AI)",
+        "purpose": "AI-funktioner i produkten när Gemini är aktiverat",
+        "dataCategories": "Prompter och kontext som krävs för AI-funktionen",
+        "location": "Enligt Google Cloud / Gemini-villkor för personuppgiftsbehandling",
+        "privacyUrl": "https://policies.google.com/privacy",
+        "group": "AI"
+      },
+      {
+        "name": "Groq, Inc.",
+        "purpose": "Inferens för den offentliga kunskapsbasassistenten på curnext.app (efter användarens samtycke), och andra produkt-AI-funktioner när Groq är aktiverat",
+        "dataCategories": "Prompter, chattfrågor och kort samtalskontext som krävs för funktionen",
+        "location": "Enligt leverantörens villkor för personuppgiftsbehandling / integritet",
+        "privacyUrl": "https://groq.com/privacy-policy/",
+        "group": "AI"
+      },
+      {
+        "name": "Signicat AS",
+        "purpose": "Elektronisk identitet / eID-flöden när de används för stark autentisering",
+        "dataCategories": "Identitetsattribut som krävs för eID-transaktionen",
+        "location": "EES (Norge / EU-behandling enligt Signicat)",
+        "privacyUrl": "https://www.signicat.com/privacy",
+        "group": "Identitet"
+      },
+      {
+        "name": "Datadog, Inc.",
+        "purpose": "Applikations- och infrastrukturobservabilitet",
+        "dataCategories": "Driftloggar och mätvärden (hemligheter undantas enligt design)",
+        "location": "Enligt Datadog-sajt / region konfigurerad för CurNext",
+        "privacyUrl": "https://www.datadoghq.com/legal/privacy/",
+        "group": "Observabilitet"
+      },
+      {
+        "name": "Grafana Labs",
+        "purpose": "Mätvärdes- / instrumentpanelsobservabilitet när det används",
+        "dataCategories": "Driftmätvärden och relaterad metadata",
+        "location": "Enligt Grafana Cloud-region konfigurerad för CurNext",
+        "privacyUrl": "https://grafana.com/legal/privacy-policy/",
+        "group": "Observabilitet"
+      },
+      {
+        "name": "OpenWeather Ltd.",
+        "purpose": "Väderkontext för plats- / ytberedskapsfunktioner när det används",
+        "dataCategories": "Plats- eller platskoordinater Kunden konfigurerar; vädersvar",
+        "location": "Enligt OpenWeathers villkor",
+        "privacyUrl": "https://openweather.co.uk/privacy-policy",
+        "group": "Uppgifter"
+      }
+    ],
+    "honesty": "Kärnapp + databas för plattformens Kunddata: Tyskland / Frankfurt. AI, e-postleverans, betalningar, edge-CDN och observabilitet kan behandla begränsade personuppgifter utanför Tyskland. Hårdvaru- / tillverkningspartners (till exempel Semtech, Sensirion, JLCPCB) listas inte som underbiträden för personuppgifter om de inte tar emot Kundens personuppgifter."
+  },
+  "dpaToms": {
+    "title": "Tekniska och organisatoriska åtgärder",
+    "lead": "Endast översikt på hög nivå. Se Säkerhetspolicy och Säkerhetssidan för arkitekturdetaljer. CurNext hävdar inte ISO 27001- eller SOC 2-certifiering för sig själv på denna sida.",
+    "rows": [
+      {
+        "control": "Åtkomstkontroll",
+        "summary": "Endast inbjudan; RBAC; MFA för privilegierade / OWNER-roller"
+      },
+      {
+        "control": "Överföring",
+        "summary": "HTTPS / TLS; fältupplänk WireGuard + MQTT mTLS (broker inte offentlig)"
+      },
+      {
+        "control": "I vila",
+        "summary": "Kryptering av hanterad DB; objektlagringskryptering när det används"
+      },
+      {
+        "control": "Tenantisolering",
+        "summary": "Organisations- / projektavgränsning; RLS där tillämpligt"
+      },
+      {
+        "control": "Loggning / revision",
+        "summary": "Strukturerade GDPR-orienterade revisionshändelser; hemligheter loggas inte"
+      },
+      {
+        "control": "Säkerhetskopior",
+        "summary": "Krypterade säkerhetskopior med återställningstest i säkerhetsprogrammet"
+      },
+      {
+        "control": "Edge-skydd",
+        "summary": "Cloudflare WAF / TLS framför originer"
+      },
+      {
+        "control": "AI-kontroller",
+        "summary": "Intern härdningsprediktion (TensorFlow.js) i produkten; Gemini och Groq endast för aktiverade assisterade funktioner; minimera promptkontext; ingen försäljning av Kunddata"
+      },
+      {
+        "control": "Incidentväg",
+        "summary": "GDPR art. 33-orienterad underrättelse; företagsmål 24 h till Kundens säkerhetskontakt"
+      },
+      {
+        "control": "Sårbarhet / CRA-teman",
+        "summary": "Signerad OTA, SBOM-kadens, underrättelse via security@curnext.app"
+      }
+    ]
+  },
+  "dpaTransfers": {
+    "title": "Internationella överföringar",
+    "bullets": [
+      "Primär lagring och applikationsbehandling för Kunddata är utformad kring EU-hosting (Tyskland / Frankfurt), även för Kunder i Kanada och Kamerun",
+      "Åtkomst av Kundens användare i Kanada eller Kamerun är ett internationellt överförings- / fjärråtkomstmönster - Kunden förblir personuppgiftsansvarig för hur den bjuder in användare på dessa marknader",
+      "När ett underbiträde överför eller får åtkomst till data utanför EES/Storbritannien (till exempel Gemini, Groq, Stripe eller Cloudflare edge) använder Leverantören en lämplig överföringsmekanism (till exempel EU SCC eller ett adekvansbeslut) enligt lag",
+      "Kanadensiska Kunder: Leverantören stöder PIPEDA- / lag 25-leverantörsgranskning med denna lista, TOMs och rådgivargodkända DPA-bilagor - lokal hosting i Kanada hävdas inte här",
+      "Kamerunska Kunder: Leverantören stöder lokal due diligence med denna lista och DPA - lokal hosting i Kamerun hävdas inte här",
+      "SCC-bilagor och överföringsbedömningar bifogas i rådgivargodkända DPA-paket"
+    ]
+  },
+  "legalEyebrow": "Juridik",
+  "translationNote": "Översättningar tillhandahålls för bekvämlighet. När ett undertecknat avtal finns gäller det engelska instrumentet."
+}

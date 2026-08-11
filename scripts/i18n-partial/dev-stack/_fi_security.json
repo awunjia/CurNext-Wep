@@ -1,0 +1,341 @@
+{
+  "title": "Tietoturva-arkkitehtuuri",
+  "description": "Teollisuustason kontrollit CurNextin viisikerroksisessa pinossa - kenttäantureista pilveen - suunniteltu teolliseen IoT:hen, rakennusten OT:hen ja EU:n tietosuojan odotuksiin.",
+  "leadNote": "Tämä sivu tiivistää, miten CurNext suunnittelee luottamuksellisuuden, eheyden, aitouden, saatavuuden, vastuullisuuden ja yksityisyyden. Se ei ole julkinen runbook, tilasivu tai sertifikaattivarasto.",
+  "objectivesTitle": "Tietoturvatavoitteet",
+  "objectives": [
+    {
+      "title": "Luottamuksellisuus",
+      "body": "Telemetria ja tunnistetiedot eivät ole luettavissa siirrossa tai levossa ilman valtuutusta."
+    },
+    {
+      "title": "Eheys",
+      "body": "Firmware, konfiguraatio ja mittaukset on suojattu havaitsemattomalta peukaloinnilta."
+    },
+    {
+      "title": "Aitous",
+      "body": "Jokainen laite ja palvelu todistaa identiteettinsä ennen kuin luottamus myönnetään."
+    },
+    {
+      "title": "Saatavuus",
+      "body": "Kestävyys katkoihin, uudelleenlähetyksiin ja tulvimiseen, hallitulla heikkenemisellä kun mahdollista."
+    },
+    {
+      "title": "Vastuullisuus",
+      "body": "Auditointipolku pääsylle, provisionoinnille, OTA:lle ja ylläpitotoimille."
+    },
+    {
+      "title": "Yksityisyys",
+      "body": "GDPR-suuntautunut henkilötietojen ja työmaadatan käsittely pilvikerroksessa."
+    }
+  ],
+  "standards": {
+    "title": "Standardit, joihin suunnittelemme",
+    "lead": "Kontrollit on kartoitettu laajasti käytettyihin teollisuus-, IoT- ja EU-kehyksiin. Standardin listaaminen tässä tarkoittaa suunnittelun linjausta - ei sitä, että CurNext on suorittanut jokaisen kolmannen osapuolen sertifioinnin kyseiselle kehykselle.",
+    "rows": [
+      {
+        "standard": "IEC 62443",
+        "scope": "Teolliset / rakennus-IoT-vyöhykkeet",
+        "note": "Vyöhyke- ja kanavamalli; tietoturvatasotavoitteet kerroksittain"
+      },
+      {
+        "standard": "NIST SP 800-82",
+        "scope": "ICS / rakennus-OT",
+        "note": "Segmentointi, valvonta, etäkäyttö WireGuardilla vain rakennuksen reunalla"
+      },
+      {
+        "standard": "NIST SP 800-213",
+        "scope": "IoT-laitteiden kyberturvallisuus",
+        "note": "Laitteen identiteetti, turvallinen päivitys ja konfiguraatio"
+      },
+      {
+        "standard": "ENISA IoT / OT",
+        "scope": "EU IoT -perusta",
+        "note": "Krypto, päivitykset ja minimaalinen hyökkäyspinta"
+      },
+      {
+        "standard": "EU CRA",
+        "scope": "Tuoteturvallisuuden elinkaari",
+        "note": "SBOM, haavoittuvuusilmoitukset, allekirjoitetut päivitykset"
+      },
+      {
+        "standard": "EU RED 3.3(d)",
+        "scope": "Radiotuotteiden kyberturvallisuus",
+        "note": "Turvallinen radio- ja päivityspolku kenttäsolmuille, CN-FG:lle ja CN-BC:lle"
+      },
+      {
+        "standard": "ISO 27001",
+        "scope": "Organisaation ISMS",
+        "note": "Pilven ja CurNext-toimintojen suunnittelutavoite - ei väitetä sertifioiduksi tässä"
+      },
+      {
+        "standard": "GDPR",
+        "scope": "Henkilötiedot",
+        "note": "Auditointiloki, pääsynhallinta, poisto- ja vientipolku"
+      },
+      {
+        "standard": "OWASP IoT Top 10",
+        "scope": "Laite- ja pilviongelmat",
+        "note": "Käsitellään kerroksittain kenttä- ja pilvikontrolleissa"
+      }
+    ]
+  },
+  "zones": {
+    "title": "Tietoturvavyöhykkeet ja kanavat",
+    "lead": "IEC 62443 -tyyliset vyöhykkeet erottavat kenttäradion, kerros-LAN:in, rakennuksen reunan ja pilven. Virtalähteellä ei ole datakanavaa.",
+    "zones": [
+      {
+        "id": "Z1",
+        "title": "Vyöhyke Z1 - L1-kenttäanturit",
+        "body": "Kenttäsolmut (CN-CC, CN-WD ja niihin liittyvät SKU:t). LoRaWAN MAC AES-128:lla, secure element avaimille, NFC asennukseen. Ei IP-pinoa solmussa."
+      },
+      {
+        "id": "Z2",
+        "title": "Vyöhyke Z2 - Kerros (CN-FG)",
+        "body": "Kerrosyhdyskäytävä tarkistaa kehykset, pysyy paikallisessa VLAN:issa eikä sillä ole pilveen näkyvää rajapintaa."
+      },
+      {
+        "id": "Z3",
+        "title": "Vyöhyke Z3 - Virta (CN-UPS)",
+        "body": "Syöttää kerros- ja rakennusreunan laitteita. Ei datakanavaa."
+      },
+      {
+        "id": "Z4",
+        "title": "Vyöhyke Z4 - Rakennuksen DMZ (CN-BC)",
+        "body": "Rakennusohjain: WireGuard-asiakas, MQTT-asiakas, OTA-orkestroija. Ulosmenotie matkapuhelinverkossa vain tunnelille ja broker-liikenteelle."
+      },
+      {
+        "id": "Z5",
+        "title": "Vyöhyke Z5 - CurNext Cloud (L5)",
+        "body": "Sovellus, hallittu tietokanta ja auth, yksityinen MQTT-broker, tekoäly ja objektivarasto reunasuojauksen takana."
+      }
+    ],
+    "conduits": [
+      {
+        "id": "C1",
+        "path": "L1 ↔ CN-FG",
+        "controls": "LoRaWAN MAC-kerroksen AES-128 (payload-salaus + MIC), OTAA, yksilölliset laiteavaimet secure elementissä, kehyslaskurit, uudelleenlähetysten hylkäys"
+      },
+      {
+        "id": "C2",
+        "path": "CN-FG ↔ CN-FG",
+        "controls": "Ethernet-daisy-chain vain kerros-VLAN:issa; ei Internet-reittiä"
+      },
+      {
+        "id": "C3",
+        "path": "CN-FG ↔ CN-BC",
+        "controls": "Ethernet-VLAN; rakennuksen palomuuri estää kerrosyhdyskäytäville reitin julkiseen Internetiin"
+      },
+      {
+        "id": "C4",
+        "path": "CN-BC ↔ L5",
+        "controls": "WireGuard sekä MQTT TLS 1.3:lla ja keskinäisellä TLS:llä; broker ei ole julkisessa Internetissä"
+      },
+      {
+        "id": "C5",
+        "path": "Installer ↔ L1",
+        "controls": "Vain NFC-napautus kryptografisella todisteella; QR-provisionointi pois käytöstä; tehdasdebug-rajapintoja ei jätetä auki kentällä"
+      }
+    ],
+    "wireguard": [
+      {
+        "layer": "L1-L2",
+        "role": "Ei WireGuardia"
+      },
+      {
+        "layer": "L3",
+        "role": "Ei WireGuardia"
+      },
+      {
+        "layer": "L4 CN-BC",
+        "role": "WireGuard-asiakas - rakennuksen tietoturvaraja"
+      },
+      {
+        "layer": "L5 Cloud",
+        "role": "WireGuard-hub - MQTT vain yksityisessä verkossa"
+      }
+    ]
+  },
+  "levels": {
+    "title": "IEC 62443 -tietoturvatasotavoitteet",
+    "lead": "Tavoitetietoturvatasot (SL-T) ohjaavat tuotesuunnittelua. Ne ovat suunnittelutavoitteita, eivät kolmannen osapuolen arviointituloksia.",
+    "rows": [
+      {
+        "component": "L1-anturisolmut",
+        "target": "SL 2 (tavoite SL 3)",
+        "rationale": "Valvomaton, pitkäikäinen, fyysinen pääsy mahdollinen"
+      },
+      {
+        "component": "CN-FG (L2)",
+        "target": "SL 2",
+        "rationale": "Kenttäyhdyskäytävä rakennustyömaalla"
+      },
+      {
+        "component": "CN-UPS (L3)",
+        "target": "SL 1",
+        "rationale": "Vain virta - ei datan käsittelyä"
+      },
+      {
+        "component": "CN-BC (L4)",
+        "target": "SL 3",
+        "rationale": "Rakennuksen tietoturvaraja, Internetiin näkyvä polku"
+      },
+      {
+        "component": "CurNext Cloud (L5)",
+        "target": "SL 3",
+        "rationale": "Monivuokralaisympäristö asiakastiedoilla"
+      }
+    ]
+  },
+  "layers": [
+    {
+      "id": "L1",
+      "title": "L1 - Kenttäanturit",
+      "lead": "Yksilöllinen laiteidentiteetti, LoRaWAN-ilmalinkin krypto, secure boot, allekirjoitettu OTA, peukaloinnin kestävä suunnittelu ja siirtymän tunnistus.",
+      "bullets": [
+        "Yksilöllinen juuriavain per anturi secure elementissä - ei koskaan jaeta laivastossa",
+        "Tarrat voivat näyttää julkisen sarjanumeron / DevEUI:n logistiikkaa varten - ei koskaan juuriavainta",
+        "LoRaWAN Class A (EU868): AES-128 payload-salaus ja MIC MAC-pinon kautta",
+        "Vain OTAA-join; kehyslaskurit ja uudelleenlähetysten hylkäys kerrosyhdyskäytävällä",
+        "Secure boot, allekirjoitettu firmware, anti-rollback, tuotantodebug lukittu",
+        "Peukaloinnin kestävä kenttäkotelo ja mittauspolku - fyysinen häirintä on havaittavissa ja raportoidaan",
+        "Siirtymän tunnistus, kun solmu siirretään pois määritetystä asennuspaikasta",
+        "Kenttäsidonta NFC-kryptografisella sidoksella - QR-sidonta pois päältä oletuksena"
+      ]
+    },
+    {
+      "id": "L2",
+      "title": "L2 - CN-FG-kerrosyhdyskäytävä",
+      "lead": "Luottamusankkuri ilmalinkille. Vahvistaa joinin, MIC:n ja laskurit ennen välitystä.",
+      "bullets": [
+        "Allekirjoitettu firmware secure bootilla ja secure element -identiteetillä",
+        "Ei oletus-Internet-reittiä; uplink vain CN-BC:lle kerros-VLAN:issa",
+        "OTA vain CN-BC:ltä",
+        "Join- ja vahvistustapahtumat säilytetään auditointilatausta varten",
+        "Palveluportit rajoitettu tuotantokuvissa"
+      ]
+    },
+    {
+      "id": "L3",
+      "title": "L3 - CN-UPS-virta",
+      "lead": "Vain virtapolku - ei datatasoa hallinta-VLAN:issa.",
+      "bullets": [
+        "Ei IP:itä eikä hallinta-API:a data-VLAN:issa",
+        "Lukitut kotelokäytännöt asennuksessa",
+        "Vikailmaisu pysyy paikallisena - ei verkko­vuotoa virtavioista"
+      ]
+    },
+    {
+      "id": "L4",
+      "title": "L4 - CN-BC-rakennusohjain",
+      "lead": "Rakennuksen tietoturvaraja kerros-LAN:in ja pilven välillä.",
+      "bullets": [
+        "WireGuard ulospäin rakennuksesta (CGNAT-turvallinen)",
+        "MQTT TLS 1.3:lla rakennuskohtaisilla asiakasserifikaateilla",
+        "Isäntäpalomuuri oletuksena deny; ei julkista SSH:ta, MQTT:tä tai API:a matkapuhelinverkossa",
+        "Ainoa OTA-polku L1/L2:lle: vahvista allekirjoitettu manifesti ja kuva, porrastettu käyttöönotto, raportoi tulos",
+        "Store-and-forward -telemetriapuskuri salattuna levossa; tyhjennys onnistuneen toimituksen jälkeen"
+      ]
+    },
+    {
+      "id": "L5",
+      "title": "L5 - CurNext Cloud",
+      "lead": "Monivuokraajasovellus ja data yksityisellä kenttätulolla.",
+      "bullets": [
+        "MQTT-broker tavoitettavissa vain yksityisessä verkossa - ei julkisessa Internetissä",
+        "Rakennuskohtainen valtuutus; estä vuokralaisten väliset wildcards",
+        "Käyttäjäauth lyhytikäisillä tokeneilla; MFA vaaditaan etuoikeutetuille rooleille",
+        "RBAC API-reiteillä; nopeusrajat ja reuna-WAF tuotannossa",
+        "Salaus siirrossa ja levossa; vuokralaiseristys kyselyissä",
+        "Salatut varmuuskopiot palautusharjoituksilla; GDPR-auditointi-, vienti- ja poistopolut",
+        "Salaisuudet secrets managerissa - ei lähdehallinnassa"
+      ]
+    }
+  ],
+  "crypto": {
+    "title": "Kryptografia lyhyesti",
+    "rows": [
+      {
+        "use": "Siirto (pilvi / MQTT)",
+        "algorithm": "TLS 1.3"
+      },
+      {
+        "use": "Rakennustunneli",
+        "algorithm": "WireGuard - Curve25519, ChaCha20-Poly1305"
+      },
+      {
+        "use": "Ilmalinkki (L1 ↔ CN-FG)",
+        "algorithm": "LoRaWAN MAC AES-128 -salaus + MIC"
+      },
+      {
+        "use": "Firmwaren allekirjoitus",
+        "algorithm": "ECDSA P-256"
+      },
+      {
+        "use": "Paikallinen telemetriapuskuri",
+        "algorithm": "AES-256-GCM levossa rakennuksen reunalla"
+      },
+      {
+        "use": "Auditoinnin eheys",
+        "algorithm": "SHA-256"
+      }
+    ],
+    "deprecated": "Ei käytössä: TLS 1.0/1.1, MD5, SHA-1 allekirjoituksiin tai staattiset ilmalinkin istuntoavaimet ilman OTAA:ta."
+  },
+  "provisioning": {
+    "title": "Provisionointi",
+    "factory": [
+      "Tehtaan HSM injektoi yksilöllisen laiteidentiteettiaineiston secure elementiin",
+      "Secure boot käytössä ennen lähetystä",
+      "NFC-personointi kryptografisella todisteella",
+      "Laite rekisteröidään valmistetuksi; avaimia ei koskaan lähetetä taulukoissa tai sähköpostissa"
+    ],
+    "field": [
+      "Asentajan NFC-napautus vahvistaa kryptografisen sidoksen",
+      "Pintasidonta edellyttää autentikoitua app-istuntoa ja laitesidontaoikeutta",
+      "QR-skannausta ei luoteta kryptografiseen sidontaan",
+      "Rakennuksen käyttöönotto myöntää WireGuard-peerin ja MQTT-asiakastunnukset asennuksessa"
+    ]
+  },
+  "ota": {
+    "title": "OTA ja ohjelmistotoimitusketju",
+    "lead": "Linjassa EU:n Cyber Resilience Act -odotusten kanssa allekirjoitetuille päivityksille, SBOM:lle ja koordinoidulle ilmoitukselle.",
+    "signing": [
+      "Offline-juuri-CA",
+      "OTA-allekirjoitus-CA",
+      "Allekirjoitetut L1-, CN-FG- ja CN-BC-kuvat / manifestit"
+    ],
+    "bullets": [
+      "Firmware-allekirjoitukset ECDSA P-256:lla (tai vahvempi RSA tarvittaessa)",
+      "Manifesti sisältää laiteluokan, version, minimiversion, hashin, allekirjoituksen ja peruutuksen aikakauden",
+      "Kompromittoitunut allekirjoitusmateriaali kierretään hätäpolulla",
+      "A/B-osiokset kenttälaitteissa ja rollback epäonnistuneessa käynnistyksessä",
+      "Porrastettu käyttöönotto ennen koko laivaston soveltamista",
+      "SBOM per firmware- ja pilvijulkaisu; jatkuva haavoittuvuusseuranta",
+      "Kriittiset tietoturvapäivitykset tavoite 14 päivässä; korkeat 30 päivässä"
+    ]
+  },
+  "verification": {
+    "title": "Miten varmistamme",
+    "lead": "Julkaisut ja vuotuinen toiminta noudattavat kiinteää tietoturvapalkkia ennen enterprise-käyttöä.",
+    "items": [
+      "Uhka­mallin päivitys vyöhykkeittäin merkittäville julkaisuille",
+      "Kerros­listat L1:lle, CN-FG:lle, CN-BC:lle ja pilvelle",
+      "Staattinen analyysi ja riippuvuusskannaus ilman kriittistä avointa CVE:tä julkaisussa",
+      "Allekirjoitettu artefakti ja SBOM liitetty julkaisuun",
+      "Vuotuinen ulkoinen penetraatiotesti sekä avaintenkierrätys- / varmuuskopion palautusharjoitukset",
+      "Sertifiointivalmius (IEC 62443 -arviointi, ISO 27001 ISMS, RED-tekninen tiedosto) seurataan erikseen - ei väitetä valmiiksi tällä sivulla"
+    ]
+  },
+  "contactSection": {
+    "title": "Ilmoittaminen ja yhteystiedot",
+    "lead": "Ilmoita haavoittuvuudet CurNextin tietoturvapostilaatikkoon. Yksityisyys- ja sijaintitiedoista käytä linkitettyjä käytäntöjä ja datacenters-sivua.",
+    "email": "security@curnext.app",
+    "bullets": [
+      "Koordinoitu ilmoitus: security@curnext.app",
+      "Oikeushenkilö: CurNext, Helsinki, Suomi",
+      "Tietosuojakäytäntö kattaa henkilötietojen käsittelyn",
+      "Datacenters-sivu kattaa EU-hostingin sijainnin (Saksa / Frankfurt)"
+    ]
+  }
+}

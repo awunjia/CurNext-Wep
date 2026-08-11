@@ -1,3 +1,5 @@
+"use client";
+
 import {
   BadgeCheck,
   CircuitBoard,
@@ -5,12 +7,14 @@ import {
   ScrollText,
   type LucideIcon,
 } from "lucide-react";
-
-import { whyChooseUs } from "@/config/site";
+import { useTranslations } from "next-intl";
 
 const reasonIcons: LucideIcon[] = [Gauge, BadgeCheck, CircuitBoard, ScrollText];
+const reasonKeys = ["1", "2", "3", "4"] as const;
 
 export function HomeWhyChooseUs() {
+  const t = useTranslations("home");
+
   return (
     <section
       aria-labelledby="why-choose-us-heading"
@@ -19,26 +23,22 @@ export function HomeWhyChooseUs() {
       <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20 md:py-24">
         <div className="max-w-2xl">
           <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-            Why choose us
+            {t("whyEyebrow")}
           </p>
           <h3
             id="why-choose-us-heading"
             className="text-xl font-semibold tracking-tight sm:text-2xl"
           >
-            Construction intelligence that pays for itself
+            {t("whyTitle")}
           </h3>
-          <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-            CurNext is built for go / no-go decisions on real sites - not another
-            chart to decipher.
-          </p>
         </div>
 
         <ol className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:mt-12 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-12">
-          {whyChooseUs.map((reason, index) => {
+          {reasonKeys.map((key, index) => {
             const Icon = reasonIcons[index] ?? Gauge;
 
             return (
-              <li key={reason.title} className="min-w-0">
+              <li key={key} className="min-w-0">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="bg-muted/60 text-foreground flex size-10 shrink-0 items-center justify-center rounded-xl border border-border/60 sm:size-11">
                     <Icon className="size-4 sm:size-5" aria-hidden />
@@ -48,10 +48,10 @@ export function HomeWhyChooseUs() {
                   </p>
                 </div>
                 <h3 className="text-lg font-semibold tracking-tight sm:text-xl">
-                  {reason.title}
+                  {t(`why${key}Title`)}
                 </h3>
                 <p className="text-muted-foreground mt-2.5 text-sm leading-relaxed sm:mt-3 sm:text-base">
-                  {reason.body}
+                  {t(`why${key}Body`)}
                 </p>
               </li>
             );

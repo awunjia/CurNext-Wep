@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 24" role="img" aria-label="TensorFlow.js">
+  <text
+    x="0"
+    y="17"
+    fill="#111111"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="14"
+    font-weight="650"
+    letter-spacing="-0.02em"
+  >
+    TensorFlow.js
+  </text>
+</svg>

@@ -215,3 +215,174 @@ model JobCandidate {
   @@map("job_candidates")
 }
 
+/// App users (product + blog interactions). Linked via supabaseId.
+model User {
+  id         String   @id
+  supabaseId String?  @unique
+  email      String
+  firstName  String?
+  lastName   String?
+  avatarUrl  String?
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  authoredPosts BlogPost[]    @relation("BlogPostAuthor")
+  reviewedPosts BlogPost[]    @relation("BlogPostReviewer")
+  comments      BlogComment[]
+  likes         BlogPostLike[]
+
+  @@map("users")
+}
+
+enum BlogPostStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  PUBLISHED
+  ARCHIVED
+}
+
+enum BlogCommentStatus {
+  VISIBLE
+  HIDDEN
+  DELETED
+}
+
+/// CMS blog posts (existing `blog_posts` table). Marketing site reads published posts.
+model BlogPost {
+  id                   String         @id
+  slug                 String         @unique
+  title                String
+  excerpt              String?
+  content              String
+  coverImageUrl        String?
+  coverImageAlt        String?
+  categoryId           String?
+  authorUserId         String?
+  readingTimeMinutes   Int?
+  status               BlogPostStatus
+  submittedForReviewAt DateTime?
+  reviewedByUserId     String?
+  reviewedAt           DateTime?
+  rejectionReason      String?
+  publishedAt          DateTime?
+  deletedAt            DateTime?
+  metaTitle            String?
+  metaDescription      String?
+  canonicalUrl         String?
+  ogTitle              String?
+  ogDescription        String?
+  ogImageUrl           String?
+  focusKeyword         String?
+  seoKeywords          String[]
+  robotsIndex          Boolean        @default(true)
+  robotsFollow         Boolean        @default(true)
+  structuredData       Json?
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
+
+  category BlogCategory?  @relation(fields: [categoryId], references: [id])
+  author   User?          @relation("BlogPostAuthor", fields: [authorUserId], references: [id])
+  reviewer User?          @relation("BlogPostReviewer", fields: [reviewedByUserId], references: [id])
+  tags     BlogPostTag[]
+  comments BlogComment[]
+  likes    BlogPostLike[]
+
+  @@index([status, publishedAt(sort: Desc)])
+  @@index([deletedAt])
+  @@index([categoryId])
+  @@index([authorUserId])
+  @@index([reviewedByUserId])
+  @@index([focusKeyword])
+  @@map("blog_posts")
+}
+
+model BlogCategory {
+  id          String    @id
+  slug        String    @unique
+  name        String
+  description String?
+  parentId    String?
+  sortOrder   Int       @default(0)
+  deletedAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  parent   BlogCategory?  @relation("BlogCategoryTree", fields: [parentId], references: [id])
+  children BlogCategory[] @relation("BlogCategoryTree")
+  posts    BlogPost[]
+
+  @@index([parentId])
+  @@index([sortOrder])
+  @@index([deletedAt])
+  @@map("blog_categories")
+}
+
+model BlogTag {
+  id        String    @id
+  slug      String    @unique
+  name      String
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  posts BlogPostTag[]
+
+  @@index([deletedAt])
+  @@map("blog_tags")
+}
+
+model BlogPostTag {
+  id        String   @id
+  postId    String
+  tagId     String
+  createdAt DateTime @default(now())
+
+  post BlogPost @relation(fields: [postId], references: [id])
+  tag  BlogTag  @relation(fields: [tagId], references: [id])
+
+  @@unique([postId, tagId])
+  @@index([tagId])
+  @@map("blog_post_tags")
+}
+
+model BlogComment {
+  id        String            @id @default(cuid())
+  postId    String
+  userId    String
+  parentId  String?
+  body      String
+  status    BlogCommentStatus @default(VISIBLE)
+  editedAt  DateTime?
+  deletedAt DateTime?
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  post    BlogPost      @relation(fields: [postId], references: [id])
+  user    User          @relation(fields: [userId], references: [id])
+  parent  BlogComment?  @relation("BlogCommentThread", fields: [parentId], references: [id])
+  replies BlogComment[] @relation("BlogCommentThread")
+
+  @@index([postId, createdAt])
+  @@index([userId])
+  @@index([parentId])
+  @@index([deletedAt])
+  @@map("blog_comments")
+}
+
+model BlogPostLike {
+  id        String   @id @default(cuid())
+  postId    String
+  userId    String
+  createdAt DateTime @default(now())
+
+  post BlogPost @relation(fields: [postId], references: [id])
+  user User     @relation(fields: [userId], references: [id])
+
+  @@unique([postId, userId])
+  @@index([userId])
+  @@map("blog_post_likes")
+}
+

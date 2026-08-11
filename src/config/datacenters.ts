@@ -51,7 +51,7 @@ export const datacentersTraffic = {
   ],
   hosts: [
     { host: "www.curnext.app", role: "Marketing" },
-    { host: "curnext.app", role: "Product SaaS" },
+    { host: "dash.curnext.app", role: "Product SaaS" },
     { host: "api.curnext.app", role: "API" },
   ],
   healthNote:
@@ -119,9 +119,9 @@ export const datacentersScale = {
 
 export const datacentersTrust = {
   title: "Privacy and contact",
-  lead: "CurNext Oy is registered in Helsinki, Finland. The platform is designed for EU operation with GDPR-oriented controls such as audit logging, RBAC, and invite-only access.",
+  lead: "CurNext is registered in Helsinki, Finland. The platform is designed for EU operation with GDPR-oriented controls such as audit logging, RBAC, and invite-only access.",
   bullets: [
-    "Legal entity: CurNext Oy, Helsinki, Finland",
+    "Legal entity: CurNext, Helsinki, Finland",
     "Core application and database for EU users: Germany / Frankfurt",
     "Customers inherit provider controls from Hetzner, Supabase, and Cloudflare at the infrastructure layer - review those vendors' public trust pages for their certifications",
     "CurNext does not claim ISO 27001 or SOC 2 for itself on this page",

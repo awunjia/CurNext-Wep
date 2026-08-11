@@ -1,15 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState, useEffectEvent, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useEffectEvent,
+  type ReactNode,
+} from "react";
 import { LoaderCircle, Mail, Send } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Link } from "@/i18n/navigation";
 import {
-  knowledgeBaseConsentCopy,
-  knowledgeBasePage,
-  knowledgeBaseStarterPrompts,
+  knowledgeBasePage as knowledgeBasePageConfig,
 } from "@/config/knowledge-base";
 import {
   itemHeadingClassName,
@@ -38,10 +44,10 @@ const LINK_PATTERN =
 
 function readConsent(): StoredConsent | null {
   try {
-    const raw = localStorage.getItem(knowledgeBasePage.consentStorageKey);
+    const raw = localStorage.getItem(knowledgeBasePageConfig.consentStorageKey);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as StoredConsent;
-    if (parsed.version !== knowledgeBasePage.consentVersion) return null;
+    if (parsed.version !== knowledgeBasePageConfig.consentVersion) return null;
     if (!parsed.acceptedAt) return null;
     return parsed;
   } catch {
@@ -51,17 +57,17 @@ function readConsent(): StoredConsent | null {
 
 function writeConsent() {
   const payload: StoredConsent = {
-    version: knowledgeBasePage.consentVersion,
+    version: knowledgeBasePageConfig.consentVersion,
     acceptedAt: new Date().toISOString(),
   };
   localStorage.setItem(
-    knowledgeBasePage.consentStorageKey,
+    knowledgeBasePageConfig.consentStorageKey,
     JSON.stringify(payload),
   );
 }
 
 function clearConsent() {
-  localStorage.removeItem(knowledgeBasePage.consentStorageKey);
+  localStorage.removeItem(knowledgeBasePageConfig.consentStorageKey);
 }
 
 function wait(ms: number) {
@@ -127,12 +133,24 @@ function LinkedText({
   return <p className={className}>{parts.length > 0 ? parts : text}</p>;
 }
 
-function AccuracyAside() {
-  const notice = knowledgeBasePage.accuracyNotice;
+function AccuracyAside({
+  notice,
+  importantLabel,
+  contactLabel,
+}: {
+  notice: {
+    title: string;
+    body: string;
+    salesEmail: string;
+    contactHref: string;
+  };
+  importantLabel: string;
+  contactLabel: string;
+}) {
   return (
     <aside className="border-border/70 h-fit rounded-lg border p-5 sm:p-6 lg:sticky lg:top-28">
       <p className="text-muted-foreground mb-2 text-xs font-medium tracking-[0.18em] uppercase">
-        Important
+        {importantLabel}
       </p>
       <h2 className={itemHeadingClassName}>{notice.title}</h2>
       <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
@@ -146,18 +164,51 @@ function AccuracyAside() {
           <Mail className="size-3.5 shrink-0 opacity-70" aria-hidden />
           {notice.salesEmail}
         </ExternalLink>
-        <ExternalLink
+        <Link
           href={notice.contactHref}
           className="inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline"
         >
-          Contact a representative
-        </ExternalLink>
+          {contactLabel}
+        </Link>
       </div>
     </aside>
   );
 }
 
 export function KnowledgeBasePage() {
+  const t = useTranslations("knowledgeBase");
+  const locale = useLocale();
+  const ui = t.raw("ui") as {
+    eyebrow: string;
+    loading: string;
+    subtitle: string;
+    withdrawConsent: string;
+    youLabel: string;
+    thinkingCheck: string;
+    thinkingCompose: string;
+    placeholder: string;
+    send: string;
+    sendAria: string;
+    secretsHint: string;
+    consentRequired: string;
+    consentWithdrawn: string;
+    noAnswer: string;
+    requestFailed: string;
+    somethingWrong: string;
+    finishError: string;
+  };
+  const knowledgeBasePage = {
+    ...(t.raw("knowledgeBasePage") as typeof knowledgeBasePageConfig),
+    consentVersion: knowledgeBasePageConfig.consentVersion,
+    consentStorageKey: knowledgeBasePageConfig.consentStorageKey,
+  };
+  const knowledgeBaseConsentCopy = t.raw(
+    "knowledgeBaseConsentCopy",
+  ) as typeof import("@/config/knowledge-base").knowledgeBaseConsentCopy;
+  const knowledgeBaseStarterPrompts = t.raw(
+    "knowledgeBaseStarterPrompts",
+  ) as typeof import("@/config/knowledge-base").knowledgeBaseStarterPrompts;
+
   const [ready, setReady] = useState(false);
   const [consented, setConsented] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -217,8 +268,7 @@ export function KnowledgeBasePage() {
       {
         id: "welcome-revoked",
         role: "assistant",
-        content:
-          "Consent withdrawn for this browser. Chat stays locked until you agree again.",
+        content: ui.consentWithdrawn,
       },
     ]);
   }
@@ -227,7 +277,7 @@ export function KnowledgeBasePage() {
     const message = raw.trim();
     if (!message || pending) return;
     if (!consented) {
-      setError("Consent is required before chatting.");
+      setError(ui.consentRequired);
       return;
     }
 
@@ -256,6 +306,7 @@ export function KnowledgeBasePage() {
           history,
           consent: true,
           consentVersion: knowledgeBasePage.consentVersion,
+          locale,
         }),
       });
 
@@ -266,7 +317,7 @@ export function KnowledgeBasePage() {
       };
 
       if (!response.ok) {
-        throw new Error(data.error || "Request failed");
+        throw new Error(data.error || ui.requestFailed);
       }
 
       const elapsed = Date.now() - startedAt;
@@ -279,13 +330,13 @@ export function KnowledgeBasePage() {
         {
           id: `a-${Date.now()}`,
           role: "assistant",
-          content: data.answer || "No answer returned.",
+          content: data.answer || ui.noAnswer,
           sources: data.sources,
         },
       ]);
     } catch (err) {
       const text =
-        err instanceof Error ? err.message : "Something went wrong.";
+        err instanceof Error ? err.message : ui.somethingWrong;
       setError(text);
       const elapsed = Date.now() - startedAt;
       if (elapsed < MIN_THINK_MS) {
@@ -296,8 +347,7 @@ export function KnowledgeBasePage() {
         {
           id: `e-${Date.now()}`,
           role: "assistant",
-          content:
-            "I could not finish that just now. Try again in a moment, or reach us through Contact.",
+          content: ui.finishError,
         },
       ]);
     } finally {
@@ -309,8 +359,8 @@ export function KnowledgeBasePage() {
     thinkPhase === 0
       ? `${knowledgeBasePage.thinkingLabel}...`
       : thinkPhase === 1
-        ? "Checking the details..."
-        : "Putting an answer together...";
+        ? ui.thinkingCheck
+        : ui.thinkingCompose;
 
   return (
     <main className="flex flex-1 flex-col">
@@ -318,7 +368,7 @@ export function KnowledgeBasePage() {
         <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
           <div className="max-w-2xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              Support
+              {ui.eyebrow}
             </p>
             <h1 className={sectionHeadingClassName}>
               {knowledgeBasePage.title}
@@ -333,10 +383,14 @@ export function KnowledgeBasePage() {
       <section className="relative flex flex-1 flex-col bg-background">
         <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
           {!ready ? (
-            <p className="text-muted-foreground text-sm">Loading...</p>
+            <p className="text-muted-foreground text-sm">{ui.loading}</p>
           ) : !consented ? (
             <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:items-start">
-              <AccuracyAside />
+              <AccuracyAside
+                notice={knowledgeBasePage.accuracyNotice}
+                importantLabel={t("importantLabel")}
+                contactLabel={t("contactRepresentative")}
+              />
               <div className="border-border/70 rounded-lg border p-5 sm:p-6">
                 <h2 className={itemHeadingClassName}>
                   {knowledgeBaseConsentCopy.title}
@@ -387,7 +441,11 @@ export function KnowledgeBasePage() {
             </div>
           ) : (
             <div className="grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:items-start">
-              <AccuracyAside />
+              <AccuracyAside
+                notice={knowledgeBasePage.accuracyNotice}
+                importantLabel={t("importantLabel")}
+                contactLabel={t("contactRepresentative")}
+              />
 
               <div className="border-border/70 flex h-[min(36rem,calc(100dvh-12rem))] flex-col overflow-hidden rounded-lg border sm:h-[min(44rem,calc(100dvh-12rem))] lg:h-[min(52rem,calc(100dvh-11rem))]">
                 <div className="border-border/60 flex shrink-0 items-center justify-between gap-3 border-b px-4 py-3">
@@ -404,7 +462,7 @@ export function KnowledgeBasePage() {
                         {knowledgeBasePage.assistantLabel}
                       </p>
                       <p className="text-muted-foreground truncate text-xs">
-                        Here to help with CurNext
+                        {ui.subtitle}
                       </p>
                     </div>
                   </div>
@@ -413,7 +471,7 @@ export function KnowledgeBasePage() {
                     onClick={revokeConsent}
                     className="text-muted-foreground hover:text-foreground shrink-0 text-xs underline-offset-4 hover:underline"
                   >
-                    Withdraw consent
+                    {ui.withdrawConsent}
                   </button>
                 </div>
 
@@ -431,7 +489,7 @@ export function KnowledgeBasePage() {
                     >
                       <p className="text-muted-foreground px-1 text-[11px] font-medium tracking-[0.08em] uppercase">
                         {message.role === "user"
-                          ? "You"
+                          ? ui.youLabel
                           : knowledgeBasePage.assistantName}
                       </p>
                       <div
@@ -513,7 +571,7 @@ export function KnowledgeBasePage() {
                     <Textarea
                       value={input}
                       onChange={(event) => setInput(event.target.value)}
-                      placeholder="Ask CurNext a question..."
+                      placeholder={ui.placeholder}
                       rows={2}
                       disabled={pending}
                       className="min-h-[2.75rem] max-h-28 flex-1 resize-none"
@@ -531,17 +589,17 @@ export function KnowledgeBasePage() {
                         buttonVariants({ size: "lg" }),
                         "h-11 shrink-0 gap-2 px-4 disabled:opacity-50",
                       )}
-                      aria-label="Send message"
+                      aria-label={ui.sendAria}
                     >
                       <Send className="size-4" aria-hidden />
-                      Send
+                      {ui.send}
                     </button>
                   </form>
                   {error ? (
                     <p className="text-destructive mt-2 text-xs">{error}</p>
                   ) : (
                     <p className="text-muted-foreground mt-2 text-xs leading-relaxed">
-                      Do not paste secrets or third-party personal data.
+                      {ui.secretsHint}
                     </p>
                   )}
                 </div>

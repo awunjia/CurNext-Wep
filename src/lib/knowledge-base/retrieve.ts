@@ -6,7 +6,7 @@ import {
 function tokenize(value: string): string[] {
   return value
     .toLowerCase()
-    .replace(/[^a-z0-9+#./\s-]/g, " ")
+    .replace(/[^\p{L}\p{N}+#./\s-]/gu, " ")
     .split(/\s+/)
     .filter((token) => token.length > 1);
 }
@@ -46,10 +46,11 @@ function expandTokens(tokens: string[]): string[] {
 export function retrieveKnowledge(
   query: string,
   limit = 4,
+  corpus: KnowledgeChunk[] = knowledgeChunks,
 ): KnowledgeChunk[] {
   const tokens = expandTokens(tokenize(query));
   if (tokens.length === 0) {
-    return knowledgeChunks
+    return corpus
       .filter((chunk) => chunk.id !== "knowledge-base-assistant")
       .slice(0, Math.min(3, limit));
   }
@@ -68,10 +69,19 @@ export function retrieveKnowledge(
       "cheap",
       "months",
       "month",
+      "prix",
+      "devis",
+      "tarification",
+      "hinta",
+      "kustannus",
+      "pris",
+      "kostnad",
+      "precio",
+      "cotización",
     ].includes(token),
   );
 
-  const scored = knowledgeChunks
+  const scored = corpus
     .filter((chunk) => chunk.id !== "knowledge-base-assistant")
     .map((chunk) => {
       const haystack = tokenize(

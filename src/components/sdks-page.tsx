@@ -2,23 +2,19 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, Copy } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { buttonVariants } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import {
-  cardVersionLine,
-  registryButtonLabel,
   SDK_API_DOCS_URL,
-  sdkHero,
-  sdkIntro,
-  sdkPackages,
-  sdkPageHeader,
-  statusBadgeLabel,
+  sdkPackages as sdkPackagesConfig,
   withLiveSdkVersion,
   type SdkLanguageId,
   type SdkPackage,
+  type SdkRegistry,
   type SdkStatus,
 } from "@/config/sdk-packages";
 import {
@@ -167,12 +163,114 @@ function CodePanel({
 }
 
 export function SdksPage() {
+  const t = useTranslations("sdks");
+  const sdkHero = t.raw("hero") as {
+    eyebrow: string;
+    title: string;
+    lead: string;
+  };
+  const sdkPageHeader = t.raw("header") as {
+    title: string;
+    description: string;
+  };
+  const sdkIntroRaw = t.raw("intro") as {
+    heading: string;
+    paragraph: string;
+    docsLabel: string;
+    useCases: Array<{ title: string; body: string }>;
+  };
+  const sdkIntro = {
+    ...sdkIntroRaw,
+    docsHref: SDK_API_DOCS_URL,
+  };
+  const packageCopy = t.raw("packages") as Record<
+    string,
+    {
+      name: string;
+      short: string;
+      stack: string;
+      summary: string;
+      highlights: string[];
+      quickStart: string;
+      errorHandling: string;
+    }
+  >;
+
+  function statusBadgeLabel(status: SdkStatus): string {
+    return t(`status.${status}`);
+  }
+
+  function registryButtonLabel(registry: SdkRegistry): string {
+    // next-intl forbids "." in keys (nesting); map registry ids to safe keys
+    const key = registry.replaceAll(".", "_");
+    return t(`registry.${key}`);
+  }
+
+  function cardVersionLine(
+    status: SdkStatus,
+    version: string | undefined,
+  ): string {
+    if (status === "coming_soon" || !version) {
+      return t("notPublished");
+    }
+    const display = version.startsWith("v") ? version : `v${version}`;
+    if (status === "beta") {
+      return t("betaVersionLine", { version: display });
+    }
+    return t("versionLine", { version: display });
+  }
+
+  const localizedPackages: SdkPackage[] = sdkPackagesConfig.map((pkg) => {
+    const copy = packageCopy[pkg.id];
+    if (!copy) return pkg;
+    return {
+      ...pkg,
+      name: copy.name,
+      short: copy.short,
+      stack: copy.stack,
+      summary: copy.summary,
+      highlights: copy.highlights,
+      quickStart: copy.quickStart || pkg.quickStart,
+      errorHandling: copy.errorHandling || pkg.errorHandling,
+    };
+  });
+
   const [selectedId, setSelectedId] =
     useState<SdkLanguageId>("javascript");
-  const [packages, setPackages] = useState<SdkPackage[]>(sdkPackages);
+  const [packages, setPackages] = useState<SdkPackage[]>(() =>
+    sdkPackagesConfig.map((pkg) => {
+      const copy = packageCopy[pkg.id];
+      if (!copy) return pkg;
+      return {
+        ...pkg,
+        name: copy.name,
+        short: copy.short,
+        stack: copy.stack,
+        summary: copy.summary,
+        highlights: copy.highlights,
+        quickStart: copy.quickStart || pkg.quickStart,
+        errorHandling: copy.errorHandling || pkg.errorHandling,
+      };
+    }),
+  );
 
   useEffect(() => {
     let cancelled = false;
+    const base = sdkPackagesConfig.map((pkg) => {
+      const copy = packageCopy[pkg.id];
+      if (!copy) return pkg;
+      return {
+        ...pkg,
+        name: copy.name,
+        short: copy.short,
+        stack: copy.stack,
+        summary: copy.summary,
+        highlights: copy.highlights,
+        quickStart: copy.quickStart || pkg.quickStart,
+        errorHandling: copy.errorHandling || pkg.errorHandling,
+      };
+    });
+    setPackages(base);
 
     async function loadVersions() {
       try {
@@ -183,7 +281,7 @@ export function SdksPage() {
         };
         if (cancelled || !data.versions) return;
         setPackages(
-          sdkPackages.map((pkg) =>
+          base.map((pkg) =>
             withLiveSdkVersion(pkg, data.versions?.[pkg.id]),
           ),
         );
@@ -196,7 +294,7 @@ export function SdksPage() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [t]);
 
   const selected =
     packages.find((pkg) => pkg.id === selectedId) ?? packages[0];

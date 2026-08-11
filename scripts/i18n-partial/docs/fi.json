@@ -1,0 +1,940 @@
+{
+  "eyebrow": "Dokumentaatio",
+  "onThisPage": "Tällä sivulla",
+  "sectionNav": "Osioiden otsikot",
+  "title": "Dokumentaatio",
+  "description": "Pitkämuotoinen tuotedokumentaatio CurNextille - työmaapolku, ratkaisut, API, SDK:t, firmware, integraatiot, tietoturva, hosting ja kaupallinen laajuus. Perustuu curnext.app-sivuston julkiseen aineistoon.",
+  "tabs": {
+    "overview": {
+      "label": "Yleiskatsaus",
+      "description": "Mitä CurNext on, miten Docs on järjestetty ja minne siirtyä seuraavaksi.",
+      "sections": {
+        "what-is-curnext": {
+          "title": "Mikä on CurNext?",
+          "paragraphs": [
+            "CurNext tarjoaa rakentamiseen valmista työmaatietoa pinnoille ja tiloille. Kenttänodet mittaavat olosuhteita itse työssä. Alusta vastaa, voiko työ edetä - valmiuden, hälytysten ja projektiin sidotun auditointipolun avulla.",
+            "Tuote myydään rakennusälynä, ei radiolaitteiden osaluettelona. Työmaa- ja toimistotiimit toimivat go / no-go -päätösten pohjalta. Kehittäjät ja operaattorit laajentavat samaa pinosta REST API:n, SDK:iden, Market Place -integraatioiden ja firmware-toimintojen kautta.",
+            "Tämä Docs-pinta tiivistää jo curnext.appissa julkaistun julkisen tuoteaineiston. Se on tarkoitettu luettavaksi alusta loppuun. Yksityiskohtaiset laitteistoturvan runbookit, tehdasasetukset ja yksityiset ops-menettelyt pysyvät sisäisessä dokumentaatiossa."
+          ]
+        },
+        "who-it-is-for": {
+          "title": "Kenelle se on",
+          "paragraphs": [
+            "CurNext on rakennettu urakoitsijoille, projektitiimeille, BIM-koordinaattoreille, luovutuksen jälkeisille kiinteistörooleille sekä integraattoreille, jotka tarvitsevat valmiuspäätöksiä jo käytössään olevissa työkaluissa."
+          ],
+          "bullets": [
+            "Työmaatiimit, jotka toimivat go / no-go -valmiuden perusteella laatoilla, seinillä, ilmassa, vuodoissa, rakenteessa ja laitoksessa",
+            "Toimistotiimit, jotka seuraavat pintoja aikataulua ja luovutusevidenssiä vasten",
+            "Kehittäjät, jotka kutsuvat REST API:a tai virallisia SDK:ita",
+            "Operaattorit, jotka tarkastelevat firmware-katalogia, raportoituja versioita ja edge-OTA-kontekstia",
+            "Hankinta- ja tietoturva-arvioijat, jotka lukevat Security-, Datacenters- ja DPA-sivuja"
+          ]
+        },
+        "operating-markets": {
+          "title": "Toimintamarkkinat",
+          "paragraphs": [
+            "CurNext myy tällä hetkellä Suomeen, Kanadaan ja Kameruniin. Hinnoittelu on markkinakohtainen listahinta (EUR, CAD, XAF) - ei yksi valuuttamuunnostaulukko.",
+            "Näiden markkinoiden Platform Client Data isännöidään EU-ankkuroidussa tuotantopinossa (sovellusalkuperät Saksassa, tietokanta ja auth Frankfurtissa), ellei kirjallinen yrityksen residenssiliite toisin sano. Myynti Kanadaan tai Kameruniin ei ole sama kuin paikallisen tuotantoalueen hosting siellä."
+          ],
+          "links": [
+            {
+              "label": "Hinnoittelu",
+              "href": "/pricing"
+            },
+            {
+              "label": "Datacenters",
+              "href": "/datacenters"
+            },
+            {
+              "label": "DPA",
+              "href": "/data/data-processing-agreement"
+            }
+          ]
+        },
+        "how-docs-is-organized": {
+          "title": "Miten tämä dokumentaatio on järjestetty",
+          "paragraphs": [
+            "Käytä yläreunan välilehtiä aiheiden välillä siirtymiseen. Suurilla näytöillä vasen palkki listaa aktiivisen välilehden osioiden otsikot ja korostaa näkyvän osion vierittäessäsi."
+          ],
+          "bullets": [
+            "Yleiskatsaus - tuotteen kehys ja navigointi",
+            "Työmaapolku - L1-L5 ja yhdistettävyys",
+            "Ratkaisut - jokainen tehtaalla kiinnitetty SKU syvällisesti",
+            "API - perus-URL, auth, domainit, webhookit",
+            "SDK:t - kielet, asennus, mallit",
+            "Firmware - katalogi, historia, edge-OTA",
+            "Integraatiot - Market Place -katalogi",
+            "Tietoturva - julkinen arkkitehtuuritiivistelmä",
+            "Hosting - residenssi ja skaalausasento",
+            "Kaupallinen - hinnoittelumalli ja yhteystietopolut"
+          ]
+        },
+        "related-surfaces": {
+          "title": "Liittyvät pinnat",
+          "paragraphs": [
+            "Docs on muiden julkisten pintojen rinnalla. Suosi Knowledge Base -tekoälychatia nopeisiin, sivuston tietoon perustuviin kysymyksiin, ja Contactia kun opas puuttuu."
+          ],
+          "links": [
+            {
+              "label": "Miten se toimii",
+              "href": "/how-it-works"
+            },
+            {
+              "label": "Teknologiat",
+              "href": "/technologies"
+            },
+            {
+              "label": "Resurssit",
+              "href": "/resources"
+            },
+            {
+              "label": "Case-tutkimukset",
+              "href": "/case-studies"
+            },
+            {
+              "label": "Knowledge Base",
+              "href": "/knowledge-base"
+            },
+            {
+              "label": "Yhteystiedot",
+              "href": "/contact"
+            }
+          ]
+        }
+      }
+    },
+    "site-path": {
+      "label": "Työmaapolku",
+      "description": "Kenttänodeista CurNext-pilveen - kerrokset, teho, uplink ja lopputulokset.",
+      "sections": {
+        "path-intro": {
+          "title": "Yksi polku jokaiselle pinnalle",
+          "paragraphs": [
+            "Kovetus, kuivaus, ilma, vuoto, rakenne ja MEP jakavat saman polun pilveen. Laitteet tallentavat olosuhteet työssä. Keräys kerroksessa pitää tason järjestyksessä. Omistettu teho pitää kerros- ja rakennuslaitteiston online. Rakennuksen uplink on turvallinen silta pois työmaalta. CurNext-pilvi muuttaa työmaadatan valmiudeksi, hälytyksiksi ja seuraaviksi toimiksi - auditointipolulla asiakkaille ja vaatimustenmukaisuudelle.",
+            "Tämä on teollinen rakennuspinosto, ei kuluttaja-IoT-leluja. Julkiset sivut nimeävät kyvykkyydet tasolla, joka sopii ostajille ja integraattoreille. Ne eivät ole hyökkäyspintakäsikirja."
+          ],
+          "links": [
+            {
+              "label": "Miten se toimii",
+              "href": "/how-it-works"
+            },
+            {
+              "label": "Teknologiat",
+              "href": "/technologies"
+            }
+          ]
+        },
+        "layers": {
+          "title": "Kerrokset L1-L5",
+          "paragraphs": [
+            "Jokaisella kerroksella on yksi tehtävä. Teho ei tulkitse mittauksia. Kerrosyhdyskäytävät eivät avaudu julkiseen internetiin. Rakennusohjain on turvallisuusraja uplinkille ja allekirjoitetulle kenttä-OTA:lle."
+          ],
+          "subsections": [
+            {
+              "title": "L1 - Sense (kenttänodet)",
+              "paragraphs": [
+                "Asenna itse työhön - kovettuvat laatat, kuivuvat seinät, sisäilma, vuodot, rakenne tai LVI-järjestelmät. Laitteet tallentavat olosuhteet, jotka ohjaavat aikataulu- ja laatupäätöksiä."
+              ],
+              "bullets": [
+                "SKU-tunnisteet: CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP",
+                "Yksilöllinen laiteidentiteetti ja secure-element -avainmateriaali",
+                "Manipulointisuojattu rakenne ja siirtymän tunnistus kenttänodeissa",
+                "LoRaWAN Class A (EU868) akkukäyttöisille langattomille nodeille soveltuvin osin"
+              ]
+            },
+            {
+              "title": "L2 - Aggregate (CN-FG)",
+              "paragraphs": [
+                "Jokainen kerros keskittää laitetrafficin yhteen keräyspisteeseen, jotta taso pysyy järjestyksessä projektin kasvaessa siipiin ja vyöhykkeisiin."
+              ],
+              "bullets": [
+                "Luottamusankkuri ilmalinkin varmennukseen (MIC, laskurit, join)",
+                "Vain kerros-VLAN - ei pilveen avautuvaa rajapintaa",
+                "OTA vain CN-BC:ltä"
+              ]
+            },
+            {
+              "title": "L3 - Power (CN-UPS)",
+              "paragraphs": [
+                "Omistettu teho pitää kerros- ja rakennuslaitteiston online katkosten aikana. Tämä kerros toimittaa vain tehoa - se ei tulkitse mittauksia eikä kanna datatasoa hallinta-VLAN:lla."
+              ]
+            },
+            {
+              "title": "L4 - Bridge (CN-BC)",
+              "paragraphs": [
+                "Rakennusyksikkö on turvallinen linkki työmaa-verkosta CurNextiin. Se ylläpitää suojattua polkua pois työmaalta, päättää kenttä-OTA-orkestroinnin ja keskustelee yksityisen pilvibroker-polun kanssa."
+              ],
+              "bullets": [
+                "WireGuard-asiakas rakennuksen turvallisuusrajalla",
+                "MQTT TLS:n yli keskinäisellä mTLS:llä yksityiseen brokeriin",
+                "Allekirjoitetut OTA-työt L1/L2-kohteille",
+                "Salattu store-and-forward kun uplink on poissa"
+              ]
+            },
+            {
+              "title": "L5 - Decide (CurNext-pilvi)",
+              "paragraphs": [
+                "Alusta muuttaa työmaadatan valmiustilaksi, hälytyksiksi ja seuraaviksi toimiksi - web-hallintapaneelissa ja mobiilisovelluksessa - auditointipolulla asiakkaille ja vaatimustenmukaisuudelle."
+              ],
+              "bullets": [
+                "Projektin hallintapaneelit, hälytykset, BIM-kartoitettu valmius",
+                "REST API, SDK:t, Market Place, firmware-katalogi",
+                "Kutsuttiin pääsy, RBAC, etuoikeutettu MFA"
+              ]
+            }
+          ]
+        },
+        "connectivity": {
+          "title": "Yhteydet",
+          "paragraphs": [
+            "Nimetty kyvykkyystasolla - standardit teollisuusprotokollat laitepolulle ja HTTPS ostajaintegraatioille."
+          ],
+          "bullets": [
+            "LoRaWAN (EU868) akkukentänodeille - pitkäkantama, työmaa-ystävällinen radio kerrospolkuun",
+            "MQTT TLS:n yli laite- ja yhdyskäytävätelemetriaan laitepolulla",
+            "WireGuard-teemat rakennuksen edge-yhteyteen CurNext-pilvipalveluihin",
+            "HTTPS REST ostajaintegraatioihin osoitteessa api.curnext.app - valmius, BIM, laitteet, hälytykset, webhookit"
+          ]
+        },
+        "outcomes": {
+          "title": "Lopputulokset työmaalla",
+          "paragraphs": [
+            "Tiimien tulisi lähteä CurNextistä päätösten ja evidenssin kanssa, ei vain kaavioiden."
+          ],
+          "bullets": [
+            "Yksi pinosto jokaiselle pinnalle - kovetus, kuivaus, ilma, vuoto, rakenne ja MEP",
+            "Päätöksiä, ei vain hallintapaneeleja - mikä on valmis, mikä on riskissä, mitä tehdä seuraavaksi",
+            "Evidenssi joka kulkee mukana - luovutukset, vaateet ja auditoinnit ilman raporttien uudelleenrakentamista käsin"
+          ]
+        }
+      }
+    },
+    "solutions": {
+      "label": "Ratkaisut",
+      "description": "Tehtaalla kiinnitetyt tuoteperheet työmaatehtäviin samassa pinostossa.",
+      "sections": {
+        "solution-catalog": {
+          "title": "Ratkaisukatalogi",
+          "paragraphs": [
+            "Jokainen SKU on tarkoitukseen kiinnitetty työmaatehtävään samassa CurNext-pinostossa. Valitse pintaa vastaava tuoteperhe ja skaalaa nodet sekä kesto Hinnoittelussa."
+          ],
+          "bullets": [
+            "CN-CC - Concrete Curing: laatan kovetus, kypsyys, valmius",
+            "CN-WD - Wall Drying: kipsi, märkätilat, laatoituksen tausta",
+            "CN-IAQ - Indoor Air: CO₂, PM, VOC (sis. luovutuksen jälkeen)",
+            "CN-LEAK - Leak Detection: tekniset tilat, kylpyhuoneet, nousut",
+            "CN-SHM - Structural Health: jännitys, halkeama, kallistus, värinä",
+            "CN-MEP - MEP: virtaus, paine, energia (PoE-paneeli)"
+          ],
+          "links": [
+            {
+              "label": "Kaikki ratkaisut",
+              "href": "/solutions"
+            }
+          ]
+        },
+        "solution-cn-cc": {
+          "title": "CN-CC - Concrete Curing",
+          "paragraphs": [
+            "Betonin kovetus seuraa laatan kypsyyttä ilma-, pinta- ja ydinkoitimilla. Tiivistetty edge-node jää valun ulkopuolelle; kestävät koettimet sijoittuvat sinne, missä laattaa mitataan. CurNextin sisäinen TensorFlow.js-malli muuntaa lämpötilat kovetusennusteiksi ja rakentamisvalmiiksi ajoitukseksi auditointipolulla valuaineistolle."
+          ],
+          "bullets": [
+            "Ilma-, pinta- ja ydinkoettimen roolit samassa valjasmalissa",
+            "Sisäinen TensorFlow.js-kovetusennuste valmiutta varten",
+            "Go / no-go -valmius kalenteripohjaisten kovetussääntöjen sijaan",
+            "Dokumentoitu kovetuspolku muoteille ja seuraaville urakoille",
+            "LoRaWAN-kenttäpolku CN-FG:hen ja CN-BC:hen"
+          ],
+          "links": [
+            {
+              "label": "Avaa CN-CC-sivu",
+              "href": "/solutions/concrete-curing"
+            }
+          ]
+        },
+        "solution-cn-wd": {
+          "title": "CN-WD - Wall Drying",
+          "paragraphs": [
+            "Seinien kuivaus kattaa kipsin, märkätilat ja laatoituksen taustan. Nodet seuraavat kosteutta ja kuivausikkunoita, jotta viimeistelyryhmät eivät lukitse märkiä rakenteita pinnoitteiden taakse aikataulupaineessa."
+          ],
+          "bullets": [
+            "Viimeistelyvalmius kipsi- ja märkätilarakenteille",
+            "Hälytykset kun pinnat pysyvät kaistan ulkopuolella",
+            "Jaetut kuiva / odota -kutsut urakkapaketeille",
+            "Olosuhdepolku ennen peittämistyötä"
+          ],
+          "links": [
+            {
+              "label": "Avaa CN-WD-sivu",
+              "href": "/solutions/wall-drying"
+            }
+          ]
+        },
+        "solution-cn-iaq": {
+          "title": "CN-IAQ - Indoor Air",
+          "paragraphs": [
+            "Sisäilma tarjoaa CO2-, hiukkas-, VOC- ja ilmastokontekstin samassa työmaapinostossa - myös luovutuksen jälkeen ja varhaisessa käytössä, kun tiimit tarvitsevat jaettua ilmanlaatua ilman erillistä labrakampanjaa jokaiseen valitukseen."
+          ],
+          "bullets": [
+            "Edustavat vyöhykenodet luovutukseen ja käyttöön",
+            "Kynnykset ja hälytykset työmaa- ja kiinteistörooleille",
+            "Mittaukset sidottu tiloihin, ei kertakäyntimuistiinpanoihin",
+            "Sama rakennuksen uplink ja projektipinta kuin muilla SKU:illa"
+          ],
+          "links": [
+            {
+              "label": "Avaa CN-IAQ-sivu",
+              "href": "/solutions/indoor-air"
+            }
+          ]
+        },
+        "solution-cn-leak": {
+          "title": "CN-LEAK - Leak Detection",
+          "paragraphs": [
+            "Vuodontunnistus valvoo teknisiä tiloja, kylpyhuoneita ja nousuja kosteustapahtumien varalta, jotka löytyvät usein myöhään - kun viimeistelyt ja laitteet ovat jo vaarassa."
+          ],
+          "bullets": [
+            "Tapahtumapohjaiset hälytykset korkean riskin märkävyöhykkeille",
+            "Aikaisempi tietoisuus työmaa- ja MEP-vastaaville",
+            "Edge-uplink projektikartoitetuilla sijainneilla",
+            "Vastauspolku ennen vahingon leviämistä"
+          ],
+          "links": [
+            {
+              "label": "Avaa CN-LEAK-sivu",
+              "href": "/solutions/leak-detection"
+            }
+          ]
+        },
+        "solution-cn-shm": {
+          "title": "CN-SHM - Rakenteen kunto",
+          "paragraphs": [
+            "Rakenteen kunto seuraa kallistusta, halkeamia, jännitystä ja värinäkontekstia kriittisten ja väliaikaisten töiden aikana - jatkuvaa kontekstia määräaikaisten mittauskäyntien välillä."
+          ],
+          "bullets": [
+            "Sovitut rakenteelliset pisteet instrumentoituna rakennuspolulla",
+            "Kynnykset ja historia insinööreille ja työmaanjohtajille",
+            "Tapahtumat säilytetään kun työt muuttavat työmaaolosuhteita",
+            "Täydentää, ei korvaa, mittauskäytäntöä"
+          ],
+          "links": [
+            {
+              "label": "Avaa CN-SHM-sivu",
+              "href": "/solutions/structural-health"
+            }
+          ]
+        },
+        "solution-cn-mep": {
+          "title": "CN-MEP - MEP",
+          "paragraphs": [
+            "MEP-mittaus kattaa virtauksen, paineen ja energian, kun tarvitaan korkeampia näytteenottotaajuuksia tai johdotettuja laitosignaaleja - mukaan lukien PoE-paneelipolkuja käyttöönoton ja tasapainotuksen aikana."
+          ],
+          "bullets": [
+            "Johdotetut laitosignaalit sovituilla piireillä",
+            "Jaettu kirjaus käyttöönottoikkunoiden aikana",
+            "Pilvivalmius ja historia MEP-vastaaville",
+            "Sopii samaan projekti- ja API-malliin kuin langattomat SKU:t"
+          ],
+          "links": [
+            {
+              "label": "Avaa CN-MEP-sivu",
+              "href": "/solutions/mep"
+            }
+          ]
+        },
+        "solution-patterns": {
+          "title": "Anonyymit työmaamallit",
+          "paragraphs": [
+            "Markkinointisivuston case-tutkimukset ovat anonyymejä käyttöönottomalleja SKU:ittain - haaste, lähestymistapa ja tulos - ilman asiakaslogoja tai keksittyjä prosentteja. Nimetyt referenssit saatavilla myynnin kautta NDA:lla."
+          ],
+          "links": [
+            {
+              "label": "Case-tutkimukset",
+              "href": "/case-studies"
+            }
+          ]
+        }
+      }
+    },
+    "api": {
+      "label": "API",
+      "description": "Versioitu REST valmiudelle, BIM:lle, laitteille, mittauksille ja tapahtumille.",
+      "sections": {
+        "api-intro": {
+          "title": "API-yleiskatsaus",
+          "paragraphs": [
+            "CurNext REST API on integraatiopinta valmiusälylle. Kehystä kutsut päätösten ja projektikontekstin ympärille - ei raakana anturidumppina. Viralliset SDK:t käärittävät samat /api/v1-polut.",
+            "Interaktiivinen OpenAPI-dokumentaatio ja playground ovat osoitteessa api.curnext.app/docs. Markkinoinnin yleiskatsaus on polussa /api."
+          ],
+          "links": [
+            {
+              "label": "API-yleiskatsaus",
+              "href": "/api"
+            },
+            {
+              "label": "OpenAPI-playground",
+              "href": "https://api.curnext.app/docs",
+              "external": true
+            }
+          ]
+        },
+        "api-base": {
+          "title": "Perus-URL ja versiointi",
+          "paragraphs": [
+            "Tuotannon API-isäntä on api.curnext.app. Anna SDK:ille vain isäntä - polut on etuliitteellä /api/v1 verkossa."
+          ]
+        },
+        "api-auth": {
+          "title": "Todennus ja pääsy",
+          "paragraphs": [
+            "Luo projektin API-avain tuotteessa kohdassa Integration. Välitä se Bearer-tunnuksena jokaisessa pyynnössä.",
+            "API-pääsy noudattaa sivuston tilaustanne - nodemäärä ja kesto - ei erillistä vanhaa \"Professional\"-suunnitelmanimeä. Avaimet on rajattu niitä myöntäneeseen projektiin."
+          ],
+          "bullets": [
+            "Säilytä avaimet salaisuuksien hallinnassa - ei koskaan asiakaskoodissa tai julkisissa repositorioissa",
+            "Kierrätä avaimet kun ihmiset lähtevät projektista tai vuotoa epäillään",
+            "Suosi lyhytikäisiä operatiivisia skriptejä avainten upottamisen sijaan mobiilisovelluksiin"
+          ]
+        },
+        "api-domains": {
+          "title": "Domainit joita voit kutsua",
+          "paragraphs": [
+            "Käytä näitä domaineja mentaalisena mallina integraatiota suunnitellessa."
+          ],
+          "subsections": [
+            {
+              "title": "Health",
+              "paragraphs": [
+                "Palvelun tila kuormantasaajille ja käytettävyystarkistuksille."
+              ]
+            },
+            {
+              "title": "Projects",
+              "paragraphs": [
+                "Listaa projektit, jäsenet, auditointitapahtumat, tilauskonteksti ja rakennusrakenteeseen sidotut valmiusnäkymät."
+              ]
+            },
+            {
+              "title": "Devices",
+              "paragraphs": [
+                "Listaa ja hae projektiin sidotut laitteet."
+              ]
+            },
+            {
+              "title": "Alerts",
+              "paragraphs": [
+                "Listaa, hae ja ratkaise operatiivisia hälytyksiä."
+              ]
+            },
+            {
+              "title": "Measurements",
+              "paragraphs": [
+                "Mittaussyklit ja viimeisimmät laitelukemat instrumentoiduille pinnoille."
+              ]
+            },
+            {
+              "title": "Webhooks",
+              "paragraphs": [
+                "Listaa webhook-päätepisteet API:n kautta. Luo ja hallitse vastaanottimia tuotteen UI:ssa tapahtumille kuten SURFACE_READY, ALERT_CREATED ja DEVICE_DISPLACED."
+              ]
+            },
+            {
+              "title": "BIM",
+              "paragraphs": [
+                "Projektin hierarkiapuu, jotta valmius pysyy kartoitettuna kerroksiin, huoneisiin ja pintoihin."
+              ]
+            }
+          ]
+        },
+        "api-errors": {
+          "title": "Virheet ja nopeuskäyttäytyminen",
+          "paragraphs": [
+            "Käsittele 401 virheellisenä tai puuttuvana avaimena, 404 puuttuvana resurssina ja 429 nopeusrajoituksena. Yritä 429 uudelleen backoffilla. Älä yritä 401 uudelleen ilman tunnusten kierrätystä.",
+            "Tarkat nopeusrajat riippuvat projektista ja tilauskontekstista - älä kovakoodaa keksittyjä RPS-lukuja tältä Docs-sivulta."
+          ]
+        }
+      }
+    },
+    "sdks": {
+      "label": "SDK:t",
+      "description": "Viralliset asiakkaat samalle REST-pinnalle eri kielillä.",
+      "sections": {
+        "sdk-intro": {
+          "title": "Mitä voit rakentaa",
+          "paragraphs": [
+            "Kokemuksen rajoittaminen CurNext-asiakkaaseen ei riitä. Viralliset SDK:t antavat tiimeille vapauden laajentaa valmiusälyä sovelluksiin, työnkulkuihin ja pinostoihin, joita he jo käyttävät."
+          ],
+          "bullets": [
+            "Vedä valmius ja telemetria hallintapaneeleihin tai raportteihin",
+            "Automatisoi työmaan työnkulkuja - ratkaise hälytyksiä, listaa auditointitapahtumia, ohjaa opsia skripteillä",
+            "Integroi Node-, PHP-, Go-, Python-, Java- tai Flutter-sovelluksiin, joita jo käytätte",
+            "Työskentele webhookien kanssa - listaa päätepisteet SDK:lla; luo vastaanottimet hallintapaneelissa"
+          ],
+          "links": [
+            {
+              "label": "SDK-sivu",
+              "href": "/sdks"
+            }
+          ]
+        },
+        "sdk-languages": {
+          "title": "Viralliset kielet",
+          "paragraphs": [
+            "Asenna julkisista rekistereistä. Live-versiot SDK-sivulla ratkaistaan npm:stä, Packagistista, pkg.go.devistä, PyPI:stä ja Maven Centralista julkaisun mukaan. Flutter on suunniteltu pub.deviin ja merkitty coming soon kunnes julkaistu."
+          ],
+          "bullets": [
+            "JavaScript / TypeScript - @curnext/sdk (npm, saatavilla)",
+            "PHP - curnext/sdk (Packagist, saatavilla)",
+            "Go - github.com/awunjia/curnext-go (pkg.go.dev, saatavilla)",
+            "Python - curnext (PyPI, saatavilla)",
+            "Java - app.curnext:curnext-sdk (Maven Central, saatavilla)",
+            "Flutter - curnext (suunnitteilla) (pub.dev, tulossa pian)"
+          ]
+        },
+        "sdk-auth": {
+          "title": "Auth-malli",
+          "paragraphs": [
+            "Välitä CURNEXT_API_KEY ja valinnainen baseUrl (vain isäntä). Oletusperusta on https://api.curnext.app."
+          ]
+        },
+        "sdk-javascript": {
+          "title": "JavaScript / TypeScript",
+          "paragraphs": [
+            "Typitetty Fetch-asiakas web-sovelluksille, Node-palveluille ja TypeScript-backendille, jotka tarvitsevat valmiutta ja projektikontekstia."
+          ],
+          "bullets": [
+            "Typitetty asiakas",
+            "Node ja selaimet",
+            "Fetch API"
+          ],
+          "links": [
+            {
+              "label": "Avaa npm:ssä",
+              "href": "https://www.npmjs.com/package/@curnext/sdk",
+              "external": true
+            }
+          ]
+        },
+        "sdk-php": {
+          "title": "PHP",
+          "paragraphs": [
+            "PHP 8.1+ -asiakas Laravelille, Symfonylle ja pelkälle PHP:lle, joka vetää valmiuden portaaleihin, ERP:hen ja automaatioon."
+          ],
+          "bullets": [
+            "PHP 8.1+",
+            "cURL + JSON",
+            "Laravel ja Symfony"
+          ],
+          "links": [
+            {
+              "label": "Avaa Packagistissa",
+              "href": "https://packagist.org/packages/curnext/sdk",
+              "external": true
+            }
+          ]
+        },
+        "sdk-go": {
+          "title": "Go",
+          "paragraphs": [
+            "Idiomaattinen Go-asiakas yhdyskäytäville, työmaapalveluille ja mikropalveluille, jotka keskustelevat CurNextin kanssa HTTPS:llä."
+          ],
+          "bullets": [
+            "context.Context",
+            "Typitetyt virheet",
+            "net/http"
+          ],
+          "links": [
+            {
+              "label": "Avaa pkg.go.devissä",
+              "href": "https://pkg.go.dev/github.com/awunjia/curnext-go",
+              "external": true
+            }
+          ]
+        },
+        "sdk-python": {
+          "title": "Python",
+          "paragraphs": [
+            "Python-asiakas dataputkille, FastAPI-palveluille ja skripteille, jotka vetävät valmiutta ja telemetriaa."
+          ],
+          "bullets": [
+            "pip install",
+            "Dict-vastaukset",
+            "Django ja FastAPI"
+          ],
+          "links": [
+            {
+              "label": "Avaa PyPI:ssä",
+              "href": "https://pypi.org/project/curnext/",
+              "external": true
+            }
+          ]
+        },
+        "sdk-java": {
+          "title": "Java",
+          "paragraphs": [
+            "JVM-asiakas Spring Bootille, Quarkukselle ja yrityspalveluille. Maven groupId app.curnext; importit pysyvät io.curnext.sdk.*."
+          ],
+          "bullets": [
+            "Java 17+",
+            "Gradle ja Maven",
+            "Jackson"
+          ],
+          "links": [
+            {
+              "label": "Avaa Maven Centralissa",
+              "href": "https://central.sonatype.com/artifact/app.curnext/curnext-sdk",
+              "external": true
+            }
+          ]
+        },
+        "sdk-flutter": {
+          "title": "Flutter",
+          "paragraphs": [
+            "Flutter / Dart -asiakas mobiili- ja työpöytäsovelluksille, jotka tarvitsevat valmiutta, laitteita ja hälytyksiä kentällä. Sama REST-pinta kuin live-SDK:illa - paketti ei ole vielä pub.devissä."
+          ],
+          "bullets": [
+            "Tulossa pian",
+            "Dart",
+            "Mobiili ja työpöytä"
+          ]
+        }
+      }
+    },
+    "firmware": {
+      "label": "Firmware",
+      "description": "Katalogi, raportoidut versiot, asennushistoria ja edge-OTA.",
+      "sections": {
+        "firmware-model": {
+          "title": "Mitä on olemassa tänään",
+          "paragraphs": [
+            "CurNext seuraa firmware-versioiden katalogia, raportoituja laiteversiomerkkijonoja ja asennushistoriaa. Kenttä-OTA orkestroidaan edgessä CN-BC:llä.",
+            "Pilviupload, julkaisukanavat ja yhden napsautuksen laivaston käyttöönotto-UI eivät kuulu julkiseen markkinointipintaan. Tämä ei ole selainflasher."
+          ],
+          "bullets": [
+            "Selaa katalogimallia: versio, laitetyyppi, production- ja CE-liput",
+            "Ymmärrä raportoidut laivastomerkkijonot vs katalogirivit",
+            "Näe miten asennushistoria kirjaa factory-, OTA-, USB- ja manual-menetelmät",
+            "Kenttä-OTA ajetaan allekirjoitettuina töinä CN-BC:llä"
+          ],
+          "links": [
+            {
+              "label": "Firmware-sivu",
+              "href": "/firmware"
+            }
+          ]
+        },
+        "firmware-catalog": {
+          "title": "Katalogiliput",
+          "paragraphs": [
+            "Katalogirivit kantavat production- ja CE-merkintälippuja. Tässä kuvatussa julkisessa mallissa ei ole draft/beta-kanavaenumia."
+          ],
+          "bullets": [
+            "isProduction - onko katalogirivi merkitty tuotantokäyttöön",
+            "ceMarked - CE-merkintälippu katalogirivillä",
+            "Laitetyyppi sitoo rivin CN-CC-, CN-FG-, CN-BC-, CN-UPS- ja liittyviin luokkiin"
+          ]
+        },
+        "firmware-history": {
+          "title": "Asennushistoria",
+          "paragraphs": [
+            "Asennushistoria kirjaa, miten versio päätyi laitteeseen. Menetelmiä ovat FACTORY, OTA, USB ja MANUAL."
+          ]
+        },
+        "firmware-ota": {
+          "title": "Edge-OTA CN-BC:llä",
+          "paragraphs": [
+            "Allekirjoitetut työt saapuvat CN-BC:lle. Edge-agentti varmentaa, valmistelee ja päivittää kohteet. Kuvat osoitetaan checksumilla. Käyttöönotot voivat edetä tilojen accepted, rejected, canary, rolling, done ja failed kautta."
+          ],
+          "subsections": [
+            {
+              "title": "Kohteet",
+              "bullets": [
+                "bc - CN-BC:n itsepäivitys",
+                "fg - CN-FG-kerrospäivitys",
+                "cc - kenttänodet FUOTA / LoRaWAN -kautta",
+                "ups - CN-UPS UART-kehystetty päivitys"
+              ]
+            }
+          ]
+        },
+        "firmware-security": {
+          "title": "Tietoturvateemat",
+          "paragraphs": [
+            "Allekirjoitettu OTA, secure-element -identiteetti ja anti-rollback-teemat kuuluvat laitteistoturvan malliin. Tehdasprovisionointi ja kentän NFC-asennus dokumentoidaan operaatioille erikseen tästä julkisesta Docs-sivusta."
+          ],
+          "links": [
+            {
+              "label": "Tietoturva-arkkitehtuuri",
+              "href": "/security"
+            }
+          ]
+        }
+      }
+    },
+    "integrations": {
+      "label": "Integraatiot",
+      "description": "Market Place -kolmannen osapuolen yhteydet kategorioittain.",
+      "sections": {
+        "marketplace": {
+          "title": "Market Place",
+          "paragraphs": [
+            "Yhdistä viestintä, aikataulutus, valvonta, tuottavuus, tallennus, BIM, rakentaminen, yritys, IoT, kartat, CRM ja kirjanpito tuotteen Market Placesta.",
+            "Useimmat sovellukset käyttävät yhden napsautuksen OAuthia hallintapaneelissa. Datadog yhdistetään API-avaimilla (ei OAuth). Projektin omistajat hallitsevat yhteyksiä tuotteessa. Markkinoinnin Integrations-sivu on katalogi - yhdistämistoimet ajetaan hallintapaneelissa."
+          ],
+          "links": [
+            {
+              "label": "Integraatiosivu",
+              "href": "/integrations"
+            },
+            {
+              "label": "Avaa hallintapaneelin Market Place",
+              "href": "https://dash.curnext.app/addon",
+              "external": true
+            }
+          ]
+        },
+        "marketplace-categories": {
+          "title": "Kategoriat",
+          "paragraphs": [
+            "Suodata katalogia kategorian mukaan kun tiedät tehtävän - viestintä hälytyksiin, BIM malleihin, CRM tilityönkulkuihin."
+          ],
+          "bullets": [
+            "Viestintä",
+            "Aikataulutus",
+            "Valvonta",
+            "Tuottavuus",
+            "Tallennus",
+            "BIM",
+            "Rakentaminen",
+            "Yritys",
+            "IoT",
+            "Kartat",
+            "CRM",
+            "Kirjanpito"
+          ]
+        },
+        "marketplace-catalog": {
+          "title": "Katalogi (18 integraatiota)",
+          "paragraphs": [
+            "Julkinen katalogi listaa tällä hetkellä nämä integraatiot. Kuvaukset pysyvät lyhyinä - avaa toimittajan sivusto tuotetiedoille."
+          ],
+          "bullets": [
+            "WhatsApp (Messaging, OAuth): Lähetä kriittisiä työmaahälytyksiä ja valmiuspäivityksiä WhatsApp-numeroosi.",
+            "Slack (Messaging, OAuth): Julkaise hälytyksiä ja päivittäisiä digestejä Slack-työtilasi kanaviin.",
+            "Microsoft Teams (Messaging, OAuth): Toimita operatiivisia hälytyksiä ja valmiuspäivityksiä Teams-kanaviin.",
+            "Google Calendar (Scheduling, OAuth): Synkronoi tarkastusikkunat, kovetuksen virstanpylväät ja työmaakäynnit.",
+            "Calendly (Scheduling, OAuth): Anna tarkastajien ja omistajien varata työmaakäyntejä jaetusta saatavuudesta.",
+            "Datadog (Monitoring, API key): Välitä laitteen terveysmittarit ja hälytystapahtumat Datadog-pinostoosi.",
+            "Google Sheets (Productivity, OAuth): Vie valmiustilannekuvia ja telemetrian yhteenvetoja jaettuun taulukkoon.",
+            "Dropbox (Storage, OAuth): Arkistoi raportit, sertifikaatit ja työmaakuvat jaettuihin projektikansioihin.",
+            "Autodesk Revit (BIM, OAuth): Synkronoi BIM-mallit, huoneet ja pinnat kovetusvalmiuden kontekstin kanssa.",
+            "Procore (Construction, OAuth): Työnnä valmiustila ja hälytykset Procore-projektitietueisiin.",
+            "IBM Maximo (Enterprise, OAuth): Linkitä koetinresurssit ja huoltotyömääräykset työmaatelemetriaan.",
+            "Azure IoT Hub (IoT, OAuth): Vastaanota laite-telemetriaa ja komentoja Azure IoT -ympäristönne kautta.",
+            "Google Maps (Maps, OAuth): Sijoita rakennukset, koettimet ja sääkonteksti projektikartoille.",
+            "Mapbox (Maps, OAuth): Renderöi mukautetut työmaakartat ja geoaidatut hälytysvyöhykkeet.",
+            "Salesforce (CRM, OAuth): Synkronoi asiakastilit, projektit ja luovutuksen virstanpylväät.",
+            "HubSpot (CRM, OAuth): Pidä omistajakontaktit ja onboarding-työnkulut HubSpotissa.",
+            "QuickBooks (Accounting, OAuth): Vie laskut ja tilauksen laskutustapahtumat QuickBooksiin.",
+            "Xero (Accounting, OAuth): Synkronoi laskutusyhteystiedot ja laskurivit Xeron kanssa."
+          ]
+        }
+      }
+    },
+    "security": {
+      "label": "Tietoturva",
+      "description": "Julkinen tietoturva-arkkitehtuurin tiivistelmä arvioijille.",
+      "sections": {
+        "security-objectives": {
+          "title": "Tietoturvatavoitteet",
+          "paragraphs": [
+            "CurNext suunnittelee luottamuksellisuutta, eheyttä, aitoutta, saatavuutta, vastuullisuutta ja yksityisyyttä viisikerroksisessa pinostossa. Security-sivu on pitkä julkinen viite. Tämä välilehti on Docs-tiivistelmä."
+          ],
+          "bullets": [
+            "Luottamuksellisuus - telemetria ja tunnukset eivät luettavissa ilman lupaa",
+            "Eheys - firmware, config ja mittaukset suojattu havaitsemattomalta peukaloinnilta",
+            "Aitous - laitteet ja palvelut todistavat identiteetin ennen luottamusta",
+            "Saatavuus - sietokyky katkoille, uudelleenlähetykselle ja tulvimiselle",
+            "Vastuullisuus - auditointipolku pääsylle, provisionoinnille, OTA:lle ja admin-toimille",
+            "Yksityisyys - GDPR-suuntautunut henkilötietojen ja työmaadatan käsittely pilvessä"
+          ],
+          "links": [
+            {
+              "label": "Tietoturvasivu",
+              "href": "/security"
+            }
+          ]
+        },
+        "security-zones": {
+          "title": "Vyöhykkeet ja kanavat",
+          "paragraphs": [
+            "IEC 62443 -tyyliset vyöhykkeet pitävät kenttäradion, kerros-LAN:n, rakennuksen edgen ja pilven erillään. Teholla ei ole datakanavaa."
+          ],
+          "bullets": [
+            "Z1 - L1-kenttäanturit (ei IP-pinostoa nodessa)",
+            "Z2 - CN-FG-kerrosyhdyskäytävä paikallisessa VLAN:ssa",
+            "Z3 - CN-UPS vain teho",
+            "Z4 - CN-BC-rakennus-DMZ (WireGuard, MQTT, OTA)",
+            "Z5 - CurNext-pilvi",
+            "C1 ilmalinkki: LoRaWAN MAC AES-128 + MIC, OTAA, secure-element -avaimet",
+            "C4 rakennus pilveen: WireGuard + MQTT TLS 1.3 mTLS:llä; broker ei julkinen",
+            "C5 asennus: NFC-salaussidonta; QR-määritys pois käytöstä oletuksena"
+          ]
+        },
+        "security-field": {
+          "title": "Kenttäkontrollit (L1-L4)",
+          "paragraphs": [
+            "Kenttänodet käyttävät yksilöllisiä avaimia, secure bootia, allekirjoitettua OTA:ta, manipulointisuojattua rakennetta ja siirtymän tunnistusta. CN-FG varmentaa ilmalinkin. CN-BC on ainoa kenttäpolku allekirjoitetuille päivityksille L1/L2:een."
+          ]
+        },
+        "security-cloud": {
+          "title": "Pilvikontrollit (L5)",
+          "paragraphs": [
+            "Yksityinen MQTT-verkko, kutsuttiin pääsy, RBAC, etuoikeutettu MFA, nopeusrajat, edge-WAF, salaus siirrossa ja levossa, vuokralaiseristys, salatut varmuuskopiot ja GDPR-suuntautuneet auditointitapahtumat."
+          ]
+        },
+        "security-disclosure": {
+          "title": "Ilmoittaminen",
+          "paragraphs": [
+            "Ilmoita haavoittuvuudet osoitteeseen security@curnext.app. Koordinoitu ilmoittaminen on suositeltavaa. Älä keksi CurNextin ISO 27001- tai SOC 2 -sertifiointia tältä Docs-sivulta - Security-sivulla listatut standardit ovat suunnittelulinjausta ellei erikseen vahvisteta."
+          ],
+          "links": [
+            {
+              "label": "Tietoturvasivu",
+              "href": "/security"
+            },
+            {
+              "label": "DPA",
+              "href": "/data/data-processing-agreement"
+            }
+          ]
+        }
+      }
+    },
+    "hosting": {
+      "label": "Hosting",
+      "description": "Missä CurNext toimii, miten liikenne kulkee ja mikä skaalautuu.",
+      "sections": {
+        "hosting-intro": {
+          "title": "EU-pilvi, ankkuroitu Saksaan",
+          "paragraphs": [
+            "Sovellushosting pyörii Hetznerillä Saksassa. Tietokanta ja autentikointi pyörivät Supabasella Frankfurtissa. Julkinen liikenne suojataan Cloudflare-edgessä ja jaetaan kuormantasatuille replikoille.",
+            "Tämä on luottamus- / residenssiselitys - ei tilapaneeli eikä julkinen koneinventaario. Asiakkaat Suomessa, Kanadassa ja Kamerunissa käyttävät tätä EU-ankkuroitua pinostoa ellei yrityksen liite toisin sano."
+          ],
+          "links": [
+            {
+              "label": "Datacenters-sivu",
+              "href": "/datacenters"
+            }
+          ]
+        },
+        "hosting-layers": {
+          "title": "Julkaistavat aluetiedot",
+          "paragraphs": [
+            "Käytä näitä tunnisteita hankinta-arvioinneissa. Ne vastaavat Datacenters-sivua."
+          ],
+          "bullets": [
+            "Sovellusalkuperät - Hetzner, Saksa - Docker-kuvat markkinoinnille, SaaS-webille, API:lle",
+            "Tietokanta + Auth - Supabase, Frankfurt - PostgreSQL ja Auth",
+            "Edge - Cloudflare maailmanlaajuinen - DNS, TLS, WAF, CDN, Turnstile",
+            "Objektitallennus tarvittaessa - Cloudflare R2 EU-jurisdiktio-optiolla",
+            "Skaalauspolku - kuormantasaajat tilattomien replikoiden edessä"
+          ]
+        },
+        "hosting-traffic": {
+          "title": "Miten liikenne kulkee",
+          "paragraphs": [
+            "Internet Cloudflareen (DNS, TLS, WAF, CDN), sitten kuormantasaajat, sitten Docker-replikat Hetznerillä Saksassa. Supabase Postgres ja Auth ovat Frankfurtissa. Health checkit pitävät epäterveet replikat pois kierrosta."
+          ]
+        },
+        "hosting-scale": {
+          "title": "Skaalausasento",
+          "paragraphs": [
+            "Web- ja API-replikat ovat tilattomia kuormantasaajien takana. Workerit voivat lisätä replikoita kuorman kasvaessa. Tietokanta on hallittu Supabase poolauksella monille replikoille. Istunnot käyttävät hallittuja auth-evästeitä - ei sticky-istuntovaatimusta kuormantasaajalla.",
+            "Älä keksi replikamääriä, RPS-lukuja tai uptime-prosentteja tältä Docs-sivulta."
+          ]
+        },
+        "hosting-honesty": {
+          "title": "Residenssin rehellisyys",
+          "paragraphs": [
+            "Ydin sovellus ja tietokanta Platform Client Datalle isännöidään Saksassa / Frankfurtissa. Jotkut kolmannet osapuolet (edge-CDN, Stripe-laskutus, SMTP2GO-sähköposti, AI-API:t) voivat käsitellä rajattua dataa tämän rajan ulkopuolella. Katso DPA-alakäsittelijätaulukko julkisesta listasta."
+          ],
+          "links": [
+            {
+              "label": "DPA-alakäsittelijät",
+              "href": "/data/data-processing-agreement"
+            },
+            {
+              "label": "Tietosuojakäytäntö",
+              "href": "/data/privacy-policy"
+            }
+          ]
+        }
+      }
+    },
+    "commercial": {
+      "label": "Kaupallinen",
+      "description": "Hinnoittelumalli, tarjoukset ja miten tavoittaa CurNext.",
+      "sections": {
+        "pricing-model": {
+          "title": "Laskutusmalli",
+          "paragraphs": [
+            "CurNext laskuttaa nodemäärän ja sopimuskauden mukaan - ei vanhoilla suunnitelmatasoilla. Käytä Hinnoittelua arvioidaksesi asennuskaistat ja kuukausitilauksen per node Suomelle, Kanadalle tai Kamerunille, ja pyydä sitten tarjous.",
+            "Vero käsitellään kassalla eikä näy live-laskinrivinä markkinoinnin estimaattorissa."
+          ],
+          "links": [
+            {
+              "label": "Hinnoittelu",
+              "href": "/pricing"
+            },
+            {
+              "label": "Pyydä tarjous",
+              "href": "/pricing#request-quote"
+            }
+          ]
+        },
+        "pricing-markets": {
+          "title": "Markkinat",
+          "paragraphs": [
+            "Riippumattomat listahinnat Suomelle (EUR), Kanadalle (CAD) ja Kamerunille (XAF). Laajentuminen lisämarkkinoille on käynnissä - älä keksi listaamattomia maita live-kaupallisiksi markkinoiksi tässä."
+          ]
+        },
+        "api-access-commercial": {
+          "title": "API- ja SDK-pääsy",
+          "paragraphs": [
+            "API- ja SDK-pääsy on sidottu sivuston tilaukseen (nodemäärä ja kesto). Luo projektin API-avaimet tuotteessa kohdassa Integration sen jälkeen kun sivusto on soveltamisalassa."
+          ]
+        },
+        "contact": {
+          "title": "Yhteystietopolut",
+          "paragraphs": [
+            "Yleiselle tuotteelle, API:lle, kumppanuudelle, tuelle, tietoturvalle ja medialle käytä Contactia. Tarjoukset käyttävät Hinnoittelu-estimaattorilomaketta. Urat käyttävät urahakemusvirtaa."
+          ],
+          "bullets": [
+            "sales@curnext.app - kaupalliset ja volyymikeskustelut",
+            "dev@curnext.app - API, SDK:t ja integraatiot",
+            "info@curnext.app - yleiset yrityskysymykset",
+            "legal@curnext.app - DPA ja juridinen",
+            "security@curnext.app - haavoittuvuusilmoitukset ja tietoturvainsidentit",
+            "gdpr@curnext.app - GDPR- ja tietosuojapyynnöt",
+            "support@curnext.app - tuotetuki"
+          ],
+          "links": [
+            {
+              "label": "Yhteystiedot",
+              "href": "/contact"
+            },
+            {
+              "label": "Urat",
+              "href": "/careers"
+            },
+            {
+              "label": "DPA",
+              "href": "/data/data-processing-agreement"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

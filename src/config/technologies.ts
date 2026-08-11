@@ -34,7 +34,7 @@ export const technologiesProducts = [
     sku: "CN-CC",
     name: "Concrete curing",
     href: "/solutions/concrete-curing",
-    body: "Air, surface, and core probes with slab readiness intelligence.",
+    body: "Air, surface, and core probes with slab readiness intelligence and an in-house TensorFlow.js curing prediction model.",
   },
   {
     sku: "CN-WD",
@@ -149,6 +149,10 @@ export const technologiesData = {
       body: "Scores, status, and estimated ready timing for monitored surfaces.",
     },
     {
+      title: "Concrete curing model",
+      body: "In-house prediction for CN-CC slab readiness, trained and served with TensorFlow.js.",
+    },
+    {
       title: "BIM context",
       body: "Buildings, spaces, and devices for coordination - not a detached sensor dump.",
     },
@@ -192,7 +196,7 @@ export const technologiesEcosystem = [
   },
   {
     title: "AI & intelligence",
-    names: ["OpenAI", "Gemini", "OpenWeather"],
+    names: ["TensorFlow.js", "Gemini", "Groq", "OpenWeather"],
   },
   {
     title: "BIM, identity & commerce",

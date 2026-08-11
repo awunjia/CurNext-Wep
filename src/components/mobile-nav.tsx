@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowUpRight,
   Building2,
@@ -14,6 +13,7 @@ import {
   Menu,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -25,6 +25,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { primaryNav, siteConfig } from "@/config/site";
+import { Link } from "@/i18n/navigation";
+import { navGroupKey, navItemKeyByHref } from "@/lib/nav-labels";
 import { cn } from "@/lib/utils";
 
 const navIcons: Record<string, LucideIcon> = {
@@ -36,11 +38,33 @@ const navIcons: Record<string, LucideIcon> = {
 };
 
 export function MobileNav() {
+  const t = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
 
   function toggleSection(title: string) {
     setExpanded((current) => (current === title ? null : title));
+  }
+
+  function labelForGroup(title: string) {
+    const key = navGroupKey[title];
+    return key ? t(key as "home") : title;
+  }
+
+  function labelForItem(href: string, fallback: string) {
+    const key = navItemKeyByHref[href];
+    return key ? t(key as "home") : fallback;
+  }
+
+  function descForItem(href: string, fallback?: string) {
+    const key = navItemKeyByHref[href];
+    if (!key) return fallback;
+    try {
+      return t(`${key}Desc` as "howItWorksDesc");
+    } catch {
+      return fallback;
+    }
   }
 
   return (
@@ -87,6 +111,7 @@ export function MobileNav() {
           <nav className="space-y-1">
             {primaryNav.map((item) => {
               const Icon = navIcons[item.title];
+              const groupLabel = labelForGroup(item.title);
 
               if (!item.items) {
                 return (
@@ -97,7 +122,7 @@ export function MobileNav() {
                     className="hover:bg-muted flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium"
                   >
                     {Icon ? <Icon className="size-4" aria-hidden /> : null}
-                    {item.title}
+                    {groupLabel}
                   </Link>
                 );
               }
@@ -114,7 +139,7 @@ export function MobileNav() {
                   >
                     <span className="flex items-center gap-2">
                       {Icon ? <Icon className="size-4" aria-hidden /> : null}
-                      {item.title}
+                      {groupLabel}
                     </span>
                     <ChevronDown
                       className={cn(
@@ -126,47 +151,55 @@ export function MobileNav() {
 
                   {isExpanded ? (
                     <ul className="border-border ml-3 space-y-0.5 border-l pl-3">
-                      {item.items.map((subItem) => (
-                        <li key={subItem.href}>
-                          {subItem.external ? (
-                            <a
-                              href={subItem.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() => setOpen(false)}
-                              className="hover:bg-muted block rounded-lg px-3 py-2"
-                            >
-                              <span className="flex items-center gap-1.5 text-sm font-medium">
-                                {subItem.title}
-                                <ArrowUpRight
-                                  className="text-muted-foreground size-3.5 shrink-0"
-                                  aria-hidden
-                                />
-                              </span>
-                              {subItem.description ? (
-                                <span className="text-muted-foreground mt-0.5 block text-xs">
-                                  {subItem.description}
+                      {item.items.map((subItem) => {
+                        const title = labelForItem(subItem.href, subItem.title);
+                        const description = descForItem(
+                          subItem.href,
+                          subItem.description,
+                        );
+
+                        return (
+                          <li key={subItem.href}>
+                            {subItem.external ? (
+                              <a
+                                href={subItem.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setOpen(false)}
+                                className="hover:bg-muted block rounded-lg px-3 py-2"
+                              >
+                                <span className="flex items-center gap-1.5 text-sm font-medium">
+                                  {title}
+                                  <ArrowUpRight
+                                    className="text-muted-foreground size-3.5 shrink-0"
+                                    aria-hidden
+                                  />
                                 </span>
-                              ) : null}
-                            </a>
-                          ) : (
-                            <Link
-                              href={subItem.href}
-                              onClick={() => setOpen(false)}
-                              className="hover:bg-muted block rounded-lg px-3 py-2"
-                            >
-                              <span className="block text-sm font-medium">
-                                {subItem.title}
-                              </span>
-                              {subItem.description ? (
-                                <span className="text-muted-foreground mt-0.5 block text-xs">
-                                  {subItem.description}
+                                {description ? (
+                                  <span className="text-muted-foreground mt-0.5 block text-xs">
+                                    {description}
+                                  </span>
+                                ) : null}
+                              </a>
+                            ) : (
+                              <Link
+                                href={subItem.href}
+                                onClick={() => setOpen(false)}
+                                className="hover:bg-muted block rounded-lg px-3 py-2"
+                              >
+                                <span className="block text-sm font-medium">
+                                  {title}
                                 </span>
-                              ) : null}
-                            </Link>
-                          )}
-                        </li>
-                      ))}
+                                {description ? (
+                                  <span className="text-muted-foreground mt-0.5 block text-xs">
+                                    {description}
+                                  </span>
+                                ) : null}
+                              </Link>
+                            )}
+                          </li>
+                        );
+                      })}
                     </ul>
                   ) : null}
                 </div>
@@ -185,7 +218,7 @@ export function MobileNav() {
             )}
           >
             <CalendarDays className="size-4" aria-hidden />
-            Request Quote
+            {tCommon("requestQuote")}
           </Link>
         </div>
       </SheetContent>

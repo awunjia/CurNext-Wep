@@ -1,14 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { CalendarDays, Waypoints } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import { buttonVariants } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 export function HomeHero() {
+  const t = useTranslations("home");
+
   return (
     <section className="relative w-full">
       <div className="relative flex min-h-[100svh] w-full items-end overflow-hidden">
@@ -33,12 +36,10 @@ export function HomeHero() {
 
         <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 md:pb-24">
           <h1 className="motion-safe:animate-hero-rise max-w-2xl text-4xl font-semibold tracking-tight !text-white motion-safe:opacity-0 [animation-delay:120ms] sm:text-5xl md:text-6xl">
-            Build-ready site intelligence
+            {t("heroTitle")}
           </h1>
           <p className="motion-safe:animate-hero-rise mt-4 max-w-xl text-base leading-relaxed !text-white/80 motion-safe:opacity-0 [animation-delay:220ms] sm:mt-5 sm:text-lg">
-            A site intelligence platform that monitors slabs, walls, and wet
-            rooms with industrial IoT sensors and provides adequate AI
-            predictions for readiness.
+            {t("heroLead")}
           </p>
           <div className="motion-safe:animate-hero-rise mt-8 flex w-full flex-row flex-wrap gap-3 motion-safe:opacity-0 [animation-delay:320ms] sm:mt-10">
             <Link
@@ -49,7 +50,7 @@ export function HomeHero() {
               )}
             >
               <CalendarDays className="size-4" aria-hidden />
-              Request Quote
+              {t("requestQuote")}
             </Link>
             <Link
               href="/how-it-works"
@@ -59,7 +60,7 @@ export function HomeHero() {
               )}
             >
               <Waypoints className="size-4" aria-hidden />
-              How It Works
+              {t("howItWorks")}
             </Link>
           </div>
         </div>

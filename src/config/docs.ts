@@ -39,9 +39,10 @@ const solutionBodies: Record<
 > = {
   "CN-CC": {
     summary:
-      "Concrete curing monitors slab maturity with air, surface, and core probes. A sealed edge node stays outside the pour; rugged probes sit where the slab needs measurement. The cloud turns temperatures into build-ready timing and an audit trail for the pour package.",
+      "Concrete curing monitors slab maturity with air, surface, and core probes. A sealed edge node stays outside the pour; rugged probes sit where the slab needs measurement. CurNext's in-house TensorFlow.js model turns those temperatures into curing predictions and build-ready timing, with an audit trail for the pour package.",
     bullets: [
       "Air, surface, and core probe roles on the same harness model",
+      "In-house TensorFlow.js curing prediction for readiness",
       "Go / no-go readiness instead of calendar-only cure rules",
       "Documented cure trail for formwork and follow-on trades",
       "LoRaWAN field path into CN-FG and CN-BC",
@@ -697,7 +698,7 @@ export const docsTabs: DocsTab[] = [
         paragraphs: [
           "Internet to Cloudflare (DNS, TLS, WAF, CDN), then load balancers, then Docker replicas on Hetzner in Germany. Supabase Postgres and Auth sit in Frankfurt. Health checks keep unhealthy replicas out of rotation.",
         ],
-        code: "Internet\n  → Cloudflare (DNS, TLS, WAF, CDN)\n      → Load balancer(s)\n          → Docker replicas (Hetzner, Germany)\n              · www.curnext.app   (marketing)\n              · curnext.app       (SaaS web)\n              · api.curnext.app   (API)\n  → Supabase Postgres + Auth (Frankfurt, Germany)\n  → Cloudflare R2 (EU objects, when configured)",
+        code: "Internet\n  → Cloudflare (DNS, TLS, WAF, CDN)\n      → Load balancer(s)\n          → Docker replicas (Hetzner, Germany)\n              · www.curnext.app   (marketing)\n              · dash.curnext.app  (SaaS web)\n              · api.curnext.app   (API)\n  → Supabase Postgres + Auth (Frankfurt, Germany)\n  → Cloudflare R2 (EU objects, when configured)",
       },
       {
         id: "hosting-scale",
@@ -759,9 +760,11 @@ export const docsTabs: DocsTab[] = [
         ],
         bullets: [
           "sales@curnext.app - commercial and volume discussions",
+          "dev@curnext.app - API, SDKs, and integrations",
           "info@curnext.app - general company questions",
           "legal@curnext.app - DPA and legal",
           "security@curnext.app - vulnerability disclosure and security incidents",
+          "gdpr@curnext.app - GDPR and privacy requests",
           "support@curnext.app - product support",
         ],
         links: [

@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+
 import {
   Activity,
   ArrowUpRight,
@@ -9,8 +10,11 @@ import {
   Wind,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { solutions } from "@/config/site";
+import { Link } from "@/i18n/navigation";
+import { navItemKeyByHref } from "@/lib/nav-labels";
 
 const solutionIcons: Record<(typeof solutions)[number]["href"], LucideIcon> = {
   "/solutions/concrete-curing": BrickWall,
@@ -22,27 +26,29 @@ const solutionIcons: Record<(typeof solutions)[number]["href"], LucideIcon> = {
 };
 
 export function HomeSurfacesSection() {
+  const t = useTranslations("home");
+  const tNav = useTranslations("nav");
+
   return (
     <section className="relative w-full bg-background">
       <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20 md:py-24">
         <div className="flex flex-col gap-6 border-b border-border/70 pb-10 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
           <div className="max-w-2xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              Solutions
+              {t("surfacesEyebrow")}
             </p>
             <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
-              Every surface. Every phase.
+              {t("surfacesTitle")}
             </h3>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              From pour to handover, CurNext connects industrial IoT sensing with
-              AI readiness predictions across the surfaces that decide schedule.
+              {t("surfacesLead")}
             </p>
           </div>
           <Link
             href="/solutions"
             className="text-muted-foreground hover:text-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium transition-colors"
           >
-            View all solutions
+            {t("surfacesViewAll")}
             <ArrowUpRight className="size-4" aria-hidden />
           </Link>
         </div>
@@ -50,6 +56,11 @@ export function HomeSurfacesSection() {
         <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-10">
           {solutions.map((solution) => {
             const Icon = solutionIcons[solution.href];
+            const key = navItemKeyByHref[solution.href];
+            const title = key ? tNav(key as "concreteCuring") : solution.title;
+            const description = key
+              ? tNav(`${key}Desc` as "concreteCuringDesc")
+              : solution.description;
 
             return (
               <li key={solution.href} className="min-w-0">
@@ -62,7 +73,7 @@ export function HomeSurfacesSection() {
                   </span>
                   <span className="flex items-start justify-between gap-2">
                     <span className="text-sm font-medium tracking-tight sm:text-base">
-                      {solution.title}
+                      {title}
                     </span>
                     <ArrowUpRight
                       aria-hidden
@@ -70,7 +81,7 @@ export function HomeSurfacesSection() {
                     />
                   </span>
                   <span className="text-muted-foreground mt-1.5 block text-xs leading-relaxed sm:text-sm">
-                    {solution.description}
+                    {description}
                   </span>
                 </Link>
               </li>

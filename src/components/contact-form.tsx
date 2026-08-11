@@ -12,6 +12,7 @@ import {
   Tag,
   User,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { FieldLabel } from "@/components/field-label";
@@ -52,6 +53,7 @@ const selectClassName =
   "border-input bg-transparent focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 h-8 w-full min-w-0 rounded-lg border px-2.5 py-1 text-base outline-none transition-colors focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm";
 
 export function ContactForm() {
+  const t = useTranslations("contact.form");
   const [form, setForm] = useState<FormState>(initialState);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -67,11 +69,11 @@ export function ContactForm() {
     setError(null);
 
     if (!form.subject) {
-      setError("Select a topic");
+      setError(t("selectTopicError"));
       return;
     }
     if (!turnstileToken) {
-      setError("Complete the security check");
+      setError(t("turnstileRequired"));
       return;
     }
 
@@ -87,16 +89,16 @@ export function ContactForm() {
       });
       const data = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !data.ok) {
-        throw new Error(data.error || "Unable to send your message");
+        throw new Error(data.error || t("sendError"));
       }
 
-      toast.success("Message sent - check your inbox for confirmation");
+      toast.success(t("toastSuccess"));
       setForm(initialState);
       setTurnstileToken("");
       turnstileRef.current?.reset();
     } catch (err) {
       const message =
-        err instanceof Error ? err.message : "Unable to send your message";
+        err instanceof Error ? err.message : t("sendError");
       setError(message);
       toast.error(message);
       setTurnstileToken("");
@@ -112,7 +114,7 @@ export function ContactForm() {
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="min-w-0 space-y-2">
             <FieldLabel htmlFor="contact-firstName" icon={User} required>
-              First name
+              {t("firstName")}
             </FieldLabel>
             <Input
               id="contact-firstName"
@@ -126,7 +128,7 @@ export function ContactForm() {
           </div>
           <div className="min-w-0 space-y-2">
             <FieldLabel htmlFor="contact-lastName" icon={User} required>
-              Last name
+              {t("lastName")}
             </FieldLabel>
             <Input
               id="contact-lastName"
@@ -143,7 +145,7 @@ export function ContactForm() {
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="min-w-0 space-y-2">
             <FieldLabel htmlFor="contact-email" icon={Mail} required>
-              Work email
+              {t("workEmail")}
             </FieldLabel>
             <Input
               id="contact-email"
@@ -158,7 +160,7 @@ export function ContactForm() {
           </div>
           <div className="min-w-0 space-y-2">
             <FieldLabel htmlFor="contact-phone" icon={Phone}>
-              Phone
+              {t("phone")}
             </FieldLabel>
             <Input
               id="contact-phone"
@@ -175,7 +177,7 @@ export function ContactForm() {
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="min-w-0 space-y-2">
             <FieldLabel htmlFor="contact-company" icon={Building2}>
-              Company
+              {t("company")}
             </FieldLabel>
             <Input
               id="contact-company"
@@ -188,7 +190,7 @@ export function ContactForm() {
           </div>
           <div className="min-w-0 space-y-2">
             <FieldLabel htmlFor="contact-subject" icon={Tag} required>
-              Topic
+              {t("topic")}
             </FieldLabel>
             <select
               id="contact-subject"
@@ -201,11 +203,11 @@ export function ContactForm() {
               className={cn(selectClassName, "bg-background/60 dark:bg-background/40")}
             >
               <option value="" disabled>
-                Select a topic
+                {t("selectTopic")}
               </option>
               {contactSubjects.map((item) => (
                 <option key={item.id} value={item.id}>
-                  {item.label}
+                  {t(`subjects.${item.id}`)}
                 </option>
               ))}
             </select>
@@ -214,7 +216,7 @@ export function ContactForm() {
 
         <div className="min-w-0 space-y-2">
           <FieldLabel htmlFor="contact-message" icon={MessageSquareText} required>
-            Message
+            {t("message")}
           </FieldLabel>
           <Textarea
             id="contact-message"
@@ -222,14 +224,14 @@ export function ContactForm() {
             required
             value={form.message}
             onChange={(e) => update("message", e.target.value)}
-            placeholder="Tell us about your project, timeline, or question."
+            placeholder={t("messagePlaceholder")}
             className="min-h-32 bg-background/60 text-base dark:bg-background/40 sm:text-sm"
           />
         </div>
 
         <div className="min-w-0 space-y-3 overflow-x-auto">
           <FieldLabel icon={ShieldCheck} required>
-            Security check
+            {t("securityCheck")}
           </FieldLabel>
           <TurnstileWidget
             ref={turnstileRef}
@@ -251,8 +253,7 @@ export function ContactForm() {
 
         <div className="flex flex-col gap-3 border-border/70 border-t pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-muted-foreground text-center text-xs leading-relaxed sm:max-w-sm sm:text-left">
-            By submitting, you agree to be contacted about your inquiry. We do
-            not sell your details.
+            {t("consent")}
           </p>
           <Button
             type="submit"
@@ -263,12 +264,12 @@ export function ContactForm() {
             {submitting ? (
               <>
                 <Loader2 className="size-4 animate-spin" />
-                Sending
+                {t("sending")}
               </>
             ) : (
               <>
                 <Send className="size-4" />
-                Send message
+                {t("send")}
               </>
             )}
           </Button>

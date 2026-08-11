@@ -1,17 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import { ArrowRight, Mail } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
-import {
-  datacentersObjectStorage,
-  datacentersPage,
-  datacentersRegions,
-  datacentersScale,
-  datacentersStorage,
-  datacentersTraffic,
-  datacentersTrust,
-} from "@/config/datacenters";
 import { partners } from "@/config/partners";
 import { siteConfig } from "@/config/site";
 import {
@@ -24,7 +16,17 @@ function partnerByName(name: string) {
   return partners.find((partner) => partner.name === name);
 }
 
-export function DatacentersPage() {
+export async function DatacentersPage() {
+  const t = await getTranslations("datacenters");
+  const tCommon = await getTranslations("common");
+  const datacentersPage = { title: t("title"), description: t("description"), leadNote: t("leadNote") };
+  const datacentersRegions = t.raw("regions") as typeof import("@/config/datacenters").datacentersRegions;
+  const datacentersObjectStorage = t.raw("objectStorage") as typeof import("@/config/datacenters").datacentersObjectStorage;
+  const datacentersTraffic = t.raw("traffic") as typeof import("@/config/datacenters").datacentersTraffic;
+  const datacentersStorage = t.raw("storage") as typeof import("@/config/datacenters").datacentersStorage;
+  const datacentersScale = t.raw("scale") as typeof import("@/config/datacenters").datacentersScale;
+  const datacentersTrust = t.raw("trust") as typeof import("@/config/datacenters").datacentersTrust;
+
   return (
     <main className="flex flex-1 flex-col">
       <section
@@ -59,12 +61,10 @@ export function DatacentersPage() {
               id="datacenters-regions-heading"
               className={sectionHeadingClassName}
             >
-              Where workloads run
+              {t("regionsTitle")}
             </h2>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              Not a multi-cloud story. EU production residency is Germany /
-              Frankfurt as stated below - we do not invent a second production
-              country here.
+{t("regionsLead")}
             </p>
           </div>
 
@@ -331,6 +331,11 @@ export function DatacentersPage() {
               <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>
+        </div>
+      </section>
+          <section className="border-border/60 relative w-full border-t bg-background">
+        <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
+          <p className="text-muted-foreground text-xs leading-relaxed">{tCommon("legalTranslationNote")}</p>
         </div>
       </section>
     </main>

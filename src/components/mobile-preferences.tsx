@@ -10,8 +10,9 @@ import {
   Settings2,
   Sun,
 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useState, useTransition } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,12 +22,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import {
-  LANGUAGE_STORAGE_KEY,
-  languages,
-  type LanguageCode,
-} from "@/config/languages";
+import { languages, type LanguageCode } from "@/config/languages";
 import { siteConfig } from "@/config/site";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 const appearanceOptions = [
@@ -36,35 +34,31 @@ const appearanceOptions = [
 ] as const;
 
 export function MobilePreferences() {
+  const t = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
   const [appearanceOpen, setAppearanceOpen] = useState(false);
-  const [language, setLanguage] = useState<LanguageCode>("en");
-  const [mounted, setMounted] = useState(false);
+  const locale = useLocale() as LanguageCode;
+  const pathname = usePathname();
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    const stored = window.localStorage.getItem(
-      LANGUAGE_STORAGE_KEY,
-    ) as LanguageCode | null;
-    if (stored && languages.some((item) => item.code === stored)) {
-      setLanguage(stored);
-      document.documentElement.lang = stored;
-      document.documentElement.dir = "ltr";
-    }
-    setMounted(true);
-  }, []);
-
   function selectLanguage(code: LanguageCode) {
-    setLanguage(code);
-    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, code);
+    if (code === locale) {
+      setLanguageOpen(false);
+      return;
+    }
     document.documentElement.lang = code;
     document.documentElement.dir = "ltr";
     setLanguageOpen(false);
+    startTransition(() => {
+      router.replace(pathname, { locale: code });
+    });
   }
 
   const currentLanguage =
-    languages.find((item) => item.code === language) ?? languages[0];
+    languages.find((item) => item.code === locale) ?? languages[0];
   const currentAppearance =
     appearanceOptions.find((item) => item.value === theme) ??
     appearanceOptions[0];
@@ -102,13 +96,14 @@ export function MobilePreferences() {
                 onClick={() => setLanguageOpen((value) => !value)}
                 className="hover:bg-muted flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium"
                 aria-expanded={languageOpen}
+                disabled={pending}
               >
                 <span className="flex items-center gap-2">
                   <Languages className="size-4" aria-hidden />
                   Language
                 </span>
                 <span className="text-muted-foreground flex items-center gap-1.5 text-sm font-normal">
-                  {mounted ? currentLanguage.label : "English"}
+                  {currentLanguage.label}
                   <ChevronDown
                     className={cn(
                       "size-4 transition-transform",
@@ -131,7 +126,7 @@ export function MobilePreferences() {
                         <CheckIcon
                           className={cn(
                             "size-4",
-                            language === item.code
+                            locale === item.code
                               ? "opacity-100"
                               : "opacity-0",
                           )}
@@ -156,7 +151,7 @@ export function MobilePreferences() {
                   Appearance
                 </span>
                 <span className="text-muted-foreground flex items-center gap-1.5 text-sm font-normal">
-                  {mounted ? currentAppearance.label : "System"}
+                  {currentAppearance.label}
                   <ChevronDown
                     className={cn(
                       "size-4 transition-transform",
@@ -170,7 +165,7 @@ export function MobilePreferences() {
                 <ul className="border-border ml-3 mt-1 space-y-0.5 border-l pl-3">
                   {appearanceOptions.map((item) => {
                     const Icon = item.icon;
-                    const selected = mounted && theme === item.value;
+                    const selected = theme === item.value;
 
                     return (
                       <li key={item.value}>
@@ -203,6 +198,7 @@ export function MobilePreferences() {
 
             <div className="border-border mt-4 border-t pt-4">
               <Button
+                nativeButton={false}
                 render={
                   <a
                     href={siteConfig.links.dashboard}
@@ -216,7 +212,7 @@ export function MobilePreferences() {
                 className="h-11 w-full gap-2"
               >
                 <LogIn className="size-4" aria-hidden />
-                Login
+                {t("signIn")}
               </Button>
             </div>
           </div>

@@ -1,0 +1,344 @@
+{
+  "page": {
+    "title": "Tietojenkäsittelysopimus",
+    "description": "CurNext tarjoaa tietojenkäsittelysopimuksen asiakkaille, jotka tarvitsevat käsittelijän ehtoja, kun CurNext käsittelee henkilötietoja Asiakkaan alustan käytön yhteydessä - mukaan lukien asiakkaat Suomessa (EU), Kanadassa ja Kamerunissa.",
+    "leadNote": "Tämä sivu on hankintakeskeinen yhteenveto, joka noudattaa GDPR:n 28 artiklan käytäntöä (roolit, laajuus, TOMit, julkiset alikäsittelijät, siirto- ja ilmoituskieli). Allekirjoitettu DPA on oikeudellinen asiakirja - lopulliset lausekkeet tulee tarkistaa oikeudellisen neuvonantajan kanssa. Älä pidä tätä sivua allekirjoitetun sopimuksen tekstinä.",
+    "supportLine": "CurNext toimii käsittelijänä Asiakastiedoille, joita ohjeistetaan Palveluiden kautta. Alustan ydinapplikaatio ja tietokanta isännöidään Saksassa / Frankfurtissa. Nykyiset kaupalliset markkinat: Suomi, Kanada ja Kamerun. Yritysohjelmissa DPA solmitaan 30 päivän kuluessa aikataulun allekirjoituksesta."
+  },
+  "dpaAudience": {
+    "title": "Kenelle tämä on tarkoitettu",
+    "lead": "B2B-asiakkaat, hankinta sekä juridisten / tietoturva-arvioijien tarve CurNext SaaSin ja työmaavalvonnan käsittelijäehdoille.",
+    "bullets": [
+      "EU-asiakkaat, jotka tarvitsevat GDPR:n 28 artiklan ehtoja (Suomi ja muut ETA-Asiakkaat)",
+      "Kanadalaiset asiakkaat, jotka tarvitsevat läpinäkyvyyttä PIPEDA- / Quebecin lain 25 toimittaja-arviointeihin",
+      "Kamerunilaiset asiakkaat, jotka tarvitsevat selkeän rekisterinpitäjä / käsittelijä -jaon ja alikäsittelijäkartan",
+      "IT- ja tietoturva-arvioijat, jotka kartoittavat alikäsittelijöitä, tekoälytoimittajia ja isännöintialueita"
+    ]
+  },
+  "dpaBreach": {
+    "title": "Rikkomusilmoitus ja avustaminen",
+    "rows": [
+      {
+        "context": "Vakiosopimus",
+        "target": "Ilman aiheetonta viivytystä sen jälkeen, kun Asiakastietoja koskeva henkilötietojen tietoturvaloukkaus on vahvistettu"
+      },
+      {
+        "context": "Yritys",
+        "target": "24 tunnin kuluessa Asiakkaan nimetylle tietoturvayhteyshenkilölle sen jälkeen, kun henkilötietojen tietoturvaloukkaus tai yritykseen vaikuttava tietoturvaincidentti, joka koskee Asiakastietoja, on vahvistettu"
+      },
+      {
+        "context": "Sääntely",
+        "target": "GDPR:n 33 artiklan polku (72 h viranomaiselle soveltuvin osin) - Asiakkaan/rekisterinpitäjän velvollisuudet voivat vaihdella markkinoittain (EU, Kanada, Kamerun)"
+      }
+    ],
+    "assistance": [
+      "Pääsy / vienti (alustan vientityökalut + tukikanava)",
+      "Oikaisu (tili- / hallintatyökalut)",
+      "Poisto / rajoitus (tuki + sopimusprosessi; auditointilokit voivat olla vain-lisättäviä tai pseudonymisoituja suunnittelusta johtuen)",
+      "Siirrettävyys (koneellisesti luettava vienti, kun saatavilla)"
+    ],
+    "note": "Asiakas säilyy pääasiallisena yhteyspisteenä useimpiin rekisteröidyn pyyntöihin Asiakkaan hallitsemia tietoja koskien jokaisella toimintamarkkinalla.",
+    "securityEmail": "security@curnext.app"
+  },
+  "dpaExecute": {
+    "title": "Miten DPA solmitaan",
+    "lead": "Vakiopalveluehdot: osapuolet solmivat DPA:n pyynnöstä, kun Palveluntarjoaja käsittelee henkilötietoja Asiakkaan puolesta. Yritysaikataulu: solmi Palveluntarjoajan DPA kolmenkymmenen (30) päivän kuluessa Aikataulun allekirjoituksesta (ellei olemassa oleva DPA jo kata asiaa).",
+    "bullets": [
+      "Pyydä allekirjoitettava DPA osoitteesta legal@curnext.app tai Contact-sivun kautta (Suomen, Kanadan ja Kamerunin Asiakkaat tervetulleita)",
+      "Tietoturvayhteenveto ja ajantasainen alikäsittelijälista saatavilla pyynnöstä; olennaiset muutokset: 30 päivän yritysennakkoilmoitus",
+      "Kaupallisten sopimusten sovellettava laki: Suomen lait; tuomioistuimet Helsingissä, Suomessa (pakottavien suojausten rajoissa) - sovita lopullisen DPA:n lainvalintalauseke neuvonantajan kanssa"
+    ],
+    "legalEmail": "legal@curnext.app",
+    "supportEmail": "support@curnext.app"
+  },
+  "dpaHosting": {
+    "title": "Missä käsittely tapahtuu",
+    "lead": "Ydinapplikaation laskenta pyörii Hetznerillä Saksassa. Hallittu PostgreSQL ja Auth pyörivät Supabasella Frankfurtissa, Saksassa. Asiakkaat Kanadassa ja Kamerunissa käyttävät samaa EU-tuotantopinosta Asiakastiedoille, ellei yrityslisäys toisin määrää."
+  },
+  "dpaInstructions": {
+    "title": "Ohjeet ja Asiakkaan vastuut",
+    "bullets": [
+      "Asiakas ohjeistaa käsittelyä alustan käyttöliittymän, API:iden, sopimusten ja kirjallisten tukipyyntöjen kautta",
+      "Asiakas vastaa käsittelyn oikeusperusteesta, rekisteröityjen informoinnista ja rekisteröidyn pyyntöihin vastaamisesta niistä tiedoista, joita Asiakas hallitsee markkinallaan (EU, Kanada, Kamerun tai muu)",
+      "Asiakas hallinnoi käyttäjäkutsuja ja RBAC:ia omassa tenantissaan",
+      "Alusta tukee kirjautuneen käyttäjän henkilötietojen vientiä (profiili, jäsenyydet, asetukset). Täyttä itsepalvelupoistoportaalia ei väitetä tässä ennen kuin se on julkaistu - poisto noudattaa tukea ja sopimusprosessia"
+    ]
+  },
+  "dpaMarkets": {
+    "title": "Myyntimarkkinat vs tietojen isännöintipaikka",
+    "lead": "CurNext myy Suomeen, Kanadaan ja Kameruniin. Näiden markkinoiden alustan Asiakastietoja käsitellään samalla EU-ankkuroidulla tuotantopinolla, ellei kirjallinen yritysasuinpaikkalisäys toisin sano. Myynti maahan ei ole sama asia kuin paikallisen tuotantoalueen isännöinti siellä.",
+    "rows": [
+      {
+        "market": "Suomi (EU)",
+        "commercial": "Toimintamarkkina",
+        "hosting": "Ydinapplikaatio + tietokanta Saksassa / Frankfurtissa; GDPR soveltuu EU-käsittelynä",
+        "frameworks": "GDPR; Suomen valvontaviranomainen soveltuvin osin"
+      },
+      {
+        "market": "Kanada",
+        "commercial": "Toimintamarkkina",
+        "hosting": "Sama EU-tuotantopino - Asiakastiedot isännöidään EU:ssa ja kanadalaiset käyttäjät/ylläpitäjät käyttävät niitä ohjeiden mukaisesti",
+        "frameworks": "PIPEDA ja maakunnalliset säännöt (mukaan lukien Quebecin laki 25 soveltuvin osin) - Asiakas säilyy Asiakastietojen rekisterinpitäjänä; siirrot dokumentoitu alla"
+      },
+      {
+        "market": "Kamerun",
+        "commercial": "Toimintamarkkina",
+        "hosting": "Sama EU-tuotantopino - Asiakastiedot isännöidään EU:ssa ja kamerunilaiset käyttäjät/ylläpitäjät käyttävät niitä ohjeiden mukaisesti",
+        "frameworks": "Paikalliset tietosuojavelvoitteet soveltuvin osin - Asiakas säilyy Asiakastietojen rekisterinpitäjänä; siirrot dokumentoitu alla"
+      }
+    ],
+    "honesty": "CurNext ei tällä hetkellä mainosta erillisiä tuotantoalueita Kanadassa tai Kamerunissa. Edge-CDN, sähköpostin toimitus, maksut, tekoäly-API:t ja havainnointi voivat käsitellä rajallisia tietoja Saksan ulkopuolella - katso alikäsittelijät."
+  },
+  "dpaRelated": [
+    {
+      "title": "Tietosuojakäytäntö",
+      "href": "/data/privacy-policy"
+    },
+    {
+      "title": "GDPR-käytännöt",
+      "href": "/data/gdpr"
+    },
+    {
+      "title": "Tietoturvakäytäntö",
+      "href": "/data/security-policy"
+    },
+    {
+      "title": "Käyttöehdot",
+      "href": "/data/terms-of-service"
+    },
+    {
+      "title": "Tietoturva-arkkitehtuuri",
+      "href": "/security"
+    },
+    {
+      "title": "Datakeskukset",
+      "href": "/datacenters"
+    },
+    {
+      "title": "Hinnoittelumarkkinat",
+      "href": "/pricing"
+    }
+  ],
+  "dpaRoles": {
+    "title": "Osapuolet ja roolit",
+    "lead": "Kun CurNext käsittelee henkilötietoja Asiakkaan puolesta, CurNext on käsittelijä ja Asiakas säilyy kyseisten Asiakastietojen rekisterinpitäjänä.",
+    "rows": [
+      {
+        "role": "Palveluntarjoaja / Käsittelijä",
+        "party": "CurNext, Helsinki, Suomi",
+        "note": "Käsittelee henkilötietoja Asiakkaan ohjeiden mukaisesti Palveluiden toimittamiseksi"
+      },
+      {
+        "role": "Asiakas / Rekisterinpitäjä",
+        "party": "Asiakasorganisaatio (Suomi, Kanada, Kamerun tai muu sopimuksellinen Asiakas)",
+        "note": "Määrittää tarkoitukset ja keinot henkilötiedoille, joita se ohjeistaa CurNextiä käsittelemään"
+      },
+      {
+        "role": "Rekisteröidyt",
+        "party": "Tyypillisesti Asiakkaan työntekijät, urakoitsijat, kutsutut ja työmaayhteyshenkilöt",
+        "note": "Vain kutsulla käytettävä B2B-alusta - ei B2C-kuluttajasovelluksen yleisö"
+      }
+    ],
+    "honesty": [
+      "CurNext voi olla myös rekisterinpitäjä oman tilinsä, laskutuksen, HR:n, järjestelmiensä tietoturvalokien ja markkinointiliidien osalta - katso Tietosuojakäytäntö.",
+      "Älä lue tätä sivua niin, että « CurNext on aina vain käsittelijä »."
+    ]
+  },
+  "dpaScope": {
+    "title": "Mitä käsittelemme",
+    "lead": "Luonne ja tarkoitus: rakentamisen ja kiinteistöjen työmaavalvonta sekä valmius - laitetelemetria, BIM-/työmaakonfiguraatio, kojelaudat, hälytykset, vaatimustenmukaisuustodisteet, tiimipääsy, API:t/webhookit, tekoälyavusteiset ominaisuudet kun käytössä, ja tuki.",
+    "categories": [
+      {
+        "category": "Tili / identiteetti",
+        "examples": "Nimi, työsähköposti, rooli, organisaatiojäsenyys, kutsun tila"
+      },
+      {
+        "category": "Todennuksen konteksti",
+        "examples": "Istunto- ja MFA-tila (ei salasanoja - hallittu todennus)"
+      },
+      {
+        "category": "Projekti- / työmaametatiedot",
+        "examples": "Projektinimet, Asiakkaan syöttämät rakennusosoitteet, kerros- ja huonumerot"
+      },
+      {
+        "category": "Operatiivinen sisältö",
+        "examples": "Hälytysten vastaanottajat, tiketit, ladatut suunnitelmat/BIM-tiedostot, muistiinpanot"
+      },
+      {
+        "category": "Laite / telemetria",
+        "examples": "Anturilukemat, laitetunnukset, valmiuspisteet (yleensä ei asentajan henkilötietoja, ellei Asiakas lisää niitä)"
+      },
+      {
+        "category": "Tekoälyominaisuuden konteksti",
+        "examples": "Kehotteet ja konteksti, jotka Asiakas tai Palvelut lähettävät tekoälyominaisuuksille (esimerkiksi valmiusapu) - minimoituja eikä käytetä CurNext-mallien koulutukseen tuotetarpeiden ulkopuolella"
+      },
+      {
+        "category": "Auditointi / tietoturva",
+        "examples": "Käyttölogit, käyttöoikeuskiellot, GDPR-auditointitapahtumat (tunnukset ensisijaisia; sähköpostit peitetty lokeissa)"
+      }
+    ],
+    "specialCategory": "CurNextiä ei ole suunniteltu käsittelemään erityisiin kategorioihin kuuluvia tietoja (esimerkiksi terveystietoja tai biometriikkaa tunnistamista varten) ydintoimintona. Jos Asiakas lataa tällaisia tietoja, tarvitaan nimenomaiset kirjalliset ohjeet.",
+    "duration": "Käsittely jatkuu Palveluiden / tilauksen voimassaolon ajan, minkä jälkeen palautus tai poisto noudattaa DPA:ta ja päättymislausekkeita.",
+    "minimization": [
+      "Laitetelemetrian tulee sulkea pois asentajan henkilötiedot, ellei niitä tarvita",
+      "Lokit eivät saa sisältää salasanoja, JWT:itä, API-avaimia tai kokonaisia sähköpostiviestejä",
+      "Tekoälyominaisuuksien tulee saada vain tehtävään tarvittava vähimmäiskonteksti",
+      "Palveluntarjoaja ei käsittele Asiakastietoja liittymättömiin tarkoituksiin (esimerkiksi henkilötietojen myynti)"
+    ]
+  },
+  "dpaSubprocessors": {
+    "title": "Alikäsittelijät",
+    "lastUpdated": "9. elokuuta 2026",
+    "lead": "Julkinen luettelo kolmansista osapuolista, jotka voivat käsitellä Asiakkaan henkilötietoja Palveluiden toimittamiseksi. Toimialakäytäntö on taulukko tarkoituksesta, tietoluokista ja sijainnista. Yritysehdot: olennaiset uudet alikäsittelijät saavat vähintään kolmenkymmenen (30) päivän ennakkoilmoituksen; Asiakas voi vastustaa kohtuullisin tietosuojaperustein. Tilaa muutokset osoitteesta legal@curnext.app.",
+    "rows": [
+      {
+        "name": "Hetzner Online GmbH",
+        "purpose": "Sovelluksen isännöinti (Docker-originit kuormantasaajien takana)",
+        "dataCategories": "Sovellustiedot, tilitunnisteet sovelluskuormissa",
+        "location": "Saksa",
+        "privacyUrl": "https://www.hetzner.com/legal/privacy-policy",
+        "group": "Infrastruktuuri"
+      },
+      {
+        "name": "Supabase, Inc.",
+        "purpose": "Hallittu PostgreSQL-tietokanta ja todennus",
+        "dataCategories": "Tili, projekti, telemetriametatiedot, todennuskonteksti",
+        "location": "Frankfurt, Saksa (eu-central)",
+        "privacyUrl": "https://supabase.com/privacy",
+        "group": "Infrastruktuuri"
+      },
+      {
+        "name": "Cloudflare, Inc.",
+        "purpose": "DNS, TLS, WAF, CDN, Turnstile; valinnainen R2-objektivarasto",
+        "dataCategories": "Yhteysmetatiedot, lomakesuojasignaalit; objektit/lataukset kun R2 on käytössä",
+        "location": "Globaali edge; R2 EU-juridiktio-optio objekteille / auditointiarkistolle",
+        "privacyUrl": "https://www.cloudflare.com/privacypolicy/",
+        "group": "Infrastruktuuri"
+      },
+      {
+        "name": "SMTP2GO",
+        "purpose": "Transaktiosähköposti (kutsut, salasanavirrat, ilmoitukset)",
+        "dataCategories": "Sähköpostiosoite, nimi, viestin sisältö toimitusta varten",
+        "location": "EU-datakeskus (Amsterdam), kun CurNext-tili on EU-isännöity; vastaanottajatoimitus voi ulottua MTA:ihin maailmanlaajuisesti",
+        "privacyUrl": "https://www.smtp2go.com/privacy/",
+        "group": "Sähköposti"
+      },
+      {
+        "name": "Stripe, Inc.",
+        "purpose": "Maksut ja laskutus käytettäessä",
+        "dataCategories": "Laskutusyhteyshenkilö ja maksumetatiedot Stripen ehtojen mukaisesti",
+        "location": "Stripen ehtojen mukaisesti (usein US/ETA-käsittely)",
+        "privacyUrl": "https://stripe.com/privacy",
+        "group": "Maksut"
+      },
+      {
+        "name": "Google LLC (Gemini / Google AI)",
+        "purpose": "Tuotteen tekoälyominaisuudet, kun Gemini on käytössä",
+        "dataCategories": "Kehotteet ja konteksti, jotka tekoälyominaisuus vaatii",
+        "location": "Google Cloud / Gemini -tietojenkäsittelyehtojen mukaisesti",
+        "privacyUrl": "https://policies.google.com/privacy",
+        "group": "Tekoäly"
+      },
+      {
+        "name": "Groq, Inc.",
+        "purpose": "Inferenssi julkiselle tietopankkiassistentille curnext.appissa (käyttäjän suostumuksen jälkeen) sekä muille tuotteen tekoälyominaisuuksille, kun Groq on käytössä",
+        "dataCategories": "Kehotteet, chat-kysymykset ja lyhyt keskustelukonteksti ominaisuutta varten",
+        "location": "Palveluntarjoajan tietojenkäsittely- / tietosuojaehtojen mukaisesti",
+        "privacyUrl": "https://groq.com/privacy-policy/",
+        "group": "Tekoäly"
+      },
+      {
+        "name": "Signicat AS",
+        "purpose": "Sähköisen identiteetin / eID-virrat vahvaa todennusta varten käytettäessä",
+        "dataCategories": "eID-tapahtumaan tarvittavat identiteettiattribuutit",
+        "location": "ETA (Norja / EU-käsittely Signicatin mukaisesti)",
+        "privacyUrl": "https://www.signicat.com/privacy",
+        "group": "Identiteetti"
+      },
+      {
+        "name": "Datadog, Inc.",
+        "purpose": "Sovellus- ja infrastruktuurihavainnointi",
+        "dataCategories": "Operatiiviset lokit ja mittarit (salaisuudet suljettu pois suunnittelulla)",
+        "location": "CurNextille konfiguroidun Datadog-sivuston / -alueen mukaisesti",
+        "privacyUrl": "https://www.datadoghq.com/legal/privacy/",
+        "group": "Havainnointi"
+      },
+      {
+        "name": "Grafana Labs",
+        "purpose": "Mittari- / kojelautahavainnointi käytettäessä",
+        "dataCategories": "Operatiiviset mittarit ja niihin liittyvät metatiedot",
+        "location": "CurNextille konfiguroidun Grafana Cloud -alueen mukaisesti",
+        "privacyUrl": "https://grafana.com/legal/privacy-policy/",
+        "group": "Havainnointi"
+      },
+      {
+        "name": "OpenWeather Ltd.",
+        "purpose": "Sääkonteksti työmaa- / pintavalmiusominaisuuksille käytettäessä",
+        "dataCategories": "Asiakkaan määrittämät sijainti- tai työmaakoordinaatit; säävastaukset",
+        "location": "OpenWeatherin ehtojen mukaisesti",
+        "privacyUrl": "https://openweather.co.uk/privacy-policy",
+        "group": "Tiedot"
+      }
+    ],
+    "honesty": "Ydinapplikaatio + tietokanta alustan Asiakastiedoille: Saksa / Frankfurt. Tekoäly, sähköpostin toimitus, maksut, edge-CDN ja havainnointi voivat käsitellä rajallisia henkilötietoja Saksan ulkopuolella. Laitteisto- / valmistuskumppaneita (esimerkiksi Semtech, Sensirion, JLCPCB) ei listata henkilötietojen alikäsittelijöiksi, elleivät ne vastaanota Asiakkaan henkilötietoja."
+  },
+  "dpaToms": {
+    "title": "Tekniset ja organisatoriset toimenpiteet",
+    "lead": "Vain korkean tason yhteenveto. Katso Tietoturvakäytäntö ja Tietoturva-sivu arkkitehtuurin yksityiskohdista. CurNext ei väitä tällä sivulla itselleen ISO 27001- tai SOC 2 -sertifiointia.",
+    "rows": [
+      {
+        "control": "Pääsynhallinta",
+        "summary": "Vain kutsulla; RBAC; MFA etuoikeutetuille / OWNER-rooleille"
+      },
+      {
+        "control": "Siirto",
+        "summary": "HTTPS / TLS; kenttäyhteys WireGuard + MQTT mTLS (broker ei julkinen)"
+      },
+      {
+        "control": "Levossa",
+        "summary": "Hallitun tietokannan salaus; objektivaraston salaus käytettäessä"
+      },
+      {
+        "control": "Tenanttien eristys",
+        "summary": "Organisaatio- / projektirajaus; RLS soveltuvin osin"
+      },
+      {
+        "control": "Lokitus / auditointi",
+        "summary": "Strukturoidut GDPR-orientoituneet auditointitapahtumat; salaisuuksia ei lokiteta"
+      },
+      {
+        "control": "Varmuuskopiot",
+        "summary": "Salatut varmuuskopiot palautustestauksella tietoturvaohjelmassa"
+      },
+      {
+        "control": "Edge-suojaus",
+        "summary": "Cloudflare WAF / TLS originien edessä"
+      },
+      {
+        "control": "Tekoälykontrollit",
+        "summary": "Sisäinen kovettumisennuste (TensorFlow.js) tuotteessa; Geminiä ja Groqia vain käytössä oleviin avustettuihin ominaisuuksiin; minimoi kehote-konteksti; ei Asiakastietojen myyntiä"
+      },
+      {
+        "control": "Incidenssipolku",
+        "summary": "GDPR:n 33 artiklan mukainen ilmoitus; yritystavoite 24 h Asiakkaan tietoturvayhteyshenkilölle"
+      },
+      {
+        "control": "Haavoittuvuus / CRA-teemat",
+        "summary": "Allekirjoitettu OTA, SBOM-rytmi, ilmoitus osoitteeseen security@curnext.app"
+      }
+    ]
+  },
+  "dpaTransfers": {
+    "title": "Kansainväliset siirrot",
+    "bullets": [
+      "Asiakastietojen ensisijainen tallennus ja sovelluskäsittely on suunniteltu EU-isännöinnin (Saksa / Frankfurt) ympärille, myös Kanadan ja Kamerunin Asiakkaille",
+      "Asiakkaan käyttäjien pääsy Kanadasta tai Kamerunista on kansainvälinen siirto / etäkäyttökuvio - Asiakas säilyy rekisterinpitäjänä sen suhteen, miten se kutsuu käyttäjiä näillä markkinoilla",
+      "Kun alikäsittelijä siirtää tai käyttää tietoja ETA:n/Yhdistyneen kuningaskunnan ulkopuolella (esimerkiksi Gemini, Groq, Stripe tai Cloudflare edge), Palveluntarjoaja käyttää asianmukaista siirtomekanismia (esimerkiksi EU:n SCC:t tai riittävyyspäätös) lain edellyttämällä tavalla",
+      "Kanadalaiset Asiakkaat: Palveluntarjoaja tukee PIPEDA- / lain 25 toimittajadiligenssiä tällä listalla, TOMeilla ja neuvonantajan hyväksymillä DPA-liitteillä - paikallista isännöintiä Kanadassa ei väitetä tässä",
+      "Kamerunilaiset Asiakkaat: Palveluntarjoaja tukee paikallista diligenssiä tällä listalla ja DPA:lla - paikallista isännöintiä Kamerunissa ei väitetä tässä",
+      "SCC-liitteet ja siirtoarvioinnit liitetään neuvonantajan hyväksymiin DPA-paketteihin"
+    ]
+  },
+  "legalEyebrow": "Juridinen",
+  "translationNote": "Käännökset on tarkoitettu avuksi. Jos allekirjoitettu sopimus on olemassa, englanninkielinen asiakirja on määräävä."
+}

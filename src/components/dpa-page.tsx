@@ -1,22 +1,9 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import { ArrowRight, Mail } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
-import {
-  dpaAudience,
-  dpaBreach,
-  dpaExecute,
-  dpaHosting,
-  dpaInstructions,
-  dpaMarkets,
-  dpaPage,
-  dpaRelated,
-  dpaRoles,
-  dpaScope,
-  dpaSubprocessors,
-  dpaToms,
-  dpaTransfers,
-} from "@/config/dpa";
+
 import { siteConfig } from "@/config/site";
 import {
   itemHeadingClassName,
@@ -24,7 +11,23 @@ import {
 } from "@/lib/typography";
 import { cn } from "@/lib/utils";
 
-export function DpaPage() {
+export async function DpaPage() {
+  const t = await getTranslations("dpa");
+  const tCommon = await getTranslations("common");
+  const dpaPage = t.raw("page") as typeof import("@/config/dpa").dpaPage;
+  const dpaAudience = t.raw("dpaAudience") as typeof import("@/config/dpa").dpaAudience;
+  const dpaBreach = t.raw("dpaBreach") as typeof import("@/config/dpa").dpaBreach;
+  const dpaExecute = t.raw("dpaExecute") as typeof import("@/config/dpa").dpaExecute;
+  const dpaHosting = t.raw("dpaHosting") as typeof import("@/config/dpa").dpaHosting;
+  const dpaInstructions = t.raw("dpaInstructions") as typeof import("@/config/dpa").dpaInstructions;
+  const dpaMarkets = t.raw("dpaMarkets") as typeof import("@/config/dpa").dpaMarkets;
+  const dpaRelated = t.raw("dpaRelated") as typeof import("@/config/dpa").dpaRelated;
+  const dpaRoles = t.raw("dpaRoles") as typeof import("@/config/dpa").dpaRoles;
+  const dpaScope = t.raw("dpaScope") as typeof import("@/config/dpa").dpaScope;
+  const dpaSubprocessors = t.raw("dpaSubprocessors") as typeof import("@/config/dpa").dpaSubprocessors;
+  const dpaToms = t.raw("dpaToms") as typeof import("@/config/dpa").dpaToms;
+  const dpaTransfers = t.raw("dpaTransfers") as typeof import("@/config/dpa").dpaTransfers;
+
   return (
     <main className="flex flex-1 flex-col">
       <section
@@ -34,7 +37,7 @@ export function DpaPage() {
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-2xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              {siteConfig.name} · Legal
+              {siteConfig.name} · {t("legalEyebrow")}
             </p>
             <h1 id="dpa-heading" className={sectionHeadingClassName}>
               {dpaPage.title}
@@ -681,6 +684,13 @@ export function DpaPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+          <section className="border-border/60 relative w-full border-t bg-background">
+        <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
+          <p className="text-muted-foreground text-xs leading-relaxed">
+            {tCommon("legalTranslationNote")}
+          </p>
         </div>
       </section>
     </main>

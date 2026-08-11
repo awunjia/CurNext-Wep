@@ -1,0 +1,341 @@
+{
+  "title": "Architecture de sécurité",
+  "description": "Contrôles de niveau industriel sur la pile à cinq couches CurNext - des capteurs de terrain au cloud - conçus pour l'IoT industriel, l'OT bâtiment et les attentes européennes en matière de confidentialité.",
+  "leadNote": "Cette page résume comment CurNext conçoit la confidentialité, l'intégrité, l'authenticité, la disponibilité, la responsabilité et la vie privée. Ce n'est pas un runbook public, une page de statut ni un coffre de certificats.",
+  "objectivesTitle": "Objectifs de sécurité",
+  "objectives": [
+    {
+      "title": "Confidentialité",
+      "body": "La télémétrie et les identifiants ne sont pas lisibles en transit ou au repos sans autorisation."
+    },
+    {
+      "title": "Intégrité",
+      "body": "Le micrologiciel, la configuration et les mesures sont protégés contre toute altération non détectée."
+    },
+    {
+      "title": "Authenticité",
+      "body": "Chaque appareil et chaque service prouve son identité avant que la confiance ne soit accordée."
+    },
+    {
+      "title": "Disponibilité",
+      "body": "Résilience aux pannes, aux rejeux et aux saturations, avec dégradation progressive lorsque c'est possible."
+    },
+    {
+      "title": "Responsabilité",
+      "body": "Piste d'audit pour l'accès, le provisioning, l'OTA et les actions d'administration."
+    },
+    {
+      "title": "Vie privée",
+      "body": "Traitement orienté RGPD des données personnelles et de chantier dans la couche cloud."
+    }
+  ],
+  "standards": {
+    "title": "Normes auxquelles nous nous alignons",
+    "lead": "Les contrôles sont cartographiés sur des cadres industriels, IoT et européens largement utilisés. Lister une norme ici signifie un alignement de conception - pas que CurNext a terminé chaque certification tierce pour ce cadre.",
+    "rows": [
+      {
+        "standard": "IEC 62443",
+        "scope": "Zones IoT industrielles / bâtiment",
+        "note": "Modèle zones et conduits ; cibles de niveau de sécurité par couche"
+      },
+      {
+        "standard": "NIST SP 800-82",
+        "scope": "ICS / OT bâtiment",
+        "note": "Segmentation, surveillance, accès distant via WireGuard uniquement en bordure bâtiment"
+      },
+      {
+        "standard": "NIST SP 800-213",
+        "scope": "Cybersécurité des appareils IoT",
+        "note": "Identité appareil, mise à jour sécurisée et configuration"
+      },
+      {
+        "standard": "ENISA IoT / OT",
+        "scope": "Socle IoT UE",
+        "note": "Crypto, mises à jour et surface d'attaque minimale"
+      },
+      {
+        "standard": "EU CRA",
+        "scope": "Cycle de vie sécurité produit",
+        "note": "SBOM, divulgation des vulnérabilités, mises à jour signées"
+      },
+      {
+        "standard": "EU RED 3.3(d)",
+        "scope": "Cybersécurité des produits radio",
+        "note": "Chemin radio et mise à jour sécurisés pour les nœuds terrain, CN-FG et CN-BC"
+      },
+      {
+        "standard": "ISO 27001",
+        "scope": "SMSI organisationnel",
+        "note": "Cible de conception pour le cloud et les opérations CurNext - non revendiqué comme certifié ici"
+      },
+      {
+        "standard": "GDPR",
+        "scope": "Données personnelles",
+        "note": "Journalisation d'audit, contrôle d'accès, chemins d'effacement et d'export"
+      },
+      {
+        "standard": "OWASP IoT Top 10",
+        "scope": "Pièges appareil et cloud",
+        "note": "Traités par couche dans les contrôles terrain et cloud"
+      }
+    ]
+  },
+  "zones": {
+    "title": "Zones de sécurité et conduits",
+    "lead": "Des zones de style IEC 62443 séparent la radio terrain, le LAN d'étage, la bordure bâtiment et le cloud. L'alimentation n'a aucun conduit de données.",
+    "zones": [
+      {
+        "id": "Z1",
+        "title": "Zone Z1 - Capteurs terrain L1",
+        "body": "Nœuds terrain (CN-CC, CN-WD et SKU associés). MAC LoRaWAN avec AES-128, élément sécurisé pour les clés, NFC pour l'installation. Pas de pile IP sur le nœud."
+      },
+      {
+        "id": "Z2",
+        "title": "Zone Z2 - Étage (CN-FG)",
+        "body": "La passerelle d'étage vérifie les trames, reste sur le VLAN local et n'a aucune interface exposée au cloud."
+      },
+      {
+        "id": "Z3",
+        "title": "Zone Z3 - Alimentation (CN-UPS)",
+        "body": "Alimente le matériel d'étage et de bordure bâtiment. Aucun conduit de données."
+      },
+      {
+        "id": "Z4",
+        "title": "Zone Z4 - DMZ bâtiment (CN-BC)",
+        "body": "Contrôleur bâtiment : client WireGuard, client MQTT, orchestrateur OTA. Chemin cellulaire sortant uniquement pour le tunnel et le trafic broker."
+      },
+      {
+        "id": "Z5",
+        "title": "Zone Z5 - Cloud CurNext (L5)",
+        "body": "Application, base de données et auth gérées, broker MQTT privé, IA et stockage objet derrière une protection en périphérie."
+      }
+    ],
+    "conduits": [
+      {
+        "id": "C1",
+        "path": "L1 ↔ CN-FG",
+        "controls": "AES-128 au niveau MAC LoRaWAN (chiffrement de charge utile + MIC), OTAA, clés appareil uniques dans l'élément sécurisé, compteurs de trames, rejet des rejeux"
+      },
+      {
+        "id": "C2",
+        "path": "CN-FG ↔ CN-FG",
+        "controls": "Chaîne Ethernet en daisy-chain sur le VLAN d'étage uniquement ; aucune route Internet"
+      },
+      {
+        "id": "C3",
+        "path": "CN-FG ↔ CN-BC",
+        "controls": "VLAN Ethernet ; le pare-feu bâtiment refuse aux passerelles d'étage un chemin vers Internet public"
+      },
+      {
+        "id": "C4",
+        "path": "CN-BC ↔ L5",
+        "controls": "WireGuard plus MQTT sur TLS 1.3 avec TLS mutuel ; broker hors Internet public"
+      },
+      {
+        "id": "C5",
+        "path": "Installer ↔ L1",
+        "controls": "Tap NFC uniquement avec preuve cryptographique ; provisionnement par scan QR désactivé ; les interfaces de debug usine ne restent pas ouvertes sur le terrain"
+      }
+    ],
+    "wireguard": [
+      {
+        "layer": "L1-L2",
+        "role": "Pas de WireGuard"
+      },
+      {
+        "layer": "L3",
+        "role": "Pas de WireGuard"
+      },
+      {
+        "layer": "L4 CN-BC",
+        "role": "Client WireGuard - frontière de sécurité du bâtiment"
+      },
+      {
+        "layer": "L5 Cloud",
+        "role": "Hub WireGuard - MQTT uniquement sur le maillage privé"
+      }
+    ]
+  },
+  "levels": {
+    "title": "Cibles de niveau de sécurité IEC 62443",
+    "lead": "Les niveaux de sécurité cibles (SL-T) guident la conception produit. Ce sont des cibles d'ingénierie, pas des résultats d'évaluation tierce.",
+    "rows": [
+      {
+        "component": "Nœuds capteurs L1",
+        "target": "SL 2 (ambition SL 3)",
+        "rationale": "Sans surveillance, longue durée de vie, accès physique possible"
+      },
+      {
+        "component": "CN-FG (L2)",
+        "target": "SL 2",
+        "rationale": "Passerelle terrain sur un chantier"
+      },
+      {
+        "component": "CN-UPS (L3)",
+        "target": "SL 1",
+        "rationale": "Alimentation uniquement - aucun traitement de données"
+      },
+      {
+        "component": "CN-BC (L4)",
+        "target": "SL 3",
+        "rationale": "Frontière de sécurité du bâtiment, chemin exposé à Internet"
+      },
+      {
+        "component": "Cloud CurNext (L5)",
+        "target": "SL 3",
+        "rationale": "Plateforme multi-locataires avec données clients"
+      }
+    ]
+  },
+  "layers": [
+    {
+      "id": "L1",
+      "title": "L1 - Capteurs terrain",
+      "lead": "Identité appareil unique, crypto de liaison radio LoRaWAN, démarrage sécurisé, OTA signé, conception anti-intrusion et détection de déplacement.",
+      "bullets": [
+        "Clé racine unique par sonde dans un élément sécurisé - jamais partagée dans la flotte",
+        "Les étiquettes peuvent afficher le numéro de série public / DevEUI pour la logistique - jamais la clé racine",
+        "LoRaWAN Class A (EU868) : chiffrement de charge utile AES-128 et MIC via la pile MAC",
+        "Join OTAA uniquement ; compteurs de trames et rejet des rejeux à la passerelle d'étage",
+        "Démarrage sécurisé, micrologiciel signé, anti-retour arrière, debug de production verrouillé",
+        "Boîtier terrain et chemin de mesure anti-intrusion - toute interférence physique est détectable et signalée",
+        "Détection de déplacement lorsqu'un nœud quitte sa position d'installation assignée",
+        "Affectation terrain via liaison cryptographique NFC - affectation QR désactivée par défaut"
+      ]
+    },
+    {
+      "id": "L2",
+      "title": "L2 - Passerelle d'étage CN-FG",
+      "lead": "Ancre de confiance pour la liaison radio. Valide le join, le MIC et les compteurs avant transfert.",
+      "bullets": [
+        "Micrologiciel signé avec démarrage sécurisé et identité d'élément sécurisé",
+        "Aucune route Internet par défaut ; liaison montante uniquement vers CN-BC sur le VLAN d'étage",
+        "OTA uniquement depuis CN-BC",
+        "Événements de join et de vérification conservés pour téléversement d'audit",
+        "Ports de service restreints dans les images de production"
+      ]
+    },
+    {
+      "id": "L3",
+      "title": "L3 - Alimentation CN-UPS",
+      "lead": "Chemin d'alimentation uniquement - aucun plan de données sur le VLAN de gestion.",
+      "bullets": [
+        "Aucun IP ni API de gestion sur le VLAN de données",
+        "Pratiques de boîtier verrouillé à l'installation",
+        "L'indication de défaut reste locale - aucune fuite réseau depuis les défauts d'alimentation"
+      ]
+    },
+    {
+      "id": "L4",
+      "title": "L4 - Contrôleur bâtiment CN-BC",
+      "lead": "Frontière de sécurité du bâtiment entre le LAN d'étage et le cloud.",
+      "bullets": [
+        "WireGuard sortant depuis le bâtiment (compatible CGNAT)",
+        "MQTT sur TLS 1.3 avec certificats client par bâtiment",
+        "Pare-feu hôte en refus par défaut ; pas de SSH, MQTT ou API publics sur le cellulaire",
+        "Seul chemin OTA vers L1/L2 : vérifier le manifeste et l'image signés, déploiement progressif, rapporter le résultat",
+        "Tampon de télémétrie store-and-forward chiffré au repos ; purge après livraison réussie"
+      ]
+    },
+    {
+      "id": "L5",
+      "title": "L5 - Cloud CurNext",
+      "lead": "Application et données multi-locataires avec entrée terrain privée.",
+      "bullets": [
+        "Broker MQTT accessible uniquement sur le maillage privé - pas sur Internet public",
+        "Autorisation par bâtiment ; refus des jokers inter-locataires",
+        "Auth utilisateur avec jetons à courte durée ; MFA requis pour les rôles privilégiés",
+        "RBAC appliqué sur les routes API ; limites de débit et WAF en périphérie en production",
+        "Chiffrement en transit et au repos ; isolation des locataires sur les requêtes",
+        "Sauvegardes chiffrées avec exercices de restauration ; chemins d'audit, d'export et d'effacement RGPD",
+        "Secrets conservés dans un gestionnaire de secrets - pas dans le contrôle de source"
+      ]
+    }
+  ],
+  "crypto": {
+    "title": "Cryptographie en un coup d'œil",
+    "rows": [
+      {
+        "use": "Transport (cloud / MQTT)",
+        "algorithm": "TLS 1.3"
+      },
+      {
+        "use": "Tunnel bâtiment",
+        "algorithm": "WireGuard (Curve25519, ChaCha20-Poly1305)"
+      },
+      {
+        "use": "Liaison radio (L1 ↔ CN-FG)",
+        "algorithm": "Chiffrement AES-128 MAC LoRaWAN + MIC"
+      },
+      {
+        "use": "Signature micrologiciel",
+        "algorithm": "ECDSA P-256"
+      },
+      {
+        "use": "Tampon de télémétrie local",
+        "algorithm": "AES-256-GCM au repos en bordure bâtiment"
+      },
+      {
+        "use": "Intégrité d'audit",
+        "algorithm": "SHA-256"
+      }
+    ],
+    "deprecated": "Non utilisés : TLS 1.0/1.1, MD5, SHA-1 pour les signatures, ou clés de session radio statiques sans OTAA."
+  },
+  "provisioning": {
+    "title": "Provisioning",
+    "factory": [
+      "Le HSM d'usine injecte un matériel d'identité appareil unique dans l'élément sécurisé",
+      "Démarrage sécurisé activé avant expédition",
+      "Personnalisation NFC avec preuve cryptographique",
+      "Appareil enregistré comme fabriqué ; les clés ne sont jamais expédiées dans des tableurs ou des e-mails"
+    ],
+    "field": [
+      "Le tap NFC de l'installateur vérifie la liaison cryptographique",
+      "La liaison de surface exige une session d'app authentifiée et une permission d'affectation d'appareil",
+      "Le scan QR n'est pas fiable pour une affectation cryptographique",
+      "La mise en service du bâtiment émet le pair WireGuard et les identifiants client MQTT à l'installation"
+    ]
+  },
+  "ota": {
+    "title": "OTA et chaîne d'approvisionnement logicielle",
+    "lead": "Aligné sur les attentes du Cyber Resilience Act de l'UE pour les mises à jour signées, le SBOM et la divulgation coordonnée.",
+    "signing": [
+      "CA racine hors ligne",
+      "CA de signature OTA",
+      "Images / manifestes L1, CN-FG et CN-BC signés"
+    ],
+    "bullets": [
+      "Signatures de micrologiciel avec ECDSA P-256 (ou RSA plus fort si requis)",
+      "Le manifeste inclut la classe d'appareil, la version, la version minimale, le hash, la signature et l'époque de révocation",
+      "Matériel de signature compromis tourné via un chemin d'urgence",
+      "Partitions A/B sur les appareils terrain avec retour arrière en cas d'échec au démarrage",
+      "Déploiement progressif avant application à toute la flotte",
+      "SBOM par micrologiciel et version cloud ; surveillance continue des vulnérabilités",
+      "Mises à jour de sécurité critiques visées sous 14 jours ; élevées sous 30 jours"
+    ]
+  },
+  "verification": {
+    "title": "Comment nous vérifions",
+    "lead": "Les versions et les opérations annuelles suivent une barre de sécurité fixe avant usage entreprise.",
+    "items": [
+      "Mise à jour du modèle de menaces par zone pour les versions matérielles",
+      "Listes de contrôle par couche pour L1, CN-FG, CN-BC et cloud",
+      "Analyse statique et scan des dépendances sans CVE critique ouverte à la publication",
+      "Artefact signé et SBOM joints à la version",
+      "Test de pénétration externe annuel et exercices de rotation de clés / restauration de sauvegarde",
+      "Préparation à la certification (évaluation IEC 62443, SMSI ISO 27001, dossier technique RED) suivie séparément - non revendiquée comme complète sur cette page"
+    ]
+  },
+  "contactSection": {
+    "title": "Divulgation et contact",
+    "lead": "Signalez les vulnérabilités à la boîte de sécurité CurNext. Pour le détail confidentialité et résidence, utilisez les politiques liées et la page des centres de données.",
+    "email": "security@curnext.app",
+    "bullets": [
+      "Divulgation coordonnée : security@curnext.app",
+      "Entité juridique : CurNext, Helsinki, Finlande",
+      "La politique de confidentialité couvre le traitement des données personnelles",
+      "La page Centres de données couvre la résidence d'hébergement UE (Allemagne / Francfort)"
+    ]
+  }
+}

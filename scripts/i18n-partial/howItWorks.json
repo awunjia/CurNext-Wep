@@ -1,0 +1,238 @@
+{
+  "fr": {
+    "eyebrow": "Comment ça marche",
+    "title": "Du capteur terrain aux décisions build-ready",
+    "lead": "CurNext déploie une stack à cinq couches : dispositifs sur l'ouvrage, agrégation par étage, continuité d'alimentation, liaison bâtiment sécurisée, puis le produit cloud utilisé au quotidien.",
+    "architectureEyebrow": "Architecture",
+    "stackTitle": "Le parcours L1-L5",
+    "stackLead": "Chaque couche a une seule mission. Les données remontent la stack ; les décisions reviennent via CurNext.",
+    "productLayer": "Couche produit",
+    "layers": {
+      "L1": {
+        "role": "Mesurer",
+        "title": "Dispositifs de surface",
+        "body": "Installés sur l'ouvrage - dalles en cure, murs en séchage, air intérieur, fuites, structure ou systèmes techniques. Ils capturent les conditions qui pilotent planning et qualité."
+      },
+      "L2": {
+        "role": "Agréger",
+        "title": "Collecte d'étage",
+        "body": "Chaque étage concentre le trafic des dispositifs en un point de collecte, pour rester organisé quand le projet s'étend."
+      },
+      "L3": {
+        "role": "Alimenter",
+        "title": "Continuité d'alimentation chantier",
+        "body": "Une alimentation dédiée maintient le matériel d'étage et de bâtiment en ligne pendant les coupures. Cette couche fournit l'énergie uniquement - elle n'interprète pas les mesures."
+      },
+      "L4": {
+        "role": "Relier",
+        "title": "Liaison bâtiment",
+        "body": "L'unité bâtiment est le lien sécurisé du réseau chantier vers CurNext. Elle maintient un chemin fiable et protégé hors du site."
+      },
+      "L5": {
+        "role": "Décider",
+        "title": "Cloud CurNext",
+        "body": "La plateforme transforme les données chantier en statut de readiness, alertes et actions - dans le tableau de bord web et l'app mobile - avec une piste d'audit pour clients et conformité."
+      }
+    },
+    "outcomesEyebrow": "Pourquoi cette stack",
+    "outcomesTitle": "Conçue pour les opérations chantier",
+    "outcomes": [
+      {
+        "title": "Une stack pour chaque surface",
+        "body": "Cure, séchage, air, fuite, structure et MEP partagent le même chemin vers le cloud."
+      },
+      {
+        "title": "Des décisions, pas seulement des tableaux",
+        "body": "Les équipes voient ce qui est prêt, ce qui est à risque et quoi faire ensuite - pas seulement des flux bruts."
+      },
+      {
+        "title": "Des preuves qui voyagent",
+        "body": "Conservez un historique pour remises, sinistres et audits sans reconstruire les rapports à la main."
+      }
+    ],
+    "surfacesEyebrow": "Surfaces L1",
+    "surfacesTitle": "Ce que vous pouvez surveiller",
+    "surfacesLead": "Chaque ligne de surface utilise le même parcours étage, alimentation, liaison et cloud.",
+    "ctaEyebrow": "Étape suivante",
+    "ctaTitle": "Cartographiez la stack sur votre projet",
+    "ctaLead": "Parcourez surfaces, étages et workflows de décision avec l'équipe CurNext.",
+    "requestQuote": "Demander un devis"
+  },
+  "fi": {
+    "eyebrow": "Miten se toimii",
+    "title": "Kenttämittauksesta build-ready -päätöksiin",
+    "lead": "CurNext käyttää viisikerroksista pinoa: laitteet työn pinnassa, keräys kerroksittain, virransyöttö, suojattu rakennusyhteys ja pilvituote, jota tiimi käyttää joka päivä.",
+    "architectureEyebrow": "Arkkitehtuuri",
+    "stackTitle": "L1-L5-polku",
+    "stackLead": "Jokaisella kerroksella on yksi tehtävä. Data nousee pinossa; päätökset palaavat CurNextin kautta.",
+    "productLayer": "Tuotekerros",
+    "layers": {
+      "L1": {
+        "role": "Mittaa",
+        "title": "Pintalaitteet",
+        "body": "Asennetaan itse työhön - kovettuva laatta, kuivuvat seinät, sisäilma, vuodot, rakenne tai talotekniikka. Laitteet mittaavat aikataulua ja laatua ohjaavia olosuhteita."
+      },
+      "L2": {
+        "role": "Kerää",
+        "title": "Kerroskeruu",
+        "body": "Jokainen kerros keskittää laiteliikenteen yhteen keräyspisteeseen, jotta taso pysyy järjestyksessä hankkeen kasvaessa."
+      },
+      "L3": {
+        "role": "Virta",
+        "title": "Työmaan virransyöttö",
+        "body": "Oma virransyöttö pitää kerros- ja rakennuslaitteet linjoilla katkosten aikana. Tämä kerros vain syöttää virtaa - se ei tulkitse mittauksia."
+      },
+      "L4": {
+        "role": "Silta",
+        "title": "Rakennusyhteys",
+        "body": "Rakennusyksikkö on suojattu linkki työmaan verkosta CurNextiin. Se pitää yllä luotettavan ja suojatun polun pois työmaalta."
+      },
+      "L5": {
+        "role": "Päätä",
+        "title": "CurNext-pilvi",
+        "body": "Alusta muuttaa työmaan datan readiness-tilaksi, hälytyksiksi ja seuraaviksi toimiksi - web-dashboardissa ja mobiilisovelluksessa - auditointipolulla asiakkaille ja vaatimustenmukaisuuteen."
+      }
+    },
+    "outcomesEyebrow": "Miksi tämä pino",
+    "outcomesTitle": "Rakennettu työmaan operaatioille",
+    "outcomes": [
+      {
+        "title": "Yksi pino kaikille pinnoille",
+        "body": "Kovetus, kuivatus, ilma, vuoto, rakenne ja MEP jakavat saman polun pilveen."
+      },
+      {
+        "title": "Päätöksiä, ei vain dashboardia",
+        "body": "Tiimit näkevät mikä on valmis, mikä on riskissä ja mitä tehdä seuraavaksi - ei vain raakavirtoja."
+      },
+      {
+        "title": "Todisteet jotka kulkevat mukana",
+        "body": "Säilytä historia luovutuksiin, vahinkoihin ja auditointeihin ilman raporttien uudelleenrakentamista käsin."
+      }
+    ],
+    "surfacesEyebrow": "L1-pinnat",
+    "surfacesTitle": "Mitä voit valvoa",
+    "surfacesLead": "Jokainen pintalinja käyttää samaa kerros-, virta-, uplink- ja pilvipolkua.",
+    "ctaEyebrow": "Seuraava askel",
+    "ctaTitle": "Sovita pino projektiisi",
+    "ctaLead": "Käy läpi pinnat, kerrokset ja päätösprosessit CurNext-tiimin kanssa.",
+    "requestQuote": "Pyydä tarjous"
+  },
+  "sv": {
+    "eyebrow": "Så fungerar det",
+    "title": "Från platsmätning till build-ready beslut",
+    "lead": "CurNext kör en femlagers stack från enheter på arbetet via våningsinsamling, platsström, en säker byggnadslänk och molnprodukten som teamet använder varje dag.",
+    "architectureEyebrow": "Arkitektur",
+    "stackTitle": "L1-L5-vägen",
+    "stackLead": "Varje lager har ett jobb. Data rör sig uppåt i stacken; beslut kommer tillbaka via CurNext.",
+    "productLayer": "Produktlager",
+    "layers": {
+      "L1": {
+        "role": "Mät",
+        "title": "Ytenheter",
+        "body": "Monteras på själva arbetet - härdande platta, torkande väggar, inomhusluft, läckor, struktur eller installationer. Enheterna fångar förhållanden som styr tidplan och kvalitet."
+      },
+      "L2": {
+        "role": "Aggregera",
+        "title": "Våningsinsamling",
+        "body": "Varje våning samlar enhetstrafik i en punkt så nivån hålls organiserad när projektet växer."
+      },
+      "L3": {
+        "role": "Ström",
+        "title": "Kontinuitet för platsström",
+        "body": "Dedikerad ström håller våning- och byggnadshårdvara online vid avbrott. Lagret levererar endast ström - det tolkar inte mätningar."
+      },
+      "L4": {
+        "role": "Brygga",
+        "title": "Byggnadslänk",
+        "body": "Byggnadsenheten är den säkra länken från platsnätet till CurNext. Den håller en tillförlitlig, skyddad väg bort från byggarbetsplatsen."
+      },
+      "L5": {
+        "role": "Besluta",
+        "title": "CurNext-moln",
+        "body": "Plattformen gör platsdata till readiness-status, larm och nästa åtgärder - i webbdashboard och mobilapp - med revisionsspår för kunder och compliance."
+      }
+    },
+    "outcomesEyebrow": "Varför den här stacken",
+    "outcomesTitle": "Byggd för platsdrift",
+    "outcomes": [
+      {
+        "title": "En stack för varje yta",
+        "body": "Härdning, torkning, luft, läcka, struktur och MEP delar samma väg till molnet."
+      },
+      {
+        "title": "Beslut, inte bara dashboards",
+        "body": "Team ser vad som är klart, vad som är i riskzonen och vad som ska göras härnäst - inte bara råa strömmar."
+      },
+      {
+        "title": "Bevis som följer med",
+        "body": "Behåll historik för överlämningar, skador och revisioner utan att bygga om rapporter för hand."
+      }
+    ],
+    "surfacesEyebrow": "L1-ytor",
+    "surfacesTitle": "Vad du kan övervaka",
+    "surfacesLead": "Varje yta använder samma våning-, ström-, uplink- och molnväg.",
+    "ctaEyebrow": "Nästa steg",
+    "ctaTitle": "Kartlägg stacken mot ditt projekt",
+    "ctaLead": "Gå igenom ytor, våningar och beslutsvägar med CurNext-teamet.",
+    "requestQuote": "Begär offert"
+  },
+  "es": {
+    "eyebrow": "Cómo funciona",
+    "title": "De la medición en obra a decisiones build-ready",
+    "lead": "CurNext opera una pila de cinco capas: dispositivos en la obra, agregación por planta, continuidad de alimentación, enlace seguro del edificio y el producto cloud que el equipo usa cada día.",
+    "architectureEyebrow": "Arquitectura",
+    "stackTitle": "La ruta L1-L5",
+    "stackLead": "Cada capa tiene un solo trabajo. Los datos suben por la pila; las decisiones vuelven a través de CurNext.",
+    "productLayer": "Capa de producto",
+    "layers": {
+      "L1": {
+        "role": "Medir",
+        "title": "Dispositivos de superficie",
+        "body": "Se instalan en la propia obra - losas en curado, muros en secado, aire interior, fugas, estructura o sistemas MEP. Capturan las condiciones que impulsan planificación y calidad."
+      },
+      "L2": {
+        "role": "Agregar",
+        "title": "Recogida por planta",
+        "body": "Cada planta concentra el tráfico de dispositivos en un punto de recogida para mantener el nivel organizado al escalar el proyecto."
+      },
+      "L3": {
+        "role": "Alimentar",
+        "title": "Continuidad de alimentación en obra",
+        "body": "La alimentación dedicada mantiene el hardware de planta y edificio en línea durante cortes. Esta capa solo suministra energía - no interpreta mediciones."
+      },
+      "L4": {
+        "role": "Enlazar",
+        "title": "Enlace del edificio",
+        "body": "La unidad de edificio es el enlace seguro desde la red de obra hacia CurNext. Mantiene una ruta fiable y protegida fuera del sitio."
+      },
+      "L5": {
+        "role": "Decidir",
+        "title": "Cloud CurNext",
+        "body": "La plataforma convierte los datos de obra en estado de readiness, alertas y siguientes acciones - en el dashboard web y la app móvil - con una pista de auditoría para clientes y cumplimiento."
+      }
+    },
+    "outcomesEyebrow": "Por qué esta pila",
+    "outcomesTitle": "Diseñada para operaciones de obra",
+    "outcomes": [
+      {
+        "title": "Una pila para cada superficie",
+        "body": "Curado, secado, aire, fuga, estructura y MEP comparten la misma ruta hacia la nube."
+      },
+      {
+        "title": "Decisiones, no solo paneles",
+        "body": "Los equipos ven qué está listo, qué está en riesgo y qué hacer a continuación - no solo flujos en bruto."
+      },
+      {
+        "title": "Evidencia que viaja",
+        "body": "Conserve un historial para entregas, reclamaciones y auditorías sin reconstruir informes a mano."
+      }
+    ],
+    "surfacesEyebrow": "Superficies L1",
+    "surfacesTitle": "Qué puede monitorizar",
+    "surfacesLead": "Cada línea de superficie usa la misma ruta de planta, alimentación, enlace y cloud.",
+    "ctaEyebrow": "Siguiente paso",
+    "ctaTitle": "Mapee la pila a su proyecto",
+    "ctaLead": "Revise superficies, plantas y flujos de decisión con el equipo CurNext.",
+    "requestQuote": "Solicitar presupuesto"
+  }
+}

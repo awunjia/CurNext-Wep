@@ -1,11 +1,16 @@
 export const siteConfig = {
   name: "CurNext",
+  /** Default browser / SERP title when a page does not set its own */
+  title: "CurNext | Build-ready Construction Site Intelligence",
   slogan: "Build-ready site intelligence for every surface, every phase",
   description:
-    "CurNext provides build-ready site intelligence for every surface, every phase.",
+    "CurNext turns industrial IoT sensing into clear go / no-go readiness for concrete curing, wall drying, indoor air, leaks, structural health, and MEP - evidence teams can act on.",
   domain: "curnext.app",
-  businessId: "3456789-0",
+  businessId: "Coming soon",
   registeredIn: "Finland",
+  /** Default Open Graph / Twitter share image (1200x630) */
+  ogImage: "/og.png",
+  twitterHandle: "@curnext",
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
     (process.env.NODE_ENV === "production"
@@ -51,31 +56,31 @@ export const sitePages: SitePage[] = [
     group: "product",
   },
   {
-    title: "Concrete curing",
+    title: "Concrete Curing",
     href: "/solutions/concrete-curing",
     description: "Slab cure, maturity, readiness",
     group: "product",
   },
   {
-    title: "Wall drying",
+    title: "Wall Drying",
     href: "/solutions/wall-drying",
     description: "Gypsum, wet rooms, tile backing",
     group: "product",
   },
   {
-    title: "Indoor air",
+    title: "Indoor Air",
     href: "/solutions/indoor-air",
     description: "CO₂, PM, VOC (incl. post-handover)",
     group: "product",
   },
   {
-    title: "Leak detection",
+    title: "Leak Detection",
     href: "/solutions/leak-detection",
     description: "Plant rooms, bathrooms, risers",
     group: "product",
   },
   {
-    title: "Structural health",
+    title: "Structural Health",
     href: "/solutions/structural-health",
     description: "Strain, crack, tilt, vibration",
     group: "product",
@@ -153,9 +158,9 @@ export const sitePages: SitePage[] = [
     group: "resources",
   },
   {
-    title: "Blog",
+    title: "Our Blog",
     href: "/blog",
-    description: "News, insights, and updates",
+    description: "News, insights, and updates from CurNext",
     group: "resources",
   },
   {
@@ -173,13 +178,13 @@ export const sitePages: SitePage[] = [
   {
     title: "Events",
     href: "/events",
-    description: "Upcoming events, webinars, and meetups",
+    description: "Briefings and meetups in Helsinki, Ottawa, and Yaoundé",
     group: "company",
   },
   {
     title: "Support",
     href: "/support",
-    description: "Customer support and assistance",
+    description: "Product help, self-serve guides, and support channels",
     group: "company",
   },
   {
@@ -197,7 +202,7 @@ export const sitePages: SitePage[] = [
   {
     title: "Compliance",
     href: "/compliance",
-    description: "Compliance certifications and frameworks",
+    description: "Privacy, frameworks, and evidence without invented certifications",
     group: "trust",
   },
   {
@@ -209,31 +214,25 @@ export const sitePages: SitePage[] = [
   {
     title: "Audit Trail",
     href: "/audit-trail",
-    description: "Audit logging and activity history",
+    description: "Project activity and accountability history",
     group: "trust",
   },
   {
     title: "Security Policy",
     href: "/data/security-policy",
-    description: "Security policy",
+    description: "Security objectives, access control, disclosure, and incident handling",
     group: "legal",
   },
   {
     title: "Privacy Policy",
     href: "/data/privacy-policy",
-    description: "Privacy policy",
+    description: "How CurNext collects, uses, and protects personal data",
     group: "legal",
   },
   {
     title: "Cookie Policy",
     href: "/data/cookie-policy",
-    description: "Cookie policy",
-    group: "legal",
-  },
-  {
-    title: "Terms of Service",
-    href: "/data/terms-of-service",
-    description: "Terms of service",
+    description: "Cookies, consent categories, inventory, and how to manage preferences",
     group: "legal",
   },
   {
@@ -245,7 +244,7 @@ export const sitePages: SitePage[] = [
   {
     title: "GDPR Policies",
     href: "/data/gdpr",
-    description: "GDPR policies",
+    description: "GDPR roles, rights, retention, transfers, and how to contact gdpr@curnext.app",
     group: "legal",
   },
 ];
@@ -256,31 +255,31 @@ export const sitePages: SitePage[] = [
 export const solutions = [
   {
     code: "CN-CC",
-    title: "Concrete curing",
+    title: "Concrete Curing",
     href: "/solutions/concrete-curing",
     description: "Slab cure, maturity, readiness",
   },
   {
     code: "CN-WD",
-    title: "Wall drying",
+    title: "Wall Drying",
     href: "/solutions/wall-drying",
     description: "Gypsum, wet rooms, tile backing",
   },
   {
     code: "CN-IAQ",
-    title: "Indoor air",
+    title: "Indoor Air",
     href: "/solutions/indoor-air",
     description: "CO₂, PM, VOC (incl. post-handover)",
   },
   {
     code: "CN-LEAK",
-    title: "Leak detection",
+    title: "Leak Detection",
     href: "/solutions/leak-detection",
     description: "Plant rooms, bathrooms, risers",
   },
   {
     code: "CN-SHM",
-    title: "Structural health",
+    title: "Structural Health",
     href: "/solutions/structural-health",
     description: "Strain, crack, tilt, vibration",
   },

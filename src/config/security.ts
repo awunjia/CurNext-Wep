@@ -70,7 +70,7 @@ export const securityStandards = {
     {
       standard: "ISO 27001",
       scope: "Organisational ISMS",
-      note: "Cloud and CurNext Oy operations design target - not claimed as certified here",
+      note: "Cloud and CurNext operations design target - not claimed as certified here",
     },
     {
       standard: "GDPR",
@@ -330,7 +330,7 @@ export const securityContact = {
   email: "security@curnext.app",
   bullets: [
     "Coordinated disclosure: security@curnext.app",
-    "Legal entity: CurNext Oy, Helsinki, Finland",
+    "Legal entity: CurNext, Helsinki, Finland",
     "Privacy policy covers personal data handling",
     "Datacenters page covers EU hosting residency (Germany / Frankfurt)",
   ],

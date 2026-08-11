@@ -1,0 +1,3362 @@
+{
+  "auditTrail": {
+    "title": "Audit trail",
+    "description": "CurNext keeps a project-bound record of who did what, when - from access and admin actions to readiness decisions, device lifecycle, and GDPR-oriented events.",
+    "leadNote": "This page describes the product audit trail buyers and site teams use in the CurNext platform. It is not a live log viewer. Open the dashboard for your project history.",
+    "whyTitle": "Why it exists",
+    "why": [
+      {
+        "title": "Handover evidence",
+        "body": "Show clients and consultants what was measured, when readiness changed, and who acknowledged alerts - without rebuilding spreadsheets after the fact."
+      },
+      {
+        "title": "Accountability",
+        "body": "Invite-only access, RBAC, and privileged MFA sit behind actions that matter. Sensitive operations leave a trail tied to identity and time."
+      },
+      {
+        "title": "Claims and compliance conversations",
+        "body": "Leak events, curing packages, and drying decisions stay mapped to the project structure so insurers, auditors, and owners can review a coherent story."
+      }
+    ],
+    "events": {
+      "title": "What gets recorded",
+      "lead": "Event coverage grows with the platform. Publicly we describe categories - not every internal field name.",
+      "categoryCol": "Category",
+      "examplesCol": "Examples",
+      "caption": "Categories of events recorded in the CurNext audit trail",
+      "items": [
+        {
+          "category": "Access & identity",
+          "examples": "Invites, sign-in outcomes, role changes, permission denials, session-sensitive admin steps"
+        },
+        {
+          "category": "Project & membership",
+          "examples": "Project creation, member add/remove, subscription and seat-related admin actions where applicable"
+        },
+        {
+          "category": "Devices & OTA",
+          "examples": "Provisioning and verification themes, assignment to spaces, firmware stage and apply outcomes at the edge"
+        },
+        {
+          "category": "Readiness & ops",
+          "examples": "Status transitions, alert create/acknowledge/resolve, exports and report generation where offered"
+        },
+        {
+          "category": "Privacy / GDPR",
+          "examples": "Structured audit events for access, export, and erasure paths - secrets are not written into logs"
+        }
+      ]
+    },
+    "how": {
+      "title": "How the trail is shaped",
+      "items": [
+        {
+          "title": "Bound to the building",
+          "body": "Events sit in project and BIM context - buildings, spaces, and devices - so a sensor dump is not the whole story."
+        },
+        {
+          "title": "API-visible where licensed",
+          "body": "Professional integrations can list audit events via the REST API and SDKs for scripts and internal tools."
+        },
+        {
+          "title": "Integrity themes",
+          "body": "Cloud design targets append-friendly, integrity-conscious records. Hash themes (for example SHA-256) support audit integrity in the security architecture."
+        },
+        {
+          "title": "Retention with purpose",
+          "body": "Retention follows product and contractual needs. Some security and GDPR audit streams may be append-only or pseudonymized rather than casually rewritten."
+        }
+      ]
+    },
+    "access": {
+      "title": "Who can see what",
+      "lead": "CurNext is invite-only. New Google or email accounts do not auto-provision into a project without an invite or existing membership.",
+      "items": [
+        {
+          "title": "Project roles",
+          "body": "Visibility follows RBAC on the project. Site and company admins see broader history than read-only collaborators."
+        },
+        {
+          "title": "Privileged actions",
+          "body": "Elevated admin and security-sensitive steps expect stronger authentication and leave clearer accountability."
+        },
+        {
+          "title": "Tenant isolation",
+          "body": "Audit history is scoped to your organisation and projects - not a shared public feed across customers."
+        }
+      ]
+    },
+    "relatedTitle": "Related",
+    "related": [
+      {
+        "title": "Security architecture",
+        "href": "/security"
+      },
+      {
+        "title": "Data Processing Agreement",
+        "href": "/data/data-processing-agreement"
+      },
+      {
+        "title": "Documentation",
+        "href": "/docs"
+      },
+      {
+        "title": "API playground",
+        "href": "https://api.curnext.app/docs"
+      },
+      {
+        "title": "Open dashboard",
+        "href": "https://dash.curnext.app"
+      }
+    ],
+    "openDashboard": "Open dashboard",
+    "securityArchitecture": "Security architecture",
+    "questionsLabel": "Security or privacy questions:"
+  },
+  "compliance": {
+    "title": "Compliance",
+    "description": "How CurNext approaches privacy, construction evidence, and standards alignment - without inventing certifications we have not completed.",
+    "leadNote": "This page is a buyer-facing summary. It is not a certificate vault, audit report, or substitute for a signed DPA.",
+    "readDpa": "Read DPA summary",
+    "securityArchitecture": "Security architecture",
+    "honest": {
+      "title": "What we claim - and what we do not",
+      "items": [
+        {
+          "title": "We do not claim here",
+          "body": "CurNext does not advertise ISO 27001 or SOC 2 certification for itself on public pages. Standards listed elsewhere are design alignment unless we confirm a completed third-party assessment separately."
+        },
+        {
+          "title": "What we do operate under",
+          "body": "EU GDPR applies to core platform processing for EEA Clients. Invite-only access, RBAC, privileged MFA, and GDPR-oriented audit, export, and erasure paths are product and process themes."
+        },
+        {
+          "title": "Infrastructure inheritance",
+          "body": "Hetzner, Supabase, and Cloudflare publish their own trust materials. Customers inherit those provider controls at the infrastructure layer - review vendor trust pages for their certifications."
+        }
+      ]
+    },
+    "frameworks": {
+      "title": "Frameworks we design against",
+      "lead": "Listing a framework means engineering and process alignment. It does not mean every certification for that framework is complete.",
+      "caption": "Compliance frameworks CurNext designs against",
+      "frameworkCol": "Framework",
+      "scopeCol": "Scope",
+      "howCol": "How we use it",
+      "rows": [
+        {
+          "name": "GDPR",
+          "scope": "Personal data / EU Clients",
+          "note": "Roles, TOMs, subprocessors, transfers - see DPA and Privacy"
+        },
+        {
+          "name": "IEC 62443",
+          "scope": "Industrial / building IoT zones",
+          "note": "Zone and conduit model; security level targets per layer"
+        },
+        {
+          "name": "NIST SP 800-82 / 800-213",
+          "scope": "ICS / IoT device cybersecurity",
+          "note": "Segmentation, device identity, secure update themes"
+        },
+        {
+          "name": "ENISA IoT / OT & EU CRA",
+          "scope": "EU IoT / product security lifecycle",
+          "note": "Baseline crypto, updates, SBOM and disclosure themes"
+        },
+        {
+          "name": "ISO 27001",
+          "scope": "Organisational ISMS",
+          "note": "Design and operations target - not claimed certified here"
+        },
+        {
+          "name": "PIPEDA / Law 25 diligence",
+          "scope": "Canadian Clients",
+          "note": "Vendor diligence supported; local hosting in Canada is not claimed"
+        }
+      ]
+    },
+    "evidence": {
+      "title": "Construction and buyer evidence",
+      "items": [
+        {
+          "title": "Site readiness trail",
+          "body": "Readiness decisions, alerts, and project activity leave a trail mapped to the building for handover and claims conversations."
+        },
+        {
+          "title": "Audit trail",
+          "body": "Access, provisioning, OTA, admin actions, and GDPR-oriented events are designed for accountability - see Audit Trail."
+        },
+        {
+          "title": "DPA & subprocessors",
+          "body": "Art. 28-oriented summary, public subprocessor list (including Gemini and Groq for AI when enabled), and market notes for Finland, Canada, and Cameroon."
+        }
+      ]
+    },
+    "ai": {
+      "title": "AI in the product",
+      "lead": "CurNext combines an in-house readiness model with optional assisted AI features.",
+      "items": [
+        {
+          "name": "In-house curing model",
+          "body": "Concrete curing prediction runs on a CurNext-trained model built with TensorFlow.js - part of the product readiness engine for CN-CC."
+        },
+        {
+          "name": "Gemini (Google AI)",
+          "body": "Assisted product AI features when Gemini is enabled - prompts and context minimized for the task."
+        },
+        {
+          "name": "Groq",
+          "body": "Knowledge Base assistant on curnext.app after consent, and other assisted product AI features when Groq is enabled."
+        }
+      ]
+    },
+    "markets": {
+      "title": "Operating markets",
+      "lead": "CurNext is registered in Finland. Commercial markets include Finland, Canada, and Cameroon. Core app and database for EU Users are hosted in Germany / Frankfurt.",
+      "items": [
+        "Finland / EEA - GDPR as primary privacy regime for platform Client Data",
+        "Canada - PIPEDA / Law 25 vendor diligence supported; Canadian local hosting is not claimed here",
+        "Cameroon - local diligence supported; Cameroon local hosting is not claimed here"
+      ]
+    },
+    "relatedTitle": "Related",
+    "related": [
+      {
+        "title": "Security architecture",
+        "href": "/security"
+      },
+      {
+        "title": "Data Processing Agreement",
+        "href": "/data/data-processing-agreement"
+      },
+      {
+        "title": "GDPR Policies",
+        "href": "/data/gdpr"
+      },
+      {
+        "title": "Privacy Policy",
+        "href": "/data/privacy-policy"
+      },
+      {
+        "title": "Audit Trail",
+        "href": "/audit-trail"
+      },
+      {
+        "title": "Datacenters",
+        "href": "/datacenters"
+      }
+    ],
+    "requestsLabel": "Compliance or DPA requests:"
+  },
+  "datacenters": {
+    "title": "EU cloud, anchored in Germany",
+    "description": "Application hosting on Hetzner in Germany. Database and authentication on Supabase in Frankfurt. Public traffic protected at the Cloudflare edge and distributed across load-balanced replicas.",
+    "leadNote": "This page explains where CurNext runs for EU buyers, IT, and procurement. It is not a status dashboard or a public inventory of machines.",
+    "regionsTitle": "Where CurNext runs",
+    "regions": [
+      {
+        "provider": "Hetzner",
+        "region": "Germany",
+        "layer": "Application origins",
+        "body": "CurNext application containers for EU users run on Hetzner infrastructure in Germany.",
+        "runs": "Docker images for marketing, web SaaS, API, and related app containers as deployed",
+        "logo": "Hetzner"
+      },
+      {
+        "provider": "Supabase",
+        "region": "Frankfurt, Germany",
+        "layer": "Database + Auth",
+        "body": "PostgreSQL and Auth for the product run on Supabase in Frankfurt, Germany.",
+        "runs": "PostgreSQL, Supabase Auth",
+        "logo": "Supabase"
+      },
+      {
+        "provider": "Cloudflare",
+        "region": "Global edge",
+        "layer": "Edge / CDN / WAF",
+        "body": "DNS, TLS, WAF, and CDN sit in front of origins so only healthy, load-balanced replicas serve traffic.",
+        "runs": "DNS, TLS, WAF, CDN, Turnstile on public forms",
+        "logo": "Cloudflare"
+      }
+    ],
+    "objectStorage": {
+      "provider": "Cloudflare R2",
+      "region": "EU jurisdiction option",
+      "body": "When object storage is used, uploads and BIM/plan files can use Cloudflare R2 with an EU jurisdiction option, including optional GDPR audit archive."
+    },
+    "traffic": {
+      "title": "How traffic flows",
+      "lead": "Public HTTPS terminates and is filtered at Cloudflare. App tiers scale as stateless Docker replicas behind load balancers in Germany.",
+      "steps": [
+        "Internet",
+        "Cloudflare (DNS, TLS, WAF, CDN)",
+        "Load balancer(s)",
+        "Docker replicas on Hetzner (Germany)",
+        "Supabase Postgres + Auth (Frankfurt, Germany)"
+      ],
+      "hosts": [
+        {
+          "host": "www.curnext.app",
+          "role": "Marketing"
+        },
+        {
+          "host": "dash.curnext.app",
+          "role": "Product SaaS"
+        },
+        {
+          "host": "api.curnext.app",
+          "role": "API"
+        }
+      ],
+      "healthNote": "Health checks use GET /api/health (marketing) and API health routes so load balancers only send traffic to healthy replicas."
+    },
+    "storage": {
+      "title": "What we store where",
+      "lead": "Core application and database for EU users are hosted in Germany. Some third-party services (for example email SMTP, Stripe billing, or Cloudflare edge caches) sit outside that residency boundary - see the privacy policy for details.",
+      "rows": [
+        {
+          "layer": "App compute",
+          "where": "Hetzner, Germany",
+          "note": "Stateless Docker replicas for marketing, SaaS web, and API"
+        },
+        {
+          "layer": "Database + Auth",
+          "where": "Supabase, Frankfurt",
+          "note": "PostgreSQL and product authentication"
+        },
+        {
+          "layer": "Object storage",
+          "where": "Cloudflare R2, EU option",
+          "note": "Uploads and BIM/plan files when configured"
+        },
+        {
+          "layer": "Edge cache / WAF",
+          "where": "Cloudflare global edge",
+          "note": "TLS termination, WAF, CDN in front of origins"
+        },
+        {
+          "layer": "Field devices",
+          "where": "Site edge (L1-L4)",
+          "note": "Telemetry processed on site; cloud is L5. Sensors do not store customer PII in Hetzner"
+        }
+      ]
+    },
+    "scale": {
+      "title": "Scale and reliability posture",
+      "lead": "The stack is production-shaped: load balancers, health probes, and stateless replicas. We do not publish replica counts, RPS, or uptime percentages here.",
+      "rows": [
+        {
+          "component": "Web / marketing",
+          "note": "Stateless containers; N replicas behind a load balancer"
+        },
+        {
+          "component": "API",
+          "note": "Stateless API replicas; health probes for the load balancer"
+        },
+        {
+          "component": "Worker",
+          "note": "Queue workers can add replicas as load grows"
+        },
+        {
+          "component": "Database",
+          "note": "Managed Supabase; the app uses a pooler for many replicas"
+        },
+        {
+          "component": "Sessions",
+          "note": "Supabase cookies - no sticky session requirement on the load balancer"
+        }
+      ]
+    },
+    "trust": {
+      "title": "Privacy and contact",
+      "lead": "CurNext is registered in Helsinki, Finland. The platform is designed for EU operation with GDPR-oriented controls such as audit logging, RBAC, and invite-only access.",
+      "bullets": [
+        "Legal entity: CurNext, Helsinki, Finland",
+        "Core application and database for EU users: Germany / Frankfurt",
+        "Customers inherit provider controls from Hetzner, Supabase, and Cloudflare at the infrastructure layer - review those vendors' public trust pages for their certifications",
+        "CurNext does not claim ISO 27001 or SOC 2 for itself on this page"
+      ],
+      "securityEmail": "security@curnext.app"
+    }
+  },
+  "caseStudies": {
+    "title": "Case studies",
+    "description": "How CurNext shows up on real construction surfaces - readiness decisions, fewer guesswork walks, and an audit trail mapped to the building.",
+    "leadNote": "Named customer logos and project identifiers are shared under NDA through sales. The studies below are anonymous site patterns based on CurNext solution deployments - not invented company profiles or fake percentages.",
+    "listTitle": "Site patterns by solution",
+    "listLead": "Filter by SKU. Each pattern maps to a live product page.",
+    "filterAria": "Filter case studies by solution",
+    "allFilter": "All",
+    "challenge": "Challenge",
+    "approach": "Approach",
+    "outcome": "Outcome",
+    "viewSolution": "View solution",
+    "viewSku": "View {code} - {title}",
+    "empty": "No studies for this filter yet.",
+    "refsEyebrow": "References",
+    "refsTitle": "Need a named customer reference?",
+    "refsLead": "Talk to sales about reference calls and NDA materials for your sector. Public pages stay anonymous on purpose.",
+    "contactSales": "Contact sales",
+    "studies": {
+      "slab-cure-tower": {
+        "title": "Slab cure on a multi-storey pour cycle",
+        "sector": "Residential / commercial concrete",
+        "region": "EU site",
+        "challenge": "Pour teams were waiting on calendar rules and spot checks while formwork and follow-on trades pressed for earlier access.",
+        "approach": "CN-CC air, surface, and core probes on critical slabs; floor gateway and building edge uplink; readiness in the project view instead of raw temperature charts.",
+        "outcome": "Go / no-go decisions tied to measured maturity, fewer unnecessary inspections, and a documented cure trail for the pour package."
+      },
+      "wet-room-drying": {
+        "title": "Wet-room and gypsum drying before tiling",
+        "sector": "Interior fit-out",
+        "region": "EU site",
+        "challenge": "Finishing crews risked trapping moisture behind tile and paint when drying windows were judged by feel and schedule pressure.",
+        "approach": "CN-WD nodes on gypsum and wet-room assemblies; alerts when surfaces were still out of band; readiness shared with the trades package.",
+        "outcome": "Clearer dry / wait calls before covering work, fewer moisture-related callbacks, and a trail of conditions before handover of the wet zones."
+      },
+      "handover-iaq": {
+        "title": "Indoor air through handover and early occupancy",
+        "sector": "Office / residential handover",
+        "region": "EU site",
+        "challenge": "After enclosure, teams needed CO₂, particulate, and VOC context without running a separate lab campaign for every complaint.",
+        "approach": "CN-IAQ nodes in representative zones; cloud thresholds and alerts for site and facilities roles after practical completion.",
+        "outcome": "Shared air-quality context for snagging and early occupancy, with measurements attached to spaces instead of one-off walkthrough notes."
+      },
+      "plant-room-leak": {
+        "title": "Leak watch on plant rooms and risers",
+        "sector": "Building services",
+        "region": "EU site",
+        "challenge": "Hidden leaks in plant rooms and wet risers were found late - after damage to finishes and delayed commissioning.",
+        "approach": "CN-LEAK sensing on high-risk floors and plant areas; edge uplink with alerts to site and MEP leads.",
+        "outcome": "Earlier awareness of moisture events in critical zones and a clearer response path before finishes and equipment were at risk."
+      },
+      "structure-monitor": {
+        "title": "Structural movement during critical works",
+        "sector": "Structural / temporary works",
+        "region": "EU site",
+        "challenge": "Temporary works and adjacent structure needed continuous context for tilt, crack, and vibration beyond periodic survey visits.",
+        "approach": "CN-SHM nodes on agreed structural points; thresholds and audit history in the project surface for engineers and site managers.",
+        "outcome": "Continuous structural context between surveys, with events retained for review when works changed site conditions."
+      },
+      "mep-commissioning": {
+        "title": "MEP readiness during commissioning",
+        "sector": "MEP commissioning",
+        "region": "EU site",
+        "challenge": "Commissioning teams lacked a shared view of flow, pressure, and energy behaviour while systems were still being balanced.",
+        "approach": "CN-MEP PoE panel sensing on agreed circuits; cloud readiness and history for MEP leads alongside the commissioning checklist.",
+        "outcome": "Fewer blind balancing loops and a shared record of system behaviour during the commissioning window."
+      }
+    }
+  },
+  "resources": {
+    "title": "Resources",
+    "description": "Guides, product references, and developer material already published for CurNext.",
+    "open": "Open",
+    "needEyebrow": "Need something else",
+    "needTitle": "Ask the CurNext team",
+    "needLead": "If a guide is not listed yet, send a message and we will point you to the right material.",
+    "contact": "Contact",
+    "docs": "Docs",
+    "groups": [
+      {
+        "title": "Guides & docs",
+        "lead": "Operator and integrator documentation hosted outside this marketing site.",
+        "items": [
+          {
+            "title": "Documentation",
+            "description": "Product documentation for CurNext.",
+            "href": "/docs"
+          },
+          {
+            "title": "Knowledge Base",
+            "description": "AI chat grounded in public CurNext website knowledge.",
+            "href": "/knowledge-base"
+          }
+        ]
+      },
+      {
+        "title": "Product",
+        "lead": "How CurNext works on site, solution SKUs, and commercial scope.",
+        "items": [
+          {
+            "title": "How it works",
+            "description": "From probes to readiness decisions on the building path.",
+            "href": "/how-it-works"
+          },
+          {
+            "title": "Pricing",
+            "description": "Node count, duration, and request a scoped quote.",
+            "href": "/pricing"
+          },
+          {
+            "title": "CN-CC - Concrete Curing",
+            "description": "Slab cure, maturity, readiness",
+            "href": "/solutions/concrete-curing"
+          },
+          {
+            "title": "CN-WD - Wall Drying",
+            "description": "Gypsum, wet rooms, tile backing",
+            "href": "/solutions/wall-drying"
+          },
+          {
+            "title": "CN-IAQ - Indoor Air",
+            "description": "CO₂, PM, VOC (incl. post-handover)",
+            "href": "/solutions/indoor-air"
+          },
+          {
+            "title": "CN-LEAK - Leak Detection",
+            "description": "Plant rooms, bathrooms, risers",
+            "href": "/solutions/leak-detection"
+          },
+          {
+            "title": "CN-SHM - Structural Health",
+            "description": "Strain, crack, tilt, vibration",
+            "href": "/solutions/structural-health"
+          },
+          {
+            "title": "CN-MEP - MEP",
+            "description": "Flow, pressure, energy (PoE panel)",
+            "href": "/solutions/mep"
+          }
+        ]
+      },
+      {
+        "title": "Developers",
+        "lead": "API, SDKs, Market Place integrations, firmware overview, and stack notes.",
+        "items": [
+          {
+            "title": "API",
+            "description": "REST readiness, BIM, devices, telemetry, and webhooks.",
+            "href": "/api"
+          },
+          {
+            "title": "SDKs",
+            "description": "Official clients for JavaScript/TypeScript, PHP, Go, Python, Java, and Flutter.",
+            "href": "/sdks"
+          },
+          {
+            "title": "Market Place",
+            "description": "Third-party integrations for messaging, BIM, CRM, and more.",
+            "href": "/integrations"
+          },
+          {
+            "title": "Firmware",
+            "description": "Catalog, edge OTA on CN-BC, and install history overview.",
+            "href": "/firmware"
+          },
+          {
+            "title": "Technologies",
+            "description": "Public stack, connectivity, and ecosystem partners.",
+            "href": "/technologies"
+          },
+          {
+            "title": "API playground",
+            "description": "Interactive OpenAPI docs at api.curnext.app.",
+            "href": "https://api.curnext.app/docs",
+            "external": true
+          }
+        ]
+      },
+      {
+        "title": "Company",
+        "lead": "Talk to CurNext, explore open roles, or review EU hosting residency.",
+        "items": [
+          {
+            "title": "Contact",
+            "description": "General inquiries, support, and partnership topics.",
+            "href": "/contact"
+          },
+          {
+            "title": "Careers",
+            "description": "Open roles and how we work.",
+            "href": "/careers"
+          },
+          {
+            "title": "Case studies",
+            "description": "Anonymous site patterns by solution - named references via sales.",
+            "href": "/case-studies"
+          },
+          {
+            "title": "Datacenters",
+            "description": "Where CurNext runs - Hetzner Germany, Supabase Frankfurt, Cloudflare edge.",
+            "href": "/datacenters"
+          },
+          {
+            "title": "Security",
+            "description": "Zone model, layer controls, signed OTA, and disclosure contact.",
+            "href": "/security"
+          },
+          {
+            "title": "DPA",
+            "description": "Art. 28 processor summary - request the executable agreement via legal.",
+            "href": "/data/data-processing-agreement"
+          }
+        ]
+      }
+    ]
+  },
+  "security": {
+    "title": "Security architecture",
+    "description": "Industry-grade controls across the CurNext five-layer stack - from field sensors to cloud - designed for industrial IoT, building OT, and EU privacy expectations.",
+    "leadNote": "This page summarizes how CurNext designs confidentiality, integrity, authenticity, availability, accountability, and privacy. It is not a public runbook, status page, or certificate vault.",
+    "objectivesTitle": "Security objectives",
+    "objectives": [
+      {
+        "title": "Confidentiality",
+        "body": "Telemetry and credentials are not readable in transit or at rest without authorization."
+      },
+      {
+        "title": "Integrity",
+        "body": "Firmware, configuration, and measurements are protected against undetected tampering."
+      },
+      {
+        "title": "Authenticity",
+        "body": "Every device and service proves identity before trust is granted."
+      },
+      {
+        "title": "Availability",
+        "body": "Resilience to outage, replay, and flooding, with graceful degradation where possible."
+      },
+      {
+        "title": "Accountability",
+        "body": "Audit trail for access, provisioning, OTA, and admin actions."
+      },
+      {
+        "title": "Privacy",
+        "body": "GDPR-oriented handling of personal and site data in the cloud layer."
+      }
+    ],
+    "standards": {
+      "title": "Standards we design against",
+      "lead": "Controls are mapped to widely used industrial, IoT, and EU frameworks. Listing a standard here means design alignment - not that CurNext has completed every third-party certification for that framework.",
+      "rows": [
+        {
+          "standard": "IEC 62443",
+          "scope": "Industrial / building IoT zones",
+          "note": "Zone and conduit model; security level targets per layer"
+        },
+        {
+          "standard": "NIST SP 800-82",
+          "scope": "ICS / building OT",
+          "note": "Segmentation, monitoring, remote access via WireGuard on the building edge only"
+        },
+        {
+          "standard": "NIST SP 800-213",
+          "scope": "IoT device cybersecurity",
+          "note": "Device identity, secure update, and configuration"
+        },
+        {
+          "standard": "ENISA IoT / OT",
+          "scope": "EU IoT baseline",
+          "note": "Crypto, updates, and minimal attack surface"
+        },
+        {
+          "standard": "EU CRA",
+          "scope": "Product security lifecycle",
+          "note": "SBOM, vulnerability disclosure, signed updates"
+        },
+        {
+          "standard": "EU RED 3.3(d)",
+          "scope": "Radio product cybersecurity",
+          "note": "Secure radio and update path for field nodes, CN-FG, and CN-BC"
+        },
+        {
+          "standard": "ISO 27001",
+          "scope": "Organisational ISMS",
+          "note": "Cloud and CurNext operations design target - not claimed as certified here"
+        },
+        {
+          "standard": "GDPR",
+          "scope": "Personal data",
+          "note": "Audit logging, access control, erasure and export paths"
+        },
+        {
+          "standard": "OWASP IoT Top 10",
+          "scope": "Device and cloud pitfalls",
+          "note": "Addressed per layer in field and cloud controls"
+        }
+      ]
+    },
+    "zones": {
+      "title": "Security zones and conduits",
+      "lead": "IEC 62443-style zones keep field radio, floor LAN, building edge, and cloud separated. Power has no data conduit.",
+      "zones": [
+        {
+          "id": "Z1",
+          "title": "Zone Z1 - L1 field sensors",
+          "body": "Field nodes (CN-CC, CN-WD, and related SKUs). LoRaWAN MAC with AES-128, secure element for keys, NFC for install. No IP stack on the node."
+        },
+        {
+          "id": "Z2",
+          "title": "Zone Z2 - Floor (CN-FG)",
+          "body": "Floor gateway verifies frames, stays on the local VLAN, and has no cloud-facing interface."
+        },
+        {
+          "id": "Z3",
+          "title": "Zone Z3 - Power (CN-UPS)",
+          "body": "Energizes floor and building edge gear. No data conduit."
+        },
+        {
+          "id": "Z4",
+          "title": "Zone Z4 - Building DMZ (CN-BC)",
+          "body": "Building controller: WireGuard client, MQTT client, OTA orchestrator. Outbound cellular path only for tunnel and broker traffic."
+        },
+        {
+          "id": "Z5",
+          "title": "Zone Z5 - CurNext Cloud (L5)",
+          "body": "Application, managed database and auth, private MQTT broker, AI, and object storage behind edge protection."
+        }
+      ],
+      "conduits": [
+        {
+          "id": "C1",
+          "path": "L1 ↔ CN-FG",
+          "controls": "LoRaWAN MAC-layer AES-128 (payload encryption + MIC), OTAA, unique device keys in secure element, frame counters, replay rejection"
+        },
+        {
+          "id": "C2",
+          "path": "CN-FG ↔ CN-FG",
+          "controls": "Ethernet daisy-chain on the floor VLAN only; no internet route"
+        },
+        {
+          "id": "C3",
+          "path": "CN-FG ↔ CN-BC",
+          "controls": "Ethernet VLAN; building firewall denies floor gateways a path to the public internet"
+        },
+        {
+          "id": "C4",
+          "path": "CN-BC ↔ L5",
+          "controls": "WireGuard plus MQTT over TLS 1.3 with mutual TLS; broker not on the public internet"
+        },
+        {
+          "id": "C5",
+          "path": "Installer ↔ L1",
+          "controls": "NFC tap only with cryptographic proof; QR scan-to-provision disabled; factory debug interfaces are not left open in the field"
+        }
+      ],
+      "wireguard": [
+        {
+          "layer": "L1-L2",
+          "role": "No WireGuard"
+        },
+        {
+          "layer": "L3",
+          "role": "No WireGuard"
+        },
+        {
+          "layer": "L4 CN-BC",
+          "role": "WireGuard client - building security boundary"
+        },
+        {
+          "layer": "L5 Cloud",
+          "role": "WireGuard hub - MQTT on the private mesh only"
+        }
+      ]
+    },
+    "levels": {
+      "title": "IEC 62443 security level targets",
+      "lead": "Target security levels (SL-T) guide product design. They are engineering targets, not third-party assessment results.",
+      "rows": [
+        {
+          "component": "L1 sensor nodes",
+          "target": "SL 2 (stretch SL 3)",
+          "rationale": "Unattended, long-lived, physical access possible"
+        },
+        {
+          "component": "CN-FG (L2)",
+          "target": "SL 2",
+          "rationale": "Field gateway on a construction site"
+        },
+        {
+          "component": "CN-UPS (L3)",
+          "target": "SL 1",
+          "rationale": "Power only - no data processing"
+        },
+        {
+          "component": "CN-BC (L4)",
+          "target": "SL 3",
+          "rationale": "Building security boundary, internet-facing path"
+        },
+        {
+          "component": "CurNext Cloud (L5)",
+          "target": "SL 3",
+          "rationale": "Multi-tenant platform with customer data"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "id": "L1",
+        "title": "L1 - Field sensors",
+        "lead": "Unique device identity, LoRaWAN air-link crypto, secure boot, signed OTA, tamper-proof design, and displacement detection.",
+        "bullets": [
+          "Unique root key per probe in a secure element - never shared across the fleet",
+          "Labels may show public serial / DevEUI for logistics - never the root key",
+          "LoRaWAN Class A (EU868): AES-128 payload encryption and MIC via the MAC stack",
+          "OTAA join only; frame counters and replay rejection at the floor gateway",
+          "Secure boot, signed firmware, anti-rollback, production debug locked",
+          "Tamper-proof field enclosure and sensing path - physical interference is detectable and reported",
+          "Displacement detection when a node is moved from its assigned install position",
+          "Field assign via NFC cryptographic binding - QR assign disabled by default"
+        ]
+      },
+      {
+        "id": "L2",
+        "title": "L2 - CN-FG floor gateway",
+        "lead": "Trust anchor for the air link. Validates join, MIC, and counters before forwarding.",
+        "bullets": [
+          "Signed firmware with secure boot and secure-element identity",
+          "No default internet route; uplink only toward CN-BC on the floor VLAN",
+          "OTA only from CN-BC",
+          "Join and verification events retained for audit upload",
+          "Service ports constrained in production images"
+        ]
+      },
+      {
+        "id": "L3",
+        "title": "L3 - CN-UPS power",
+        "lead": "Power path only - no data plane on the management VLAN.",
+        "bullets": [
+          "No IPs or management API on the data VLAN",
+          "Locked enclosure practices at install",
+          "Fault indication stays local - no network leak from power faults"
+        ]
+      },
+      {
+        "id": "L4",
+        "title": "L4 - CN-BC building controller",
+        "lead": "Building security boundary between floor LAN and cloud.",
+        "bullets": [
+          "WireGuard outbound from the building (CGNAT-safe)",
+          "MQTT over TLS 1.3 with per-building client certificates",
+          "Host firewall default deny; no public SSH, MQTT, or API on cellular",
+          "Only OTA path to L1/L2: verify signed manifest and image, staged rollout, report result",
+          "Store-and-forward telemetry buffer encrypted at rest; purge after successful delivery"
+        ]
+      },
+      {
+        "id": "L5",
+        "title": "L5 - CurNext Cloud",
+        "lead": "Multi-tenant application and data with private field ingress.",
+        "bullets": [
+          "MQTT broker reachable only on the private mesh - not on the public internet",
+          "Per-building authorization; deny cross-tenant wildcards",
+          "User auth with short-lived tokens; MFA required for privileged roles",
+          "RBAC enforced on API routes; rate limits and edge WAF in production",
+          "Encryption in transit and at rest; tenant isolation on queries",
+          "Encrypted backups with restore drills; GDPR audit, export, and erasure paths",
+          "Secrets kept in a secrets manager - not in source control"
+        ]
+      }
+    ],
+    "crypto": {
+      "title": "Cryptography at a glance",
+      "rows": [
+        {
+          "use": "Transport (cloud / MQTT)",
+          "algorithm": "TLS 1.3"
+        },
+        {
+          "use": "Building tunnel",
+          "algorithm": "WireGuard (Curve25519, ChaCha20-Poly1305)"
+        },
+        {
+          "use": "Air link (L1 ↔ CN-FG)",
+          "algorithm": "LoRaWAN MAC AES-128 encryption + MIC"
+        },
+        {
+          "use": "Firmware signature",
+          "algorithm": "ECDSA P-256"
+        },
+        {
+          "use": "Local telemetry buffer",
+          "algorithm": "AES-256-GCM at rest on the building edge"
+        },
+        {
+          "use": "Audit integrity",
+          "algorithm": "SHA-256"
+        }
+      ],
+      "deprecated": "Not used: TLS 1.0/1.1, MD5, SHA-1 for signatures, or static air-link session keys without OTAA."
+    },
+    "provisioning": {
+      "title": "Provisioning",
+      "factory": [
+        "Factory HSM injects unique device identity material into the secure element",
+        "Secure boot enabled before ship",
+        "NFC personalization with cryptographic proof",
+        "Device registered as manufactured; keys never shipped in spreadsheets or email"
+      ],
+      "field": [
+        "Installer NFC tap verifies cryptographic binding",
+        "Surface bind requires authenticated app session and device-assign permission",
+        "QR scan is not trusted for cryptographic assign",
+        "Building commission issues WireGuard peer and MQTT client credentials at install"
+      ]
+    },
+    "ota": {
+      "title": "OTA and software supply chain",
+      "lead": "Aligned with EU Cyber Resilience Act expectations for signed updates, SBOM, and coordinated disclosure.",
+      "signing": [
+        "Offline root CA",
+        "OTA signing CA",
+        "Signed L1, CN-FG, and CN-BC images / manifests"
+      ],
+      "bullets": [
+        "Firmware signatures with ECDSA P-256 (or stronger RSA where required)",
+        "Manifest includes device class, version, minimum version, hash, signature, and revocation epoch",
+        "Compromised signing material rotated on an emergency path",
+        "A/B partitions on field devices with rollback on failed boot",
+        "Staged rollout before fleet-wide apply",
+        "SBOM per firmware and cloud release; continuous vulnerability monitoring",
+        "Critical security updates targeted within 14 days; high within 30 days"
+      ]
+    },
+    "verification": {
+      "title": "How we verify",
+      "lead": "Releases and annual operations follow a fixed security bar before enterprise use.",
+      "items": [
+        "Threat model update per zone for material releases",
+        "Layer checklists for L1, CN-FG, CN-BC, and cloud",
+        "Static analysis and dependency scanning with no critical open CVE on release",
+        "Signed artifact and SBOM attached to release",
+        "Annual external penetration test and key-rotation / backup-restore drills",
+        "Certification readiness (IEC 62443 assessment, ISO 27001 ISMS, RED technical file) tracked separately - not claimed complete on this page"
+      ]
+    },
+    "contactSection": {
+      "title": "Disclosure and contact",
+      "lead": "Report vulnerabilities to the CurNext security inbox. For privacy and residency detail, use the linked policies and datacenters page.",
+      "email": "security@curnext.app",
+      "bullets": [
+        "Coordinated disclosure: security@curnext.app",
+        "Legal entity: CurNext, Helsinki, Finland",
+        "Privacy policy covers personal data handling",
+        "Datacenters page covers EU hosting residency (Germany / Frankfurt)"
+      ]
+    }
+  },
+  "dpa": {
+    "page": {
+      "title": "Data Processing Agreement",
+      "description": "CurNext provides a Data Processing Agreement for customers who need processor terms when CurNext processes personal data for the Client's use of the platform - including customers in Finland (EU), Canada, and Cameroon.",
+      "leadNote": "This page is a procurement-oriented summary aligned with GDPR Art. 28 practice (roles, scope, TOMs, public subprocessors, transfer and notice language). A signed DPA is a legal instrument - final clause language should be reviewed by counsel. Do not treat this page as the executed agreement body.",
+      "supportLine": "CurNext acts as processor for Client Data instructed through the Services. Core application and database hosting for the platform is in Germany / Frankfurt. Commercial markets today: Finland, Canada, and Cameroon. Enterprise programs execute the DPA within 30 days of schedule signature."
+    },
+    "dpaAudience": {
+      "title": "Who this is for",
+      "lead": "B2B customers, procurement, and legal / security reviewers who need processor terms for CurNext SaaS and site monitoring.",
+      "bullets": [
+        "EU customers needing GDPR Art. 28 terms (Finland and other EEA Clients)",
+        "Canadian customers needing transparency for PIPEDA / Quebec Law 25 vendor reviews",
+        "Cameroon customers needing a clear controller / processor split and subprocessor map",
+        "IT and security reviewers mapping subprocessors, AI vendors, and hosting regions"
+      ]
+    },
+    "dpaBreach": {
+      "title": "Breach notification and assistance",
+      "rows": [
+        {
+          "context": "Standard agreement",
+          "target": "Without undue delay after confirmed personal data breach affecting Client Data"
+        },
+        {
+          "context": "Enterprise",
+          "target": "Within 24 hours to Client's designated security contact after confirming a personal data breach or enterprise-impacting security incident affecting Client Data"
+        },
+        {
+          "context": "Regulatory",
+          "target": "GDPR Art. 33 path (72 h to authority where applicable) - Client/Controller obligations may differ by market (EU, Canada, Cameroon)"
+        }
+      ],
+      "assistance": [
+        "Access / export (platform export tools + support channel)",
+        "Rectification (account / admin tools)",
+        "Erasure / restriction (support + contractual process; audit logs may be append-only or pseudonymized per design)",
+        "Portability (machine-readable export where available)"
+      ],
+      "note": "Client remains the front door for most DSRs about Client-controlled data in every operating market.",
+      "securityEmail": "security@curnext.app"
+    },
+    "dpaExecute": {
+      "title": "How to execute the DPA",
+      "lead": "Standard service terms: parties execute a DPA upon request where Provider processes personal data on behalf of Client. Enterprise schedule: execute Provider's DPA within thirty (30) days of Schedule signature (unless an existing DPA already governs).",
+      "bullets": [
+        "Request the executable DPA from legal@curnext.app or via Contact (Finland, Canada, and Cameroon Clients welcome)",
+        "Security overview and current subprocessor list available upon request; material changes: 30-day enterprise notice",
+        "Governing law for commercial agreements: laws of Finland; courts in Helsinki, Finland (subject to mandatory protections) - align final DPA governing-law clause with counsel"
+      ],
+      "legalEmail": "legal@curnext.app",
+      "supportEmail": "support@curnext.app"
+    },
+    "dpaHosting": {
+      "title": "Where processing happens",
+      "lead": "Core application compute runs on Hetzner in Germany. Managed PostgreSQL and Auth run on Supabase in Frankfurt, Germany. Customers in Canada and Cameroon use that same EU production stack for Client Data unless an enterprise addendum provides otherwise."
+    },
+    "dpaInstructions": {
+      "title": "Instructions and Client responsibilities",
+      "bullets": [
+        "Client instructs processing via the platform UI, APIs, contracts, and written support requests",
+        "Client is responsible for lawful basis, notices to data subjects, and responding to DSRs for data Client controls in their market (EU, Canada, Cameroon, or other)",
+        "Client manages user invites and RBAC within their tenant",
+        "Platform supports personal data export for the signed-in user (profile, memberships, preferences). A full self-serve erasure portal is not claimed here until shipped - erasure follows support and contractual process"
+      ]
+    },
+    "dpaMarkets": {
+      "title": "Markets we sell into vs where data is hosted",
+      "lead": "CurNext sells into Finland, Canada, and Cameroon. Platform Client Data for those markets is processed on the same EU-anchored production stack unless a written enterprise residency addendum says otherwise. Selling into a country is not the same as hosting a local production region there.",
+      "rows": [
+        {
+          "market": "Finland (EU)",
+          "commercial": "Operating market",
+          "hosting": "Core app + database in Germany / Frankfurt; GDPR applies as EU processing",
+          "frameworks": "GDPR; Finnish supervisory authority as applicable"
+        },
+        {
+          "market": "Canada",
+          "commercial": "Operating market",
+          "hosting": "Same EU production stack - Client Data is hosted in the EU and accessed by Canadian users/admins as instructed",
+          "frameworks": "PIPEDA and provincial rules (including Quebec Law 25 where applicable) - Client remains controller for Client Data; transfers documented below"
+        },
+        {
+          "market": "Cameroon",
+          "commercial": "Operating market",
+          "hosting": "Same EU production stack - Client Data is hosted in the EU and accessed by Cameroon users/admins as instructed",
+          "frameworks": "Local data-protection obligations as applicable - Client remains controller for Client Data; transfers documented below"
+        }
+      ],
+      "honesty": "CurNext does not currently advertise separate production regions in Canada or Cameroon. Edge CDN, email delivery, payments, AI APIs, and observability may process limited data outside Germany - see subprocessors."
+    },
+    "dpaRelated": [
+      {
+        "title": "Privacy Policy",
+        "href": "/data/privacy-policy"
+      },
+      {
+        "title": "GDPR Policies",
+        "href": "/data/gdpr"
+      },
+      {
+        "title": "Security Policy",
+        "href": "/data/security-policy"
+      },
+      {
+        "title": "Terms of Service",
+        "href": "/data/terms-of-service"
+      },
+      {
+        "title": "Security architecture",
+        "href": "/security"
+      },
+      {
+        "title": "Datacenters",
+        "href": "/datacenters"
+      },
+      {
+        "title": "Pricing markets",
+        "href": "/pricing"
+      }
+    ],
+    "dpaRoles": {
+      "title": "Parties and roles",
+      "lead": "Where CurNext processes personal data on behalf of Client, CurNext is processor and Client remains controller for that Client Data.",
+      "rows": [
+        {
+          "role": "Provider / Processor",
+          "party": "CurNext, Helsinki, Finland",
+          "note": "Processes personal data on Client instructions to deliver the Services"
+        },
+        {
+          "role": "Client / Controller",
+          "party": "Customer organization (Finland, Canada, Cameroon, or other contracted Client)",
+          "note": "Determines purposes and means for personal data it instructs CurNext to process"
+        },
+        {
+          "role": "Data subjects",
+          "party": "Typically Client's employees, contractors, invitees, and site contacts",
+          "note": "Invite-only B2B platform users - not a B2C consumer app audience"
+        }
+      ],
+      "honesty": [
+        "CurNext may also be controller for its own account, billing, HR, security logs of its systems, and marketing leads - see the Privacy Policy.",
+        "Do not read this page as \"CurNext is always only a processor.\""
+      ]
+    },
+    "dpaScope": {
+      "title": "What we process",
+      "lead": "Nature and purpose: construction and facilities site monitoring and readiness - device telemetry, BIM/site configuration, dashboards, alerts, compliance evidence, team access, APIs/webhooks, AI-assisted features where enabled, and support.",
+      "categories": [
+        {
+          "category": "Account / identity",
+          "examples": "Name, work email, role, org membership, invite status"
+        },
+        {
+          "category": "Authentication context",
+          "examples": "Session and MFA status (not passwords - managed auth)"
+        },
+        {
+          "category": "Project / site metadata",
+          "examples": "Project names, building addresses Client enters, floor and room labels"
+        },
+        {
+          "category": "Operational content",
+          "examples": "Alert recipients, tickets, uploaded plans/BIM files, notes"
+        },
+        {
+          "category": "Device / telemetry",
+          "examples": "Sensor readings, device IDs, readiness scores (generally not installer PII unless Client adds it)"
+        },
+        {
+          "category": "AI feature context",
+          "examples": "Prompts and context Client or the Services send to AI features (for example readiness assistance) - minimized and not used to train CurNext models outside product needs"
+        },
+        {
+          "category": "Audit / security",
+          "examples": "Access logs, permission denials, GDPR audit events (IDs preferred; emails masked in logs)"
+        }
+      ],
+      "specialCategory": "CurNext is not designed to process special-category data (for example health or biometrics for identification) as a core feature. If Client uploads such data, explicit written instructions are required.",
+      "duration": "Processing continues for the term of the Services / subscription, then return or deletion follows the DPA and termination clauses.",
+      "minimization": [
+        "Device telemetry should exclude installer PII unless required",
+        "Logs must not contain passwords, JWTs, API keys, or full email bodies",
+        "AI features should receive the minimum context needed for the task",
+        "Provider will not process Client Data for unrelated purposes (for example selling personal data)"
+      ]
+    },
+    "dpaSubprocessors": {
+      "title": "Subprocessors",
+      "lastUpdated": "9 August 2026",
+      "lead": "Public list of third parties that may process Client personal data to deliver the Services. Industry practice is a table with purpose, data categories, and location. Enterprise terms: material new subprocessors receive at least thirty (30) days notice; Client may object on reasonable data-protection grounds. Subscribe to changes via legal@curnext.app.",
+      "rows": [
+        {
+          "name": "Hetzner Online GmbH",
+          "purpose": "Application hosting (Docker origins behind load balancers)",
+          "dataCategories": "Application data, account identifiers in app workloads",
+          "location": "Germany",
+          "privacyUrl": "https://www.hetzner.com/legal/privacy-policy",
+          "group": "Infrastructure"
+        },
+        {
+          "name": "Supabase, Inc.",
+          "purpose": "Managed PostgreSQL database and authentication",
+          "dataCategories": "Account, project, telemetry metadata, auth context",
+          "location": "Frankfurt, Germany (eu-central)",
+          "privacyUrl": "https://supabase.com/privacy",
+          "group": "Infrastructure"
+        },
+        {
+          "name": "Cloudflare, Inc.",
+          "purpose": "DNS, TLS, WAF, CDN, Turnstile; optional R2 object storage",
+          "dataCategories": "Connection metadata, form protection signals; objects/uploads when R2 is used",
+          "location": "Global edge; R2 EU jurisdiction option for objects / audit archive",
+          "privacyUrl": "https://www.cloudflare.com/privacypolicy/",
+          "group": "Infrastructure"
+        },
+        {
+          "name": "SMTP2GO",
+          "purpose": "Transactional email (invites, password flows, notifications)",
+          "dataCategories": "Email address, name, message content required to deliver mail",
+          "location": "EU data center (Amsterdam) when the CurNext account is EU-hosted; recipient delivery may reach MTAs worldwide",
+          "privacyUrl": "https://www.smtp2go.com/privacy/",
+          "group": "Email"
+        },
+        {
+          "name": "Stripe, Inc.",
+          "purpose": "Payments and billing when used",
+          "dataCategories": "Billing contact and payment metadata per Stripe terms",
+          "location": "Per Stripe's terms (often US/EEA processing)",
+          "privacyUrl": "https://stripe.com/privacy",
+          "group": "Payments"
+        },
+        {
+          "name": "Google LLC (Gemini / Google AI)",
+          "purpose": "AI features in the product when Gemini is enabled",
+          "dataCategories": "Prompts and context required for the AI feature",
+          "location": "Per Google Cloud / Gemini data processing terms",
+          "privacyUrl": "https://policies.google.com/privacy",
+          "group": "AI"
+        },
+        {
+          "name": "Groq, Inc.",
+          "purpose": "Inference for the public Knowledge Base assistant on curnext.app (after user consent), and other product AI features when Groq is enabled",
+          "dataCategories": "Prompts, chat questions, and short conversation context required for the feature",
+          "location": "Per provider data processing / privacy terms",
+          "privacyUrl": "https://groq.com/privacy-policy/",
+          "group": "AI"
+        },
+        {
+          "name": "Signicat AS",
+          "purpose": "Electronic identity / eID flows when used for strong authentication",
+          "dataCategories": "Identity attributes required for the eID transaction",
+          "location": "EEA (Norway / EU processing per Signicat)",
+          "privacyUrl": "https://www.signicat.com/privacy",
+          "group": "Identity"
+        },
+        {
+          "name": "Datadog, Inc.",
+          "purpose": "Application and infrastructure observability",
+          "dataCategories": "Operational logs and metrics (secrets excluded by design)",
+          "location": "Per Datadog site / region configured for CurNext",
+          "privacyUrl": "https://www.datadoghq.com/legal/privacy/",
+          "group": "Observability"
+        },
+        {
+          "name": "Grafana Labs",
+          "purpose": "Metrics / dashboard observability when used",
+          "dataCategories": "Operational metrics and related metadata",
+          "location": "Per Grafana Cloud region configured for CurNext",
+          "privacyUrl": "https://grafana.com/legal/privacy-policy/",
+          "group": "Observability"
+        },
+        {
+          "name": "OpenWeather Ltd.",
+          "purpose": "Weather context for site / surface readiness features when used",
+          "dataCategories": "Location or site coordinates Client configures; weather responses",
+          "location": "Per OpenWeather terms",
+          "privacyUrl": "https://openweather.co.uk/privacy-policy",
+          "group": "Data"
+        }
+      ],
+      "honesty": "Core app + database for platform Client Data: Germany / Frankfurt. AI, email delivery, payments, edge CDN, and observability may process limited personal data outside Germany. Hardware / manufacturing partners (for example Semtech, Sensirion, JLCPCB) are not listed as personal-data subprocessors unless they receive Client personal data."
+    },
+    "dpaToms": {
+      "title": "Technical and organizational measures",
+      "lead": "High-level summary only. See Security Policy and the Security page for architecture detail. CurNext does not claim ISO 27001 or SOC 2 certification for itself on this page.",
+      "rows": [
+        {
+          "control": "Access control",
+          "summary": "Invite-only access; RBAC; MFA for privileged / OWNER roles"
+        },
+        {
+          "control": "Transport",
+          "summary": "HTTPS / TLS; field uplink WireGuard + MQTT mTLS (broker not public)"
+        },
+        {
+          "control": "At rest",
+          "summary": "Managed DB encryption; object storage encryption when used"
+        },
+        {
+          "control": "Tenant isolation",
+          "summary": "Organization / project scoping; RLS where applicable"
+        },
+        {
+          "control": "Logging / audit",
+          "summary": "Structured GDPR-oriented audit events; secrets not logged"
+        },
+        {
+          "control": "Backups",
+          "summary": "Encrypted backups with restore testing in the security program"
+        },
+        {
+          "control": "Edge protection",
+          "summary": "Cloudflare WAF / TLS in front of origins"
+        },
+        {
+          "control": "AI controls",
+          "summary": "In-house curing prediction (TensorFlow.js) runs in the product; Gemini and Groq used only for enabled assisted features; minimize prompt context; no sale of Client Data"
+        },
+        {
+          "control": "Incident path",
+          "summary": "GDPR Art. 33-oriented notification; enterprise 24 h target to Client security contact"
+        },
+        {
+          "control": "Vulnerability / CRA themes",
+          "summary": "Signed OTA, SBOM cadence, disclosure via security@curnext.app"
+        }
+      ]
+    },
+    "dpaTransfers": {
+      "title": "International transfers",
+      "bullets": [
+        "Primary storage and application processing for Client Data is designed around EU hosting (Germany / Frankfurt), including for Clients in Canada and Cameroon",
+        "Access by Client users in Canada or Cameroon is an international transfer / remote access pattern - Client remains controller for how it invites users in those markets",
+        "Where a subprocessor transfers or accesses data outside the EEA/UK (for example Gemini, Groq, Stripe, or Cloudflare edge), Provider will use an appropriate transfer mechanism (for example EU SCCs or an adequacy decision) as required by law",
+        "Canadian Clients: Provider supports PIPEDA / Law 25 vendor diligence with this list, TOMs, and counsel-approved DPA exhibits - local hosting in Canada is not claimed here",
+        "Cameroon Clients: Provider supports local diligence with this list and DPA - local hosting in Cameroon is not claimed here",
+        "SCC exhibits and transfer assessments are attached in counsel-approved DPA packages"
+      ]
+    }
+  },
+  "technologies": {
+    "technologiesConnectivity": {
+      "title": "Connectivity",
+      "lead": "Standard industrial protocols - named at the capability level, not as an attack surface guide.",
+      "items": [
+        {
+          "title": "LoRaWAN",
+          "body": "EU868 field uplinks for battery nodes - long-range, site-friendly radio into the CurNext floor path."
+        },
+        {
+          "title": "MQTT over TLS",
+          "body": "Device and gateway telemetry into the platform over encrypted MQTT for the hardware path."
+        },
+        {
+          "title": "WireGuard",
+          "body": "Secure tunnel themes for building edge connectivity into CurNext cloud services."
+        },
+        {
+          "title": "HTTPS REST",
+          "body": "Versioned buyer integrations at api.curnext.app - readiness, BIM, devices, alerts, webhooks."
+        }
+      ]
+    },
+    "technologiesData": {
+      "title": "Intelligence layer",
+      "lead": "CurNext turns site measurements into build-ready decisions mapped to your project.",
+      "items": [
+        {
+          "title": "Surface readiness",
+          "body": "Scores, status, and estimated ready timing for monitored surfaces."
+        },
+        {
+          "title": "Concrete curing model",
+          "body": "In-house prediction for CN-CC slab readiness, trained and served with TensorFlow.js."
+        },
+        {
+          "title": "BIM context",
+          "body": "Buildings, spaces, and devices for coordination - not a detached sensor dump."
+        },
+        {
+          "title": "Alerts & events",
+          "body": "Operational alerts and webhook events into the tools your teams already run."
+        },
+        {
+          "title": "Weather context",
+          "body": "Outdoor context where it helps curing and drying decisions on site."
+        }
+      ]
+    },
+    "technologiesEcosystem": [
+      {
+        "title": "Radio & sensing",
+        "names": [
+          "Semtech",
+          "LoRa Alliance",
+          "Sensirion",
+          "NFC",
+          "Texas Instruments"
+        ]
+      },
+      {
+        "title": "Edge & connectivity",
+        "names": [
+          "MQTT",
+          "WireGuard",
+          "Espressif",
+          "Victron"
+        ]
+      },
+      {
+        "title": "Cloud & ops",
+        "names": [
+          "Cloudflare",
+          "Supabase",
+          "Hetzner",
+          "Google Cloud",
+          "Datadog",
+          "Grafana"
+        ]
+      },
+      {
+        "title": "AI & intelligence",
+        "names": [
+          "TensorFlow.js",
+          "Gemini",
+          "Groq",
+          "OpenWeather"
+        ]
+      },
+      {
+        "title": "BIM, identity & commerce",
+        "names": [
+          "Autodesk Revit",
+          "Signicat",
+          "Stripe"
+        ]
+      },
+      {
+        "title": "Manufacturing & supply",
+        "names": [
+          "JLCPCB",
+          "Digi-Key"
+        ]
+      }
+    ],
+    "technologiesPage": {
+      "title": "Technologies",
+      "description": "The CurNext stack from field nodes to cloud - industrial connectivity, BIM-mapped readiness, and APIs your teams can call.",
+      "leadNote": "This page covers public platform capabilities. Detailed hardware security procedures stay in private operations documentation."
+    },
+    "technologiesProducts": [
+      {
+        "sku": "CN-CC",
+        "name": "Concrete curing",
+        "href": "/solutions/concrete-curing",
+        "body": "Air, surface, and core probes with slab readiness intelligence and an in-house TensorFlow.js curing prediction model."
+      },
+      {
+        "sku": "CN-WD",
+        "name": "Wall drying",
+        "href": "/solutions/wall-drying",
+        "body": "Finish readiness for gypsum, wet rooms, and tile backing."
+      },
+      {
+        "sku": "CN-IAQ",
+        "name": "Indoor air",
+        "href": "/solutions/indoor-air",
+        "body": "PM, VOC, and climate context on the same site stack."
+      },
+      {
+        "sku": "CN-LEAK",
+        "name": "Leak detection",
+        "href": "/solutions/leak-detection",
+        "body": "Event-driven alerts for plant rooms, wet zones, and risers."
+      },
+      {
+        "sku": "CN-SHM",
+        "name": "Structural health",
+        "href": "/solutions/structural-health",
+        "body": "Tilt and vibration monitoring into the building path."
+      },
+      {
+        "sku": "CN-MEP",
+        "name": "MEP",
+        "href": "/solutions/mep",
+        "body": "Wired plant signals where higher sample rates are needed."
+      }
+    ],
+    "technologiesSecurity": {
+      "title": "Security posture",
+      "lead": "Themes we can state publicly. Implementation detail stays in private security documentation.",
+      "items": [
+        {
+          "title": "Encrypted transport",
+          "body": "TLS for cloud APIs and MQTT paths; WireGuard for edge tunnel themes."
+        },
+        {
+          "title": "Signed field updates",
+          "body": "OTA is staged at the edge on CN-BC with checksum-addressed images - not a public browser flasher."
+        },
+        {
+          "title": "Device identity",
+          "body": "Hardware identity and verification themes for field units; factory and field install procedures are ops-controlled."
+        },
+        {
+          "title": "Audit trail",
+          "body": "Project activity and readiness decisions leave a clear trail for handover and compliance conversations."
+        }
+      ]
+    },
+    "technologiesSoftware": {
+      "title": "Software surfaces",
+      "lead": "Cloud product and developer entry points your teams already use.",
+      "items": [
+        {
+          "title": "Web & mobile",
+          "body": "Project dashboards, alerts, readiness views, and field apps on the CurNext platform.",
+          "href": "https://dash.curnext.app",
+          "external": true
+        },
+        {
+          "title": "REST API",
+          "body": "Readiness, BIM hierarchy, devices, measurements, and webhooks under /api/v1.",
+          "href": "/api",
+          "external": false
+        },
+        {
+          "title": "SDKs",
+          "body": "Official clients for JavaScript/TypeScript, PHP, Go, Python, Java, and Flutter.",
+          "href": "/sdks",
+          "external": false
+        },
+        {
+          "title": "Market Place",
+          "body": "Connect messaging, scheduling, monitoring, BIM, CRM, and accounting tools.",
+          "href": "/integrations",
+          "external": false
+        },
+        {
+          "title": "Firmware operations",
+          "body": "Version catalog, reported fleet strings, and edge OTA overview.",
+          "href": "/firmware",
+          "external": false
+        },
+        {
+          "title": "Docs",
+          "body": "Product documentation for operators and integrators.",
+          "href": "/docs",
+          "external": false
+        },
+        {
+          "title": "Knowledge Base",
+          "body": "AI chat grounded in public website knowledge, with GDPR consent.",
+          "href": "/knowledge-base",
+          "external": false
+        }
+      ]
+    }
+  },
+  "firmware": {
+    "firmwareCatalogSamples": [
+      {
+        "version": "1.2.0",
+        "deviceType": "CN-CC",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-03-12",
+        "checksumSha256": "a3f1...9c2e",
+        "notes": "Stability and LoRaWAN duty-cycle fixes for slab nodes."
+      },
+      {
+        "version": "1.1.4",
+        "deviceType": "CN-FG",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-02-28",
+        "checksumSha256": "b7d0...4a11",
+        "notes": "Floor gateway OTA handshake and cache improvements."
+      },
+      {
+        "version": "2.0.1",
+        "deviceType": "CN-BC",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-04-02",
+        "checksumSha256": "c91e...77b4",
+        "notes": "Edge orchestrator canary/rolling job states."
+      },
+      {
+        "version": "1.0.3",
+        "deviceType": "CN-UPS",
+        "isProduction": true,
+        "ceMarked": false,
+        "releasedAt": "2026-01-18",
+        "checksumSha256": "d2aa...08f6",
+        "notes": "UART framed update reliability."
+      },
+      {
+        "version": "1.3.0-rc",
+        "deviceType": "CN-CC",
+        "isProduction": false,
+        "ceMarked": false,
+        "releasedAt": "2026-05-01",
+        "checksumSha256": "e44b...c1d9",
+        "notes": "Internal soak build - not marked production."
+      }
+    ],
+    "firmwareFlags": [
+      {
+        "title": "Production",
+        "body": "Catalog rows use an isProduction flag. There is no separate draft/beta channel enum."
+      },
+      {
+        "title": "CE marked",
+        "body": "ceMarked records CE marking on the catalog version when applicable."
+      },
+      {
+        "title": "Install methods",
+        "body": "History records FACTORY, OTA, USB, or MANUAL - including previous version lineage when known."
+      }
+    ],
+    "firmwareHistorySamples": [
+      {
+        "deviceCode": "CN-CC-DEMO-001",
+        "version": "1.2.0",
+        "previousVersion": "1.1.8",
+        "method": "OTA",
+        "installedAt": "2026-03-15"
+      },
+      {
+        "deviceCode": "CN-FG-DEMO-014",
+        "version": "1.1.4",
+        "previousVersion": "1.1.2",
+        "method": "OTA",
+        "installedAt": "2026-03-01"
+      },
+      {
+        "deviceCode": "CN-BC-DEMO-002",
+        "version": "2.0.1",
+        "previousVersion": "2.0.0",
+        "method": "OTA",
+        "installedAt": "2026-04-03"
+      },
+      {
+        "deviceCode": "CN-CC-DEMO-009",
+        "version": "1.2.0",
+        "previousVersion": "-",
+        "method": "FACTORY",
+        "installedAt": "2026-03-20"
+      }
+    ],
+    "firmwareHonesty": {
+      "title": "What this page covers",
+      "body": "CurNext tracks a firmware version catalog, reported device versions, and install history in operations. Field OTA is orchestrated at the edge on CN-BC. Cloud upload, publish channels, and one-click fleet rollout UI are not part of the public marketing surface.",
+      "bullets": [
+        "Browse the catalog model: version, device type, production and CE flags",
+        "Understand reported fleet strings vs catalog rows",
+        "See how install history records factory, OTA, USB, and manual methods",
+        "Field OTA runs as signed jobs on CN-BC - not a browser flasher"
+      ]
+    },
+    "firmwareOta": {
+      "title": "Edge OTA (CN-BC)",
+      "lead": "Signed jobs reach CN-BC. The edge agent verifies, stages, and rolls out to targets. Images are addressed by checksum. Optional canary then rolling on the orchestrator.",
+      "targets": [
+        {
+          "id": "bc",
+          "label": "bc",
+          "detail": "CN-BC self-update"
+        },
+        {
+          "id": "fg",
+          "label": "fg",
+          "detail": "CN-FG over floor HMAC control"
+        },
+        {
+          "id": "cc",
+          "label": "cc",
+          "detail": "Field nodes via FUOTA / LoRaWAN"
+        },
+        {
+          "id": "ups",
+          "label": "ups",
+          "detail": "CN-UPS over UART framing"
+        }
+      ],
+      "edgeStates": [
+        "accepted",
+        "rejected",
+        "canary",
+        "rolling",
+        "done",
+        "failed"
+      ],
+      "note": "Cloud draft/publish workflows and dashboard assign/rollback APIs are not shipped. Do not expect one-click fleet flash from the browser."
+    },
+    "firmwarePage": {
+      "title": "Firmware",
+      "description": "Catalog firmware versions, see what the fleet reports, and review install history. Field OTA is handled by edge controllers.",
+      "supportLine": "Version catalog and fleet install history. Field updates run through signed edge OTA on CN-BC."
+    },
+    "firmwareSecurity": {
+      "title": "Security themes",
+      "lead": "Signed OTA, secure-element identity, and anti-rollback themes are part of the hardware security model. Factory SWD provisioning and field NFC install are documented separately for operations.",
+      "items": [
+        "Secure element for device identity and verify",
+        "Signed OTA images addressed by checksum",
+        "Anti-rollback controls called out in security architecture",
+        "Protocols: LoRaWAN OTAA (EU868), MQTT/TLS, WireGuard, floor HMAC topics"
+      ]
+    },
+    "firmwareStack": {
+      "title": "Hardware path",
+      "lead": "Firmware rides the same building stack as telemetry - from field nodes to the edge agent that stages signed updates.",
+      "layers": [
+        {
+          "id": "L1",
+          "title": "L1 field nodes",
+          "body": "CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP"
+        },
+        {
+          "id": "L2",
+          "title": "L2 floor gateway",
+          "body": "CN-FG LoRaWAN concentrator"
+        },
+        {
+          "id": "L3",
+          "title": "L3 power",
+          "body": "CN-UPS power and status"
+        },
+        {
+          "id": "L4",
+          "title": "L4 edge agent",
+          "body": "CN-BC - tunnel, MQTT, OTA orchestration"
+        },
+        {
+          "id": "L5",
+          "title": "L5 cloud",
+          "body": "CurNext cloud - catalog, history, device records"
+        }
+      ]
+    },
+    "firmwareTrees": [
+      {
+        "id": "cn-cc",
+        "name": "CN-CC",
+        "path": "firmware/cn-cc",
+        "role": "Concrete curing field node",
+        "ota": "FUOTA via CN-FG / LoRaWAN"
+      },
+      {
+        "id": "cn-fg",
+        "name": "CN-FG",
+        "path": "firmware/cn-fg",
+        "role": "Floor LoRaWAN concentrator",
+        "ota": "HMAC floor OTA from CN-BC"
+      },
+      {
+        "id": "cn-bc",
+        "name": "CN-BC",
+        "path": "firmware/cn-bc",
+        "role": "Building edge agent and OTA orchestrator",
+        "ota": "Self-update (bc target)"
+      },
+      {
+        "id": "cn-ups",
+        "name": "CN-UPS",
+        "path": "firmware/cn-ups",
+        "role": "UPS / power status unit",
+        "ota": "UART framed update from CN-BC"
+      }
+    ]
+  },
+  "knowledgeBase": {
+    "knowledgeBaseConsentCopy": {
+      "title": "Privacy notice",
+      "lead": "To use the Knowledge Base, please confirm how we process your questions.",
+      "bullets": [
+        "Your questions and short chat context are processed so we can reply",
+        "Do not submit passwords, API keys, or personal data that is not needed for your question",
+        "You may withdraw consent at any time for this browser"
+      ],
+      "checkboxLabelBefore": "I agree that CurNext may process my Knowledge Base questions to reply, as described in the ",
+      "checkboxLabelLink": "Privacy Policy",
+      "checkboxLabelAfter": ".",
+      "acceptLabel": "Continue",
+      "declineHint": "You can still browse the site or Contact us without chatting."
+    },
+    "knowledgeBasePage": {
+      "title": "Knowledge Base",
+      "description": "Chat with CurNext about products, the site path, API, SDKs, firmware, hosting, and pricing.",
+      "assistantName": "CurNext",
+      "assistantLabel": "CurNext assistant",
+      "welcome": "Hi - I am here to help with CurNext. Ask me about our products, how the platform works, API and SDKs, firmware, hosting, or pricing. If it is outside CurNext, I will point you to the right place on our team.",
+      "thinkingLabel": "CurNext is thinking",
+      "consentVersion": "kb-consent-v3",
+      "consentStorageKey": "curnext-kb-gdpr-consent",
+      "accuracyNotice": {
+        "title": "About these answers",
+        "body": "Responses from this assistant are AI-generated and may not be 100% accurate. For confirmed details, quotes, or project advice, contact a CurNext representative.",
+        "salesEmail": "sales@curnext.app",
+        "contactHref": "/contact"
+      }
+    },
+    "knowledgeBaseStarterPrompts": [
+      "How does the L1 to L5 site path work?",
+      "Which markets does CurNext sell into?",
+      "How do I authenticate to the REST API?",
+      "Where is Client Data hosted?"
+    ],
+    "knowledgeChunks": [
+      {
+        "id": "product-overview",
+        "title": "What CurNext is",
+        "source": "Overview",
+        "href": "/docs",
+        "tags": [
+          "product",
+          "overview",
+          "readiness"
+        ],
+        "text": "CurNext provides build-ready site intelligence for construction surfaces and spaces. Field nodes measure conditions; the platform answers whether work can proceed with readiness, alerts, and an audit trail mapped to the project. CurNext is sold as construction intelligence, not a radio bill of materials. Operating markets: Finland, Canada, and Cameroon."
+      },
+      {
+        "id": "site-path",
+        "title": "Site path L1-L5",
+        "source": "How it works",
+        "href": "/how-it-works",
+        "tags": [
+          "layers",
+          "hardware",
+          "lorawan",
+          "cn-bc",
+          "cn-fg"
+        ],
+        "text": "L1 field nodes sense surfaces (CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP). L2 CN-FG aggregates floor LoRaWAN traffic. L3 CN-UPS supplies power only with no data plane. L4 CN-BC is the building uplink with WireGuard, MQTT, and signed OTA. L5 CurNext cloud provides readiness, dashboards, API, SDKs, and Market Place."
+      },
+      {
+        "id": "solutions",
+        "title": "Solution SKUs",
+        "source": "Solutions",
+        "href": "/solutions",
+        "tags": [
+          "cn-cc",
+          "cn-wd",
+          "cn-iaq",
+          "cn-leak",
+          "cn-shm",
+          "cn-mep",
+          "mold",
+          "mould",
+          "moisture",
+          "humidity",
+          "drying",
+          "indoor air",
+          "leak"
+        ],
+        "text": "CN-CC concrete curing with air, surface, and core probes. CurNext runs an in-house concrete curing prediction model trained with TensorFlow.js as part of the readiness engine. CN-WD wall drying for gypsum, wet rooms, and moisture risk before finishes. CN-IAQ indoor air for CO2, PM, VOC and indoor climate context. CN-LEAK leak detection for plant rooms, bathrooms, and risers when moisture events matter. CN-SHM structural health for tilt, crack, vibration. CN-MEP flow, pressure, energy including PoE panel paths. For mold or moisture concerns in a building, point people toward CN-WD, CN-IAQ, and CN-LEAK depending on whether the job is drying finishes, indoor air quality, or leak watch - then size nodes and duration on Pricing."
+      },
+      {
+        "id": "api",
+        "title": "REST API",
+        "source": "API",
+        "href": "/api",
+        "tags": [
+          "api",
+          "rest",
+          "webhooks",
+          "auth"
+        ],
+        "text": "Production API host is https://api.curnext.app with paths under /api/v1. Authenticate with a project API key as Bearer token created under Integration in the product. Domains include health, projects, devices, alerts, measurements, webhooks, and BIM hierarchy. OpenAPI playground: https://api.curnext.app/docs. Access follows site subscription node count and duration."
+      },
+      {
+        "id": "sdks",
+        "title": "SDKs",
+        "source": "SDKs",
+        "href": "/sdks",
+        "tags": [
+          "sdk",
+          "javascript",
+          "python",
+          "go",
+          "php",
+          "java",
+          "flutter"
+        ],
+        "text": "Official SDKs wrap the REST API: JavaScript/TypeScript @curnext/sdk on npm, PHP curnext/sdk on Packagist, Go github.com/awunjia/curnext-go, Python curnext on PyPI, Java app.curnext:curnext-sdk on Maven Central. Flutter is coming soon on pub.dev. Pass CURNEXT_API_KEY and optional baseUrl host https://api.curnext.app."
+      },
+      {
+        "id": "firmware",
+        "title": "Firmware and OTA",
+        "source": "Firmware",
+        "href": "/firmware",
+        "tags": [
+          "firmware",
+          "ota",
+          "cn-bc"
+        ],
+        "text": "CurNext tracks a firmware catalog, reported device versions, and install history (FACTORY, OTA, USB, MANUAL). Field OTA is signed and orchestrated on CN-BC - not a public browser flasher. Targets include bc, fg, cc via FUOTA/LoRaWAN, and ups UART updates."
+      },
+      {
+        "id": "integrations",
+        "title": "Market Place integrations",
+        "source": "Integrations",
+        "href": "/integrations",
+        "tags": [
+          "integrations",
+          "oauth",
+          "slack",
+          "procore"
+        ],
+        "text": "Market Place connects messaging (WhatsApp, Slack, Teams), scheduling, monitoring (Datadog with API keys), productivity, storage, BIM (Revit), construction (Procore), enterprise, IoT, maps, CRM, and accounting tools. Most apps use OAuth in the dashboard; project owners manage connections."
+      },
+      {
+        "id": "pricing",
+        "title": "Pricing and quotes",
+        "source": "Pricing",
+        "href": "/pricing",
+        "tags": [
+          "pricing",
+          "price",
+          "cost",
+          "costs",
+          "quote",
+          "install",
+          "installation",
+          "fee",
+          "subscription",
+          "duration",
+          "months",
+          "nodes",
+          "finland",
+          "canada",
+          "cameroon",
+          "sales"
+        ],
+        "text": "CurNext prices by node count and contract duration (1-36 months), not legacy plan tiers. Markets: Finland (EUR), Canada (CAD), Cameroon (XAF). There is an installation fee by node band plus a monthly subscription per node for the chosen duration. For any cost, install, or how-much question: send the visitor to the Pricing page at /pricing to run the estimator (pick market, nodes, and duration such as 5 months) and request a quote there. If the estimator is not enough or they want a human, they can email sales@curnext.app. Do not invent a total price for a building when node count and market are unknown - explain the model and send them to Pricing first."
+      },
+      {
+        "id": "hosting",
+        "title": "Datacenters and residency",
+        "source": "Datacenters",
+        "href": "/datacenters",
+        "tags": [
+          "hosting",
+          "germany",
+          "frankfurt",
+          "hetzner",
+          "supabase",
+          "gdpr"
+        ],
+        "text": "Application hosting is on Hetzner in Germany. Database and Auth are on Supabase in Frankfurt. Cloudflare provides DNS, TLS, WAF, CDN, and Turnstile. Customers in Finland, Canada, and Cameroon use this EU-anchored stack unless an enterprise addendum says otherwise. Selling into Canada or Cameroon is not the same as hosting a local production region there."
+      },
+      {
+        "id": "security",
+        "title": "Security architecture summary",
+        "source": "Security",
+        "href": "/security",
+        "tags": [
+          "security",
+          "wireguard",
+          "mtls",
+          "ota",
+          "tamper"
+        ],
+        "text": "Objectives: confidentiality, integrity, authenticity, availability, accountability, privacy. Field nodes use unique secure-element keys, LoRaWAN AES-128, signed OTA, tamper-proof design, and displacement detection. CN-BC uses WireGuard and MQTT mTLS. Cloud uses invite-only access, RBAC, privileged MFA, WAF, and GDPR-oriented audit. Report issues to security@curnext.app. Do not claim CurNext ISO 27001 or SOC 2 from public pages alone."
+      },
+      {
+        "id": "dpa",
+        "title": "Data Processing Agreement",
+        "source": "DPA",
+        "href": "/data/data-processing-agreement",
+        "tags": [
+          "dpa",
+          "processor",
+          "privacy",
+          "subprocessors",
+          "ai",
+          "gemini",
+          "groq"
+        ],
+        "text": "CurNext (Helsinki, Finland) acts as processor for Client Data instructed through the Services; Client remains controller. DPA available upon request; enterprise within 30 days of schedule signature. Contact legal@curnext.app. Public subprocessors include hosting, email, payments, and AI vendors Gemini and Groq when enabled. See the DPA page for the current list."
+      },
+      {
+        "id": "compliance",
+        "title": "Compliance posture",
+        "source": "Compliance",
+        "href": "/compliance",
+        "tags": [
+          "compliance",
+          "gdpr",
+          "iso",
+          "soc",
+          "certification"
+        ],
+        "text": "CurNext does not claim ISO 27001 or SOC 2 for itself on public pages. GDPR applies to EU platform processing. Standards on Security and Compliance pages are design alignment. Construction evidence includes readiness and audit trails. Concrete curing prediction uses an in-house TensorFlow.js model. Assisted AI features use Gemini and Groq when enabled."
+      },
+      {
+        "id": "contact",
+        "title": "Contact and sales",
+        "source": "Contact",
+        "href": "/contact",
+        "tags": [
+          "contact",
+          "support",
+          "sales",
+          "email",
+          "quote"
+        ],
+        "text": "sales@curnext.app for commercial questions, volume, and quotes when Pricing is not enough. info@curnext.app for general inquiries. support@curnext.app for product support. security@curnext.app for security. legal@curnext.app for DPA. Typical response within one business day on weekdays. Contact form: /contact. Pricing estimator and quote request: /pricing."
+      }
+    ]
+  },
+  "api": {
+    "apiAccess": {
+      "eyebrow": "Access",
+      "title": "Professional includes API access",
+      "lead": "API access is included with Professional and available for Enterprise programs. Project API keys and webhooks are managed in the CurNext product under project developer settings.",
+      "points": [
+        "Access is project-scoped (and can be building-scoped).",
+        "Active keys and webhooks are limited per project.",
+        "Keys use a live prefix pattern such as cn_live_... in the product.",
+        "Request access and we will enable integration for your project - then walk through keys, scopes, and events in the platform."
+      ],
+      "enterpriseNote": "Enterprise programs may include enhanced API rate limits and a sandbox upon request - sales-led, not self-serve."
+    },
+    "apiAudience": {
+      "eyebrow": "Who it's for",
+      "title": "Built for technical buyers and integrators",
+      "items": [
+        "Project and BIM coordinators who need readiness in planning tools",
+        "Enterprise IT connecting CurNext to internal dashboards",
+        "Multi-site contractors who want event-driven workflows",
+        "Partners integrating CurNext into construction software stacks"
+      ]
+    },
+    "apiBuiltNote": "CurNext API is a NestJS REST service powering web, mobile, and site integrations.",
+    "apiCapabilities": {
+      "eyebrow": "Capabilities",
+      "title": "What you can call",
+      "lead": "Frame integration around domains - readiness, BIM, fleet, telemetry, and events - not a raw sensor stream.",
+      "items": [
+        {
+          "title": "Surface readiness",
+          "body": "Pull readiness score, status, estimated ready date, confidence, and recommendation for a surface."
+        },
+        {
+          "title": "BIM context",
+          "body": "Fetch project hierarchy - buildings, spaces, and devices - for mapping and coordination."
+        },
+        {
+          "title": "Device fleet",
+          "body": "List and inspect devices tied to a project."
+        },
+        {
+          "title": "Telemetry ingest",
+          "body": "Site hardware and gateways post measurements into CurNext."
+        },
+        {
+          "title": "Events (webhooks)",
+          "body": "Push alerts and project milestones to your HTTPS endpoint."
+        }
+      ]
+    },
+    "apiEndpoints": {
+      "eyebrow": "Illustrative surfaces",
+      "title": "Example REST paths",
+      "lead": "All examples are under https://api.curnext.app/api/v1. The platform continues to expand - contact sales for integration scope beyond these surfaces.",
+      "rows": [
+        {
+          "method": "GET",
+          "path": "/health",
+          "purpose": "Service health"
+        },
+        {
+          "method": "GET",
+          "path": "/surfaces/:id/readiness",
+          "purpose": "Readiness for a surface"
+        },
+        {
+          "method": "GET",
+          "path": "/bim/:projectId",
+          "purpose": "BIM / project tree"
+        },
+        {
+          "method": "GET",
+          "path": "/devices",
+          "purpose": "Device list (project_id query optional)"
+        },
+        {
+          "method": "GET",
+          "path": "/devices/:id",
+          "purpose": "Single device"
+        },
+        {
+          "method": "POST",
+          "path": "/telemetry",
+          "purpose": "Ingest telemetry"
+        }
+      ]
+    },
+    "apiFaqs": [
+      {
+        "q": "Is there a public OpenAPI / Swagger site?",
+        "a": "Yes - explore the interactive API playground at https://api.curnext.app/docs. Project keys and scopes are still enabled per subscription in the CurNext platform."
+      },
+      {
+        "q": "What's included with Professional?",
+        "a": "API access alongside dashboard, BIM, alerts, compliance reports, and the rest of the Professional stack. See Pricing for commercial detail."
+      },
+      {
+        "q": "How do I get an API key?",
+        "a": "Open the CurNext platform for your project (developer / API keys) after your subscription includes API access - or request enablement via Contact."
+      },
+      {
+        "q": "Can we get webhooks?",
+        "a": "Yes - project webhooks for readiness, alerts, device, and handover-style events. Configure HTTPS endpoints in the product."
+      },
+      {
+        "q": "Do you support BIM tools?",
+        "a": "The API exposes BIM and project hierarchy for coordination. BIM viewing also lives in the product UI."
+      },
+      {
+        "q": "GraphQL? SDKs?",
+        "a": "REST /api/v1 is the public framing. There is no GraphQL surface or official public SDK catalog on this page."
+      }
+    ],
+    "apiMarketingHost": "curnext.app",
+    "apiMqttFootnote": "Field devices also publish telemetry over MQTT (curnext/.../telemetry). Site hardware uses that path; buyer integrations should start with REST.",
+    "apiPage": {
+      "eyebrow": "API",
+      "title": "Readiness intelligence, as an API",
+      "lead": "Versioned REST at https://api.curnext.app - surface readiness, BIM project context, devices, and telemetry. Included with Professional.",
+      "primaryCta": {
+        "label": "Request API access",
+        "href": "/contact"
+      },
+      "secondaryCta": {
+        "label": "Open platform",
+        "href": "https://curnext.app",
+        "external": true
+      },
+      "tertiaryCta": {
+        "label": "View pricing",
+        "href": "/pricing"
+      },
+      "hosts": {
+        "production": "https://api.curnext.app",
+        "versionPrefix": "/api/v1",
+        "exampleBase": "https://api.curnext.app/api/v1",
+        "product": "https://curnext.app"
+      }
+    },
+    "apiPlatformUrl": "https://curnext.app",
+    "apiReadinessSample": "{\n  \"surface_id\": \"...\",\n  \"readiness_score\": 0.0,\n  \"status\": \"...\",\n  \"estimated_ready_date\": \"...\",\n  \"confidence\": 0.0,\n  \"recommendation\": \"...\"\n}",
+    "apiWebhooks": {
+      "eyebrow": "Webhooks",
+      "title": "Event-driven integration",
+      "lead": "Configure HTTPS endpoints in the project for alerts and project milestones. Delivery history is available in the product.",
+      "events": [
+        "SURFACE_READY",
+        "READY_DATE_CHANGED",
+        "ALERT_CREATED",
+        "ALERT_RESOLVED",
+        "FREEZE_RISK_DETECTED",
+        "CONDENSATION_RISK_DETECTED",
+        "DRYING_PAUSED",
+        "DEVICE_OFFLINE",
+        "DEVICE_LOW_BATTERY",
+        "DEVICE_SENSOR_FAILURE",
+        "DEVICE_DISPLACED",
+        "PROJECT_DELAY_RISK_DETECTED",
+        "COMPLIANCE_REPORT_READY",
+        "PROJECT_HANDOVER_READY"
+      ]
+    },
+    "apiWhy": {
+      "eyebrow": "Why an API",
+      "title": "Decisions that leave the dashboard",
+      "lead": "CurNext's API is how readiness decisions enter the contractor's stack - schedules, BIM tools, compliance archives, and ops systems. This is not another IoT sensor dump.",
+      "outcomes": [
+        {
+          "title": "Schedules that track the work",
+          "body": "Pull readiness scores and estimated ready dates into planning tools so field and office share one picture of what can proceed."
+        },
+        {
+          "title": "BIM with live context",
+          "body": "Map buildings, spaces, and devices for coordination - without rebuilding project hierarchy by hand."
+        },
+        {
+          "title": "Ops and compliance workflows",
+          "body": "Drive alerts, milestones, and handover evidence into the systems your teams already run."
+        }
+      ]
+    }
+  },
+  "integrations": {
+    "title": "Market Place",
+    "description": "Connect third-party tools and marketplace integrations.",
+    "widgetTitle": "Integrations",
+    "widgetDescription": "Link OAuth apps to automate alerts, schedules, maps, CRM, and accounting for your sites.",
+    "dashboardHref": "https://dash.curnext.app/addon",
+    "categoriesTitle": "Categories",
+    "catalogTitle": "Catalog",
+    "allFilter": "All",
+    "openDashboard": "Open Market Place",
+    "connectOauth": "OAuth",
+    "connectApiKey": "API key",
+    "categories": {
+      "Messaging": "Messaging",
+      "Scheduling": "Scheduling",
+      "Monitoring": "Monitoring",
+      "Productivity": "Productivity",
+      "Storage": "Storage",
+      "BIM": "BIM",
+      "Construction": "Construction",
+      "Enterprise": "Enterprise",
+      "IoT": "IoT",
+      "Maps": "Maps",
+      "CRM": "CRM",
+      "Accounting": "Accounting"
+    },
+    "items": {
+      "whatsapp": {
+        "description": "Send critical site alerts and readiness updates to your WhatsApp number.",
+        "category": "Messaging"
+      },
+      "slack": {
+        "description": "Post alerts and daily digests to channels in your Slack workspace.",
+        "category": "Messaging"
+      },
+      "microsoft-teams": {
+        "description": "Deliver operational alerts and readiness updates to Teams channels.",
+        "category": "Messaging"
+      },
+      "google-calendar": {
+        "description": "Sync inspection windows, curing milestones, and site visits.",
+        "category": "Scheduling"
+      },
+      "calendly": {
+        "description": "Let inspectors and owners book site visits from shared availability.",
+        "category": "Scheduling"
+      },
+      "datadog": {
+        "description": "Forward device health metrics and alert events to your Datadog stack.",
+        "category": "Monitoring"
+      },
+      "google-sheets": {
+        "description": "Export readiness snapshots and telemetry rollups to a shared spreadsheet.",
+        "category": "Productivity"
+      },
+      "dropbox": {
+        "description": "Archive reports, certificates, and site photos to shared project folders.",
+        "category": "Storage"
+      },
+      "autodesk-revit": {
+        "description": "Sync BIM models, rooms, and surfaces with curing readiness context.",
+        "category": "BIM"
+      },
+      "procore": {
+        "description": "Push readiness status and alerts into Procore project records.",
+        "category": "Construction"
+      },
+      "ibm-maximo": {
+        "description": "Link probe assets and maintenance work orders with site telemetry.",
+        "category": "Enterprise"
+      },
+      "azure-iot-hub": {
+        "description": "Ingest device telemetry and commands through your Azure IoT estate.",
+        "category": "IoT"
+      },
+      "google-maps": {
+        "description": "Plot buildings, probes, and weather context on project maps.",
+        "category": "Maps"
+      },
+      "mapbox": {
+        "description": "Render custom site maps and geofenced alert zones.",
+        "category": "Maps"
+      },
+      "salesforce": {
+        "description": "Sync client accounts, projects, and handover milestones.",
+        "category": "CRM"
+      },
+      "hubspot": {
+        "description": "Keep owner contacts and onboarding workflows in HubSpot.",
+        "category": "CRM"
+      },
+      "quickbooks": {
+        "description": "Export invoices and subscription billing events to QuickBooks.",
+        "category": "Accounting"
+      },
+      "xero": {
+        "description": "Sync billing contacts and invoice line items with Xero.",
+        "category": "Accounting"
+      }
+    }
+  },
+  "sdks": {
+    "hero": {
+      "eyebrow": "SDKs",
+      "title": "Bring CurNext into the apps you already run",
+      "lead": "Restricting the experience to our client is not enough. CurNext SDKs give your teams the freedom to extend readiness intelligence into the applications, workflows, and stacks you already operate."
+    },
+    "header": {
+      "title": "SDK",
+      "description": "Official client libraries for the CurNext REST API. Pick a language below for install steps and examples."
+    },
+    "intro": {
+      "heading": "What you can build",
+      "paragraph": "SDKs wrap the versioned REST API. Create a project API key, then call readiness, projects, devices, alerts, measurements, and webhooks from your own stack.",
+      "docsLabel": "api.curnext.app/docs",
+      "useCases": [
+        {
+          "title": "Pull readiness & telemetry",
+          "body": "Fetch surface readiness, predictions, devices, and latest measurements into dashboards or reports."
+        },
+        {
+          "title": "Automate site workflows",
+          "body": "Resolve alerts, list audit events, and drive ops from scripts and internal tools."
+        },
+        {
+          "title": "Integrate with your stack",
+          "body": "Use the same REST surface from Node, PHP, Go, Python, Java, or Flutter apps you already run."
+        },
+        {
+          "title": "Work with webhooks",
+          "body": "List webhook endpoints via SDK. Create and manage receivers in the dashboard for events like SURFACE_READY, ALERT_CREATED, and DEVICE_DISPLACED."
+        }
+      ]
+    },
+    "cardVersionLine": "v{version}",
+    "registryButtonLabel": "Open registry",
+    "statusBadgeLabel": {},
+    "packages": {
+      "javascript": {
+        "name": "JavaScript / TypeScript",
+        "short": "JS / TS",
+        "stack": "Node, React, Next.js & browsers",
+        "summary": "Typed Fetch client for web apps, Node services, and TypeScript backends that need readiness and project context.",
+        "highlights": [
+          "Typed client",
+          "Node & browsers",
+          "Fetch API"
+        ],
+        "quickStart": "import { CurNext } from \"@curnext/sdk\";\n\nconst client = new CurNext({\n  apiKey: process.env.CURNEXT_API_KEY!,\n  // baseUrl defaults to https://api.curnext.app\n  // baseUrl: \"http://localhost:4000\",\n});\n\nconst health = await client.health.get();\n// { status: \"ok\", service: \"curnext-api\", version: \"...\", api: \"/api/v1\" }\n\nconst { projects } = await client.projects.list();\nconst readiness = await client.projects.getReadiness(\"SURFACE_EXTERNAL_ID\");\n\nconsole.log(readiness.status, readiness.readiness_score);",
+        "errorHandling": "import { CurNextApiError } from \"@curnext/sdk\";\n\ntry {\n  const readiness = await client.projects.getReadiness(\"SURFACE_ID\");\n  console.log(readiness.status);\n} catch (error) {\n  if (error instanceof CurNextApiError) {\n    // 401 invalid key | 404 not found | 429 rate limited\n    console.error(error.statusCode, error.message, error.code, error.body);\n    return;\n  }\n  throw error;\n}",
+        "status": "live"
+      },
+      "php": {
+        "name": "PHP",
+        "short": "PHP",
+        "stack": "Laravel & Symfony",
+        "summary": "PHP 8.1+ client for Laravel, Symfony, and plain PHP that pulls readiness into portals, ERP, and automation.",
+        "highlights": [
+          "PHP 8.1+",
+          "cURL + JSON",
+          "Laravel & Symfony"
+        ],
+        "quickStart": "<?php\n\nuse Curnext\\Sdk\\CurNext;\n\n$client = new CurNext(\n    apiKey: getenv('CURNEXT_API_KEY') ?: '',\n    // baseUrl defaults to https://api.curnext.app\n    // baseUrl: 'http://localhost:4000',\n);\n\n$health = $client->health->get();\n$projects = $client->projects->list();\n$readiness = $client->projects->getReadiness('SURFACE_EXTERNAL_ID');\n\necho $readiness['status'], ' ', $readiness['readiness_score'] ?? '', PHP_EOL;",
+        "errorHandling": "use Curnext\\Sdk\\CurNextApiException;\n\ntry {\n    $readiness = $client->projects->getReadiness('SURFACE_ID');\n    echo $readiness['status'];\n} catch (CurNextApiException $e) {\n    // 401 invalid key | 404 not found | 429 rate limited\n    error_log($e->getStatusCode() . ' ' . $e->getMessage());\n    var_export($e->getBody());\n    throw $e;\n}",
+        "status": "live"
+      },
+      "go": {
+        "name": "Go",
+        "short": "Go",
+        "stack": "net/http, Gin & Echo",
+        "summary": "Idiomatic Go client for gateways, site services, and microservices that talk to CurNext over HTTPS.",
+        "highlights": [
+          "context.Context",
+          "Typed errors",
+          "net/http"
+        ],
+        "quickStart": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"log\"\n\t\"os\"\n\n\tcurnext \"github.com/awunjia/curnext-go\"\n)\n\nfunc main() {\n\tclient, err := curnext.NewClient(curnext.Config{\n\t\tAPIKey: os.Getenv(\"CURNEXT_API_KEY\"),\n\t\t// BaseURL defaults to https://api.curnext.app\n\t\t// BaseURL: \"http://localhost:4000\",\n\t})\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\n\tctx := context.Background()\n\thealth, err := client.Health.Get(ctx)\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\tfmt.Println(health.Status, health.Service)\n\n\treadiness, err := client.Projects.GetReadiness(ctx, \"SURFACE_EXTERNAL_ID\")\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\tfmt.Println(readiness.Status, readiness.ReadinessScore)\n}",
+        "errorHandling": "import (\n\t\"context\"\n\t\"errors\"\n\t\"log\"\n\n\tcurnext \"github.com/awunjia/curnext-go\"\n)\n\nreadiness, err := client.Projects.GetReadiness(ctx, \"SURFACE_ID\")\nif err != nil {\n\tvar apiErr *curnext.APIError\n\tif errors.As(err, &apiErr) {\n\t\t// 401 invalid key | 404 not found | 429 rate limited\n\t\tlog.Printf(\"%d %s %#v\", apiErr.StatusCode, apiErr.Message, apiErr.Body)\n\t\treturn\n\t}\n\tlog.Fatal(err)\n}\n_ = readiness.Status",
+        "status": "live"
+      },
+      "python": {
+        "name": "Python",
+        "short": "Python",
+        "stack": "Django, FastAPI & scripts",
+        "summary": "Python client for data pipelines, FastAPI services, and scripts that pull readiness and telemetry.",
+        "highlights": [
+          "pip install",
+          "Dict responses",
+          "Django & FastAPI"
+        ],
+        "quickStart": "import os\nfrom curnext import CurNext\n\nclient = CurNext(\n    api_key=os.environ[\"CURNEXT_API_KEY\"],\n    # base_url defaults to https://api.curnext.app\n    # base_url=\"http://localhost:4000\",\n)\n\nhealth = client.health.get()\nprojects = client.projects.list()\nreadiness = client.projects.get_readiness(\"SURFACE_EXTERNAL_ID\")\n\nprint(readiness[\"status\"], readiness.get(\"readiness_score\"))",
+        "errorHandling": "from curnext import CurNextApiError\n\ntry:\n    readiness = client.projects.get_readiness(\"SURFACE_ID\")\n    print(readiness[\"status\"])\nexcept CurNextApiError as exc:\n    # 401 invalid key | 404 not found | 429 rate limited\n    print(exc.status_code, exc.message, exc.code, exc.body)\n    raise",
+        "status": "live"
+      },
+      "java": {
+        "name": "Java",
+        "short": "Java",
+        "stack": "Spring Boot & Quarkus",
+        "summary": "JVM client for Spring Boot, Quarkus, and enterprise services. Maven groupId app.curnext; imports stay io.curnext.sdk.*.",
+        "highlights": [
+          "Java 17+",
+          "Gradle & Maven",
+          "Jackson"
+        ],
+        "quickStart": "import io.curnext.sdk.CurNext;\nimport io.curnext.sdk.ApiObject;\n\nvar client = CurNext.builder()\n    .apiKey(System.getenv(\"CURNEXT_API_KEY\"))\n    // .baseUrl(\"https://api.curnext.app\")\n    // .baseUrl(\"http://localhost:4000\")\n    .build();\n\nApiObject health = client.health().get();\nApiObject readiness = client.projects().getReadiness(\"SURFACE_EXTERNAL_ID\");\nSystem.out.println(readiness.status() + \" \" + readiness.readinessScore());",
+        "errorHandling": "import io.curnext.sdk.CurNextApiException;\n\ntry {\n  var readiness = client.projects().getReadiness(\"SURFACE_ID\");\n  System.out.println(readiness.status());\n} catch (CurNextApiException e) {\n  // 401 invalid key | 404 not found | 429 rate limited\n  System.err.println(e.getStatusCode() + \" \" + e.getMessage());\n  throw e;\n}",
+        "status": "live"
+      },
+      "flutter": {
+        "name": "Flutter",
+        "short": "Flutter",
+        "stack": "Dart, iOS, Android & desktop",
+        "summary": "Flutter / Dart client for mobile and desktop apps that need readiness, devices, and alerts in the field. Same REST surface as the live SDKs - package is not on pub.dev yet.",
+        "highlights": [
+          "Coming soon",
+          "Dart",
+          "Mobile & desktop"
+        ],
+        "quickStart": "// Preview only - Flutter SDK is not published yet\nimport 'package:curnext/curnext.dart';\n\nfinal client = CurNext(\n  apiKey: const String.fromEnvironment('CURNEXT_API_KEY'),\n  // baseUrl defaults to https://api.curnext.app\n  // baseUrl: 'http://localhost:4000',\n);\n\nfinal health = await client.health.get();\nfinal projects = await client.projects.list();\nfinal readiness =\n    await client.projects.getReadiness('SURFACE_EXTERNAL_ID');\n\nprint('${health.status} ${readiness.status}');",
+        "errorHandling": "// Preview only - Flutter SDK is not published yet\ntry {\n  final readiness =\n      await client.projects.getReadiness('SURFACE_ID');\n  print(readiness.status);\n} on CurNextApiException catch (e) {\n  // 401 invalid key | 404 not found | 429 rate limited\n  print('${e.statusCode} ${e.message} ${e.code}');\n  rethrow;\n}",
+        "status": "coming_soon"
+      }
+    }
+  },
+  "docs": {
+    "eyebrow": "Documentation",
+    "onThisPage": "On this page",
+    "sectionNav": "Section headers",
+    "title": "Docs",
+    "description": "Long-form product documentation for CurNext - site path, solutions, API, SDKs, firmware, integrations, security, hosting, and commercial scope. Built from public material on curnext.app.",
+    "tabs": {
+      "overview": {
+        "label": "Overview",
+        "description": "What CurNext is, how Docs is organized, and where to go next.",
+        "sections": {
+          "what-is-curnext": {
+            "title": "What is CurNext?",
+            "paragraphs": [
+              "CurNext provides build-ready site intelligence for construction surfaces and spaces. Field nodes measure conditions on the work itself. The platform answers whether work can proceed - with readiness, alerts, and an audit trail mapped to your project.",
+              "The product is sold as construction intelligence, not a radio bill of materials. Site and office teams act on go / no-go decisions. Developers and operators extend the same stack through the REST API, SDKs, Market Place integrations, and firmware operations.",
+              "This Docs surface summarizes public product material already published on curnext.app. It is meant to be readable end to end. Detailed hardware security runbooks, factory fixtures, and private ops procedures stay in internal documentation."
+            ]
+          },
+          "who-it-is-for": {
+            "title": "Who it is for",
+            "paragraphs": [
+              "CurNext is built for contractors, project teams, BIM coordinators, facilities roles after handover, and integrators who need readiness decisions in tools they already run."
+            ],
+            "bullets": [
+              "Site teams acting on go / no-go readiness on slabs, walls, air, leaks, structure, and plant",
+              "Office teams tracking surfaces against schedule and handover evidence",
+              "Developers calling the REST API or official SDKs",
+              "Operators reviewing firmware catalog, reported versions, and edge OTA context",
+              "Procurement and security reviewers reading Security, Datacenters, and DPA pages"
+            ]
+          },
+          "operating-markets": {
+            "title": "Operating markets",
+            "paragraphs": [
+              "CurNext currently sells into Finland, Canada, and Cameroon. Pricing is native list pricing per market (EUR, CAD, XAF) - not a single FX conversion table.",
+              "Platform Client Data for those markets is hosted on the EU-anchored production stack (application origins in Germany, database and auth in Frankfurt) unless a written enterprise residency addendum says otherwise. Selling into Canada or Cameroon is not the same as hosting a local production region there."
+            ],
+            "links": [
+              {
+                "label": "Pricing",
+                "href": "/pricing"
+              },
+              {
+                "label": "Datacenters",
+                "href": "/datacenters"
+              },
+              {
+                "label": "DPA",
+                "href": "/data/data-processing-agreement"
+              }
+            ]
+          },
+          "how-docs-is-organized": {
+            "title": "How this documentation is organized",
+            "paragraphs": [
+              "Use the tabs across the top to move between topics. On large screens, the left rail lists section headers for the active tab and highlights the section in view as you scroll."
+            ],
+            "bullets": [
+              "Overview - product framing and navigation",
+              "Site path - L1 through L5 and connectivity",
+              "Solutions - each factory-fixed SKU in depth",
+              "API - base URL, auth, domains, webhooks",
+              "SDKs - languages, install, patterns",
+              "Firmware - catalog, history, edge OTA",
+              "Integrations - Market Place catalog",
+              "Security - public architecture summary",
+              "Hosting - residency and scale posture",
+              "Commercial - pricing model and contact paths"
+            ]
+          },
+          "related-surfaces": {
+            "title": "Related surfaces",
+            "paragraphs": [
+              "Docs sits beside other public surfaces. Prefer the Knowledge Base AI chat for quick questions grounded in website knowledge, and Contact when a guide is missing."
+            ],
+            "links": [
+              {
+                "label": "How it works",
+                "href": "/how-it-works"
+              },
+              {
+                "label": "Technologies",
+                "href": "/technologies"
+              },
+              {
+                "label": "Resources",
+                "href": "/resources"
+              },
+              {
+                "label": "Case studies",
+                "href": "/case-studies"
+              },
+              {
+                "label": "Knowledge Base",
+                "href": "/knowledge-base"
+              },
+              {
+                "label": "Contact",
+                "href": "/contact"
+              }
+            ]
+          }
+        }
+      },
+      "site-path": {
+        "label": "Site path",
+        "description": "From field nodes to CurNext cloud - layers, power, uplink, and outcomes.",
+        "sections": {
+          "path-intro": {
+            "title": "One path for every surface",
+            "paragraphs": [
+              "Curing, drying, air, leak, structure, and MEP share the same path to the cloud. Devices capture conditions on the work. Floor collection keeps a level organized. Dedicated power keeps floor and building hardware online. The building uplink is the secure bridge off the jobsite. CurNext cloud turns site data into readiness, alerts, and next actions - with an audit trail for clients and compliance.",
+              "This is an industrial construction stack, not consumer IoT toys. Public pages name capabilities at a level suitable for buyers and integrators. They are not an attack-surface guide."
+            ],
+            "links": [
+              {
+                "label": "How it works",
+                "href": "/how-it-works"
+              },
+              {
+                "label": "Technologies",
+                "href": "/technologies"
+              }
+            ]
+          },
+          "layers": {
+            "title": "Layers L1-L5",
+            "paragraphs": [
+              "Each layer has one job. Power does not interpret measurements. Floor gateways do not face the public internet. The building controller is the security boundary for uplink and signed field OTA."
+            ],
+            "subsections": [
+              {
+                "title": "L1 - Sense (field nodes)",
+                "paragraphs": [
+                  "Install on the work itself - curing slabs, drying walls, indoor air, leaks, structure, or plant systems. Devices capture the conditions that drive schedule and quality decisions."
+                ],
+                "bullets": [
+                  "SKUs: CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP",
+                  "Unique device identity and secure-element key material",
+                  "Tamper-proof design and displacement detection on field nodes",
+                  "LoRaWAN Class A (EU868) for battery wireless nodes where applicable"
+                ]
+              },
+              {
+                "title": "L2 - Aggregate (CN-FG)",
+                "paragraphs": [
+                  "Each floor concentrates device traffic at one collection point, so a level stays organized as the project scales across wings and zones."
+                ],
+                "bullets": [
+                  "Trust anchor for air-link verification (MIC, counters, join)",
+                  "Floor VLAN only - no cloud-facing interface",
+                  "OTA only from CN-BC"
+                ]
+              },
+              {
+                "title": "L3 - Power (CN-UPS)",
+                "paragraphs": [
+                  "Dedicated power keeps floor and building hardware online through outages. This layer supplies power only - it does not interpret measurements or carry a data plane on the management VLAN."
+                ]
+              },
+              {
+                "title": "L4 - Bridge (CN-BC)",
+                "paragraphs": [
+                  "The building unit is the secure link from the site network to CurNext. It maintains a protected path off the jobsite, terminates field OTA orchestration, and speaks to the private cloud broker path."
+                ],
+                "bullets": [
+                  "WireGuard client at the building security boundary",
+                  "MQTT over TLS with mutual TLS to the private broker",
+                  "Signed OTA jobs for L1/L2 targets",
+                  "Encrypted store-and-forward when the uplink is down"
+                ]
+              },
+              {
+                "title": "L5 - Decide (CurNext cloud)",
+                "paragraphs": [
+                  "The platform turns site data into readiness status, alerts, and next actions - in the web dashboard and mobile app - with an audit trail for clients and compliance."
+                ],
+                "bullets": [
+                  "Project dashboards, alerts, BIM-mapped readiness",
+                  "REST API, SDKs, Market Place, firmware catalog",
+                  "Invite-only access, RBAC, privileged MFA"
+                ]
+              }
+            ]
+          },
+          "connectivity": {
+            "title": "Connectivity",
+            "paragraphs": [
+              "Named at the capability level - standard industrial protocols for the hardware path and HTTPS for buyer integrations."
+            ],
+            "bullets": [
+              "LoRaWAN (EU868) for battery field nodes - long-range, site-friendly radio into the floor path",
+              "MQTT over TLS for device and gateway telemetry on the hardware path",
+              "WireGuard themes for building edge connectivity into CurNext cloud services",
+              "HTTPS REST for buyer integrations at api.curnext.app - readiness, BIM, devices, alerts, webhooks"
+            ]
+          },
+          "outcomes": {
+            "title": "Outcomes on site",
+            "paragraphs": [
+              "Teams should leave CurNext with decisions and evidence, not only charts."
+            ],
+            "bullets": [
+              "One stack for every surface - curing, drying, air, leak, structure, and MEP",
+              "Decisions, not dashboards only - what is ready, what is at risk, what to do next",
+              "Evidence that travels - handovers, claims, and audits without rebuilding reports by hand"
+            ]
+          }
+        }
+      },
+      "solutions": {
+        "label": "Solutions",
+        "description": "Factory-fixed product lines for site jobs on the same stack.",
+        "sections": {
+          "solution-catalog": {
+            "title": "Solution catalog",
+            "paragraphs": [
+              "Each SKU is purpose-fixed for a site job on the same CurNext stack. Pick the product line that matches the surface, then scale nodes and duration on Pricing."
+            ],
+            "bullets": [
+              "CN-CC - Concrete Curing: Slab cure, maturity, readiness",
+              "CN-WD - Wall Drying: Gypsum, wet rooms, tile backing",
+              "CN-IAQ - Indoor Air: CO₂, PM, VOC (incl. post-handover)",
+              "CN-LEAK - Leak Detection: Plant rooms, bathrooms, risers",
+              "CN-SHM - Structural Health: Strain, crack, tilt, vibration",
+              "CN-MEP - MEP: Flow, pressure, energy (PoE panel)"
+            ],
+            "links": [
+              {
+                "label": "All solutions",
+                "href": "/solutions"
+              }
+            ]
+          },
+          "solution-cn-cc": {
+            "title": "CN-CC - Concrete Curing",
+            "paragraphs": [
+              "Concrete curing monitors slab maturity with air, surface, and core probes. A sealed edge node stays outside the pour; rugged probes sit where the slab needs measurement. CurNext's in-house TensorFlow.js model turns those temperatures into curing predictions and build-ready timing, with an audit trail for the pour package."
+            ],
+            "bullets": [
+              "Air, surface, and core probe roles on the same harness model",
+              "In-house TensorFlow.js curing prediction for readiness",
+              "Go / no-go readiness instead of calendar-only cure rules",
+              "Documented cure trail for formwork and follow-on trades",
+              "LoRaWAN field path into CN-FG and CN-BC"
+            ],
+            "links": [
+              {
+                "label": "Open CN-CC page",
+                "href": "/solutions/concrete-curing"
+              }
+            ]
+          },
+          "solution-cn-wd": {
+            "title": "CN-WD - Wall Drying",
+            "paragraphs": [
+              "Wall drying covers gypsum, wet rooms, and tile backing. Nodes watch moisture and drying windows so finishing crews do not trap wet assemblies behind coverings under schedule pressure."
+            ],
+            "bullets": [
+              "Finish readiness for gypsum and wet-room assemblies",
+              "Alerts when surfaces stay out of band",
+              "Shared dry / wait calls for trades packages",
+              "Trail of conditions before covering work"
+            ],
+            "links": [
+              {
+                "label": "Open CN-WD page",
+                "href": "/solutions/wall-drying"
+              }
+            ]
+          },
+          "solution-cn-iaq": {
+            "title": "CN-IAQ - Indoor Air",
+            "paragraphs": [
+              "Indoor air provides CO2, particulate, VOC, and climate context on the same site stack - including post-handover and early occupancy when teams need shared air quality without a separate lab campaign for every complaint."
+            ],
+            "bullets": [
+              "Representative zone nodes for handover and occupancy",
+              "Thresholds and alerts for site and facilities roles",
+              "Measurements attached to spaces, not one-off walkthrough notes",
+              "Same building uplink and project surface as other SKUs"
+            ],
+            "links": [
+              {
+                "label": "Open CN-IAQ page",
+                "href": "/solutions/indoor-air"
+              }
+            ]
+          },
+          "solution-cn-leak": {
+            "title": "CN-LEAK - Leak Detection",
+            "paragraphs": [
+              "Leak detection watches plant rooms, bathrooms, and risers for moisture events that are often found late - after finishes and equipment are already at risk."
+            ],
+            "bullets": [
+              "Event-driven alerts for high-risk wet zones",
+              "Earlier awareness for site and MEP leads",
+              "Edge uplink with project-mapped locations",
+              "Response path before damage spreads"
+            ],
+            "links": [
+              {
+                "label": "Open CN-LEAK page",
+                "href": "/solutions/leak-detection"
+              }
+            ]
+          },
+          "solution-cn-shm": {
+            "title": "CN-SHM - Structural Health",
+            "paragraphs": [
+              "Structural health monitors tilt, crack, strain, and vibration context during critical works and temporary works - continuous context between periodic survey visits."
+            ],
+            "bullets": [
+              "Agreed structural points instrumented on the building path",
+              "Thresholds and history for engineers and site managers",
+              "Events retained when works change site conditions",
+              "Complements, does not replace, survey practice"
+            ],
+            "links": [
+              {
+                "label": "Open CN-SHM page",
+                "href": "/solutions/structural-health"
+              }
+            ]
+          },
+          "solution-cn-mep": {
+            "title": "CN-MEP - MEP",
+            "paragraphs": [
+              "MEP sensing covers flow, pressure, and energy where higher sample rates or wired plant signals are needed - including PoE panel paths during commissioning and balancing."
+            ],
+            "bullets": [
+              "Wired plant signals on agreed circuits",
+              "Shared record during commissioning windows",
+              "Cloud readiness and history for MEP leads",
+              "Fits the same project and API model as wireless SKUs"
+            ],
+            "links": [
+              {
+                "label": "Open CN-MEP page",
+                "href": "/solutions/mep"
+              }
+            ]
+          },
+          "solution-patterns": {
+            "title": "Anonymous site patterns",
+            "paragraphs": [
+              "Case studies on the marketing site are anonymous deployment patterns by SKU - challenge, approach, and outcome - without inventing customer logos or fake percentages. Named references are available via sales under NDA."
+            ],
+            "links": [
+              {
+                "label": "Case studies",
+                "href": "/case-studies"
+              }
+            ]
+          }
+        }
+      },
+      "api": {
+        "label": "API",
+        "description": "Versioned REST for readiness, BIM, devices, measurements, and events.",
+        "sections": {
+          "api-intro": {
+            "title": "API overview",
+            "paragraphs": [
+              "The CurNext REST API is the integration surface for readiness intelligence. Frame calls around decisions and project context - not a raw sensor dump. Official SDKs wrap the same /api/v1 paths.",
+              "Interactive OpenAPI documentation and playground live at api.curnext.app/docs. Marketing overview lives at /api."
+            ],
+            "links": [
+              {
+                "label": "API overview",
+                "href": "/api"
+              },
+              {
+                "label": "OpenAPI playground",
+                "href": "https://api.curnext.app/docs",
+                "external": true
+              }
+            ]
+          },
+          "api-base": {
+            "title": "Base URL and versioning",
+            "paragraphs": [
+              "Production API host is api.curnext.app. Pass the host only to SDKs - paths are prefixed with /api/v1 on the wire."
+            ]
+          },
+          "api-auth": {
+            "title": "Authentication and access",
+            "paragraphs": [
+              "Create a project API key in the product under Integration. Pass it as a Bearer token on every request.",
+              "API access follows your site subscription - node count and duration - not a separate legacy \"Professional\" plan name. Keys are scoped to the project that issued them."
+            ],
+            "bullets": [
+              "Store keys in a secrets manager - never in client-side code or public repos",
+              "Rotate keys when people leave the project or a leak is suspected",
+              "Prefer short-lived operational scripts over embedding keys in mobile apps"
+            ]
+          },
+          "api-domains": {
+            "title": "Domains you can call",
+            "paragraphs": [
+              "Use these domains as the mental model when designing an integration."
+            ],
+            "subsections": [
+              {
+                "title": "Health",
+                "paragraphs": [
+                  "Service status for load balancers and uptime checks."
+                ]
+              },
+              {
+                "title": "Projects",
+                "paragraphs": [
+                  "List projects, members, audit events, subscription context, and readiness views tied to the building structure."
+                ]
+              },
+              {
+                "title": "Devices",
+                "paragraphs": [
+                  "List and get devices bound to the project."
+                ]
+              },
+              {
+                "title": "Alerts",
+                "paragraphs": [
+                  "List, get, and resolve operational alerts."
+                ]
+              },
+              {
+                "title": "Measurements",
+                "paragraphs": [
+                  "Measurement cycles and latest device readings for the surfaces you instrumented."
+                ]
+              },
+              {
+                "title": "Webhooks",
+                "paragraphs": [
+                  "List webhook endpoints via API. Create and manage receivers in the product UI for events such as SURFACE_READY, ALERT_CREATED, and DEVICE_DISPLACED."
+                ]
+              },
+              {
+                "title": "BIM",
+                "paragraphs": [
+                  "Project hierarchy tree so readiness stays mapped to floors, rooms, and surfaces."
+                ]
+              }
+            ]
+          },
+          "api-errors": {
+            "title": "Errors and rate behaviour",
+            "paragraphs": [
+              "Treat 401 as an invalid or missing key, 404 as a missing resource, and 429 as rate limiting. Retry 429 with backoff. Do not retry 401 without rotating credentials.",
+              "Exact rate limits depend on project and subscription context - do not hard-code invented RPS numbers from this Docs page."
+            ]
+          }
+        }
+      },
+      "sdks": {
+        "label": "SDKs",
+        "description": "Official clients for the same REST surface across languages.",
+        "sections": {
+          "sdk-intro": {
+            "title": "What you can build",
+            "paragraphs": [
+              "Restricting the experience to the CurNext client is not enough. Official SDKs give teams freedom to extend readiness intelligence into applications, workflows, and stacks they already operate."
+            ],
+            "bullets": [
+              "Pull readiness and telemetry into dashboards or reports",
+              "Automate site workflows - resolve alerts, list audit events, drive ops from scripts",
+              "Integrate with Node, PHP, Go, Python, Java, or Flutter apps you already run",
+              "Work with webhooks - list endpoints via SDK; create receivers in the dashboard"
+            ],
+            "links": [
+              {
+                "label": "SDK page",
+                "href": "/sdks"
+              }
+            ]
+          },
+          "sdk-languages": {
+            "title": "Official languages",
+            "paragraphs": [
+              "Install from public registries. Live versions on the SDK page are resolved from npm, Packagist, pkg.go.dev, PyPI, and Maven Central where published. Flutter is planned on pub.dev and marked coming soon until published."
+            ],
+            "bullets": [
+              "JavaScript / TypeScript - @curnext/sdk (npm, live)",
+              "PHP - curnext/sdk (Packagist, live)",
+              "Go - github.com/awunjia/curnext-go (pkg.go.dev, live)",
+              "Python - curnext (PyPI, live)",
+              "Java - app.curnext:curnext-sdk (Maven Central, live)",
+              "Flutter - curnext (planned) (pub.dev, coming soon)"
+            ]
+          },
+          "sdk-auth": {
+            "title": "Auth pattern",
+            "paragraphs": [
+              "Pass CURNEXT_API_KEY and optional baseUrl (host only). Default base is https://api.curnext.app."
+            ]
+          },
+          "sdk-javascript": {
+            "title": "JavaScript / TypeScript",
+            "paragraphs": [
+              "Typed Fetch client for web apps, Node services, and TypeScript backends that need readiness and project context."
+            ],
+            "bullets": [
+              "Typed client",
+              "Node & browsers",
+              "Fetch API"
+            ],
+            "links": [
+              {
+                "label": "Open on npm",
+                "href": "https://www.npmjs.com/package/@curnext/sdk",
+                "external": true
+              }
+            ]
+          },
+          "sdk-php": {
+            "title": "PHP",
+            "paragraphs": [
+              "PHP 8.1+ client for Laravel, Symfony, and plain PHP that pulls readiness into portals, ERP, and automation."
+            ],
+            "bullets": [
+              "PHP 8.1+",
+              "cURL + JSON",
+              "Laravel & Symfony"
+            ],
+            "links": [
+              {
+                "label": "Open on Packagist",
+                "href": "https://packagist.org/packages/curnext/sdk",
+                "external": true
+              }
+            ]
+          },
+          "sdk-go": {
+            "title": "Go",
+            "paragraphs": [
+              "Idiomatic Go client for gateways, site services, and microservices that talk to CurNext over HTTPS."
+            ],
+            "bullets": [
+              "context.Context",
+              "Typed errors",
+              "net/http"
+            ],
+            "links": [
+              {
+                "label": "Open on pkg.go.dev",
+                "href": "https://pkg.go.dev/github.com/awunjia/curnext-go",
+                "external": true
+              }
+            ]
+          },
+          "sdk-python": {
+            "title": "Python",
+            "paragraphs": [
+              "Python client for data pipelines, FastAPI services, and scripts that pull readiness and telemetry."
+            ],
+            "bullets": [
+              "pip install",
+              "Dict responses",
+              "Django & FastAPI"
+            ],
+            "links": [
+              {
+                "label": "Open on PyPI",
+                "href": "https://pypi.org/project/curnext/",
+                "external": true
+              }
+            ]
+          },
+          "sdk-java": {
+            "title": "Java",
+            "paragraphs": [
+              "JVM client for Spring Boot, Quarkus, and enterprise services. Maven groupId app.curnext; imports stay io.curnext.sdk.*."
+            ],
+            "bullets": [
+              "Java 17+",
+              "Gradle & Maven",
+              "Jackson"
+            ],
+            "links": [
+              {
+                "label": "Open on Maven Central",
+                "href": "https://central.sonatype.com/artifact/app.curnext/curnext-sdk",
+                "external": true
+              }
+            ]
+          },
+          "sdk-flutter": {
+            "title": "Flutter",
+            "paragraphs": [
+              "Flutter / Dart client for mobile and desktop apps that need readiness, devices, and alerts in the field. Same REST surface as the live SDKs - package is not on pub.dev yet."
+            ],
+            "bullets": [
+              "Coming soon",
+              "Dart",
+              "Mobile & desktop"
+            ]
+          }
+        }
+      },
+      "firmware": {
+        "label": "Firmware",
+        "description": "Catalog, reported versions, install history, and edge OTA.",
+        "sections": {
+          "firmware-model": {
+            "title": "What exists today",
+            "paragraphs": [
+              "CurNext tracks a firmware version catalog, reported device version strings, and install history. Field OTA is orchestrated at the edge on CN-BC.",
+              "Cloud upload, publish channels, and one-click fleet rollout UI are not part of the public marketing surface. This is not a browser flasher."
+            ],
+            "bullets": [
+              "Browse the catalog model: version, device type, production and CE flags",
+              "Understand reported fleet strings vs catalog rows",
+              "See how install history records factory, OTA, USB, and manual methods",
+              "Field OTA runs as signed jobs on CN-BC"
+            ],
+            "links": [
+              {
+                "label": "Firmware page",
+                "href": "/firmware"
+              }
+            ]
+          },
+          "firmware-catalog": {
+            "title": "Catalog flags",
+            "paragraphs": [
+              "Catalog rows carry production and CE marking flags. There is no draft/beta channel enum on the public model described here."
+            ],
+            "bullets": [
+              "isProduction - whether the catalog row is marked for production use",
+              "ceMarked - CE marking flag on the catalog row",
+              "Device type ties the row to CN-CC, CN-FG, CN-BC, CN-UPS, and related classes"
+            ]
+          },
+          "firmware-history": {
+            "title": "Install history",
+            "paragraphs": [
+              "Install history records how a version reached a device. Methods include FACTORY, OTA, USB, and MANUAL."
+            ]
+          },
+          "firmware-ota": {
+            "title": "Edge OTA on CN-BC",
+            "paragraphs": [
+              "Signed jobs reach CN-BC. The edge agent verifies, stages, and updates targets. Images are addressed by checksum. Rollouts can move through accepted, rejected, canary, rolling, done, and failed states."
+            ],
+            "subsections": [
+              {
+                "title": "Targets",
+                "bullets": [
+                  "bc - CN-BC self-update",
+                  "fg - CN-FG floor update",
+                  "cc - field nodes via FUOTA / LoRaWAN",
+                  "ups - CN-UPS UART framed update"
+                ]
+              }
+            ]
+          },
+          "firmware-security": {
+            "title": "Security themes",
+            "paragraphs": [
+              "Signed OTA, secure-element identity, and anti-rollback themes are part of the hardware security model. Factory provisioning and field NFC install are documented for operations separately from this public Docs page."
+            ],
+            "links": [
+              {
+                "label": "Security architecture",
+                "href": "/security"
+              }
+            ]
+          }
+        }
+      },
+      "integrations": {
+        "label": "Integrations",
+        "description": "Market Place third-party connections by category.",
+        "sections": {
+          "marketplace": {
+            "title": "Market Place",
+            "paragraphs": [
+              "Connect messaging, scheduling, monitoring, productivity, storage, BIM, construction, enterprise, IoT, maps, CRM, and accounting tools from the product Market Place.",
+              "Most apps use one-click OAuth in the dashboard. Datadog connects with API keys (not OAuth). Project owners manage connections in the product. The marketing Integrations page is a catalog - connect actions run in the dashboard."
+            ],
+            "links": [
+              {
+                "label": "Integrations page",
+                "href": "/integrations"
+              },
+              {
+                "label": "Open dashboard Market Place",
+                "href": "https://dash.curnext.app/addon",
+                "external": true
+              }
+            ]
+          },
+          "marketplace-categories": {
+            "title": "Categories",
+            "paragraphs": [
+              "Filter the catalog by category when you know the job - messaging for alerts, BIM for models, CRM for account workflows."
+            ],
+            "bullets": [
+              "Messaging",
+              "Scheduling",
+              "Monitoring",
+              "Productivity",
+              "Storage",
+              "BIM",
+              "Construction",
+              "Enterprise",
+              "IoT",
+              "Maps",
+              "CRM",
+              "Accounting"
+            ]
+          },
+          "marketplace-catalog": {
+            "title": "Catalog (18 integrations)",
+            "paragraphs": [
+              "The public catalog currently lists these integrations. Descriptions stay short - open the vendor site for product detail."
+            ],
+            "bullets": [
+              "WhatsApp (Messaging, OAuth): Send critical site alerts and readiness updates to your WhatsApp number.",
+              "Slack (Messaging, OAuth): Post alerts and daily digests to channels in your Slack workspace.",
+              "Microsoft Teams (Messaging, OAuth): Deliver operational alerts and readiness updates to Teams channels.",
+              "Google Calendar (Scheduling, OAuth): Sync inspection windows, curing milestones, and site visits.",
+              "Calendly (Scheduling, OAuth): Let inspectors and owners book site visits from shared availability.",
+              "Datadog (Monitoring, API key): Forward device health metrics and alert events to your Datadog stack.",
+              "Google Sheets (Productivity, OAuth): Export readiness snapshots and telemetry rollups to a shared spreadsheet.",
+              "Dropbox (Storage, OAuth): Archive reports, certificates, and site photos to shared project folders.",
+              "Autodesk Revit (BIM, OAuth): Sync BIM models, rooms, and surfaces with curing readiness context.",
+              "Procore (Construction, OAuth): Push readiness status and alerts into Procore project records.",
+              "IBM Maximo (Enterprise, OAuth): Link probe assets and maintenance work orders with site telemetry.",
+              "Azure IoT Hub (IoT, OAuth): Ingest device telemetry and commands through your Azure IoT estate.",
+              "Google Maps (Maps, OAuth): Plot buildings, probes, and weather context on project maps.",
+              "Mapbox (Maps, OAuth): Render custom site maps and geofenced alert zones.",
+              "Salesforce (CRM, OAuth): Sync client accounts, projects, and handover milestones.",
+              "HubSpot (CRM, OAuth): Keep owner contacts and onboarding workflows in HubSpot.",
+              "QuickBooks (Accounting, OAuth): Export invoices and subscription billing events to QuickBooks.",
+              "Xero (Accounting, OAuth): Sync billing contacts and invoice line items with Xero."
+            ]
+          }
+        }
+      },
+      "security": {
+        "label": "Security",
+        "description": "Public security architecture summary for reviewers.",
+        "sections": {
+          "security-objectives": {
+            "title": "Security objectives",
+            "paragraphs": [
+              "CurNext designs for confidentiality, integrity, authenticity, availability, accountability, and privacy across the five-layer stack. The Security page is the long-form public reference. This tab is the Docs digest."
+            ],
+            "bullets": [
+              "Confidentiality - telemetry and credentials not readable without authorization",
+              "Integrity - firmware, config, and measurements protected against undetected tampering",
+              "Authenticity - devices and services prove identity before trust",
+              "Availability - resilience to outage, replay, and flooding",
+              "Accountability - audit trail for access, provisioning, OTA, and admin actions",
+              "Privacy - GDPR-oriented handling of personal and site data in the cloud"
+            ],
+            "links": [
+              {
+                "label": "Security page",
+                "href": "/security"
+              }
+            ]
+          },
+          "security-zones": {
+            "title": "Zones and conduits",
+            "paragraphs": [
+              "IEC 62443-style zones keep field radio, floor LAN, building edge, and cloud separated. Power has no data conduit."
+            ],
+            "bullets": [
+              "Z1 - L1 field sensors (no IP stack on the node)",
+              "Z2 - CN-FG floor gateway on local VLAN",
+              "Z3 - CN-UPS power only",
+              "Z4 - CN-BC building DMZ (WireGuard, MQTT, OTA)",
+              "Z5 - CurNext cloud",
+              "C1 air link: LoRaWAN MAC AES-128 + MIC, OTAA, secure-element keys",
+              "C4 building to cloud: WireGuard + MQTT TLS 1.3 with mTLS; broker not public",
+              "C5 install: NFC cryptographic binding; QR assign disabled by default"
+            ]
+          },
+          "security-field": {
+            "title": "Field controls (L1-L4)",
+            "paragraphs": [
+              "Field nodes use unique keys, secure boot, signed OTA, tamper-proof design, and displacement detection. CN-FG verifies the air link. CN-BC is the only field path for signed updates to L1/L2."
+            ]
+          },
+          "security-cloud": {
+            "title": "Cloud controls (L5)",
+            "paragraphs": [
+              "Private MQTT mesh, invite-only access, RBAC, privileged MFA, rate limits, edge WAF, encryption in transit and at rest, tenant isolation, encrypted backups, and GDPR-oriented audit events."
+            ]
+          },
+          "security-disclosure": {
+            "title": "Disclosure",
+            "paragraphs": [
+              "Report vulnerabilities to security@curnext.app. Coordinated disclosure is preferred. Do not invent CurNext ISO 27001 or SOC 2 certification from this Docs page - standards listed on Security are design alignment unless separately confirmed."
+            ],
+            "links": [
+              {
+                "label": "Security page",
+                "href": "/security"
+              },
+              {
+                "label": "DPA",
+                "href": "/data/data-processing-agreement"
+              }
+            ]
+          }
+        }
+      },
+      "hosting": {
+        "label": "Hosting",
+        "description": "Where CurNext runs, how traffic flows, and what scales.",
+        "sections": {
+          "hosting-intro": {
+            "title": "EU cloud, anchored in Germany",
+            "paragraphs": [
+              "Application hosting runs on Hetzner in Germany. Database and authentication run on Supabase in Frankfurt. Public traffic is protected at the Cloudflare edge and distributed across load-balanced replicas.",
+              "This is a trust / residency explanation - not a status dashboard or a public inventory of machines. Customers in Finland, Canada, and Cameroon use this EU-anchored stack unless an enterprise addendum says otherwise."
+            ],
+            "links": [
+              {
+                "label": "Datacenters page",
+                "href": "/datacenters"
+              }
+            ]
+          },
+          "hosting-layers": {
+            "title": "Publishable region facts",
+            "paragraphs": [
+              "Use these labels in procurement reviews. They match the Datacenters page."
+            ],
+            "bullets": [
+              "Application origins - Hetzner, Germany - Docker images for marketing, SaaS web, API",
+              "Database + Auth - Supabase, Frankfurt - PostgreSQL and Auth",
+              "Edge - Cloudflare global - DNS, TLS, WAF, CDN, Turnstile",
+              "Object storage when used - Cloudflare R2 with EU jurisdiction option",
+              "Scale path - load balancers in front of stateless replicas"
+            ]
+          },
+          "hosting-traffic": {
+            "title": "How traffic flows",
+            "paragraphs": [
+              "Internet to Cloudflare (DNS, TLS, WAF, CDN), then load balancers, then Docker replicas on Hetzner in Germany. Supabase Postgres and Auth sit in Frankfurt. Health checks keep unhealthy replicas out of rotation."
+            ]
+          },
+          "hosting-scale": {
+            "title": "Scale posture",
+            "paragraphs": [
+              "Web and API replicas are stateless behind load balancers. Workers can add replicas as load grows. The database is managed Supabase with pooling for many replicas. Sessions use managed auth cookies - no sticky session requirement on the load balancer.",
+              "Do not invent replica counts, RPS, or uptime percentages from this Docs page."
+            ]
+          },
+          "hosting-honesty": {
+            "title": "Residency honesty",
+            "paragraphs": [
+              "Core application and database for platform Client Data are hosted in Germany / Frankfurt. Some third parties (edge CDN, Stripe billing, SMTP2GO email, AI APIs) may process limited data outside that boundary. See the DPA subprocessors table for the public list."
+            ],
+            "links": [
+              {
+                "label": "DPA subprocessors",
+                "href": "/data/data-processing-agreement"
+              },
+              {
+                "label": "Privacy policy",
+                "href": "/data/privacy-policy"
+              }
+            ]
+          }
+        }
+      },
+      "commercial": {
+        "label": "Commercial",
+        "description": "Pricing model, quotes, and how to reach CurNext.",
+        "sections": {
+          "pricing-model": {
+            "title": "Billing model",
+            "paragraphs": [
+              "CurNext bills by node quantity and contract duration - not legacy plan tiers. Use Pricing to estimate installation bands and monthly subscription per node for Finland, Canada, or Cameroon, then request a quote.",
+              "Tax is handled at checkout and is not shown as a live calculator line on the marketing estimator."
+            ],
+            "links": [
+              {
+                "label": "Pricing",
+                "href": "/pricing"
+              },
+              {
+                "label": "Request quote",
+                "href": "/pricing#request-quote"
+              }
+            ]
+          },
+          "pricing-markets": {
+            "title": "Markets",
+            "paragraphs": [
+              "Independent list prices for Finland (EUR), Canada (CAD), and Cameroon (XAF). Expansion to additional markets is underway - do not invent unlisted countries as live commercial markets here."
+            ]
+          },
+          "api-access-commercial": {
+            "title": "API and SDK access",
+            "paragraphs": [
+              "API and SDK access are tied to the site subscription (node count and duration). Create project API keys in the product under Integration after the site is in scope."
+            ]
+          },
+          "contact": {
+            "title": "Contact paths",
+            "paragraphs": [
+              "For general product, API, partnership, support, security, and press topics use Contact. Quotes use the Pricing estimator form. Careers use the careers application flow."
+            ],
+            "bullets": [
+              "sales@curnext.app - commercial and volume discussions",
+              "info@curnext.app - general company questions",
+              "legal@curnext.app - DPA and legal",
+              "security@curnext.app - vulnerability disclosure and security incidents",
+              "support@curnext.app - product support"
+            ],
+            "links": [
+              {
+                "label": "Contact",
+                "href": "/contact"
+              },
+              {
+                "label": "Careers",
+                "href": "/careers"
+              },
+              {
+                "label": "DPA",
+                "href": "/data/data-processing-agreement"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "legal": {
+    "comingSoon": "Coming soon",
+    "reserved": "This page is reserved in the CurNext marketing site and will be implemented next."
+  },
+  "howItWorks": {
+    "eyebrow": "How it works",
+    "title": "Site sensing to build-ready decisions",
+    "lead": "CurNext runs a five-layer stack from devices on the work through floor collection, site power, a secure building uplink, and the cloud product your team uses every day.",
+    "architectureEyebrow": "Architecture",
+    "stackTitle": "The L1-L5 path",
+    "stackLead": "Each layer has one job. Data moves up the stack; decisions come back through CurNext.",
+    "layers": {
+      "L1": {
+        "role": "Sense",
+        "title": "Surface devices",
+        "body": "Install on the work itself - curing slabs, drying walls, indoor air, leaks, structure, or plant systems. Devices capture the conditions that drive schedule and quality decisions."
+      },
+      "L2": {
+        "role": "Aggregate",
+        "title": "Floor collection",
+        "body": "Each floor concentrates its device traffic at one collection point, so a level stays organized as the project scales across wings and zones."
+      },
+      "L3": {
+        "role": "Power",
+        "title": "Site power continuity",
+        "body": "Dedicated power keeps floor and building hardware online through outages. This layer supplies power only - it does not interpret measurements."
+      },
+      "L4": {
+        "role": "Bridge",
+        "title": "Building uplink",
+        "body": "The building unit is the secure link from the site network to CurNext. It maintains a reliable, protected path off the jobsite."
+      },
+      "L5": {
+        "role": "Decide",
+        "title": "CurNext cloud",
+        "body": "The platform turns site data into readiness status, alerts, and next actions - in the web dashboard and mobile app - with an audit trail for clients and compliance."
+      }
+    },
+    "outcomesTitle": "What teams get",
+    "outcomes": [
+      {
+        "title": "One stack for every surface",
+        "body": "Curing, drying, air, leak, structure, and MEP share the same path to the cloud."
+      },
+      {
+        "title": "Decisions, not dashboards only",
+        "body": "Teams see what is ready, what is at risk, and what to do next - not raw streams alone."
+      },
+      {
+        "title": "Evidence that travels",
+        "body": "Keep a record for handovers, claims, and audits without rebuilding reports by hand."
+      }
+    ],
+    "solutionsEyebrow": "Solutions",
+    "solutionsTitle": "Same path, different surfaces",
+    "solutionsLead": "Each product line uses the L1-L5 stack with sensors matched to the job.",
+    "ctaEyebrow": "Next step",
+    "ctaTitle": "See pricing or talk to us",
+    "ctaLead": "Estimate node count and duration, or ask CurNext about a scoped deployment.",
+    "viewPricing": "View pricing",
+    "contact": "Contact"
+  }
+}

@@ -1,15 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { buttonVariants } from "@/components/ui/button";
-import {
-  caseStudies,
-  caseStudiesPage,
-  caseStudyFilters,
-} from "@/config/case-studies";
+import { Link } from "@/i18n/navigation";
+import { caseStudies, caseStudyFilters } from "@/config/case-studies";
 import { solutions } from "@/config/site";
 import {
   itemHeadingClassName,
@@ -17,8 +14,19 @@ import {
 } from "@/lib/typography";
 import { cn } from "@/lib/utils";
 
+type StudyCopy = {
+  title: string;
+  sector: string;
+  region: string;
+  challenge: string;
+  approach: string;
+  outcome: string;
+};
+
 export function CaseStudiesPage() {
+  const t = useTranslations("caseStudies");
   const [filter, setFilter] = useState<string>("all");
+  const studies = t.raw("studies") as Record<string, StudyCopy>;
 
   const filtered = useMemo(() => {
     if (filter === "all") return caseStudies;
@@ -34,13 +42,13 @@ export function CaseStudiesPage() {
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-2xl">
             <h1 id="case-studies-heading" className={sectionHeadingClassName}>
-              {caseStudiesPage.title}
+              {t("title")}
             </h1>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              {caseStudiesPage.description}
+              {t("description")}
             </p>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              {caseStudiesPage.leadNote}
+              {t("leadNote")}
             </p>
           </div>
         </div>
@@ -57,19 +65,21 @@ export function CaseStudiesPage() {
                 id="case-studies-list-heading"
                 className={sectionHeadingClassName}
               >
-                Site patterns by solution
+                {t("listTitle")}
               </h2>
               <p className="text-muted-foreground mt-3 text-sm leading-relaxed sm:text-base">
-                Filter by SKU. Each pattern maps to a live product page.
+                {t("listLead")}
               </p>
             </div>
             <div
               role="tablist"
-              aria-label="Filter case studies by solution"
+              aria-label={t("filterAria")}
               className="flex flex-wrap gap-1"
             >
               {caseStudyFilters.map((item) => {
                 const selected = item.id === filter;
+                const label =
+                  item.id === "all" ? t("allFilter") : item.label;
                 return (
                   <button
                     key={item.id}
@@ -84,7 +94,7 @@ export function CaseStudiesPage() {
                         : "text-muted-foreground hover:bg-muted hover:text-foreground",
                     )}
                   >
-                    {item.label}
+                    {label}
                   </button>
                 );
               })}
@@ -94,6 +104,14 @@ export function CaseStudiesPage() {
           <ul className="mt-10 space-y-6 sm:mt-12">
             {filtered.map((study) => {
               const solution = solutions.find((s) => s.code === study.sku);
+              const copy = studies[study.id] ?? {
+                title: study.title,
+                sector: study.sector,
+                region: study.region,
+                challenge: study.challenge,
+                approach: study.approach,
+                outcome: study.outcome,
+              };
               return (
                 <li
                   key={study.id}
@@ -105,39 +123,39 @@ export function CaseStudiesPage() {
                       {study.sku}
                     </p>
                     <span className="text-muted-foreground text-sm">
-                      {study.sector}
+                      {copy.sector}
                     </span>
                     <span className="text-muted-foreground text-sm">
-                      · {study.region}
+                      · {copy.region}
                     </span>
                   </div>
                   <h3 className={cn(itemHeadingClassName, "mt-2")}>
-                    {study.title}
+                    {copy.title}
                   </h3>
 
                   <dl className="mt-6 grid gap-5 sm:grid-cols-3">
                     <div>
                       <dt className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">
-                        Challenge
+                        {t("challenge")}
                       </dt>
                       <dd className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                        {study.challenge}
+                        {copy.challenge}
                       </dd>
                     </div>
                     <div>
                       <dt className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">
-                        Approach
+                        {t("approach")}
                       </dt>
                       <dd className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                        {study.approach}
+                        {copy.approach}
                       </dd>
                     </div>
                     <div>
                       <dt className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">
-                        Outcome
+                        {t("outcome")}
                       </dt>
                       <dd className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                        {study.outcome}
+                        {copy.outcome}
                       </dd>
                     </div>
                   </dl>
@@ -148,8 +166,11 @@ export function CaseStudiesPage() {
                       className="inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline"
                     >
                       {solution
-                        ? `View ${solution.code} - ${solution.title}`
-                        : "View solution"}
+                        ? t("viewSku", {
+                            code: solution.code,
+                            title: solution.title,
+                          })
+                        : t("viewSolution")}
                       <ArrowRight className="size-3.5" aria-hidden />
                     </Link>
                   </div>
@@ -159,9 +180,7 @@ export function CaseStudiesPage() {
           </ul>
 
           {filtered.length === 0 ? (
-            <p className="text-muted-foreground mt-10 text-sm">
-              No studies for this filter yet.
-            </p>
+            <p className="text-muted-foreground mt-10 text-sm">{t("empty")}</p>
           ) : null}
         </div>
       </section>
@@ -170,14 +189,11 @@ export function CaseStudiesPage() {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-14 sm:flex-row sm:items-end sm:justify-between sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              References
+              {t("refsEyebrow")}
             </p>
-            <h2 className={sectionHeadingClassName}>
-              Need a named customer reference?
-            </h2>
+            <h2 className={sectionHeadingClassName}>{t("refsTitle")}</h2>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              Talk to sales about reference calls and NDA materials for your
-              sector. Public pages stay anonymous on purpose.
+              {t("refsLead")}
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -185,7 +201,7 @@ export function CaseStudiesPage() {
               href="/contact"
               className={cn(buttonVariants({ size: "lg" }), "h-11 gap-2 px-5")}
             >
-              Contact sales
+              {t("contactSales")}
               <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>

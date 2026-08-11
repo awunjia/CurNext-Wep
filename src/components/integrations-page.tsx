@@ -1,16 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import * as simpleIcons from "simple-icons";
 
 import { buttonVariants } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import {
   marketplaceCategories,
   marketplaceIntegrations,
-  marketplacePage,
   type MarketplaceCategory,
   type MarketplaceIntegration,
 } from "@/config/marketplace";
@@ -89,6 +89,19 @@ function IntegrationIcon({
 }
 
 export function IntegrationsPage() {
+  const t = useTranslations("integrations");
+  const marketplacePage = {
+    title: t("title"),
+    description: t("description"),
+    widgetTitle: t("widgetTitle"),
+    widgetDescription: t("widgetDescription"),
+    dashboardHref: t("dashboardHref"),
+  };
+  const categoryLabels = t.raw("categories") as Record<string, string>;
+  const itemCopy = t.raw("items") as Record<
+    string,
+    { description: string; category: string }
+  >;
   const [category, setCategory] = useState<"all" | MarketplaceCategory>("all");
 
   const availableCategories = useMemo(() => {
@@ -121,7 +134,7 @@ export function IntegrationsPage() {
             </div>
             <div className="min-w-0 sm:w-56">
               <label htmlFor="integration-category" className="sr-only">
-                Category
+                {t("categoriesTitle")}
               </label>
               <select
                 id="integration-category"
@@ -133,10 +146,10 @@ export function IntegrationsPage() {
                 }
                 className="border-input bg-transparent focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 h-9 w-full rounded-lg border px-2.5 text-sm outline-none focus-visible:ring-3"
               >
-                <option value="all">All categories</option>
+                <option value="all">{t("allFilter")}</option>
                 {availableCategories.map((item) => (
                   <option key={item} value={item}>
-                    {item}
+                    {categoryLabels[item] ?? item}
                   </option>
                 ))}
               </select>
@@ -161,7 +174,8 @@ export function IntegrationsPage() {
                       </span>
                     </div>
                     <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                      {integration.description}
+                      {itemCopy[integration.id]?.description ??
+                        integration.description}
                     </p>
                   </div>
                 </div>

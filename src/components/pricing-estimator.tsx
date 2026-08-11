@@ -15,6 +15,7 @@ import {
 import type { CountryCode } from "libphonenumber-js";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { FieldLabel } from "@/components/field-label";
@@ -48,7 +49,6 @@ import {
   estimatorNodeMax,
   estimatorNodeMin,
   estimatorNodeStep,
-  formatMonths,
   installationFee,
   installBandForNodes,
   monthlySubscription,
@@ -94,6 +94,9 @@ const fieldClass =
   "h-11 w-full min-w-0 bg-background/60 px-3 text-base dark:bg-background/40 sm:h-10 sm:text-sm";
 
 export function PricingEstimator() {
+  const t = useTranslations("pricing.estimator");
+  const tSolutions = useTranslations("solutions.catalog");
+  const tPricing = useTranslations("pricing");
   const [state, setState] = useState<PricingEstimatorState>(
     defaultPricingEstimatorState,
   );
@@ -160,6 +163,8 @@ export function PricingEstimator() {
   );
 
   const money = (amount: number) => formatPricingMoney(amount, currency);
+  const durationLabel =
+    months === 1 ? t("month") : t("months", { count: months });
 
   function validatePhone(value: string): boolean {
     if (!value) {
@@ -167,7 +172,7 @@ export function PricingEstimator() {
       return true;
     }
     if (!isValidPhoneNumber(value)) {
-      setPhoneError("Enter a valid phone number for the selected country.");
+      setPhoneError(t("phoneInvalid"));
       return false;
     }
     setPhoneError(null);
@@ -183,7 +188,7 @@ export function PricingEstimator() {
     }
 
     if (!turnstileToken) {
-      setError("Please complete the security check before submitting.");
+      setError(t("turnstileRequired"));
       return;
     }
 
@@ -215,12 +220,11 @@ export function PricingEstimator() {
       };
 
       if (!response.ok || !result.ok) {
-        throw new Error(result.error ?? "Unable to submit quote request");
+        throw new Error(result.error ?? t("submitError"));
       }
 
-      toast.success("Quote request submitted", {
-        description:
-          "Thanks - we received your request and will send a scoped quote soon.",
+      toast.success(t("toastTitle"), {
+        description: t("toastBody"),
       });
       setContact(initialContact);
       setPhoneError(null);
@@ -230,7 +234,7 @@ export function PricingEstimator() {
       setError(
         submitError instanceof Error
           ? submitError.message
-          : "Unable to submit quote request",
+          : t("submitError"),
       );
       setTurnstileToken("");
       turnstileRef.current?.reset();
@@ -251,11 +255,11 @@ export function PricingEstimator() {
           <div>
             <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
               <p className="text-muted-foreground text-xs font-medium tracking-[0.18em] uppercase">
-                Estimate · {market.market}
+                {t("estimateEyebrow", { market: market.market })}
               </p>
               <div
                 role="radiogroup"
-                aria-label="Market currency"
+                aria-label={t("marketCurrency")}
                 className="border-border/70 grid grid-cols-3 gap-1 rounded-xl border p-1"
               >
                 {pricingCurrencies.map((option) => {
@@ -286,18 +290,19 @@ export function PricingEstimator() {
               </div>
             </div>
             <h3 className={sectionHeadingClassName}>
-              Nodes and duration set the price
+              {t("title")}
             </h3>
             <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed sm:text-[15px]">
-              {market.market} list prices. Installation is banded by node count.
-              Subscription is {money(market.monthlyRatePerNode)} per node per
-              month for the contract length you choose.
+              {t("lead", {
+                market: market.market,
+                rate: money(market.monthlyRatePerNode),
+              })}
             </p>
           </div>
 
           <PricingSteppedSlider
-            label="Number of nodes"
-            hint="L1 devices across your surfaces"
+            label={t("nodesLabel")}
+            hint={t("nodesHint")}
             value={nodes}
             min={estimatorNodeMin}
             max={estimatorNodeMax}
@@ -305,12 +310,12 @@ export function PricingEstimator() {
             marks={nodeSliderMarks}
             display={String(nodes)}
             onChange={(value) => updateState({ nodes: value })}
-            ariaLabel="number of nodes"
+            ariaLabel={t("nodesAria")}
           />
 
           <PricingSteppedSlider
-            label="Contract duration"
-            hint="Billing months for the subscription"
+            label={t("durationLabel")}
+            hint={t("durationHint")}
             value={months}
             min={estimatorDurationMin}
             max={estimatorDurationMax}
@@ -318,7 +323,7 @@ export function PricingEstimator() {
             marks={durationSliderMarks}
             display={String(months)}
             onChange={(value) => updateState({ months: value })}
-            ariaLabel="contract duration in months"
+            ariaLabel={t("durationAria")}
           />
         </div>
 
@@ -326,40 +331,44 @@ export function PricingEstimator() {
           <div className="space-y-6">
             <div>
               <p className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">
-                Install band
+                {t("installBand")}
               </p>
               <p className={cn(itemHeadingClassName, "mt-1")}>{band.label}</p>
               <p className="text-muted-foreground mt-1 text-sm">
-                {formatMonths(months)} · {nodes} nodes · {market.market}
+                {t("bandSummary", {
+                  duration: durationLabel,
+                  nodes,
+                  market: market.market,
+                })}
               </p>
             </div>
 
             <div className="border-border/70 space-y-4 border-y py-5">
               <div className="flex items-baseline justify-between gap-4">
-                <span className="text-sm">Installation</span>
+                <span className="text-sm">{tPricing("installation")}</span>
                 <span className="text-lg font-semibold tracking-tight tabular-nums">
                   {money(setup)}
                 </span>
               </div>
               <div className="flex items-baseline justify-between gap-4">
-                <span className="text-sm">Monthly</span>
+                <span className="text-sm">{t("monthly")}</span>
                 <span className="text-lg font-semibold tracking-tight tabular-nums">
                   {money(monthly)}
                   <span className="text-muted-foreground text-sm font-normal">
-                    /mo
+                    {t("perMonth")}
                   </span>
                 </span>
               </div>
               <div className="flex items-baseline justify-between gap-4">
                 <span className="text-sm">
-                  Subscription ({formatMonths(months)})
+                  {t("subscription", { duration: durationLabel })}
                 </span>
                 <span className="text-base font-medium tracking-tight tabular-nums">
                   {money(subTotal)}
                 </span>
               </div>
               <div className="flex items-baseline justify-between gap-4">
-                <span className="text-sm font-medium">Indicative total</span>
+                <span className="text-sm font-medium">{t("indicativeTotal")}</span>
                 <span className="text-xl font-semibold tracking-tight tabular-nums">
                   {money(total)}
                 </span>
@@ -367,8 +376,10 @@ export function PricingEstimator() {
             </div>
 
             <p className="text-muted-foreground text-xs leading-relaxed">
-              {money(market.monthlyRatePerNode)}/node/mo × {nodes} nodes. Final
-              quote depends on surfaces and commissioning scope.
+              {t("rateNote", {
+                rate: money(market.monthlyRatePerNode),
+                nodes,
+              })}
             </p>
           </div>
         </div>
@@ -378,7 +389,7 @@ export function PricingEstimator() {
         <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
           <div className="min-w-0 space-y-2">
             <FieldLabel htmlFor="quote-firstName" icon={User} required>
-              First name
+              {t("firstName")}
             </FieldLabel>
             <Input
               id="quote-firstName"
@@ -395,7 +406,7 @@ export function PricingEstimator() {
           </div>
           <div className="min-w-0 space-y-2">
             <FieldLabel htmlFor="quote-lastName" icon={User} required>
-              Last name
+              {t("lastName")}
             </FieldLabel>
             <Input
               id="quote-lastName"
@@ -412,7 +423,7 @@ export function PricingEstimator() {
           </div>
           <div className="col-span-2 min-w-0 space-y-2 sm:col-span-1">
             <FieldLabel htmlFor="quote-email" icon={Mail} required>
-              Email address
+              {t("email")}
             </FieldLabel>
             <Input
               id="quote-email"
@@ -428,7 +439,7 @@ export function PricingEstimator() {
           </div>
           <div className="col-span-2 min-w-0 space-y-2 sm:col-span-1 lg:col-span-1">
             <FieldLabel htmlFor="quote-phone" icon={Phone}>
-              Phone
+              {t("phone")}
             </FieldLabel>
             <PhoneNumberInput
               id="quote-phone"
@@ -454,7 +465,7 @@ export function PricingEstimator() {
           </div>
           <div className="min-w-0 space-y-2">
             <FieldLabel htmlFor="quote-company" icon={Building2}>
-              Company
+              {t("company")}
             </FieldLabel>
             <Input
               id="quote-company"
@@ -469,7 +480,7 @@ export function PricingEstimator() {
             />          </div>
           <div className="min-w-0 space-y-2">
             <FieldLabel htmlFor="quote-country" icon={Globe2}>
-              Country
+              {t("country")}
             </FieldLabel>
             <Select
               value={contact.countryCode}
@@ -485,7 +496,7 @@ export function PricingEstimator() {
                   "w-full min-w-0 data-[size=default]:h-11 sm:data-[size=default]:h-10",
                 )}
               >
-                <SelectValue placeholder="Select country" />
+                <SelectValue placeholder={t("selectCountry")} />
               </SelectTrigger>
               <SelectContent
                 alignItemWithTrigger={false}
@@ -505,7 +516,7 @@ export function PricingEstimator() {
         <fieldset className="min-w-0 space-y-3">
           <legend className="flex items-center gap-1.5 text-sm font-medium">
             <Layers className="text-muted-foreground size-3.5" aria-hidden />
-            Surfaces in scope
+            {t("surfacesLegend")}
           </legend>
           <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
             {solutions.map((solution) => {
@@ -527,10 +538,10 @@ export function PricingEstimator() {
                   />
                   <span className="min-w-0">
                     <span className="block text-sm font-medium">
-                      {solution.title}
+                      {tSolutions(`${solution.href.replace("/solutions/", "")}.title`)}
                     </span>
                     <span className="text-muted-foreground mt-0.5 block text-xs leading-relaxed">
-                      {solution.description}
+                      {tSolutions(`${solution.href.replace("/solutions/", "")}.description`)}
                     </span>
                   </span>
                 </label>
@@ -541,21 +552,21 @@ export function PricingEstimator() {
 
         <div className="min-w-0 space-y-2">
           <FieldLabel htmlFor="quote-message" icon={MessageSquareText}>
-            Project notes
+            {t("projectNotes")}
           </FieldLabel>
           <Textarea
             id="quote-message"
             name="message"
             value={contact.message}
             onChange={(event) => updateContact("message", event.target.value)}
-            placeholder="Floors, timeline, handover date, or anything sales should know."
+            placeholder={t("projectNotesPlaceholder")}
             className="min-h-28 bg-background/60 text-base dark:bg-background/40 sm:text-sm"
           />
         </div>
 
         <div className="min-w-0 space-y-3 overflow-x-auto">
           <FieldLabel icon={ShieldCheck} required>
-            Security check
+            {t("securityCheck")}
           </FieldLabel>
           <TurnstileWidget
             ref={turnstileRef}
@@ -577,7 +588,7 @@ export function PricingEstimator() {
 
         <div className="flex flex-col gap-3 border-border/70 border-t pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-muted-foreground text-center text-xs leading-relaxed sm:max-w-sm sm:text-left">
-            By submitting, you agree to be contacted about your CurNext quote.
+            {t("consent")}
           </p>
           <Button
             type="submit"
@@ -588,12 +599,12 @@ export function PricingEstimator() {
             {submitting ? (
               <>
                 <Loader2 className="size-4 animate-spin" />
-                Submitting
+                {t("submitting")}
               </>
             ) : (
               <>
                 <Send className="size-4" />
-                Request Quote With Estimate
+                {t("submit")}
               </>
             )}
           </Button>

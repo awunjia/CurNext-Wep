@@ -1,0 +1,1178 @@
+{
+  "security": {
+    "title": "Tietoturva-arkkitehtuuri",
+    "description": "Teollisuustason kontrollit CurNextin viisikerroksisessa pinossa - kenttäantureista pilveen - suunniteltu teolliseen IoT:hen, rakennusten OT:hen ja EU:n tietosuojan odotuksiin.",
+    "leadNote": "Tämä sivu tiivistää, miten CurNext suunnittelee luottamuksellisuuden, eheyden, aitouden, saatavuuden, vastuullisuuden ja yksityisyyden. Se ei ole julkinen runbook, tilasivu tai sertifikaattivarasto.",
+    "objectivesTitle": "Tietoturvatavoitteet",
+    "objectives": [
+      {
+        "title": "Luottamuksellisuus",
+        "body": "Telemetria ja tunnistetiedot eivät ole luettavissa siirrossa tai levossa ilman valtuutusta."
+      },
+      {
+        "title": "Eheys",
+        "body": "Firmware, konfiguraatio ja mittaukset on suojattu havaitsemattomalta peukaloinnilta."
+      },
+      {
+        "title": "Aitous",
+        "body": "Jokainen laite ja palvelu todistaa identiteettinsä ennen kuin luottamus myönnetään."
+      },
+      {
+        "title": "Saatavuus",
+        "body": "Kestävyys katkoihin, uudelleenlähetyksiin ja tulvimiseen, hallitulla heikkenemisellä kun mahdollista."
+      },
+      {
+        "title": "Vastuullisuus",
+        "body": "Auditointipolku pääsylle, provisionoinnille, OTA:lle ja ylläpitotoimille."
+      },
+      {
+        "title": "Yksityisyys",
+        "body": "GDPR-suuntautunut henkilötietojen ja työmaadatan käsittely pilvikerroksessa."
+      }
+    ],
+    "standards": {
+      "title": "Standardit, joihin suunnittelemme",
+      "lead": "Kontrollit on kartoitettu laajasti käytettyihin teollisuus-, IoT- ja EU-kehyksiin. Standardin listaaminen tässä tarkoittaa suunnittelun linjausta - ei sitä, että CurNext on suorittanut jokaisen kolmannen osapuolen sertifioinnin kyseiselle kehykselle.",
+      "rows": [
+        {
+          "standard": "IEC 62443",
+          "scope": "Teolliset / rakennus-IoT-vyöhykkeet",
+          "note": "Vyöhyke- ja kanavamalli; tietoturvatasotavoitteet kerroksittain"
+        },
+        {
+          "standard": "NIST SP 800-82",
+          "scope": "ICS / rakennus-OT",
+          "note": "Segmentointi, valvonta, etäkäyttö WireGuardilla vain rakennuksen reunalla"
+        },
+        {
+          "standard": "NIST SP 800-213",
+          "scope": "IoT-laitteiden kyberturvallisuus",
+          "note": "Laitteen identiteetti, turvallinen päivitys ja konfiguraatio"
+        },
+        {
+          "standard": "ENISA IoT / OT",
+          "scope": "EU IoT -perusta",
+          "note": "Krypto, päivitykset ja minimaalinen hyökkäyspinta"
+        },
+        {
+          "standard": "EU CRA",
+          "scope": "Tuoteturvallisuuden elinkaari",
+          "note": "SBOM, haavoittuvuusilmoitukset, allekirjoitetut päivitykset"
+        },
+        {
+          "standard": "EU RED 3.3(d)",
+          "scope": "Radiotuotteiden kyberturvallisuus",
+          "note": "Turvallinen radio- ja päivityspolku kenttäsolmuille, CN-FG:lle ja CN-BC:lle"
+        },
+        {
+          "standard": "ISO 27001",
+          "scope": "Organisaation ISMS",
+          "note": "Pilven ja CurNext-toimintojen suunnittelutavoite - ei väitetä sertifioiduksi tässä"
+        },
+        {
+          "standard": "GDPR",
+          "scope": "Henkilötiedot",
+          "note": "Auditointiloki, pääsynhallinta, poisto- ja vientipolku"
+        },
+        {
+          "standard": "OWASP IoT Top 10",
+          "scope": "Laite- ja pilviongelmat",
+          "note": "Käsitellään kerroksittain kenttä- ja pilvikontrolleissa"
+        }
+      ]
+    },
+    "zones": {
+      "title": "Tietoturvavyöhykkeet ja kanavat",
+      "lead": "IEC 62443 -tyyliset vyöhykkeet erottavat kenttäradion, kerros-LAN:in, rakennuksen reunan ja pilven. Virtalähteellä ei ole datakanavaa.",
+      "zones": [
+        {
+          "id": "Z1",
+          "title": "Vyöhyke Z1 - L1-kenttäanturit",
+          "body": "Kenttäsolmut (CN-CC, CN-WD ja niihin liittyvät SKU:t). LoRaWAN MAC AES-128:lla, secure element avaimille, NFC asennukseen. Ei IP-pinoa solmussa."
+        },
+        {
+          "id": "Z2",
+          "title": "Vyöhyke Z2 - Kerros (CN-FG)",
+          "body": "Kerrosyhdyskäytävä tarkistaa kehykset, pysyy paikallisessa VLAN:issa eikä sillä ole pilveen näkyvää rajapintaa."
+        },
+        {
+          "id": "Z3",
+          "title": "Vyöhyke Z3 - Virta (CN-UPS)",
+          "body": "Syöttää kerros- ja rakennusreunan laitteita. Ei datakanavaa."
+        },
+        {
+          "id": "Z4",
+          "title": "Vyöhyke Z4 - Rakennuksen DMZ (CN-BC)",
+          "body": "Rakennusohjain: WireGuard-asiakas, MQTT-asiakas, OTA-orkestroija. Ulosmenotie matkapuhelinverkossa vain tunnelille ja broker-liikenteelle."
+        },
+        {
+          "id": "Z5",
+          "title": "Vyöhyke Z5 - CurNext Cloud (L5)",
+          "body": "Sovellus, hallittu tietokanta ja auth, yksityinen MQTT-broker, tekoäly ja objektivarasto reunasuojauksen takana."
+        }
+      ],
+      "conduits": [
+        {
+          "id": "C1",
+          "path": "L1 ↔ CN-FG",
+          "controls": "LoRaWAN MAC-kerroksen AES-128 (payload-salaus + MIC), OTAA, yksilölliset laiteavaimet secure elementissä, kehyslaskurit, uudelleenlähetysten hylkäys"
+        },
+        {
+          "id": "C2",
+          "path": "CN-FG ↔ CN-FG",
+          "controls": "Ethernet-daisy-chain vain kerros-VLAN:issa; ei Internet-reittiä"
+        },
+        {
+          "id": "C3",
+          "path": "CN-FG ↔ CN-BC",
+          "controls": "Ethernet-VLAN; rakennuksen palomuuri estää kerrosyhdyskäytäville reitin julkiseen Internetiin"
+        },
+        {
+          "id": "C4",
+          "path": "CN-BC ↔ L5",
+          "controls": "WireGuard sekä MQTT TLS 1.3:lla ja keskinäisellä TLS:llä; broker ei ole julkisessa Internetissä"
+        },
+        {
+          "id": "C5",
+          "path": "Installer ↔ L1",
+          "controls": "Vain NFC-napautus kryptografisella todisteella; QR-provisionointi pois käytöstä; tehdasdebug-rajapintoja ei jätetä auki kentällä"
+        }
+      ],
+      "wireguard": [
+        {
+          "layer": "L1-L2",
+          "role": "Ei WireGuardia"
+        },
+        {
+          "layer": "L3",
+          "role": "Ei WireGuardia"
+        },
+        {
+          "layer": "L4 CN-BC",
+          "role": "WireGuard-asiakas - rakennuksen tietoturvaraja"
+        },
+        {
+          "layer": "L5 Cloud",
+          "role": "WireGuard-hub - MQTT vain yksityisessä verkossa"
+        }
+      ]
+    },
+    "levels": {
+      "title": "IEC 62443 -tietoturvatasotavoitteet",
+      "lead": "Tavoitetietoturvatasot (SL-T) ohjaavat tuotesuunnittelua. Ne ovat suunnittelutavoitteita, eivät kolmannen osapuolen arviointituloksia.",
+      "rows": [
+        {
+          "component": "L1-anturisolmut",
+          "target": "SL 2 (tavoite SL 3)",
+          "rationale": "Valvomaton, pitkäikäinen, fyysinen pääsy mahdollinen"
+        },
+        {
+          "component": "CN-FG (L2)",
+          "target": "SL 2",
+          "rationale": "Kenttäyhdyskäytävä rakennustyömaalla"
+        },
+        {
+          "component": "CN-UPS (L3)",
+          "target": "SL 1",
+          "rationale": "Vain virta - ei datan käsittelyä"
+        },
+        {
+          "component": "CN-BC (L4)",
+          "target": "SL 3",
+          "rationale": "Rakennuksen tietoturvaraja, Internetiin näkyvä polku"
+        },
+        {
+          "component": "CurNext Cloud (L5)",
+          "target": "SL 3",
+          "rationale": "Monivuokralaisympäristö asiakastiedoilla"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "id": "L1",
+        "title": "L1 - Kenttäanturit",
+        "lead": "Yksilöllinen laiteidentiteetti, LoRaWAN-ilmalinkin krypto, secure boot, allekirjoitettu OTA, peukaloinnin kestävä suunnittelu ja siirtymän tunnistus.",
+        "bullets": [
+          "Yksilöllinen juuriavain per anturi secure elementissä - ei koskaan jaeta laivastossa",
+          "Tarrat voivat näyttää julkisen sarjanumeron / DevEUI:n logistiikkaa varten - ei koskaan juuriavainta",
+          "LoRaWAN Class A (EU868): AES-128 payload-salaus ja MIC MAC-pinon kautta",
+          "Vain OTAA-join; kehyslaskurit ja uudelleenlähetysten hylkäys kerrosyhdyskäytävällä",
+          "Secure boot, allekirjoitettu firmware, anti-rollback, tuotantodebug lukittu",
+          "Peukaloinnin kestävä kenttäkotelo ja mittauspolku - fyysinen häirintä on havaittavissa ja raportoidaan",
+          "Siirtymän tunnistus, kun solmu siirretään pois määritetystä asennuspaikasta",
+          "Kenttäsidonta NFC-kryptografisella sidoksella - QR-sidonta pois päältä oletuksena"
+        ]
+      },
+      {
+        "id": "L2",
+        "title": "L2 - CN-FG-kerrosyhdyskäytävä",
+        "lead": "Luottamusankkuri ilmalinkille. Vahvistaa joinin, MIC:n ja laskurit ennen välitystä.",
+        "bullets": [
+          "Allekirjoitettu firmware secure bootilla ja secure element -identiteetillä",
+          "Ei oletus-Internet-reittiä; uplink vain CN-BC:lle kerros-VLAN:issa",
+          "OTA vain CN-BC:ltä",
+          "Join- ja vahvistustapahtumat säilytetään auditointilatausta varten",
+          "Palveluportit rajoitettu tuotantokuvissa"
+        ]
+      },
+      {
+        "id": "L3",
+        "title": "L3 - CN-UPS-virta",
+        "lead": "Vain virtapolku - ei datatasoa hallinta-VLAN:issa.",
+        "bullets": [
+          "Ei IP:itä eikä hallinta-API:a data-VLAN:issa",
+          "Lukitut kotelokäytännöt asennuksessa",
+          "Vikailmaisu pysyy paikallisena - ei verkko­vuotoa virtavioista"
+        ]
+      },
+      {
+        "id": "L4",
+        "title": "L4 - CN-BC-rakennusohjain",
+        "lead": "Rakennuksen tietoturvaraja kerros-LAN:in ja pilven välillä.",
+        "bullets": [
+          "WireGuard ulospäin rakennuksesta (CGNAT-turvallinen)",
+          "MQTT TLS 1.3:lla rakennuskohtaisilla asiakasserifikaateilla",
+          "Isäntäpalomuuri oletuksena deny; ei julkista SSH:ta, MQTT:tä tai API:a matkapuhelinverkossa",
+          "Ainoa OTA-polku L1/L2:lle: vahvista allekirjoitettu manifesti ja kuva, porrastettu käyttöönotto, raportoi tulos",
+          "Store-and-forward -telemetriapuskuri salattuna levossa; tyhjennys onnistuneen toimituksen jälkeen"
+        ]
+      },
+      {
+        "id": "L5",
+        "title": "L5 - CurNext Cloud",
+        "lead": "Monivuokraajasovellus ja data yksityisellä kenttätulolla.",
+        "bullets": [
+          "MQTT-broker tavoitettavissa vain yksityisessä verkossa - ei julkisessa Internetissä",
+          "Rakennuskohtainen valtuutus; estä vuokralaisten väliset wildcards",
+          "Käyttäjäauth lyhytikäisillä tokeneilla; MFA vaaditaan etuoikeutetuille rooleille",
+          "RBAC API-reiteillä; nopeusrajat ja reuna-WAF tuotannossa",
+          "Salaus siirrossa ja levossa; vuokralaiseristys kyselyissä",
+          "Salatut varmuuskopiot palautusharjoituksilla; GDPR-auditointi-, vienti- ja poistopolut",
+          "Salaisuudet secrets managerissa - ei lähdehallinnassa"
+        ]
+      }
+    ],
+    "crypto": {
+      "title": "Kryptografia lyhyesti",
+      "rows": [
+        {
+          "use": "Siirto (pilvi / MQTT)",
+          "algorithm": "TLS 1.3"
+        },
+        {
+          "use": "Rakennustunneli",
+          "algorithm": "WireGuard - Curve25519, ChaCha20-Poly1305"
+        },
+        {
+          "use": "Ilmalinkki (L1 ↔ CN-FG)",
+          "algorithm": "LoRaWAN MAC AES-128 -salaus + MIC"
+        },
+        {
+          "use": "Firmwaren allekirjoitus",
+          "algorithm": "ECDSA P-256"
+        },
+        {
+          "use": "Paikallinen telemetriapuskuri",
+          "algorithm": "AES-256-GCM levossa rakennuksen reunalla"
+        },
+        {
+          "use": "Auditoinnin eheys",
+          "algorithm": "SHA-256"
+        }
+      ],
+      "deprecated": "Ei käytössä: TLS 1.0/1.1, MD5, SHA-1 allekirjoituksiin tai staattiset ilmalinkin istuntoavaimet ilman OTAA:ta."
+    },
+    "provisioning": {
+      "title": "Provisionointi",
+      "factory": [
+        "Tehtaan HSM injektoi yksilöllisen laiteidentiteettiaineiston secure elementiin",
+        "Secure boot käytössä ennen lähetystä",
+        "NFC-personointi kryptografisella todisteella",
+        "Laite rekisteröidään valmistetuksi; avaimia ei koskaan lähetetä taulukoissa tai sähköpostissa"
+      ],
+      "field": [
+        "Asentajan NFC-napautus vahvistaa kryptografisen sidoksen",
+        "Pintasidonta edellyttää autentikoitua app-istuntoa ja laitesidontaoikeutta",
+        "QR-skannausta ei luoteta kryptografiseen sidontaan",
+        "Rakennuksen käyttöönotto myöntää WireGuard-peerin ja MQTT-asiakastunnukset asennuksessa"
+      ]
+    },
+    "ota": {
+      "title": "OTA ja ohjelmistotoimitusketju",
+      "lead": "Linjassa EU:n Cyber Resilience Act -odotusten kanssa allekirjoitetuille päivityksille, SBOM:lle ja koordinoidulle ilmoitukselle.",
+      "signing": [
+        "Offline-juuri-CA",
+        "OTA-allekirjoitus-CA",
+        "Allekirjoitetut L1-, CN-FG- ja CN-BC-kuvat / manifestit"
+      ],
+      "bullets": [
+        "Firmware-allekirjoitukset ECDSA P-256:lla (tai vahvempi RSA tarvittaessa)",
+        "Manifesti sisältää laiteluokan, version, minimiversion, hashin, allekirjoituksen ja peruutuksen aikakauden",
+        "Kompromittoitunut allekirjoitusmateriaali kierretään hätäpolulla",
+        "A/B-osiokset kenttälaitteissa ja rollback epäonnistuneessa käynnistyksessä",
+        "Porrastettu käyttöönotto ennen koko laivaston soveltamista",
+        "SBOM per firmware- ja pilvijulkaisu; jatkuva haavoittuvuusseuranta",
+        "Kriittiset tietoturvapäivitykset tavoite 14 päivässä; korkeat 30 päivässä"
+      ]
+    },
+    "verification": {
+      "title": "Miten varmistamme",
+      "lead": "Julkaisut ja vuotuinen toiminta noudattavat kiinteää tietoturvapalkkia ennen enterprise-käyttöä.",
+      "items": [
+        "Uhka­mallin päivitys vyöhykkeittäin merkittäville julkaisuille",
+        "Kerros­listat L1:lle, CN-FG:lle, CN-BC:lle ja pilvelle",
+        "Staattinen analyysi ja riippuvuusskannaus ilman kriittistä avointa CVE:tä julkaisussa",
+        "Allekirjoitettu artefakti ja SBOM liitetty julkaisuun",
+        "Vuotuinen ulkoinen penetraatiotesti sekä avaintenkierrätys- / varmuuskopion palautusharjoitukset",
+        "Sertifiointivalmius (IEC 62443 -arviointi, ISO 27001 ISMS, RED-tekninen tiedosto) seurataan erikseen - ei väitetä valmiiksi tällä sivulla"
+      ]
+    },
+    "contactSection": {
+      "title": "Ilmoittaminen ja yhteystiedot",
+      "lead": "Ilmoita haavoittuvuudet CurNextin tietoturvapostilaatikkoon. Yksityisyys- ja sijaintitiedoista käytä linkitettyjä käytäntöjä ja datacenters-sivua.",
+      "email": "security@curnext.app",
+      "bullets": [
+        "Koordinoitu ilmoitus: security@curnext.app",
+        "Oikeushenkilö: CurNext, Helsinki, Suomi",
+        "Tietosuojakäytäntö kattaa henkilötietojen käsittelyn",
+        "Datacenters-sivu kattaa EU-hostingin sijainnin (Saksa / Frankfurt)"
+      ]
+    }
+  },
+  "technologies": {
+    "technologiesConnectivity": {
+      "title": "Yhteydet",
+      "lead": "Standardit teollisuusprotokollat - nimetty kyvykkyystasolla, ei hyökkäyspintaoppaana.",
+      "items": [
+        {
+          "title": "LoRaWAN",
+          "body": "EU868-kenttäuplinkit akkukäyttöisille solmuille - pitkä kantama, työmaaystävällinen radio CurNext-kerrospolkuun."
+        },
+        {
+          "title": "MQTT over TLS",
+          "body": "Laitteiden ja yhdyskäytävien telemetria alustaan salatulla MQTT:llä laitteistopolulle."
+        },
+        {
+          "title": "WireGuard",
+          "body": "Turvalliset tunneliteemat rakennuksen reunayhteyteen CurNext-pilvipalveluihin."
+        },
+        {
+          "title": "HTTPS REST",
+          "body": "Versioidut ostajaintegraatiot osoitteessa api.curnext.app - valmius, BIM, laitteet, hälytykset, webhookit."
+        }
+      ]
+    },
+    "technologiesData": {
+      "title": "Älykerros",
+      "lead": "CurNext muuttaa työmaan mittaukset rakennusvalmiiksi päätöksiksi, jotka on kartoitettu projektiisi.",
+      "items": [
+        {
+          "title": "Pintojen valmius",
+          "body": "Pisteet, tila ja arvioitu valmisajankohta valvotuille pinnoille."
+        },
+        {
+          "title": "Betonin kovettumismalli",
+          "body": "Sisäinen ennuste CN-CC-laatan valmiudelle, koulutettu ja tarjottu TensorFlow.js:llä."
+        },
+        {
+          "title": "BIM-konteksti",
+          "body": "Rakennukset, tilat ja laitteet koordinointiin - ei irrallinen anturidumppi."
+        },
+        {
+          "title": "Hälytykset ja tapahtumat",
+          "body": "Operatiiviset hälytykset ja webhook-tapahtumat työkaluihin, joita tiiminne jo käyttävät."
+        },
+        {
+          "title": "Sääkonteksti",
+          "body": "Ulkokonteksi, kun se auttaa kovettumis- ja kuivatuspäätöksiä työmaalla."
+        }
+      ]
+    },
+    "technologiesEcosystem": [
+      {
+        "title": "Radio ja tunnistus",
+        "names": [
+          "Semtech",
+          "LoRa Alliance",
+          "Sensirion",
+          "NFC",
+          "Texas Instruments"
+        ]
+      },
+      {
+        "title": "Reuna ja yhteydet",
+        "names": [
+          "MQTT",
+          "WireGuard",
+          "Espressif",
+          "Victron"
+        ]
+      },
+      {
+        "title": "Pilvi ja ops",
+        "names": [
+          "Cloudflare",
+          "Supabase",
+          "Hetzner",
+          "Google Cloud",
+          "Datadog",
+          "Grafana"
+        ]
+      },
+      {
+        "title": "Tekoäly ja äly",
+        "names": [
+          "TensorFlow.js",
+          "Gemini",
+          "Groq",
+          "OpenWeather"
+        ]
+      },
+      {
+        "title": "BIM, identiteetti ja kauppa",
+        "names": [
+          "Autodesk Revit",
+          "Signicat",
+          "Stripe"
+        ]
+      },
+      {
+        "title": "Valmistus ja toimitusketju",
+        "names": [
+          "JLCPCB",
+          "Digi-Key"
+        ]
+      }
+    ],
+    "technologiesPage": {
+      "title": "Teknologiat",
+      "description": "CurNext-pino kenttäsolmuista pilveen - teolliset yhteydet, BIM-kartoitettu valmius ja API:t, joita tiiminne voivat kutsua.",
+      "leadNote": "Tämä sivu kattaa julkiset alustakyvyt. Yksityiskohtaiset laitteistotietoturvamenettelyt pysyvät yksityisessä operaatiokokumentaatiossa."
+    },
+    "technologiesProducts": [
+      {
+        "sku": "CN-CC",
+        "name": "Betonin kovettuminen",
+        "href": "/solutions/concrete-curing",
+        "body": "Ilma-, pinta- ja ydinanturit laatan valmiusälyllä ja sisäisellä TensorFlow.js -kovettumisennustemallilla."
+      },
+      {
+        "sku": "CN-WD",
+        "name": "Seinien kuivatus",
+        "href": "/solutions/wall-drying",
+        "body": "Viimeistelyn valmius kipsille, märkätiloille ja laattojen taustalle."
+      },
+      {
+        "sku": "CN-IAQ",
+        "name": "Sisäilma",
+        "href": "/solutions/indoor-air",
+        "body": "PM, VOC ja ilmastokonteksti samassa työmaapinossa."
+      },
+      {
+        "sku": "CN-LEAK",
+        "name": "Vuodontunnistus",
+        "href": "/solutions/leak-detection",
+        "body": "Tapahtumapohjaiset hälytykset teknisiin tiloihin, märkävyöhykkeisiin ja nousuihin."
+      },
+      {
+        "sku": "CN-SHM",
+        "name": "Rakenteen terveys",
+        "href": "/solutions/structural-health",
+        "body": "Kallistus- ja värähtelyseuranta rakennuspolkuun."
+      },
+      {
+        "sku": "CN-MEP",
+        "name": "MEP",
+        "href": "/solutions/mep",
+        "body": "Langalliset laitossignaalit, kun tarvitaan korkeampia näytteenottotaajuuksia."
+      }
+    ],
+    "technologiesSecurity": {
+      "title": "Tietoturva-asenne",
+      "lead": "Teemat, jotka voimme todeta julkisesti. Toteutusyksityiskohdat pysyvät yksityisessä tietoturvadokumentaatiossa.",
+      "items": [
+        {
+          "title": "Salattu siirto",
+          "body": "TLS pilvi-API:ille ja MQTT-poluille; WireGuard reunatunneliteemoille."
+        },
+        {
+          "title": "Allekirjoitetut kenttäpäivitykset",
+          "body": "OTA valmistellaan reunalla CN-BC:llä checksum-osoitetuilla kuvilla - ei julkinen selainflashaaja."
+        },
+        {
+          "title": "Laitteen identiteetti",
+          "body": "Laitteisto­identiteetti- ja vahvistusteemat kenttäyksiköille; tehdas- ja kenttäasennusmenettelyt ovat ops-hallittuja."
+        },
+        {
+          "title": "Auditointipolku",
+          "body": "Projektiaktiivisuus ja valmiuspäätökset jättävät selkeän jäljen luovutukseen ja compliance-keskusteluihin."
+        }
+      ]
+    },
+    "technologiesSoftware": {
+      "title": "Ohjelmistopinnat",
+      "lead": "Pilvituotteen ja kehittäjän sisäänkäynnit, joita tiiminne jo käyttävät.",
+      "items": [
+        {
+          "title": "Web ja mobiili",
+          "body": "Projektin kojelaudat, hälytykset, valmiusnäkymät ja kenttäsovellukset CurNext-alustalla.",
+          "href": "https://dash.curnext.app",
+          "external": true
+        },
+        {
+          "title": "REST API",
+          "body": "Valmius, BIM-hierarkia, laitteet, mittaukset ja webhookit polussa /api/v1.",
+          "href": "/api",
+          "external": false
+        },
+        {
+          "title": "SDK:t",
+          "body": "Viralliset asiakkaat JavaScriptille/TypeScriptille, PHP:lle, Golle, Pythonille, Javalle ja Flutterille.",
+          "href": "/sdks",
+          "external": false
+        },
+        {
+          "title": "Market Place",
+          "body": "Yhdistä viestintä, aikataulutus, valvonta, BIM, CRM ja kirjanpitotyökalut.",
+          "href": "/integrations",
+          "external": false
+        },
+        {
+          "title": "Firmware-toiminnot",
+          "body": "Versiokatalogi, raportoidut laivasto­merkkijonot ja reuna-OTA-yleiskuva.",
+          "href": "/firmware",
+          "external": false
+        },
+        {
+          "title": "Docs",
+          "body": "Tuotedokumentaatio operaattoreille ja integraattoreille.",
+          "href": "/docs",
+          "external": false
+        },
+        {
+          "title": "Tietopankki",
+          "body": "Tekoälychat, joka nojaa julkisen sivuston tietoon, GDPR-suostumuksella.",
+          "href": "/knowledge-base",
+          "external": false
+        }
+      ]
+    }
+  },
+  "firmware": {
+    "firmwareCatalogSamples": [
+      {
+        "version": "1.2.0",
+        "deviceType": "CN-CC",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-03-12",
+        "checksumSha256": "a3f1...9c2e",
+        "notes": "Vakauden ja LoRaWAN-duty-cycle-korjauksia laattasolmuille."
+      },
+      {
+        "version": "1.1.4",
+        "deviceType": "CN-FG",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-02-28",
+        "checksumSha256": "b7d0...4a11",
+        "notes": "Kerrosyhdyskäytävän OTA-kättelyn ja välimuistin parannuksia."
+      },
+      {
+        "version": "2.0.1",
+        "deviceType": "CN-BC",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-04-02",
+        "checksumSha256": "c91e...77b4",
+        "notes": "Reunaorkestroijan canary/rolling-työtilat."
+      },
+      {
+        "version": "1.0.3",
+        "deviceType": "CN-UPS",
+        "isProduction": true,
+        "ceMarked": false,
+        "releasedAt": "2026-01-18",
+        "checksumSha256": "d2aa...08f6",
+        "notes": "UART-kehystetyn päivityksen luotettavuus."
+      },
+      {
+        "version": "1.3.0-rc",
+        "deviceType": "CN-CC",
+        "isProduction": false,
+        "ceMarked": false,
+        "releasedAt": "2026-05-01",
+        "checksumSha256": "e44b...c1d9",
+        "notes": "Sisäinen soak-build - ei merkitty tuotantoon."
+      }
+    ],
+    "firmwareFlags": [
+      {
+        "title": "Tuotanto",
+        "body": "Katalogirivit käyttävät isProduction-lippua. Erillistä draft/beta-kanavaenumia ei ole."
+      },
+      {
+        "title": "CE-merkitty",
+        "body": "ceMarked kirjaa CE-merkinnän katalogiversioon tarvittaessa."
+      },
+      {
+        "title": "Asennusmenetelmät",
+        "body": "Historia kirjaa FACTORY, OTA, USB tai MANUAL - mukaan lukien edellinen versiolinja kun tiedossa."
+      }
+    ],
+    "firmwareHistorySamples": [
+      {
+        "deviceCode": "CN-CC-DEMO-001",
+        "version": "1.2.0",
+        "previousVersion": "1.1.8",
+        "method": "OTA",
+        "installedAt": "2026-03-15"
+      },
+      {
+        "deviceCode": "CN-FG-DEMO-014",
+        "version": "1.1.4",
+        "previousVersion": "1.1.2",
+        "method": "OTA",
+        "installedAt": "2026-03-01"
+      },
+      {
+        "deviceCode": "CN-BC-DEMO-002",
+        "version": "2.0.1",
+        "previousVersion": "2.0.0",
+        "method": "OTA",
+        "installedAt": "2026-04-03"
+      },
+      {
+        "deviceCode": "CN-CC-DEMO-009",
+        "version": "1.2.0",
+        "previousVersion": "-",
+        "method": "FACTORY",
+        "installedAt": "2026-03-20"
+      }
+    ],
+    "firmwareHonesty": {
+      "title": "Mitä tämä sivu kattaa",
+      "body": "CurNext seuraa firmware-versioiden katalogia, raportoituja laiteversioita ja asennushistoriaa operaatioissa. Kenttä-OTA orkestroidaan reunalla CN-BC:llä. Pilvilataus, julkaisukanavat ja yhden klikkauksen laivastokäyttöönotto-UI eivät kuulu julkiseen markkinointipintaan.",
+      "bullets": [
+        "Selaa katalogimallia: versio, laitetyyppi, tuotanto- ja CE-liput",
+        "Ymmärrä raportoidut laivastomerkkijonot vs katalogirivit",
+        "Näe, miten asennushistoria kirjaa tehdas-, OTA-, USB- ja manuaaliset menetelmät",
+        "Kenttä-OTA ajetaan allekirjoitettuina töinä CN-BC:llä - ei selainflashaajana"
+      ]
+    },
+    "firmwareOta": {
+      "title": "Reuna-OTA (CN-BC)",
+      "lead": "Allekirjoitetut työt saavuttavat CN-BC:n. Reuna­agentti vahvistaa, valmistelee ja rullaa kohteisiin. Kuvat osoitetaan checksumilla. Valinnainen canary ja sitten rolling orkestroijalla.",
+      "targets": [
+        {
+          "id": "bc",
+          "label": "bc",
+          "detail": "CN-BC:n itse­päivitys"
+        },
+        {
+          "id": "fg",
+          "label": "fg",
+          "detail": "CN-FG kerroksen HMAC-ohjauksella"
+        },
+        {
+          "id": "cc",
+          "label": "cc",
+          "detail": "Kenttäsolmut FUOTA / LoRaWAN kautta"
+        },
+        {
+          "id": "ups",
+          "label": "ups",
+          "detail": "CN-UPS UART-kehystyksellä"
+        }
+      ],
+      "edgeStates": [
+        "accepted",
+        "rejected",
+        "canary",
+        "rolling",
+        "done",
+        "failed"
+      ],
+      "note": "Pilven draft/publish-työnkulkuja ja kojelaudan assign/rollback-API:ita ei ole toimitettu. Älä odota yhden klikkauksen laivastoflashia selaimesta."
+    },
+    "firmwarePage": {
+      "title": "Firmware",
+      "description": "Katalogoi firmware-versiot, näe mitä laivasto raportoi ja tarkastele asennushistoriaa. Kenttä-OTA:n hoitavat reunaohjaimet.",
+      "supportLine": "Versiokatalogi ja laivaston asennushistoria. Kenttäpäivitykset kulkevat allekirjoitetun reuna-OTA:n kautta CN-BC:llä."
+    },
+    "firmwareSecurity": {
+      "title": "Tietoturvateemat",
+      "lead": "Allekirjoitettu OTA, secure element -identiteetti ja anti-rollback-teemat kuuluvat laitteistotietoturvamalliin. Tehtaan SWD-provisionointi ja kentän NFC-asennus dokumentoidaan erikseen operaatioille.",
+      "items": [
+        "Secure element laitteen identiteetille ja vahvistukselle",
+        "Allekirjoitetut OTA-kuvat checksum-osoitteella",
+        "Anti-rollback-kontrollit tietoturva-arkkitehtuurissa",
+        "Protokollat: LoRaWAN OTAA (EU868), MQTT/TLS, WireGuard, kerroksen HMAC-aiheet"
+      ]
+    },
+    "firmwareStack": {
+      "title": "Laitteistopolku",
+      "lead": "Firmware kulkee samaa rakennuspinhoa kuin telemetria - kenttäsolmuista reuna­agenttiin, joka valmistelee allekirjoitetut päivitykset.",
+      "layers": [
+        {
+          "id": "L1",
+          "title": "L1-kenttäsolmut",
+          "body": "Solmut: CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP"
+        },
+        {
+          "id": "L2",
+          "title": "L2-kerrosyhdyskäytävä",
+          "body": "CN-FG LoRaWAN-konsentraattori"
+        },
+        {
+          "id": "L3",
+          "title": "L3-virta",
+          "body": "CN-UPS-virta ja tila"
+        },
+        {
+          "id": "L4",
+          "title": "L4-reuna­agentti",
+          "body": "CN-BC - tunneli, MQTT, OTA-orkestrointi"
+        },
+        {
+          "id": "L5",
+          "title": "L5-pilvi",
+          "body": "CurNext-pilvi - katalogi, historia, laitetietueet"
+        }
+      ]
+    },
+    "firmwareTrees": [
+      {
+        "id": "cn-cc",
+        "name": "CN-CC",
+        "path": "firmware/cn-cc",
+        "role": "Betonin kovettumisen kenttäsolmu",
+        "ota": "FUOTA CN-FG / LoRaWAN kautta"
+      },
+      {
+        "id": "cn-fg",
+        "name": "CN-FG",
+        "path": "firmware/cn-fg",
+        "role": "Kerroksen LoRaWAN-konsentraattori",
+        "ota": "HMAC-kerros-OTA CN-BC:ltä"
+      },
+      {
+        "id": "cn-bc",
+        "name": "CN-BC",
+        "path": "firmware/cn-bc",
+        "role": "Rakennuksen reuna­agentti ja OTA-orkestroija",
+        "ota": "Itsepäivitys (bc-kohde)"
+      },
+      {
+        "id": "cn-ups",
+        "name": "CN-UPS",
+        "path": "firmware/cn-ups",
+        "role": "UPS / virran tilayksikkö",
+        "ota": "UART-kehystetty päivitys CN-BC:ltä"
+      }
+    ],
+    "tabs": {
+      "versions": "Versiot",
+      "architecture": "Arkkitehtuuri",
+      "history": "Historia"
+    }
+  },
+  "sdks": {
+    "hero": {
+      "eyebrow": "SDK:t",
+      "title": "Tuo CurNext sovelluksiin, joita jo käytät",
+      "lead": "Kokemuksen rajaaminen omaan asiakkaaseemme ei riitä. CurNext SDK:t antavat tiimeillesi vapauden ulottaa valmiusälyä sovelluksiin, työnkulkuihin ja pinoihin, joita jo operoit."
+    },
+    "header": {
+      "title": "SDK",
+      "description": "Viralliset asiakaskirjastot CurNext REST API:lle. Valitse kieli alta asennusvaiheisiin ja esimerkkeihin."
+    },
+    "intro": {
+      "heading": "Mitä voit rakentaa",
+      "paragraph": "SDK:t kääriyvät versioidun REST API:n. Luo projektin API-avain ja kutsu sitten valmiutta, projekteja, laitteita, hälytyksiä, mittauksia ja webhookeja omasta pinostasi.",
+      "docsLabel": "api.curnext.app/docs",
+      "useCases": [
+        {
+          "title": "Hae valmius ja telemetria",
+          "body": "Nouda pintojen valmius, ennusteet, laitteet ja uusimmat mittaukset kojelautoihin tai raportteihin."
+        },
+        {
+          "title": "Automatisoi työmaan työnkulkuja",
+          "body": "Ratkaise hälytyksiä, listaa auditointitapahtumia ja ohjaa opseja skripteistä ja sisäisistä työkaluista."
+        },
+        {
+          "title": "Integroi pinoosi",
+          "body": "Käytä samaa REST-pintaa Node-, PHP-, Go-, Python-, Java- tai Flutter-sovelluksista, joita jo ajat."
+        },
+        {
+          "title": "Työskentele webhookien kanssa",
+          "body": "Listaa webhook-päätepisteet SDK:lla. Luo ja hallitse vastaanottimia kojelaudassa tapahtumille kuten SURFACE_READY, ALERT_CREATED ja DEVICE_DISPLACED."
+        }
+      ]
+    },
+    "packages": {
+      "javascript": {
+        "name": "JavaScript / TypeScript",
+        "short": "JS / TS",
+        "stack": "Node, React, Next.js ja selaimet",
+        "summary": "Tyypitetty Fetch-asiakas web-sovelluksille, Node-palveluille ja TypeScript-backendille, jotka tarvitsevat valmiutta ja projektikontekstia.",
+        "highlights": [
+          "Tyypitetty asiakas",
+          "Node ja selaimet",
+          "Fetch API"
+        ],
+        "quickStart": "import { CurNext } from \"@curnext/sdk\";\n\nconst client = new CurNext({\n  apiKey: process.env.CURNEXT_API_KEY!,\n  // baseUrl oletusarvo: https://api.curnext.app\n  // baseUrl: \"http://localhost:4000\",\n});\n\nconst health = await client.health.get();\n// { status: \"ok\", service: \"curnext-api\", version: \"...\", api: \"/api/v1\" }\n\nconst { projects } = await client.projects.list();\nconst readiness = await client.projects.getReadiness(\"SURFACE_EXTERNAL_ID\");\n\nconsole.log(readiness.status, readiness.readiness_score);",
+        "errorHandling": "import { CurNextApiError } from \"@curnext/sdk\";\n\ntry {\n  const readiness = await client.projects.getReadiness(\"SURFACE_ID\");\n  console.log(readiness.status);\n} catch (error) {\n  if (error instanceof CurNextApiError) {\n    // 401 virheellinen avain | 404 ei löydy | 429 nopeusrajoitettu\n    console.error(error.statusCode, error.message, error.code, error.body);\n    return;\n  }\n  throw error;\n}",
+        "status": "live"
+      },
+      "php": {
+        "name": "PHP",
+        "short": "PHP",
+        "stack": "Laravel ja Symfony",
+        "summary": "PHP 8.1+ -asiakas Laravelille, Symfonylle ja puhtaalle PHP:lle, joka vetää valmiutta portaaleihin, ERP:hen ja automaatioon.",
+        "highlights": [
+          "PHP 8.1+",
+          "cURL + JSON",
+          "Laravel ja Symfony"
+        ],
+        "quickStart": "<?php\n\nuse Curnext\\Sdk\\CurNext;\n\n$client = new CurNext(\n    apiKey: getenv('CURNEXT_API_KEY') ?: '',\n    // baseUrl oletusarvo: https://api.curnext.app\n    // baseUrl: 'http://localhost:4000',\n);\n\n$health = $client->health->get();\n$projects = $client->projects->list();\n$readiness = $client->projects->getReadiness('SURFACE_EXTERNAL_ID');\n\necho $readiness['status'], ' ', $readiness['readiness_score'] ?? '', PHP_EOL;",
+        "errorHandling": "use Curnext\\Sdk\\CurNextApiException;\n\ntry {\n    $readiness = $client->projects->getReadiness('SURFACE_ID');\n    echo $readiness['status'];\n} catch (CurNextApiException $e) {\n    // 401 virheellinen avain | 404 ei löydy | 429 nopeusrajoitettu\n    error_log($e->getStatusCode() . ' ' . $e->getMessage());\n    var_export($e->getBody());\n    throw $e;\n}",
+        "status": "live"
+      },
+      "go": {
+        "name": "Go",
+        "short": "Go",
+        "stack": "net/http, Gin ja Echo",
+        "summary": "Idiomaattinen Go-asiakas yhdyskäytäville, työmaapalveluille ja mikropalveluille, jotka puhuvat CurNextille HTTPS:llä.",
+        "highlights": [
+          "context.Context",
+          "Tyypitetyt virheet",
+          "net/http"
+        ],
+        "quickStart": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"log\"\n\t\"os\"\n\n\tcurnext \"github.com/awunjia/curnext-go\"\n)\n\nfunc main() {\n\tclient, err := curnext.NewClient(curnext.Config{\n\t\tAPIKey: os.Getenv(\"CURNEXT_API_KEY\"),\n\t\t// BaseURL oletusarvo: https://api.curnext.app\n\t\t// BaseURL: \"http://localhost:4000\",\n\t})\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\n\tctx := context.Background()\n\thealth, err := client.Health.Get(ctx)\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\tfmt.Println(health.Status, health.Service)\n\n\treadiness, err := client.Projects.GetReadiness(ctx, \"SURFACE_EXTERNAL_ID\")\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\tfmt.Println(readiness.Status, readiness.ReadinessScore)\n}",
+        "errorHandling": "import (\n\t\"context\"\n\t\"errors\"\n\t\"log\"\n\n\tcurnext \"github.com/awunjia/curnext-go\"\n)\n\nreadiness, err := client.Projects.GetReadiness(ctx, \"SURFACE_ID\")\nif err != nil {\n\tvar apiErr *curnext.APIError\n\tif errors.As(err, &apiErr) {\n\t\t// 401 virheellinen avain | 404 ei löydy | 429 nopeusrajoitettu\n\t\tlog.Printf(\"%d %s %#v\", apiErr.StatusCode, apiErr.Message, apiErr.Body)\n\t\treturn\n\t}\n\tlog.Fatal(err)\n}\n_ = readiness.Status",
+        "status": "live"
+      },
+      "python": {
+        "name": "Python",
+        "short": "Python",
+        "stack": "Django, FastAPI ja skriptit",
+        "summary": "Python-asiakas dataputkille, FastAPI-palveluille ja skripteille, jotka hakevat valmiutta ja telemetriaa.",
+        "highlights": [
+          "pip install",
+          "Dict-vastaukset",
+          "Django ja FastAPI"
+        ],
+        "quickStart": "import os\nfrom curnext import CurNext\n\nclient = CurNext(\n    api_key=os.environ[\"CURNEXT_API_KEY\"],\n    # base_url oletusarvo: https://api.curnext.app\n    # base_url=\"http://localhost:4000\",\n)\n\nhealth = client.health.get()\nprojects = client.projects.list()\nreadiness = client.projects.get_readiness(\"SURFACE_EXTERNAL_ID\")\n\nprint(readiness[\"status\"], readiness.get(\"readiness_score\"))",
+        "errorHandling": "from curnext import CurNextApiError\n\ntry:\n    readiness = client.projects.get_readiness(\"SURFACE_ID\")\n    print(readiness[\"status\"])\nexcept CurNextApiError as exc:\n    # 401 virheellinen avain | 404 ei löydy | 429 nopeusrajoitettu\n    print(exc.status_code, exc.message, exc.code, exc.body)\n    raise",
+        "status": "live"
+      },
+      "java": {
+        "name": "Java",
+        "short": "Java",
+        "stack": "Spring Boot ja Quarkus",
+        "summary": "JVM-asiakas Spring Bootille, Quarkukselle ja enterprise-palveluille. Maven groupId app.curnext; importit pysyvät io.curnext.sdk.*.",
+        "highlights": [
+          "Java 17+",
+          "Gradle ja Maven",
+          "Jackson"
+        ],
+        "quickStart": "// CurNext Java-asiakasesimerkki\nimport io.curnext.sdk.CurNext;\nimport io.curnext.sdk.ApiObject;\n\nvar client = CurNext.builder()\n    .apiKey(System.getenv(\"CURNEXT_API_KEY\"))\n    // .baseUrl(\"https://api.curnext.app\")\n    // .baseUrl(\"http://localhost:4000\")\n    .build();\n\nApiObject health = client.health().get();\nApiObject readiness = client.projects().getReadiness(\"SURFACE_EXTERNAL_ID\");\nSystem.out.println(readiness.status() + \" \" + readiness.readinessScore());",
+        "errorHandling": "// CurNext Java-asiakasesimerkki\nimport io.curnext.sdk.CurNextApiException;\n\ntry {\n  var readiness = client.projects().getReadiness(\"SURFACE_ID\");\n  System.out.println(readiness.status());\n} catch (CurNextApiException e) {\n  // 401 virheellinen avain | 404 ei löydy | 429 nopeusrajoitettu\n  System.err.println(e.getStatusCode() + \" \" + e.getMessage());\n  throw e;\n}",
+        "status": "live"
+      },
+      "flutter": {
+        "name": "Flutter",
+        "short": "Flutter",
+        "stack": "Dart, iOS, Android ja desktop",
+        "summary": "Flutter / Dart -asiakas mobiili- ja desktop-sovelluksille, jotka tarvitsevat valmiutta, laitteita ja hälytyksiä kentällä. Sama REST-pinta kuin live-SDK:illa - paketti ei ole vielä pub.devissä.",
+        "highlights": [
+          "Tulossa pian",
+          "Dart",
+          "Mobiili ja desktop"
+        ],
+        "quickStart": "// Esikatselu vain - Flutter SDK:ta ei ole vielä julkaistu\nimport 'package:curnext/curnext.dart';\n\nfinal client = CurNext(\n  apiKey: const String.fromEnvironment('CURNEXT_API_KEY'),\n  // baseUrl oletusarvo: https://api.curnext.app\n  // baseUrl: 'http://localhost:4000',\n);\n\nfinal health = await client.health.get();\nfinal projects = await client.projects.list();\nfinal readiness =\n    await client.projects.getReadiness('SURFACE_EXTERNAL_ID');\n\nprint('${health.status} ${readiness.status}');",
+        "errorHandling": "// Esikatselu vain - Flutter SDK:ta ei ole vielä julkaistu\ntry {\n  final readiness =\n      await client.projects.getReadiness('SURFACE_ID');\n  print(readiness.status);\n} on CurNextApiException catch (e) {\n  // 401 virheellinen avain | 404 ei löydy | 429 nopeusrajoitettu\n  print('${e.statusCode} ${e.message} ${e.code}');\n  rethrow;\n}",
+        "status": "coming_soon"
+      }
+    },
+    "status": {
+      "live": "Käytössä",
+      "beta": "Beta",
+      "coming_soon": "Tulossa pian"
+    },
+    "registry": {
+      "npm": "Näytä npm:ssä",
+      "Packagist": "Näytä Packagistissa",
+      "pkg_go_dev": "Näytä pkg.go.devissä",
+      "PyPI": "Näytä PyPI:ssä",
+      "Maven Central": "Näytä Maven Centralissa",
+      "pub_dev": "Näytä pub.devissä"
+    },
+    "notPublished": "Ei julkaistu",
+    "versionLine": "{version}",
+    "betaVersionLine": "{version} (beta)"
+  },
+  "api": {
+    "apiAccess": {
+      "eyebrow": "Pääsy",
+      "title": "Professional sisältää API-pääsyn",
+      "lead": "API-pääsy sisältyy Professionaliin ja on saatavilla Enterprise-ohjelmiin. Projektin API-avaimet ja webhookit hallitaan CurNext-tuotteessa projektin kehittäjäasetuksissa.",
+      "points": [
+        "Pääsy on projekti­kohtainen (ja voi olla rakennuskohtainen).",
+        "Aktiiviset avaimet ja webhookit on rajoitettu per projekti.",
+        "Avaimet käyttävät live-etuliitettä kuten cn_live_... tuotteessa.",
+        "Pyydä pääsyä, niin otamme integraation käyttöön projektille - sitten käymme läpi avaimet, scopet ja tapahtumat alustassa."
+      ],
+      "enterpriseNote": "Enterprise-ohjelmat voivat sisältää korotetut API-nopeusrajat ja sandboxin pyynnöstä - myyntivetoisesti, ei self-servicenä."
+    },
+    "apiAudience": {
+      "eyebrow": "Kenelle",
+      "title": "Rakennettu teknisille ostajille ja integraattoreille",
+      "items": [
+        "Projekti- ja BIM-koordinaattorit, jotka tarvitsevat valmiutta suunnittelutyökaluihin",
+        "Enterprise IT, joka yhdistää CurNextin sisäisiin kojelautoihin",
+        "Monityömaaurakoitsijat, jotka haluavat tapahtumapohjaisia työnkulkuja",
+        "Kumppanit, jotka integroivat CurNextin rakennusohjelmistopinoihin"
+      ]
+    },
+    "apiBuiltNote": "CurNext API on NestJS REST -palvelu, joka pyörittää web-, mobiili- ja työmaaintegraatioita.",
+    "apiCapabilities": {
+      "eyebrow": "Kyvyt",
+      "title": "Mitä voit kutsua",
+      "lead": "Rajaa integraatio domainien ympärille - valmius, BIM, laivasto, telemetria ja tapahtumat - ei raakana anturivirtana.",
+      "items": [
+        {
+          "title": "Pintojen valmius",
+          "body": "Hae valmiuspisteet, tila, arvioitu valmispäivä, luottamus ja suositus pinnalle."
+        },
+        {
+          "title": "BIM-konteksti",
+          "body": "Hae projektihierarkia - rakennukset, tilat ja laitteet - kartoitukseen ja koordinointiin."
+        },
+        {
+          "title": "Laitelaivasto",
+          "body": "Listaa ja tarkastele projektiin sidottuja laitteita."
+        },
+        {
+          "title": "Telemetrian vastaanotto",
+          "body": "Työmaan laitteisto ja yhdyskäytävät lähettävät mittauksia CurNextiin."
+        },
+        {
+          "title": "Tapahtumat (webhookit)",
+          "body": "Työnnä hälytyksiä ja projektin virstanpylväitä HTTPS-päätepisteeseesi."
+        }
+      ]
+    },
+    "apiEndpoints": {
+      "eyebrow": "Havainnolliset pinnat",
+      "title": "Esimerkki-REST-polkuja",
+      "lead": "Kaikki esimerkit ovat polussa https://api.curnext.app/api/v1. Alusta laajenee edelleen - ota yhteyttä myyntiin integraatiolaajuudesta näiden pintojen ulkopuolella.",
+      "rows": [
+        {
+          "method": "GET",
+          "path": "/health",
+          "purpose": "Palvelun terveys"
+        },
+        {
+          "method": "GET",
+          "path": "/surfaces/:id/readiness",
+          "purpose": "Pinnan valmius"
+        },
+        {
+          "method": "GET",
+          "path": "/bim/:projectId",
+          "purpose": "BIM / projektipuu"
+        },
+        {
+          "method": "GET",
+          "path": "/devices",
+          "purpose": "Laitelista (project_id-query valinnainen)"
+        },
+        {
+          "method": "GET",
+          "path": "/devices/:id",
+          "purpose": "Yksittäinen laite"
+        },
+        {
+          "method": "POST",
+          "path": "/telemetry",
+          "purpose": "Telemetrian vastaanotto"
+        }
+      ]
+    },
+    "apiFaqs": [
+      {
+        "q": "Onko julkista OpenAPI / Swagger -sivustoa?",
+        "a": "Kyllä - tutustu interaktiiviseen API-playgroundiin osoitteessa https://api.curnext.app/docs. Projektin avaimet ja scopet otetaan silti käyttöön tilauksen mukaan CurNext-alustassa."
+      },
+      {
+        "q": "Mitä Professional sisältää?",
+        "a": "API-pääsyn kojelaudan, BIM:n, hälytysten, compliance-raporttien ja muun Professional-pinon rinnalla. Katso Hinnoittelu kaupallisista yksityiskohdista."
+      },
+      {
+        "q": "Miten saan API-avaimen?",
+        "a": "Avaa CurNext-alusta projektille (kehittäjä / API-avaimet), kun tilauksesi sisältää API-pääsyn - tai pyydä käyttöönottoa Yhteystietojen kautta."
+      },
+      {
+        "q": "Saammeko webhookeja?",
+        "a": "Kyllä - projektin webhookit valmiudelle, hälytyksille, laitteelle ja luovutustyyppisille tapahtumille. Määritä HTTPS-päätepisteet tuotteessa."
+      },
+      {
+        "q": "Tuetatteko BIM-työkaluja?",
+        "a": "API paljastaa BIM:n ja projektihierarkian koordinointiin. BIM-katselu elää myös tuotteen käyttöliittymässä."
+      },
+      {
+        "q": "GraphQL? SDK:t?",
+        "a": "REST /api/v1 on julkinen kehys. Tällä sivulla ei ole GraphQL-pintaa eikä virallista julkista SDK-katalogia."
+      }
+    ],
+    "apiMarketingHost": "curnext.app",
+    "apiMqttFootnote": "Kenttälaitteet julkaisevat telemetriaa myös MQTT:llä (curnext/.../telemetry). Työmaan laitteisto käyttää tätä polkua; ostajaintegraatioiden kannattaa aloittaa REST:illä.",
+    "apiPage": {
+      "eyebrow": "API",
+      "title": "Valmiusäly API:na",
+      "lead": "Versioitu REST osoitteessa https://api.curnext.app - pintojen valmius, BIM-projektikonteksti, laitteet ja telemetria. Sisältyy Professionaliin.",
+      "primaryCta": {
+        "label": "Pyydä API-pääsyä",
+        "href": "/contact"
+      },
+      "secondaryCta": {
+        "label": "Avaa alusta",
+        "href": "https://curnext.app",
+        "external": true
+      },
+      "tertiaryCta": {
+        "label": "Katso hinnoittelu",
+        "href": "/pricing"
+      },
+      "hosts": {
+        "production": "https://api.curnext.app",
+        "versionPrefix": "/api/v1",
+        "exampleBase": "https://api.curnext.app/api/v1",
+        "product": "https://curnext.app"
+      }
+    },
+    "apiPlatformUrl": "https://curnext.app",
+    "apiReadinessSample": "{\n    \"surface_id\": \"...\",\n    \"readiness_score\": 0.0,\n    \"status\": \"...\",\n    \"estimated_ready_date\": \"...\",\n    \"confidence\": 0.0,\n    \"recommendation\": \"...\"\n}",
+    "apiWebhooks": {
+      "eyebrow": "Webhookit",
+      "title": "Tapahtumapohjainen integraatio",
+      "lead": "Määritä HTTPS-päätepisteet projektissa hälytyksille ja virstanpylväille. Toimitushistoria on saatavilla tuotteessa.",
+      "events": [
+        "SURFACE_READY",
+        "READY_DATE_CHANGED",
+        "ALERT_CREATED",
+        "ALERT_RESOLVED",
+        "FREEZE_RISK_DETECTED",
+        "CONDENSATION_RISK_DETECTED",
+        "DRYING_PAUSED",
+        "DEVICE_OFFLINE",
+        "DEVICE_LOW_BATTERY",
+        "DEVICE_SENSOR_FAILURE",
+        "DEVICE_DISPLACED",
+        "PROJECT_DELAY_RISK_DETECTED",
+        "COMPLIANCE_REPORT_READY",
+        "PROJECT_HANDOVER_READY"
+      ]
+    },
+    "apiWhy": {
+      "eyebrow": "Miksi API",
+      "title": "Päätökset, jotka lähtevät kojelaudasta",
+      "lead": "CurNextin API on tapa, jolla valmiuspäätökset siirtyvät urakoitsijan pinoon - aikatauluihin, BIM-työkaluihin, compliance-arkistoihin ja ops-järjestelmiin. Tämä ei ole toinen IoT-anturidumppi.",
+      "outcomes": [
+        {
+          "title": "Aikataulut, jotka seuraavat työtä",
+          "body": "Vedä valmiuspisteet ja arvioidut valmispäivät suunnittelutyökaluihin, jotta kenttä ja toimisto jakavat saman kuvan siitä, mikä voi edetä."
+        },
+        {
+          "title": "BIM live-kontekstilla",
+          "body": "Kartoi rakennukset, tilat ja laitteet koordinointiin - ilman projektihierarkian uudelleenrakentamista käsin."
+        },
+        {
+          "title": "Ops- ja compliance-työnkulut",
+          "body": "Vie hälytykset, virstanpylväät ja luovutustodisteet järjestelmiin, joita tiiminne jo käyttävät."
+        }
+      ]
+    }
+  },
+  "contact": {
+    "metaTitle": "Ota yhteyttä",
+    "metaDescription": "Ota yhteyttä CurNextin myyntiin, kumppanuuksiin ja tuotetiimeihin. Sähköpostikanavat ja turvallinen yhteydenottolomake.",
+    "channelsTitle": "Suora sähköposti",
+    "channelsLead": "Haluatko viestiä suoraan sähköpostitse? Käytä alla olevia osoitteita.",
+    "tableCaption": "CurNextin yhteyssähköpostiosoitteet",
+    "team": "Tiimi",
+    "email": "Sähköposti",
+    "useFor": "Käyttötarkoitus",
+    "channels": {
+      "sales": {
+        "title": "Myynti",
+        "body": "Projektin käyttöönotto, kaupalliset kysymykset ja volyymikeskustelut."
+      },
+      "general": {
+        "title": "Yleinen",
+        "body": "Yrityskysymykset, kumppanuudet ja kaikki mikä ei sovi omaan postilaatikkoon."
+      },
+      "api": {
+        "title": "API ja integraatiot",
+        "body": "SDK-pääsy, API-avaimet ja integraatioiden rajaus."
+      },
+      "security": {
+        "title": "Tietoturva",
+        "body": "Haavoittuvuusilmoitukset ja tietoturvainsidentit."
+      },
+      "gdpr": {
+        "title": "GDPR / tietosuoja",
+        "body": "Rekisteröidyn pyynnöt, GDPR-kysymykset ja tietosuoja."
+      }
+    },
+    "offices": {
+      "registered": {
+        "title": "Rekisteröity yritys",
+        "line1": "CurNext",
+        "line2": "Suomi",
+        "line3": "Y-tunnus {id}"
+      },
+      "response": {
+        "title": "Vastausaika",
+        "line1": "Arkisin, tyypillisesti yhden arkipäivän kuluessa",
+        "line2": "Tarjoukset seuraavat työmaan kokoa ja pintoja Hinnoittelussa"
+      }
+    },
+    "formTitle": "Lähetä viesti",
+    "formLead": "Luemme jokaisen viestin ja vastaamme CurNext-osoitteesta. Useimmat tiedustelut saavat ensimmäisen vastauksen yhden arkipäivän kuluessa. Monimutkaiset tuote-, API- tai compliance-kysymykset voivat kestää kauemmin, kun oikea tiimi käy läpi työmaan tai pinon kontekstin.",
+    "form": {
+      "firstName": "Etunimi",
+      "lastName": "Sukunimi",
+      "workEmail": "Työsähköposti",
+      "phone": "Puhelin",
+      "company": "Yritys",
+      "topic": "Aihe",
+      "selectTopic": "Valitse aihe",
+      "message": "Viesti",
+      "messagePlaceholder": "Kerro projektistasi, aikataulustasi tai kysymyksestäsi.",
+      "securityCheck": "Turvatarkistus",
+      "consent": "Lähettämällä hyväksyt yhteydenoton tiedustelusi osalta. Emme myy tietojasi.",
+      "send": "Lähetä viesti",
+      "sending": "Lähetetään",
+      "selectTopicError": "Valitse aihe",
+      "turnstileRequired": "Suorita turvatarkistus",
+      "sendError": "Viestin lähettäminen epäonnistui",
+      "toastSuccess": "Viesti lähetetty - tarkista saapuneet vahvistusta varten",
+      "subjects": {
+        "general": "Yleinen tiedustelu",
+        "product": "Tuotetiedot",
+        "api": "API ja SDK:t",
+        "integrations": "Integraatiot",
+        "partnership": "Kumppanuus",
+        "support": "Tuotetuki",
+        "security": "Tietoturva",
+        "gdpr": "GDPR / tietosuoja",
+        "press": "Lehdistö / media",
+        "other": "Jokin muu"
+      }
+    }
+  }
+}

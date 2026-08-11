@@ -1,7 +1,8 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { buttonVariants } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import { solutions } from "@/config/site";
 import {
   itemHeadingClassName,
@@ -9,56 +10,17 @@ import {
 } from "@/lib/typography";
 import { cn } from "@/lib/utils";
 
-const layers = [
-  {
-    code: "L1",
-    role: "Sense",
-    title: "Surface devices",
-    body: "Install on the work itself - curing slabs, drying walls, indoor air, leaks, structure, or plant systems. Devices capture the conditions that drive schedule and quality decisions.",
-  },
-  {
-    code: "L2",
-    role: "Aggregate",
-    title: "Floor collection",
-    body: "Each floor concentrates its device traffic at one collection point, so a level stays organized as the project scales across wings and zones.",
-  },
-  {
-    code: "L3",
-    role: "Power",
-    title: "Site power continuity",
-    body: "Dedicated power keeps floor and building hardware online through outages. This layer supplies power only - it does not interpret measurements.",
-  },
-  {
-    code: "L4",
-    role: "Bridge",
-    title: "Building uplink",
-    body: "The building unit is the secure link from the site network to CurNext. It maintains a reliable, protected path off the jobsite.",
-  },
-  {
-    code: "L5",
-    role: "Decide",
-    title: "CurNext cloud",
-    body: "The platform turns site data into readiness status, alerts, and next actions - in the web dashboard and mobile app - with an audit trail for clients and compliance.",
-    product: true,
-  },
-] as const;
+const layerCodes = ["L1", "L2", "L3", "L4", "L5"] as const;
 
-const outcomes = [
-  {
-    title: "One stack for every surface",
-    body: "Curing, drying, air, leak, structure, and MEP share the same path to the cloud.",
-  },
-  {
-    title: "Decisions, not dashboards only",
-    body: "Teams see what is ready, what is at risk, and what to do next - not raw streams alone.",
-  },
-  {
-    title: "Evidence that travels",
-    body: "Keep a record for handovers, claims, and audits without rebuilding reports by hand.",
-  },
-] as const;
+export async function HowItWorksPage() {
+  const t = await getTranslations("howItWorks");
+  const tCommon = await getTranslations("common");
+  const layers = t.raw("layers") as Record<
+    (typeof layerCodes)[number],
+    { role: string; title: string; body: string }
+  >;
+  const outcomes = t.raw("outcomes") as Array<{ title: string; body: string }>;
 
-export function HowItWorksPage() {
   return (
     <main className="flex flex-1 flex-col">
       <section
@@ -68,29 +30,27 @@ export function HowItWorksPage() {
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-2xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              How it works
+              {t("eyebrow")}
             </p>
             <h1 id="how-hero-heading" className={sectionHeadingClassName}>
-              Site sensing to build-ready decisions
+              {t("title")}
             </h1>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              CurNext runs a five-layer stack from devices on the work through
-              floor collection, site power, a secure building uplink, and the
-              cloud product your team uses every day.
+              {t("lead")}
             </p>
           </div>
 
           <ol className="border-border/70 mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border bg-border/70 sm:mt-14 sm:grid-cols-5">
-            {layers.map((layer, index) => (
+            {layerCodes.map((code, index) => (
               <li
-                key={layer.code}
+                key={code}
                 className="bg-background flex flex-col gap-1 px-4 py-4 sm:px-5 sm:py-5"
               >
                 <span className="text-muted-foreground text-[11px] font-medium tracking-[0.16em] uppercase">
-                  {String(index + 1).padStart(2, "0")} · {layer.role}
+                  {String(index + 1).padStart(2, "0")} · {layers[code].role}
                 </span>
                 <span className="text-sm font-semibold tracking-tight">
-                  {layer.code}
+                  {code}
                 </span>
               </li>
             ))}
@@ -105,14 +65,13 @@ export function HowItWorksPage() {
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-2xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              Architecture
+              {t("architectureEyebrow")}
             </p>
             <h3 id="how-stack-heading" className={sectionHeadingClassName}>
-              The L1-L5 path
+              {t("stackTitle")}
             </h3>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              Each layer has one job. Data moves up the stack; decisions come
-              back through CurNext.
+              {t("stackLead")}
             </p>
           </div>
 
@@ -121,11 +80,12 @@ export function HowItWorksPage() {
               aria-hidden
               className="bg-border absolute top-3 bottom-3 left-[1.15rem] w-px sm:left-[1.35rem]"
             />
-            {layers.map((layer) => {
-              const isProduct = "product" in layer && layer.product;
+            {layerCodes.map((code) => {
+              const layer = layers[code];
+              const isProduct = code === "L5";
               return (
                 <li
-                  key={layer.code}
+                  key={code}
                   className="relative grid gap-4 py-8 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-8 sm:py-10"
                 >
                   <div className="relative z-10 flex items-start">
@@ -137,7 +97,7 @@ export function HowItWorksPage() {
                           : "border-border bg-background text-foreground",
                       )}
                     >
-                      {layer.code.replace("L", "")}
+                      {code.replace("L", "")}
                     </span>
                   </div>
                   <div
@@ -150,11 +110,11 @@ export function HowItWorksPage() {
                   >
                     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                       <p className="text-muted-foreground text-[11px] font-medium tracking-[0.16em] uppercase">
-                        {layer.code} · {layer.role}
+                        {code} · {layer.role}
                       </p>
                       {isProduct ? (
                         <p className="text-[11px] font-medium tracking-[0.14em] uppercase">
-                          Product layer
+                          {t("productLayer")}
                         </p>
                       ) : null}
                     </div>
@@ -179,10 +139,10 @@ export function HowItWorksPage() {
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-2xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              Why this stack
+              {t("outcomesEyebrow")}
             </p>
             <h3 id="how-outcomes-heading" className={sectionHeadingClassName}>
-              Built for site operations
+              {t("outcomesTitle")}
             </h3>
           </div>
           <ul className="mt-10 grid gap-8 sm:mt-12 sm:grid-cols-3 sm:gap-10">
@@ -205,14 +165,13 @@ export function HowItWorksPage() {
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-2xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              L1 surfaces
+              {t("surfacesEyebrow")}
             </p>
             <h3 id="how-surfaces-heading" className={sectionHeadingClassName}>
-              What you can monitor
+              {t("surfacesTitle")}
             </h3>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              Every surface line uses the same floor, power, uplink, and cloud
-              path.
+              {t("surfacesLead")}
             </p>
           </div>
           <ul className="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
@@ -248,14 +207,11 @@ export function HowItWorksPage() {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-14 sm:flex-row sm:items-end sm:justify-between sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              Next step
+              {t("ctaEyebrow")}
             </p>
-            <h3 className={sectionHeadingClassName}>
-              Map the stack to your project
-            </h3>
+            <h3 className={sectionHeadingClassName}>{t("ctaTitle")}</h3>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              Walk through surfaces, floors, and decision workflows with the
-              CurNext team.
+              {t("ctaLead")}
             </p>
           </div>
           <Link
@@ -265,7 +221,7 @@ export function HowItWorksPage() {
               "h-11 shrink-0 gap-2 px-5",
             )}
           >
-            Request Quote
+            {tCommon("requestQuote")}
             <ArrowRight className="size-4" aria-hidden />
           </Link>
         </div>

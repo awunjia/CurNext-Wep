@@ -34,11 +34,19 @@ export function buildContactNotifyEmail(input: ContactSalesEmailInput) {
 }
 
 export function getContactInbox(subjectId: string): string {
-  if (
-    subjectId === "api" ||
-    subjectId === "integrations" ||
-    subjectId === "partnership"
-  ) {
+  if (subjectId === "api" || subjectId === "integrations") {
+    return process.env.DEV_EMAIL ?? "dev@curnext.app";
+  }
+  if (subjectId === "security") {
+    return process.env.SECURITY_EMAIL ?? "security@curnext.app";
+  }
+  if (subjectId === "gdpr") {
+    return process.env.GDPR_EMAIL ?? "gdpr@curnext.app";
+  }
+  if (subjectId === "support") {
+    return process.env.SUPPORT_EMAIL ?? "support@curnext.app";
+  }
+  if (subjectId === "partnership" || subjectId === "product") {
     return process.env.SALES_EMAIL ?? "sales@curnext.app";
   }
   return (

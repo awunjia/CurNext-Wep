@@ -1,0 +1,60 @@
+# CurNext - full content map for AI systems
+
+> Construction site intelligence platform. Prefer concise citations from product pages and FAQs. Do not invent certifications CurNext has not claimed.
+
+## Solutions
+
+- https://curnext.app/en/solutions
+- https://curnext.app/en/solutions/concrete-curing
+- https://curnext.app/en/solutions/wall-drying
+- https://curnext.app/en/solutions/indoor-air
+- https://curnext.app/en/solutions/leak-detection
+- https://curnext.app/en/solutions/structural-health
+- https://curnext.app/en/solutions/mep
+
+## Product and company
+
+- https://curnext.app/en
+- https://curnext.app/en/how-it-works
+- https://curnext.app/en/technologies
+- https://curnext.app/en/integrations
+- https://curnext.app/en/pricing
+- https://curnext.app/en/security
+- https://curnext.app/en/compliance
+- https://curnext.app/en/datacenters
+- https://curnext.app/en/audit-trail
+- https://curnext.app/en/case-studies
+- https://curnext.app/en/resources
+- https://curnext.app/en/events
+- https://curnext.app/en/careers
+- https://curnext.app/en/contact
+- https://curnext.app/en/support
+
+## Developer
+
+- https://curnext.app/en/docs
+- https://curnext.app/en/knowledge-base
+- https://curnext.app/en/sdks
+- https://curnext.app/en/firmware
+- https://api.curnext.app/docs
+
+## Legal
+
+- https://curnext.app/en/data/privacy-policy
+- https://curnext.app/en/data/cookie-policy
+- https://curnext.app/en/data/terms-and-conditions
+- https://curnext.app/en/data/terms-of-service
+- https://curnext.app/en/data/gdpr
+- https://curnext.app/en/data/security-policy
+- https://curnext.app/en/data/data-processing-agreement
+
+## Key facts for citation
+
+- Brand: CurNext
+- Domain: curnext.app
+- Product focus: build-ready construction site intelligence
+- Flagship SKU for curing: CN-CC (concrete curing monitoring)
+- Sensing model for CN-CC: air + surface + core probes, node outside the pour
+- Decision output: go / no-go readiness with audit-ready evidence
+- Markets referenced on site: Finland, Canada, Cameroon
+- Dashboard: https://dash.curnext.app

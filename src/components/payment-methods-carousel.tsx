@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 import { paymentMethods } from "@/config/payments";
 import { sectionHeadingClassName } from "@/lib/typography";
 
@@ -5,7 +7,9 @@ import { sectionHeadingClassName } from "@/lib/typography";
  * Static horizontal row of payment marks (not a carousel). Logos are
  * unmodified brand assets shown at equal prominence.
  */
-export function PaymentMethodsCarousel() {
+export async function PaymentMethodsCarousel() {
+  const t = await getTranslations("pricing");
+
   return (
     <section
       aria-labelledby="payment-methods-heading"
@@ -14,10 +18,10 @@ export function PaymentMethodsCarousel() {
       <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
         <div className="max-w-2xl">
           <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-            Payments
+            {t("paymentsEyebrow")}
           </p>
           <h3 id="payment-methods-heading" className={sectionHeadingClassName}>
-            Payment methods we accept
+            {t("paymentsTitle")}
           </h3>
         </div>
 
@@ -32,7 +36,7 @@ export function PaymentMethodsCarousel() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`${method.src}?v=3`}
-                    alt={`${method.name} logo`}
+                    alt={t("paymentLogoAlt", { name: method.name })}
                     width={100}
                     height={64}
                     className="payment-logo h-full max-h-8 w-full object-contain sm:max-h-10 md:max-h-11"

@@ -48,7 +48,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "indoor air",
       "leak",
     ],
-    text: "CN-CC concrete curing with air, surface, and core probes. CN-WD wall drying for gypsum, wet rooms, and moisture risk before finishes. CN-IAQ indoor air for CO2, PM, VOC and indoor climate context. CN-LEAK leak detection for plant rooms, bathrooms, and risers when moisture events matter. CN-SHM structural health for tilt, crack, vibration. CN-MEP flow, pressure, energy including PoE panel paths. For mold or moisture concerns in a building, point people toward CN-WD, CN-IAQ, and CN-LEAK depending on whether the job is drying finishes, indoor air quality, or leak watch - then size nodes and duration on Pricing.",
+    text: "CN-CC concrete curing with air, surface, and core probes. CurNext runs an in-house concrete curing prediction model trained with TensorFlow.js as part of the readiness engine. CN-WD wall drying for gypsum, wet rooms, and moisture risk before finishes. CN-IAQ indoor air for CO2, PM, VOC and indoor climate context. CN-LEAK leak detection for plant rooms, bathrooms, and risers when moisture events matter. CN-SHM structural health for tilt, crack, vibration. CN-MEP flow, pressure, energy including PoE panel paths. For mold or moisture concerns in a building, point people toward CN-WD, CN-IAQ, and CN-LEAK depending on whether the job is drying finishes, indoor air quality, or leak watch - then size nodes and duration on Pricing.",
   },
   {
     id: "api",
@@ -128,8 +128,16 @@ export const knowledgeChunks: KnowledgeChunk[] = [
     title: "Data Processing Agreement",
     source: "DPA",
     href: "/data/data-processing-agreement",
-    tags: ["dpa", "processor", "privacy", "subprocessors"],
-    text: "CurNext Oy (Helsinki, Finland) acts as processor for Client Data instructed through the Services; Client remains controller. DPA available upon request; enterprise within 30 days of schedule signature. Contact legal@curnext.app. See the DPA page for the current subprocessor list.",
+    tags: ["dpa", "processor", "privacy", "subprocessors", "ai", "gemini", "groq"],
+    text: "CurNext (Helsinki, Finland) acts as processor for Client Data instructed through the Services; Client remains controller. DPA available upon request; enterprise within 30 days of schedule signature. Contact legal@curnext.app. Public subprocessors include hosting, email, payments, and AI vendors Gemini and Groq when enabled. See the DPA page for the current list.",
+  },
+  {
+    id: "compliance",
+    title: "Compliance posture",
+    source: "Compliance",
+    href: "/compliance",
+    tags: ["compliance", "gdpr", "iso", "soc", "certification"],
+    text: "CurNext does not claim ISO 27001 or SOC 2 for itself on public pages. GDPR applies to EU platform processing. Standards on Security and Compliance pages are design alignment. Construction evidence includes readiness and audit trails. Concrete curing prediction uses an in-house TensorFlow.js model. Assisted AI features use Gemini and Groq when enabled.",
   },
   {
     id: "contact",
@@ -137,7 +145,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
     source: "Contact",
     href: "/contact",
     tags: ["contact", "support", "sales", "email", "quote"],
-    text: "sales@curnext.app for commercial questions, volume, and quotes when Pricing is not enough. info@curnext.app for general inquiries. support@curnext.app for product support. security@curnext.app for security. legal@curnext.app for DPA. Typical response within one business day on weekdays. Contact form: /contact. Pricing estimator and quote request: /pricing.",
+    text: "sales@curnext.app for commercial questions, volume, and quotes when Pricing is not enough. dev@curnext.app for API, SDKs, and integrations. info@curnext.app for general inquiries. support@curnext.app for product support. security@curnext.app for security. gdpr@curnext.app for GDPR and privacy requests. legal@curnext.app for DPA. Typical response within one business day on weekdays. Contact form: /contact. Pricing estimator and quote request: /pricing.",
   },
 ];
 

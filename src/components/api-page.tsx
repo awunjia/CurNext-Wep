@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import { ArrowRight, ArrowUpRight, Code2 } from "lucide-react";
 
 import {
@@ -9,19 +10,6 @@ import {
 } from "@/components/ui/accordion";
 import { buttonVariants } from "@/components/ui/button";
 import {
-  apiAccess,
-  apiAudience,
-  apiBuiltNote,
-  apiCapabilities,
-  apiEndpoints,
-  apiFaqs,
-  apiMqttFootnote,
-  apiPage,
-  apiReadinessSample,
-  apiWebhooks,
-  apiWhy,
-} from "@/config/api-page";
-import {
   itemHeadingClassName,
   sectionHeadingClassName,
 } from "@/lib/typography";
@@ -30,7 +18,20 @@ import { cn } from "@/lib/utils";
 const codeBlockClass =
   "border-border/70 bg-muted/40 overflow-x-auto rounded-lg border p-4 font-mono text-[12px] leading-relaxed text-foreground sm:text-[13px]";
 
-export function ApiPage() {
+export async function ApiPage() {
+  const t = await getTranslations("api");
+  const apiAccess = t.raw("apiAccess") as typeof import("@/config/api-page").apiAccess;
+  const apiAudience = t.raw("apiAudience") as typeof import("@/config/api-page").apiAudience;
+  const apiBuiltNote = t.raw("apiBuiltNote") as typeof import("@/config/api-page").apiBuiltNote;
+  const apiCapabilities = t.raw("apiCapabilities") as typeof import("@/config/api-page").apiCapabilities;
+  const apiEndpoints = t.raw("apiEndpoints") as typeof import("@/config/api-page").apiEndpoints;
+  const apiFaqs = t.raw("apiFaqs") as typeof import("@/config/api-page").apiFaqs;
+  const apiMqttFootnote = t.raw("apiMqttFootnote") as typeof import("@/config/api-page").apiMqttFootnote;
+  const apiPage = t.raw("apiPage") as typeof import("@/config/api-page").apiPage;
+  const apiReadinessSample = t.raw("apiReadinessSample") as typeof import("@/config/api-page").apiReadinessSample;
+  const apiWebhooks = t.raw("apiWebhooks") as typeof import("@/config/api-page").apiWebhooks;
+  const apiWhy = t.raw("apiWhy") as typeof import("@/config/api-page").apiWhy;
+
   const mid = Math.ceil(apiFaqs.length / 2);
 
   return (

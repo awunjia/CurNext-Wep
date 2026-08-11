@@ -1,21 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { buttonVariants } from "@/components/ui/button";
-import {
-  firmwareCatalogSamples,
-  firmwareFlags,
-  firmwareHistorySamples,
-  firmwareHonesty,
-  firmwareOta,
-  firmwarePage,
-  firmwareSecurity,
-  firmwareStack,
-  firmwareTrees,
-} from "@/config/firmware";
+import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import {
   itemHeadingClassName,
@@ -23,15 +13,45 @@ import {
 } from "@/lib/typography";
 import { cn } from "@/lib/utils";
 
-const tabs = [
-  { id: "versions", label: "Versions" },
-  { id: "architecture", label: "Architecture" },
-  { id: "history", label: "History" },
-] as const;
+const tabIds = ["versions", "architecture", "history"] as const;
 
-type TabId = (typeof tabs)[number]["id"];
+type TabId = (typeof tabIds)[number];
 
 export function FirmwarePage() {
+  const t = useTranslations("firmware");
+  const firmwareCatalogSamples = t.raw(
+    "firmwareCatalogSamples",
+  ) as typeof import("@/config/firmware").firmwareCatalogSamples;
+  const firmwareFlags = t.raw(
+    "firmwareFlags",
+  ) as typeof import("@/config/firmware").firmwareFlags;
+  const firmwareHistorySamples = t.raw(
+    "firmwareHistorySamples",
+  ) as typeof import("@/config/firmware").firmwareHistorySamples;
+  const firmwareHonesty = t.raw(
+    "firmwareHonesty",
+  ) as typeof import("@/config/firmware").firmwareHonesty;
+  const firmwareOta = t.raw(
+    "firmwareOta",
+  ) as typeof import("@/config/firmware").firmwareOta;
+  const firmwarePage = t.raw(
+    "firmwarePage",
+  ) as typeof import("@/config/firmware").firmwarePage;
+  const firmwareSecurity = t.raw(
+    "firmwareSecurity",
+  ) as typeof import("@/config/firmware").firmwareSecurity;
+  const firmwareStack = t.raw(
+    "firmwareStack",
+  ) as typeof import("@/config/firmware").firmwareStack;
+  const firmwareTrees = t.raw(
+    "firmwareTrees",
+  ) as typeof import("@/config/firmware").firmwareTrees;
+
+  const tabs = tabIds.map((id) => ({
+    id,
+    label: t(`tabs.${id}`),
+  }));
+
   const [tab, setTab] = useState<TabId>("versions");
   const [deviceFilter, setDeviceFilter] = useState("all");
   const [productionOnly, setProductionOnly] = useState(false);

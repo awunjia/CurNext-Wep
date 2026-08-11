@@ -1,17 +1,19 @@
 "use client";
 
-import Link from "next/link";
 import { MailPlus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Link } from "@/i18n/navigation";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function HomeSubscribeSection() {
+  const t = useTranslations("home");
   const [email, setEmail] = useState("");
   const [pending, setPending] = useState(false);
   const canSubmit = EMAIL_RE.test(email.trim()) && !pending;
@@ -21,7 +23,7 @@ export function HomeSubscribeSection() {
     const value = email.trim().toLowerCase();
 
     if (!value || !EMAIL_RE.test(value)) {
-      toast.error("Enter a valid email address");
+      toast.error(t("subscribeInvalid"));
       return;
     }
 
@@ -38,14 +40,14 @@ export function HomeSubscribeSection() {
       } | null;
 
       if (!response.ok) {
-        toast.error(payload?.error ?? "Could not subscribe. Try again.");
+        toast.error(payload?.error ?? t("subscribeError"));
         return;
       }
 
-      toast.success(payload?.message ?? "You are subscribed.");
+      toast.success(payload?.message ?? t("subscribeSuccess"));
       setEmail("");
     } catch {
-      toast.error("Could not subscribe. Try again.");
+      toast.error(t("subscribeError"));
     } finally {
       setPending(false);
     }
@@ -59,18 +61,14 @@ export function HomeSubscribeSection() {
       <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20 md:py-24">
         <div className="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between sm:gap-12">
           <div className="max-w-xl">
-            <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              Newsletter
-            </p>
             <h3
               id="subscribe-heading"
               className="text-xl font-semibold tracking-tight sm:text-2xl"
             >
-              Stay ahead of readiness
+              {t("subscribeTitle")}
             </h3>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              Product updates, site intelligence notes, and release highlights -
-              occasional, no fluff.
+              {t("subscribeLead")}
             </p>
           </div>
 
@@ -80,7 +78,7 @@ export function HomeSubscribeSection() {
             noValidate
           >
             <div className="space-y-2">
-              <Label htmlFor="subscribe-email">Work email</Label>
+              <Label htmlFor="subscribe-email">{t("subscribePlaceholder")}</Label>
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                 <Input
                   id="subscribe-email"
@@ -102,19 +100,21 @@ export function HomeSubscribeSection() {
                   className="h-10 w-full gap-2 sm:w-auto sm:px-5"
                 >
                   <MailPlus className="size-4" aria-hidden />
-                  {pending ? "Subscribing…" : "Subscribe"}
+                  {pending ? t("subscribePending") : t("subscribeCta")}
                 </Button>
               </div>
             </div>
             <p className="text-muted-foreground text-xs leading-relaxed">
-              By subscribing you agree to our{" "}
-              <Link
-                href="/data/privacy-policy"
-                className="text-foreground underline-offset-4 hover:underline"
-              >
-                Privacy Policy
-              </Link>
-              . Unsubscribe anytime.
+              {t.rich("subscribeLegal", {
+                privacy: (chunks) => (
+                  <Link
+                    href="/data/privacy-policy"
+                    className="text-foreground underline-offset-4 hover:underline"
+                  >
+                    {chunks}
+                  </Link>
+                ),
+              })}
             </p>
           </form>
         </div>

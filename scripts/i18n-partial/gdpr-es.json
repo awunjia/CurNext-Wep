@@ -1,0 +1,341 @@
+{
+  "emailGdpr": "Escribir a gdpr@",
+  "readDpa": "Leer el DPA",
+  "basisCol": "Base jurídica",
+  "useCol": "Uso típico",
+  "rightCol": "Derecho",
+  "detailCol": "Qué significa",
+  "ctaTitle": "¿Necesita ayuda con una solicitud de privacidad?",
+  "ctaLead": "Escriba a gdpr@curnext.app para solicitudes de interesados, o use el tema RGPD / privacidad del formulario de contacto. Para un DPA firmado, use legal@curnext.app.",
+  "contactForm": "Formulario de contacto",
+  "relatedTitle": "Políticas relacionadas",
+  "page": {
+    "title": "Políticas RGPD",
+    "description": "Cómo CurNext aplica el Reglamento General de Protección de Datos (RGPD) a los datos personales tratados a través de curnext.app, el panel CurNext, las API y servicios relacionados - roles, bases jurídicas, derechos de los interesados, conservación, transferencias y contacto.",
+    "metaDescription": "Políticas RGPD de CurNext: identidad del responsable, roles, bases jurídicas, derechos de los interesados, conservación, hosting en la UE, transferencias, violaciones y gdpr@curnext.app.",
+    "leadNote": "Esta página explica las políticas orientadas al RGPD de CurNext para la transparencia conforme a los artículos 12-14 y obligaciones relacionadas. No sustituye un acuerdo de encargo firmado ni asesoramiento jurídico. Si esta página y un contrato firmado entran en conflicto, prevalece el contrato para esa relación.",
+    "supportLine": "Responsable del tratamiento para cuentas, marketing y sitio de CurNext: CurNext (Finlandia). Encargado del tratamiento para Client Data instruidos a través de la plataforma: CurNext bajo DPA. Hosting de producción principal: Alemania / Fráncfort. Solicitudes de privacidad: gdpr@curnext.app.",
+    "lastUpdatedLabel": "Última actualización",
+    "lastUpdated": "11 de agosto de 2026",
+    "legalEyebrow": "Legal"
+  },
+  "overview": {
+    "title": "Finalidad de esta política",
+    "lead": "CurNext construye inteligencia de obra - sensores, pasarelas, paneles en la nube y evidencias de madurez. Esa pila implica inevitablemente datos personales: invitados, administradores, contactos de soporte, visitantes del sitio y candidatos. El RGPD es el régimen principal de privacidad para el tratamiento de nuestra plataforma anclada en la UE.",
+    "bullets": [
+      "Explicar quién responde de cada tratamiento (responsable vs encargado).",
+      "Describir categorías de datos personales, finalidades y bases jurídicas a nivel de política.",
+      "Exponer los derechos de los interesados y un canal claro para ejercerlos.",
+      "Resumir temas de conservación, transferencias internacionales, postura de seguridad y gestión de violaciones.",
+      "Remitir a documentos relacionados (DPA, Seguridad, Cumplimiento, Audit Trail, Política de cookies) sin duplicar cada cláusula."
+    ],
+    "honesty": "No reivindicamos certificación ISO 27001 ni SOC 2 para CurNext en páginas públicas. Las normas citadas en otros lugares son alineación de diseño salvo confirmación escrita por separado."
+  },
+  "controller": {
+    "title": "Identidad y contacto del responsable",
+    "lead": "Para los datos personales cuyos fines y medios de tratamiento determina CurNext (por ejemplo analítica del sitio con consentimiento, suscripciones de marketing, candidaturas y la administración de cuentas B2B de CurNext), el responsable del tratamiento es:",
+    "privacyEmail": "gdpr@curnext.app",
+    "privacyEmailLabel": "Buzón RGPD / privacidad",
+    "legalEmail": "legal@curnext.app",
+    "legalEmailLabel": "Legal / DPA",
+    "securityEmail": "security@curnext.app",
+    "securityEmailLabel": "Incidentes de seguridad y divulgación de vulnerabilidades",
+    "note": "Use gdpr@curnext.app para acceso, rectificación, supresión, limitación, portabilidad, oposición y otras solicitudes de interesados. Use legal@curnext.app para acuerdos de encargo. Use security@curnext.app para divulgación de vulnerabilidades e incidentes de seguridad confirmados - no para solicitudes rutinarias de interesados."
+  },
+  "roles": {
+    "title": "Roles conforme al RGPD",
+    "lead": "La claridad sobre los roles evita expectativas erróneas sobre quién responde a una solicitud.",
+    "items": [
+      {
+        "title": "CurNext como responsable",
+        "body": "CurNext suele ser el responsable de: el sitio de marketing público; las suscripciones a boletines y actualizaciones de producto; los formularios de contacto y presupuesto cuando escribe directamente a CurNext; carreras y reclutamiento; el CRM y registros comerciales de CurNext; las identidades de cuentas solo por invitación que CurNext mantiene para dar acceso a los Servicios; y la telemetría necesaria para operar, asegurar y mejorar los productos propios de CurNext (sujeto a contratos y ajustes de producto)."
+      },
+      {
+        "title": "CurNext como encargado",
+        "body": "Cuando un cliente (el Client) usa CurNext para monitorear obras y gestionar usuarios de proyecto, CurNext actúa en general como encargado respecto de los Client Data - datos personales que el Client carga, invita o genera a través de los Servicios bajo sus instrucciones. El Client sigue siendo el responsable de esos Client Data. Los términos de encargo figuran en el acuerdo de encargo."
+      },
+      {
+        "title": "Situaciones conjuntas o mixtas",
+        "body": "Algunos registros operativos y eventos de seguridad pueden contener identificadores que sirven tanto a la rendición de cuentas del Client como al interés legítimo de CurNext de asegurar la plataforma. Diseñamos para la rendición de cuentas (RBAC, eventos de auditoría, acceso solo por invitación) y documentamos la división en el DPA y los materiales de Seguridad. Si no está seguro de quién debe responder, escriba a gdpr@curnext.app y lo encaminaremos."
+      }
+    ]
+  },
+  "scope": {
+    "title": "Ámbito del tratamiento cubierto",
+    "lead": "Estas políticas se aplican a los datos personales tratados en relación con:",
+    "bullets": [
+      "curnext.app y páginas de marketing localizadas",
+      "dash.curnext.app y experiencias de panel relacionadas",
+      "API, SDK y portales de desarrolladores de CurNext donde aparecen datos personales (por ejemplo claves API vinculadas a cuentas)",
+      "Aplicaciones móviles publicadas bajo la marca CurNext, cuando están vinculadas al mismo plano de identidad",
+      "Interacciones de Soporte, Docs y Base de conocimientos que identifican a una persona",
+      "Correo, formularios y sistemas CRM usados para responder a solicitudes comerciales y de soporte"
+    ],
+    "note": "Los sensores de campo miden principalmente condiciones ambientales y estructurales. El riesgo de datos personales suele surgir en la capa de nube, identidad y colaboración (quién puede ver qué proyecto), no solo de lecturas de temperatura o humedad. Los mapas BIM y planos cargados pueden contener datos personales según lo que el Client incluya."
+  },
+  "legalBases": {
+    "title": "Bases jurídicas (artículo 6)",
+    "lead": "Según el tratamiento, CurNext se basa en una o más de las siguientes bases. El mapeo exacto de una función de producto puede precisarse en la Política de privacidad y los contratos con clientes.",
+    "rows": [
+      {
+        "basis": "Contrato (art. 6(1)(b))",
+        "use": "Crear y administrar cuentas, entregar los Servicios pedidos, autenticar invitados, prestar soporte contractual y tratar la información necesaria para un flujo de presupuesto o pedido."
+      },
+      {
+        "basis": "Intereses legítimos (art. 6(1)(f))",
+        "use": "Asegurar la plataforma (fraude, abuso, detección de intrusiones), mejorar la fiabilidad, gestionar relaciones B2B con clientes actuales y potenciales, analítica de producto limitada que no prevalezca sobre derechos y libertades, y defender reclamaciones legales. Equilibramos intereses y ofrecemos oposición cuando se requiere."
+      },
+      {
+        "basis": "Consentimiento (art. 6(1)(a))",
+        "use": "Cookies no esenciales y tecnologías similares cuando se requiere consentimiento; correos de marketing opcionales cuando el consentimiento es la base elegida; chat de IA de la Base de conocimientos cuando el flujo de producto exige consentimiento RGPD explícito antes de enviar una pregunta; otras funciones opcionales que marcamos como basadas en consentimiento."
+      },
+      {
+        "basis": "Obligación legal (art. 6(1)(c))",
+        "use": "Conservación fiscal, contable y regulatoria; responder a solicitudes lícitas de autoridades competentes; deberes de notificación de violaciones cuando CurNext es el responsable."
+      }
+    ],
+    "special": "No pretendemos tratar categorías especiales de datos personales (art. 9) como parte del monitoreo básico de obra. No envíe datos de salud, biométricos u otras categorías especiales a través de formularios de contacto generales. Si un proyecto de cliente lo requiere, debe delimitarse por escrito con salvaguardas adecuadas."
+  },
+  "categories": {
+    "title": "Categorías de datos personales",
+    "lead": "Las categorías varían según la superficie de producto. Ejemplos típicos:",
+    "items": [
+      {
+        "title": "Identidad y contacto",
+        "body": "Nombre, correo laboral, teléfono, empresa, rol, preferencia de idioma y datos de contacto empresariales similares."
+      },
+      {
+        "title": "Cuenta y acceso",
+        "body": "Estado de invitación, pertenencia a organización / proyecto, roles y permisos, metadatos de autenticación, señales de sesión y dispositivo usadas para seguridad, y estado MFA para roles privilegiados."
+      },
+      {
+        "title": "Comercial y soporte",
+        "body": "Mensajes enviados por canales de contacto, presupuesto, demo o soporte; historial de tickets; referencias contractuales y de facturación necesarias para atender la cuenta."
+      },
+      {
+        "title": "Uso y técnico",
+        "body": "Direcciones IP, ubicación aproximada derivada de datos de red, navegador/user-agent, registros de diagnóstico, eventos de rate-limit y WAF, y métricas de uso de producto necesarias para operar los Servicios."
+      },
+      {
+        "title": "Reclutamiento",
+        "body": "Contenido de CV / currículum, respuestas de candidatura, notas de entrevista y comunicaciones relacionadas con puestos abiertos."
+      },
+      {
+        "title": "Contenido de proyecto controlado por el Client",
+        "body": "Contenido generado por usuarios dentro de proyectos (notas, cargas, anotaciones vinculadas a BIM, listas de colaboradores) que el Client controla como responsable. CurNext lo trata como encargado bajo instrucciones documentadas."
+      }
+    ]
+  },
+  "rights": {
+    "title": "Sus derechos conforme al RGPD",
+    "lead": "Cuando se aplica el RGPD y CurNext es el responsable (o debe asistir como encargado), puede disponer de los siguientes derechos, sujetos a límites y excepciones legales:",
+    "rows": [
+      {
+        "right": "Acceso (art. 15)",
+        "detail": "Obtener confirmación de si tratamos sus datos personales y recibir una copia junto con información relevante sobre el tratamiento."
+      },
+      {
+        "right": "Rectificación (art. 16)",
+        "detail": "Hacer corregir datos personales inexactos y completar datos incompletos."
+      },
+      {
+        "right": "Supresión (art. 17)",
+        "detail": "Solicitar la eliminación cuando proceda un motivo (por ejemplo retirada del consentimiento o datos que ya no son necesarios). Los requisitos de conservación y auditoría pueden limitar la eliminación completa de ciertos registros de seguridad o financieros; lo explicamos cuando sea el caso."
+      },
+      {
+        "right": "Limitación (art. 18)",
+        "detail": "Solicitar que el tratamiento se limite en circunstancias concretas (por ejemplo mientras se discute la exactitud)."
+      },
+      {
+        "right": "Portabilidad (art. 20)",
+        "detail": "Recibir los datos personales que nos facilitó en un formato estructurado, de uso común y lectura mecánica, y transmitirlos cuando el tratamiento se base en el consentimiento o el contrato y se realice por medios automatizados."
+      },
+      {
+        "right": "Oposición (art. 21)",
+        "detail": "Oponerse al tratamiento basado en intereses legítimos, incluida la elaboración de perfiles relacionada, y oponerse al marketing directo en cualquier momento."
+      },
+      {
+        "right": "Retirar el consentimiento",
+        "detail": "Cuando el tratamiento se base en el consentimiento, retirarlo en cualquier momento sin afectar a la licitud del tratamiento anterior a la retirada."
+      },
+      {
+        "right": "Reclamación",
+        "detail": "Presentar una reclamación ante una autoridad de control, en particular en el Estado del EEE de su residencia habitual, lugar de trabajo o lugar de la infracción alegada."
+      }
+    ],
+    "clientNote": "Si su solicitud concierne a datos dentro del proyecto CurNext de un cliente (por ejemplo un colaborador invitado por un admin del Client), el Client suele ser el primer contacto adecuado. CurNext asiste al Client conforme al DPA y puede ayudar a encaminar las solicitudes recibidas en gdpr@curnext.app."
+  },
+  "exercise": {
+    "title": "Cómo ejercer sus derechos",
+    "lead": "Preferimos solicitudes escritas para autenticar al solicitante y mantener un registro responsable.",
+    "steps": [
+      "Escriba a gdpr@curnext.app desde la dirección asociada a su cuenta o con detalle suficiente para identificarle.",
+      "Indique qué derecho desea ejercer y el contexto (sitio, boletín, cuenta del panel, candidatura o proyecto de cliente).",
+      "Incluya su nombre completo, empresa (si procede) y cualquier nombre de proyecto u organización que aparezca en el panel.",
+      "Para Client Data dentro de un tenant de cliente, indíquenos la organización del cliente si la conoce - puede que debamos involucrar al responsable Client."
+    ],
+    "timing": "Pretendemos responder sin dilación indebida y en el plazo de un mes desde la recepción, prorrogable otros dos meses para solicitudes complejas o numerosas conforme al art. 12(3). Si necesitamos más tiempo o no podemos atender una solicitud, explicaremos por qué.",
+    "identity": "Podemos pedir información adicional razonable para confirmar identidad y autoridad (por ejemplo que actúa por un admin de empresa). No atenderemos una solicitud que divulgue injustificadamente los datos de otra persona.",
+    "email": "gdpr@curnext.app",
+    "formHint": "También puede seleccionar \"RGPD / privacidad\" en el formulario de contacto en /contact - ese tema se dirige al mismo buzón."
+  },
+  "retention": {
+    "title": "Conservación",
+    "lead": "Conservamos los datos personales solo el tiempo necesario para las finalidades descritas, incluidas necesidades legales, contables y de seguridad.",
+    "items": [
+      {
+        "title": "Datos de cuenta y servicio",
+        "body": "Se conservan durante la vida de la relación con el cliente y un periodo de cierre necesario para el offboarding, la gestión de disputas y el cierre contractual, y después se eliminan o anonimizan según calendarios de producto y DPA."
+      },
+      {
+        "title": "Contactos de marketing",
+        "body": "Se mantienen hasta que se dé de baja o se oponga, o hasta la limpieza rutinaria de la lista, salvo que se requiera una conservación más larga para la exclusión (para recordar no enviarle correo de nuevo)."
+      },
+      {
+        "title": "Correspondencia de soporte y ventas",
+        "body": "Se conserva lo necesario para completar la solicitud y mantener un registro comercial razonable, y después se reduce o elimina según calendarios internos."
+      },
+      {
+        "title": "Reclutamiento",
+        "body": "Los materiales de candidatura se conservan durante el proceso de selección y un periodo limitado posterior (o más tiempo con su consentimiento para puestos futuros), y después se eliminan o archivan con acceso restringido."
+      },
+      {
+        "title": "Eventos de seguridad y auditoría RGPD",
+        "body": "Los registros de seguridad y los eventos de auditoría orientados al RGPD pueden conservarse más tiempo, a veces en forma append-only o seudonimizada, para investigar incidentes y demostrar rendición de cuentas. Véase Audit Trail."
+      },
+      {
+        "title": "Copias de seguridad",
+        "body": "Las copias cifradas siguen una conservación rotativa. La eliminación en sistemas activos puede aplicarse en las copias solo tras expirar el ciclo de copia de seguridad."
+      }
+    ]
+  },
+  "transfers": {
+    "title": "Transferencias internacionales",
+    "lead": "El hosting principal de aplicación y base de datos de la plataforma está diseñado en torno a Alemania / Fráncfort (UE). Los mercados comerciales actuales incluyen Finlandia, Canadá y Camerún - vender en un mercado no es lo mismo que alojar allí una región de producción local.",
+    "bullets": [
+      "El tratamiento EEE / UE es el valor predeterminado para Client Data en la pila de producción, salvo que un addendum escrito de residencia empresarial diga lo contrario.",
+      "El acceso por personal autorizado de CurNext o subencargados fuera del EEE, si lo hubiera, se rige por herramientas de transferencia como las cláusulas contractuales tipo de la Comisión Europea (CCT), decisiones de adecuación cuando procedan, y salvaguardas contractuales / técnicas descritas en el DPA.",
+      "Los clientes canadienses y cameruneses acceden a Client Data alojados en la UE según instrucciones; el Client sigue siendo responsable de esos Client Data.",
+      "Algunos proveedores de soporte, correo o asistencia de IA pueden tratar datos personales limitados fuera del EEE - véase la lista pública de subencargados en la página del DPA."
+    ],
+    "note": "Los detalles de subencargados, ubicaciones y mecanismos de transferencia se mantienen en la página del acuerdo de encargo y pueden cambiar con el aviso que allí se describe."
+  },
+  "subprocessors": {
+    "title": "Encargados y subencargados",
+    "lead": "Cuando CurNext actúa como encargado, contratamos subencargados bajo condiciones escritas que imponen obligaciones de protección de datos coherentes con el art. 28. Cuando CurNext actúa como responsable, usamos encargados bajo contratos adecuados.",
+    "bullets": [
+      "Infraestructura de hosting y base de datos en la UE (orientación Alemania / Fráncfort).",
+      "Almacenamiento de objetos opcional con opciones de jurisdicción UE cuando está habilitado.",
+      "Proveedores de entrega de correo, monitorización de errores y observabilidad según la lista pública.",
+      "Funciones de IA asistida (por ejemplo Gemini o Groq cuando están habilitadas) bajo controles de producto y contractuales - la predicción de curado del hormigón usa un modelo TensorFlow.js interno y no es lo mismo que la asistencia por chat."
+    ],
+    "cta": "Revisar el resumen público actual de subencargados",
+    "href": "/data/data-processing-agreement"
+  },
+  "security": {
+    "title": "Medidas de seguridad",
+    "lead": "La seguridad forma parte de la rendición de cuentas del RGPD (art. 32). La postura públicamente descrita de CurNext incluye:",
+    "bullets": [
+      "Acceso al plano de producto solo por invitación",
+      "Control de acceso basado en roles (RBAC) y MFA privilegiada",
+      "Cifrado en tránsito; cifrado en reposo para almacenes de datos principales",
+      "Protecciones perimetrales como WAF y limitación de tasa",
+      "Controles de conectividad de campo y edificio (incluidos temas LoRaWAN AES-128, WireGuard / MQTT mTLS para CN-BC según documentado en Seguridad)",
+      "Prácticas OTA firmadas para firmware cuando proceda",
+      "Rutas de auditoría, exportación y borrado orientadas al RGPD en el diseño del producto"
+    ],
+    "note": "El detalle de arquitectura está en la página de Seguridad. Informe vulnerabilidades a security@curnext.app mediante divulgación coordinada - no envíe detalles de exploits a support@ o gdpr@.",
+    "href": "/security",
+    "cta": "Leer la arquitectura de seguridad"
+  },
+  "breach": {
+    "title": "Violaciones de datos personales",
+    "lead": "CurNext mantiene procesos orientados a detectar, evaluar y responder a violaciones de datos personales.",
+    "items": [
+      {
+        "title": "Cuando CurNext es responsable",
+        "body": "Evaluamos el riesgo para derechos y libertades y notificamos a la autoridad de control competente sin dilación indebida y, cuando sea posible, en un plazo de 72 horas desde que tengamos conocimiento de una violación que requiera notificación conforme al art. 33. Comunicamos a las personas afectadas cuando el art. 34 lo exija."
+      },
+      {
+        "title": "Cuando CurNext es encargado",
+        "body": "Notificamos al Client sin dilación indebida tras tener conocimiento de una violación de datos personales que afecte a Client Data, y asistimos con la información que el Client necesita para sus propias obligaciones. Los contratos empresariales pueden fijar un objetivo más estricto (por ejemplo 24 horas al contacto de seguridad del Client)."
+      },
+      {
+        "title": "Qué incluir si informa de un incidente",
+        "body": "Hora observada, sistemas afectados, si hay datos personales involucrados y cómo contactarle. Use security@curnext.app para violaciones sospechadas e informes de vulnerabilidades."
+      }
+    ]
+  },
+  "cookies": {
+    "title": "Cookies, marketing y asistentes de IA",
+    "lead": "Las cookies no esenciales y tecnologías similares se gestionan conforme a nuestra Política de cookies y herramientas de consentimiento cuando se requieren. Los correos de marketing incluyen controles de baja.",
+    "bullets": [
+      "Las cookies esenciales respaldan la seguridad, el equilibrio de carga y el almacenamiento de preferencias necesario para entregar el sitio.",
+      "Las etiquetas de analítica o marketing, si se usan, solo se ejecutan con una base jurídica válida (a menudo consentimiento en el EEE).",
+      "El chat de IA de la Base de conocimientos requiere consentimiento RGPD explícito en el flujo de producto antes de tratar su pregunta.",
+      "Puede retirar el consentimiento de herramientas opcionales sin perder el acceso a las páginas informativas principales, aunque algunas funciones pueden no estar disponibles."
+    ],
+    "cookieHref": "/data/cookie-policy",
+    "cookieCta": "Política de cookies",
+    "privacyHref": "/data/privacy-policy",
+    "privacyCta": "Política de privacidad"
+  },
+  "children": {
+    "title": "Menores y elegibilidad de edad",
+    "lead": "Los Servicios de CurNext están diseñados para uso profesional de la construcción y B2B. No están dirigidos a niños. Según las políticas internas de CurNext, no incorporamos, invitamos ni registramos usuarios de producto menores de 18 años. Tampoco recopilamos a sabiendas datos personales de menores de 16 años para productos CurNext. Si cree que alguien menor de 18 ha sido incorporado, o que un niño ha facilitado datos personales, contacte gdpr@curnext.app y tomaremos las medidas adecuadas."
+  },
+  "automated": {
+    "title": "Decisiones automatizadas y elaboración de perfiles",
+    "lead": "CurNext ofrece predicciones de madurez e insights asistidos para superficies de construcción (por ejemplo plazos de curado del hormigón). Esas salidas apoyan el criterio profesional; no están pensadas como decisiones únicamente automatizadas que produzcan efectos jurídicos o similares significativos sobre una persona conforme al art. 22.",
+    "bullets": [
+      "Las señales de madurez de obra conciernen a materiales y entornos, no a la solvencia ni al empleo de una persona física.",
+      "La seguridad de cuentas puede usar señales de riesgo automatizadas (por ejemplo límites de tasa o detección de anomalías) para proteger el servicio.",
+      "Si introducimos funciones que tomen decisiones únicamente automatizadas con efectos jurídicos o similares significativos sobre usted, proporcionaremos información significativa y una vía para obtener revisión humana cuando se requiera."
+    ]
+  },
+  "authority": {
+    "title": "Autoridad de control",
+    "lead": "Sin perjuicio de cualquier otro recurso administrativo o judicial, puede presentar una reclamación ante una autoridad de control. Para CurNext como responsable finlandés, el contexto de autoridad de control principal suele ser:",
+    "name": "Oficina del Defensor de la Protección de Datos (Tietosuojavaltuutetun toimisto)",
+    "url": "https://tietosuoja.fi/en",
+    "urlLabel": "tietosuoja.fi",
+    "note": "También puede contactar a la autoridad de su país de residencia o trabajo si está en el EEE. Le animamos a contactar primero a gdpr@curnext.app para que podamos intentar resolver las preocupaciones directamente."
+  },
+  "updates": {
+    "title": "Cambios en estas políticas",
+    "lead": "Podemos actualizar esta página para reflejar cambios de producto, jurídicos u organizativos. La fecha de \"Última actualización\" en la parte superior cambiará cuando publiquemos revisiones materiales. Para relaciones de encargo, los cambios materiales de subencargados o transferencias siguen el proceso de aviso del DPA. El uso continuado del sitio de marketing tras una actualización constituye conocimiento del texto de política pública revisado; los clientes contractuales se rigen por sus acuerdos."
+  },
+  "related": [
+    {
+      "title": "Acuerdo de encargo de tratamiento",
+      "href": "/data/data-processing-agreement"
+    },
+    {
+      "title": "Política de privacidad",
+      "href": "/data/privacy-policy"
+    },
+    {
+      "title": "Política de cookies",
+      "href": "/data/cookie-policy"
+    },
+    {
+      "title": "Seguridad",
+      "href": "/security"
+    },
+    {
+      "title": "Cumplimiento",
+      "href": "/compliance"
+    },
+    {
+      "title": "Audit Trail",
+      "href": "/audit-trail"
+    },
+    {
+      "title": "Contacto",
+      "href": "/contact"
+    }
+  ],
+  "controllerRegisteredIn": "Registrado en {place}",
+  "controllerBusinessId": "ID empresarial {id}",
+  "controllerWebsite": "Sitio web: {url}"
+}

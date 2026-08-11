@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import {
   ArrowRight,
   CalendarDays,
@@ -10,29 +10,24 @@ import {
   Palmtree,
   type LucideIcon,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { buttonVariants } from "@/components/ui/button";
-import {
-  careersBelonging,
-  careersHowWeWork,
-  careersOpenings,
-  type CareerRole,
-} from "@/config/careers";
+import { type CareerRole } from "@/config/careers";
 import {
   itemHeadingClassName,
   sectionHeadingClassName,
 } from "@/lib/typography";
 import { cn } from "@/lib/utils";
 
-const howWeWorkIcons: Record<
-  (typeof careersHowWeWork.items)[number]["icon"],
-  LucideIcon
-> = {
+const howWeWorkIcons: Record<"remote" | "week" | "holidays" | "health", LucideIcon> = {
   remote: House,
   week: CalendarDays,
   holidays: Palmtree,
   health: HeartPulse,
 };
+
+const howKeys = ["remote", "week", "holidays", "health"] as const;
 
 type CareersPageProps = {
   roles: CareerRole[];
@@ -41,12 +36,15 @@ type CareersPageProps = {
   totalRoles: number;
 };
 
-export function CareersPage({
+export async function CareersPage({
   roles,
   page,
   totalPages,
   totalRoles,
 }: CareersPageProps) {
+  const t = await getTranslations("careers");
+  const tCommon = await getTranslations("common");
+
   return (
     <main className="flex flex-1 flex-col">
       <section
@@ -56,27 +54,27 @@ export function CareersPage({
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-2xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              {careersBelonging.eyebrow}
+              {t("belongingEyebrow")}
             </p>
             <h1
               id="careers-belonging-heading"
               className={sectionHeadingClassName}
             >
-              {careersBelonging.title}
+              {t("belongingTitle")}
             </h1>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              {careersBelonging.lead}
+              {t("belongingLead")}
             </p>
             <div className="border-border/70 mt-8 border-l-2 pl-5">
               <p className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">
-                {careersBelonging.goalLabel}
+                {t("goalLabel")}
               </p>
               <p className="text-foreground mt-2 text-base font-medium tracking-tight sm:text-lg">
-                {careersBelonging.goal}
+                {t("goal")}
               </p>
             </div>
             <p className="text-muted-foreground mt-8 text-base leading-relaxed sm:text-lg">
-              {careersBelonging.closing}
+              {t("belongingClosing")}
             </p>
           </div>
         </div>
@@ -89,30 +87,32 @@ export function CareersPage({
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-2xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              {careersHowWeWork.eyebrow}
+              {t("howEyebrow")}
             </p>
             <h2
               id="careers-how-we-work-heading"
               className={sectionHeadingClassName}
             >
-              {careersHowWeWork.title}
+              {t("howTitle")}
             </h2>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              {careersHowWeWork.lead}
+              {t("howLead")}
             </p>
           </div>
 
           <ul className="mt-10 grid gap-8 sm:mt-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 lg:grid-cols-4">
-            {careersHowWeWork.items.map((item) => {
-              const Icon = howWeWorkIcons[item.icon];
+            {howKeys.map((key) => {
+              const Icon = howWeWorkIcons[key];
               return (
-                <li key={item.title} className="min-w-0">
+                <li key={key} className="min-w-0">
                   <div className="bg-muted text-foreground mb-4 flex size-10 items-center justify-center rounded-lg">
                     <Icon className="size-5" aria-hidden />
                   </div>
-                  <h3 className={itemHeadingClassName}>{item.title}</h3>
+                  <h3 className={itemHeadingClassName}>
+                    {t(`how.${key}.title`)}
+                  </h3>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed sm:text-[15px]">
-                    {item.body}
+                    {t(`how.${key}.body`)}
                   </p>
                 </li>
               );
@@ -129,22 +129,22 @@ export function CareersPage({
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-2xl">
             <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
-              {careersOpenings.eyebrow}
+              {t("openingsEyebrow")}
             </p>
             <h2
               id="careers-openings-heading"
               className={sectionHeadingClassName}
             >
-              {careersOpenings.title}
+              {t("openingsTitle")}
             </h2>
             <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
-              {careersOpenings.lead}
+              {t("openingsLead")}
             </p>
           </div>
 
           {totalRoles === 0 ? (
             <p className="text-muted-foreground border-border/70 mt-10 border-y py-8 text-sm leading-relaxed sm:mt-12 sm:text-[15px]">
-              {careersOpenings.empty}
+              {t("empty")}
             </p>
           ) : (
             <>
@@ -181,7 +181,7 @@ export function CareersPage({
                         "h-9 w-fit gap-1.5 px-3",
                       )}
                     >
-                      See more
+                      {t("seeMore")}
                       <ArrowRight className="size-3.5" aria-hidden />
                     </Link>
                   </li>
@@ -190,11 +190,11 @@ export function CareersPage({
 
               {totalPages > 1 ? (
                 <nav
-                  aria-label="Open roles pages"
+                  aria-label={t("pagesAria")}
                   className="border-border/70 mt-8 flex flex-wrap items-center justify-between gap-4 border-t pt-6"
                 >
                   <p className="text-muted-foreground text-sm">
-                    Page {page} of {totalPages}
+                    {t("pageOf", { page, total: totalPages })}
                   </p>
                   <div className="flex items-center gap-2">
                     {page > 1 ? (
@@ -206,7 +206,7 @@ export function CareersPage({
                         )}
                       >
                         <ChevronLeft className="size-4" aria-hidden />
-                        Previous
+                        {tCommon("previous")}
                       </Link>
                     ) : (
                       <span
@@ -217,7 +217,7 @@ export function CareersPage({
                         aria-disabled
                       >
                         <ChevronLeft className="size-4" aria-hidden />
-                        Previous
+                        {tCommon("previous")}
                       </span>
                     )}
                     {page < totalPages ? (
@@ -228,7 +228,7 @@ export function CareersPage({
                           "h-9 gap-1 px-3",
                         )}
                       >
-                        Next
+                        {tCommon("next")}
                         <ChevronRight className="size-4" aria-hidden />
                       </Link>
                     ) : (
@@ -239,7 +239,7 @@ export function CareersPage({
                         )}
                         aria-disabled
                       >
-                        Next
+                        {tCommon("next")}
                         <ChevronRight className="size-4" aria-hidden />
                       </span>
                     )}

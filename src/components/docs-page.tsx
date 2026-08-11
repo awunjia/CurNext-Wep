@@ -1,14 +1,19 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-import { docsPage, docsTabs } from "@/config/docs";
+import { Link } from "@/i18n/navigation";
+import { docsTabs as docsTabsStructure } from "@/config/docs";
+import { getLocalizedDocsTabs } from "@/lib/docs-i18n";
 import { cn } from "@/lib/utils";
 
 export function DocsPage() {
-  const [tabId, setTabId] = useState(docsTabs[0]?.id ?? "overview");
+  const t = useTranslations("docs");
+  const docsTabs = useMemo(() => getLocalizedDocsTabs(t), [t]);
+
+  const [tabId, setTabId] = useState(docsTabsStructure[0]?.id ?? "overview");
   const [activeSection, setActiveSection] = useState<string>("");
 
   const tab = docsTabs.find((item) => item.id === tabId) ?? docsTabs[0];
@@ -27,7 +32,7 @@ export function DocsPage() {
         return;
       }
     }
-  }, []);
+  }, [docsTabs]);
 
   useEffect(() => {
     const first = tab?.sections[0]?.id;
@@ -71,13 +76,13 @@ export function DocsPage() {
       <div className="border-border/60 border-b bg-background">
         <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
           <p className="text-muted-foreground mb-2 text-xs font-medium tracking-[0.18em] uppercase">
-            Documentation
+            {t("eyebrow")}
           </p>
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            {docsPage.title}
+            {t("title")}
           </h1>
           <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed sm:text-base">
-            {docsPage.description}
+            {t("description")}
           </p>
         </div>
       </div>
@@ -110,7 +115,7 @@ export function DocsPage() {
           <div className="sticky top-36 space-y-4">
             <div>
               <p className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">
-                On this page
+                {t("onThisPage")}
               </p>
               <p className="mt-2 text-sm font-medium tracking-tight">
                 {tab.label}
@@ -119,7 +124,7 @@ export function DocsPage() {
                 {tab.description}
               </p>
             </div>
-            <nav aria-label="Section headers" className="space-y-1">
+            <nav aria-label={t("sectionNav")} className="space-y-1">
               {tab.sections.map((section) => (
                 <a
                   key={section.id}
@@ -145,7 +150,7 @@ export function DocsPage() {
               {tab.description}
             </p>
             <nav
-              aria-label="Section headers"
+              aria-label={t("sectionNav")}
               className="mt-4 flex flex-wrap gap-2"
             >
               {tab.sections.map((section) => (

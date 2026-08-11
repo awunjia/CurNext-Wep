@@ -1,0 +1,781 @@
+{
+  "security": {
+    "title": "Säkerhetsarkitektur",
+    "description": "Industriella kontroller över CurNexts femskiktsstack - från fältsensorer till molnet - utformade för industriell IoT, byggnads-OT och EU:s integritetsförväntningar.",
+    "leadNote": "Den här sidan sammanfattar hur CurNext utformar konfidentialitet, integritet, autenticitet, tillgänglighet, ansvarighet och sekretess. Det är inte en offentlig runbook, statussida eller certifikatvalv.",
+    "objectivesTitle": "Säkerhetsmål",
+    "objectives": [
+      {
+        "title": "Konfidentialitet",
+        "body": "Telemetri och autentiseringsuppgifter är inte läsbara under överföring eller i vila utan behörighet."
+      },
+      {
+        "title": "Integritet",
+        "body": "Firmware, konfiguration och mätningar skyddas mot oupptäckt manipulation."
+      },
+      {
+        "title": "Autenticitet",
+        "body": "Varje enhet och tjänst bevisar sin identitet innan förtroende ges."
+      },
+      {
+        "title": "Tillgänglighet",
+        "body": "Motståndskraft mot avbrott, replay och översvämning, med kontrollerad degradering där det är möjligt."
+      },
+      {
+        "title": "Ansvarighet",
+        "body": "Revisionsspår för åtkomst, provisionering, OTA och adminåtgärder."
+      },
+      {
+        "title": "Sekretess",
+        "body": "GDPR-orienterad hantering av person- och arbetsplatsdata i molnskiktet."
+      }
+    ],
+    "standards": {
+      "title": "Standarder vi designar mot",
+      "lead": "Kontroller kartläggs mot vanliga industri-, IoT- och EU-ramverk. Att lista en standard här betyder designanpassning - inte att CurNext har slutfört varje tredjepartscertifiering för det ramverket.",
+      "rows": [
+        {
+          "standard": "IEC 62443",
+          "scope": "Industriella / byggnads-IoT-zoner",
+          "note": "Zon- och kanalmodell; säkerhetsnivåmål per skikt"
+        },
+        {
+          "standard": "NIST SP 800-82",
+          "scope": "ICS / byggnads-OT",
+          "note": "Segmentering, övervakning, fjärråtkomst via WireGuard endast vid byggnadsedge"
+        },
+        {
+          "standard": "NIST SP 800-213",
+          "scope": "IoT-enheters cybersäkerhet",
+          "note": "Enhetsidentitet, säker uppdatering och konfiguration"
+        },
+        {
+          "standard": "ENISA IoT / OT",
+          "scope": "EU IoT-baslinje",
+          "note": "Krypto, uppdateringar och minimal attackyta"
+        },
+        {
+          "standard": "EU CRA",
+          "scope": "Produktens säkerhetslivscykel",
+          "note": "SBOM, sårbarhetsrapportering, signerade uppdateringar"
+        },
+        {
+          "standard": "EU RED 3.3(d)",
+          "scope": "Radioprodukters cybersäkerhet",
+          "note": "Säker radio- och uppdateringsväg för fältnoder, CN-FG och CN-BC"
+        },
+        {
+          "standard": "ISO 27001",
+          "scope": "Organisatoriskt ISMS",
+          "note": "Designmål för moln och CurNext-drift - inte hävdat som certifierat här"
+        },
+        {
+          "standard": "GDPR",
+          "scope": "Personuppgifter",
+          "note": "Revisionsloggning, åtkomstkontroll, raderings- och exportvägar"
+        },
+        {
+          "standard": "OWASP IoT Top 10",
+          "scope": "Enhets- och molnfallgropar",
+          "note": "Hanteras per skikt i fält- och molnkontroller"
+        }
+      ]
+    },
+    "zones": {
+      "title": "Säkerhetszoner och kanaler",
+      "lead": "Zoner i IEC 62443-stil håller fältradio, vånings-LAN, byggnadsedge och moln åtskilda. Ström har ingen datakanal.",
+      "zones": [
+        {
+          "id": "Z1",
+          "title": "Zon Z1 - L1-fältsensorer",
+          "body": "Fältnoder (CN-CC, CN-WD och relaterade SKU:er). LoRaWAN MAC med AES-128, secure element för nycklar, NFC för installation. Ingen IP-stack på noden."
+        },
+        {
+          "id": "Z2",
+          "title": "Zon Z2 - Våning (CN-FG)",
+          "body": "Våningsgateway verifierar ramar, stannar på lokalt VLAN och har inget molnvänd gränssnitt."
+        },
+        {
+          "id": "Z3",
+          "title": "Zon Z3 - Ström (CN-UPS)",
+          "body": "Energiförsörjer vånings- och byggnadsedge-utrustning. Ingen datakanal."
+        },
+        {
+          "id": "Z4",
+          "title": "Zon Z4 - Byggnads-DMZ (CN-BC)",
+          "body": "Byggnadskontroller: WireGuard-klient, MQTT-klient, OTA-orkestrerare. Utgående mobilväg endast för tunnel- och brokertrafik."
+        },
+        {
+          "id": "Z5",
+          "title": "Zon Z5 - CurNext Cloud (L5)",
+          "body": "Applikation, hanterad databas och auth, privat MQTT-broker, AI och objektlagring bakom kant­skydd."
+        }
+      ],
+      "conduits": [
+        {
+          "id": "C1",
+          "path": "L1 ↔ CN-FG",
+          "controls": "LoRaWAN MAC-lager AES-128 (payload-kryptering + MIC), OTAA, unika enhetsnycklar i secure element, ramräknare, replay-avvisning"
+        },
+        {
+          "id": "C2",
+          "path": "CN-FG ↔ CN-FG",
+          "controls": "Ethernet-daisy-chain endast på vånings-VLAN; ingen internetrutt"
+        },
+        {
+          "id": "C3",
+          "path": "CN-FG ↔ CN-BC",
+          "controls": "Ethernet-VLAN; byggnadsbrandvägg nekar våningsgateways väg till offentligt internet"
+        },
+        {
+          "id": "C4",
+          "path": "CN-BC ↔ L5",
+          "controls": "WireGuard plus MQTT över TLS 1.3 med ömsesidig TLS; broker inte på offentligt internet"
+        },
+        {
+          "id": "C5",
+          "path": "Installer ↔ L1",
+          "controls": "Endast NFC-tryck med kryptografiskt bevis; QR-provisionering avstängd; fabriksdebuggränssnitt lämnas inte öppna i fält"
+        }
+      ],
+      "wireguard": [
+        {
+          "layer": "L1-L2",
+          "role": "Ingen WireGuard"
+        },
+        {
+          "layer": "L3",
+          "role": "Ingen WireGuard"
+        },
+        {
+          "layer": "L4 CN-BC",
+          "role": "WireGuard-klient - byggnadens säkerhetsgräns"
+        },
+        {
+          "layer": "L5 Cloud",
+          "role": "WireGuard-hub - MQTT endast på det privata nätet"
+        }
+      ]
+    },
+    "levels": {
+      "title": "IEC 62443-säkerhetsnivåmål",
+      "lead": "Målsäkerhetsnivåer (SL-T) styr produktdesign. De är teknikmål, inte tredjepartsbedömningsresultat.",
+      "rows": [
+        {
+          "component": "L1-sensornoder",
+          "target": "SL 2 (ambition SL 3)",
+          "rationale": "Obemannad, långlivad, fysisk åtkomst möjlig"
+        },
+        {
+          "component": "CN-FG (L2)",
+          "target": "SL 2",
+          "rationale": "Fältgateway på en byggarbetsplats"
+        },
+        {
+          "component": "CN-UPS (L3)",
+          "target": "SL 1",
+          "rationale": "Endast ström - ingen databearbetning"
+        },
+        {
+          "component": "CN-BC (L4)",
+          "target": "SL 3",
+          "rationale": "Byggnadens säkerhetsgräns, internetvänd väg"
+        },
+        {
+          "component": "CurNext Cloud (L5)",
+          "target": "SL 3",
+          "rationale": "Flerhyresgästplattform med kunddata"
+        }
+      ]
+    },
+    "layers": [
+      {
+        "id": "L1",
+        "title": "L1 - Fältsensorer",
+        "lead": "Unik enhetsidentitet, LoRaWAN-luftlänks­krypto, secure boot, signerad OTA, manipulationssäker design och förflyttningsdetektering.",
+        "bullets": [
+          "Unik rotnyckel per sond i secure element - delas aldrig över flottan",
+          "Etiketter kan visa offentligt serienummer / DevEUI för logistik - aldrig rotnyckeln",
+          "LoRaWAN Class A (EU868): AES-128 payload-kryptering och MIC via MAC-stacken",
+          "Endast OTAA-join; ramräknare och replay-avvisning vid våningsgateway",
+          "Secure boot, signerad firmware, anti-rollback, produktionsdebug låst",
+          "Manipulationssäker fälthus och mätväg - fysisk störning är detekterbar och rapporteras",
+          "Förflyttningsdetektering när en nod flyttas från sin tilldelade installationsposition",
+          "Fälttilldelning via NFC-kryptografisk bindning - QR-tilldelning avstängd som standard"
+        ]
+      },
+      {
+        "id": "L2",
+        "title": "L2 - CN-FG våningsgateway",
+        "lead": "Förtroendeankare för luftlänken. Validerar join, MIC och räknare innan vidarebefordran.",
+        "bullets": [
+          "Signerad firmware med secure boot och secure element-identitet",
+          "Ingen standardinternetrutt; uplink endast mot CN-BC på vånings-VLAN",
+          "OTA endast från CN-BC",
+          "Join- och verifieringshändelser sparas för revisionsuppladdning",
+          "Tjänsteportar begränsade i produktionsavbildningar"
+        ]
+      },
+      {
+        "id": "L3",
+        "title": "L3 - CN-UPS ström",
+        "lead": "Endast strömväg - inget dataplan på administrations-VLAN.",
+        "bullets": [
+          "Inga IP:er eller administrations-API på data-VLAN",
+          "Låsta hus­rutiner vid installation",
+          "Felindikering förblir lokal - inget nätläckage från strömfel"
+        ]
+      },
+      {
+        "id": "L4",
+        "title": "L4 - CN-BC byggnadskontroller",
+        "lead": "Byggnadens säkerhetsgräns mellan vånings-LAN och moln.",
+        "bullets": [
+          "WireGuard utgående från byggnaden (CGNAT-säker)",
+          "MQTT över TLS 1.3 med klientcertifikat per byggnad",
+          "Värdbrandvägg default deny; ingen offentlig SSH, MQTT eller API på mobil",
+          "Enda OTA-väg till L1/L2: verifiera signerad manifest och avbildning, stegvis utrullning, rapportera resultat",
+          "Store-and-forward-telemetribuffer krypterad i vila; rensas efter lyckad leverans"
+        ]
+      },
+      {
+        "id": "L5",
+        "title": "L5 - CurNext Cloud",
+        "lead": "Flerhyresgästapplikation och data med privat fältingress.",
+        "bullets": [
+          "MQTT-broker nåbar endast på det privata nätet - inte på offentligt internet",
+          "Behörighet per byggnad; neka wildcards mellan hyresgäster",
+          "Användarauth med kortlivade token; MFA krävs för privilegierade roller",
+          "RBAC på API-rutter; hastighetsgränser och edge-WAF i produktion",
+          "Kryptering under överföring och i vila; hyresgästisolering på frågor",
+          "Krypterade säkerhetskopior med återställningsövningar; GDPR-revisions-, export- och raderingsvägar",
+          "Hemligheter i en secrets manager - inte i källkodskontroll"
+        ]
+      }
+    ],
+    "crypto": {
+      "title": "Kryptografi i korthet",
+      "rows": [
+        {
+          "use": "Transport (moln / MQTT)",
+          "algorithm": "TLS 1.3"
+        },
+        {
+          "use": "Byggnadstunnel",
+          "algorithm": "WireGuard - Curve25519, ChaCha20-Poly1305"
+        },
+        {
+          "use": "Luftlänk (L1 ↔ CN-FG)",
+          "algorithm": "LoRaWAN MAC AES-128-kryptering + MIC"
+        },
+        {
+          "use": "Firmwaresignatur",
+          "algorithm": "ECDSA P-256"
+        },
+        {
+          "use": "Lokal telemetribuffer",
+          "algorithm": "AES-256-GCM i vila vid byggnadsedge"
+        },
+        {
+          "use": "Revisionsintegritet",
+          "algorithm": "SHA-256"
+        }
+      ],
+      "deprecated": "Används inte: TLS 1.0/1.1, MD5, SHA-1 för signaturer, eller statiska luftlänks­sessionsnycklar utan OTAA."
+    },
+    "provisioning": {
+      "title": "Provisionering",
+      "factory": [
+        "Fabriks-HSM injicerar unikt enhetsidentitetsmaterial i secure element",
+        "Secure boot aktiverat före leverans",
+        "NFC-personalisering med kryptografiskt bevis",
+        "Enhet registrerad som tillverkad; nycklar skickas aldrig i kalkylblad eller e-post"
+      ],
+      "field": [
+        "Installatörens NFC-tryck verifierar kryptografisk bindning",
+        "Ytbindning kräver autentiserad app-session och behörighet att tilldela enhet",
+        "QR-skanning litas inte på för kryptografisk tilldelning",
+        "Byggnadsidriftsättning utfärdar WireGuard-peer och MQTT-klientuppgifter vid installation"
+      ]
+    },
+    "ota": {
+      "title": "OTA och mjukvaruförsörjningskedja",
+      "lead": "Anpassad till EU Cyber Resilience Act-förväntningar för signerade uppdateringar, SBOM och koordinerad disclosure.",
+      "signing": [
+        "Offline root-CA",
+        "OTA-signerings-CA",
+        "Signerade L1-, CN-FG- och CN-BC-avbildningar / manifester"
+      ],
+      "bullets": [
+        "Firmwaresignaturer med ECDSA P-256 (eller starkare RSA där det krävs)",
+        "Manifest inkluderar enhetsklass, version, minsta version, hash, signatur och återkallelseepoch",
+        "Komprometterat signeringsmaterial roteras via en nödväg",
+        "A/B-partitioner på fältenheter med rollback vid misslyckad boot",
+        "Stegvis utrullning före flottabredd tillämpning",
+        "SBOM per firmware- och molnrelease; kontinuerlig sårbarhetsövervakning",
+        "Kritiska säkerhetsuppdateringar inom 14 dagar; höga inom 30 dagar"
+      ]
+    },
+    "verification": {
+      "title": "Hur vi verifierar",
+      "lead": "Releaser och årlig drift följer en fast säkerhetsnivå före enterprise-användning.",
+      "items": [
+        "Hotmodelluppdatering per zon för materiella releaser",
+        "Skiktchecklistor för L1, CN-FG, CN-BC och moln",
+        "Statisk analys och beroende­skanning utan kritisk öppen CVE vid release",
+        "Signerad artefakt och SBOM bifogad release",
+        "Årligt externt penetrationstest samt nyckelrotation / backup-återställningsövningar",
+        "Certifieringsberedskap (IEC 62443-bedömning, ISO 27001 ISMS, RED teknisk fil) spåras separat - inte hävdat som klart på den här sidan"
+      ]
+    },
+    "contactSection": {
+      "title": "Disclosure och kontakt",
+      "lead": "Rapportera sårbarheter till CurNexts säkerhetsinkorg. För integritets- och residensdetaljer, använd länkade policyer och datacenters-sidan.",
+      "email": "security@curnext.app",
+      "bullets": [
+        "Koordinerad disclosure: security@curnext.app",
+        "Juridisk enhet: CurNext, Helsingfors, Finland",
+        "Integritetspolicyn täcker hantering av personuppgifter",
+        "Datacenters-sidan täcker EU-hostingresidens (Tyskland / Frankfurt)"
+      ]
+    }
+  },
+  "technologies": {
+    "technologiesConnectivity": {
+      "title": "Anslutning",
+      "lead": "Standard industriella protokoll - namngivna på kapacitetsnivå, inte som en attackyteguide.",
+      "items": [
+        {
+          "title": "LoRaWAN",
+          "body": "EU868-fältupplänkar för batterinoder - lång räckvidd, arbetsplatsvänlig radio in i CurNext-våningsvägen."
+        },
+        {
+          "title": "MQTT over TLS",
+          "body": "Enhets- och gatewaytelemetri till plattformen över krypterad MQTT för hårdvaruvägen."
+        },
+        {
+          "title": "WireGuard",
+          "body": "Säkra tunnelteman för byggnadsedge-anslutning till CurNext-molntjänster."
+        },
+        {
+          "title": "HTTPS REST",
+          "body": "Versionshanterade köparintegrationer på api.curnext.app - beredskap, BIM, enheter, larm, webhooks."
+        }
+      ]
+    },
+    "technologiesData": {
+      "title": "Intelligenslager",
+      "lead": "CurNext omsätter arbetsplatsmätningar till byggklara beslut kopplade till ditt projekt.",
+      "items": [
+        {
+          "title": "Ytberedskap",
+          "body": "Poäng, status och uppskattad klar tid för övervakade ytor."
+        },
+        {
+          "title": "Betonghärdningsmodell",
+          "body": "Intern prediktion för CN-CC-plattberedskap, tränad och serverad med TensorFlow.js."
+        },
+        {
+          "title": "BIM-kontext",
+          "body": "Byggnader, utrymmen och enheter för koordinering - inte en fristående sensordump."
+        },
+        {
+          "title": "Larm och händelser",
+          "body": "Operativa larm och webhook-händelser in i verktygen era team redan kör."
+        },
+        {
+          "title": "Väderkontext",
+          "body": "Utomhuskontext där det hjälper härdnings- och torkbeslut på plats."
+        }
+      ]
+    },
+    "technologiesEcosystem": [
+      {
+        "title": "Radio och sensing",
+        "names": [
+          "Semtech",
+          "LoRa Alliance",
+          "Sensirion",
+          "NFC",
+          "Texas Instruments"
+        ]
+      },
+      {
+        "title": "Edge och anslutning",
+        "names": [
+          "MQTT",
+          "WireGuard",
+          "Espressif",
+          "Victron"
+        ]
+      },
+      {
+        "title": "Moln och ops",
+        "names": [
+          "Cloudflare",
+          "Supabase",
+          "Hetzner",
+          "Google Cloud",
+          "Datadog",
+          "Grafana"
+        ]
+      },
+      {
+        "title": "AI och intelligens",
+        "names": [
+          "TensorFlow.js",
+          "Gemini",
+          "Groq",
+          "OpenWeather"
+        ]
+      },
+      {
+        "title": "BIM, identitet och handel",
+        "names": [
+          "Autodesk Revit",
+          "Signicat",
+          "Stripe"
+        ]
+      },
+      {
+        "title": "Tillverkning och leverans",
+        "names": [
+          "JLCPCB",
+          "Digi-Key"
+        ]
+      }
+    ],
+    "technologiesPage": {
+      "title": "Teknik",
+      "description": "CurNext-stacken från fältnoder till moln - industriell anslutning, BIM-kartlagd beredskap och API:er era team kan anropa.",
+      "leadNote": "Den här sidan täcker offentliga plattformskapaciteter. Detaljerade hårdvarusäkerhetsrutiner stannar i privat driftsdokumentation."
+    },
+    "technologiesProducts": [
+      {
+        "sku": "CN-CC",
+        "name": "Betonghärdning",
+        "href": "/solutions/concrete-curing",
+        "body": "Luft-, yt- och kärnsensorer med plattberedskapsintelligens och en intern TensorFlow.js-härdningsprediktionsmodell."
+      },
+      {
+        "sku": "CN-WD",
+        "name": "Vägtorkning",
+        "href": "/solutions/wall-drying",
+        "body": "Ytberedskap för gips, våtrum och kakelunderlag."
+      },
+      {
+        "sku": "CN-IAQ",
+        "name": "Inomhusluft",
+        "href": "/solutions/indoor-air",
+        "body": "PM, VOC och klimatkontext på samma arbetsplatsstack."
+      },
+      {
+        "sku": "CN-LEAK",
+        "name": "Läckagedetektering",
+        "href": "/solutions/leak-detection",
+        "body": "Händelsedrivna larm för teknikrum, våtzoner och schakt."
+      },
+      {
+        "sku": "CN-SHM",
+        "name": "Strukturell hälsa",
+        "href": "/solutions/structural-health",
+        "body": "Lutnings- och vibrationsövervakning in i byggnadsvägen."
+      },
+      {
+        "sku": "CN-MEP",
+        "name": "MEP",
+        "href": "/solutions/mep",
+        "body": "Trådbundna anläggningssignaler där högre samplingshastigheter behövs."
+      }
+    ],
+    "technologiesSecurity": {
+      "title": "Säkerhetsläge",
+      "lead": "Teman vi kan ange offentligt. Implementationsdetaljer stannar i privat säkerhetsdokumentation.",
+      "items": [
+        {
+          "title": "Krypterad transport",
+          "body": "TLS för moln-API:er och MQTT-vägar; WireGuard för edge-tunnelteman."
+        },
+        {
+          "title": "Signerade fältuppdateringar",
+          "body": "OTA förbereds vid edge på CN-BC med checksum-adresserade avbildningar - inte en offentlig webbläsarflasher."
+        },
+        {
+          "title": "Enhetsidentitet",
+          "body": "Hårdvaruidentitets- och verifieringsteman för fältenheter; fabriks- och fältinstallationsrutiner styrs av ops."
+        },
+        {
+          "title": "Revisionsspår",
+          "body": "Projektaktivitet och beredskapsbeslut lämnar ett tydligt spår för överlämning och compliance-samtal."
+        }
+      ]
+    },
+    "technologiesSoftware": {
+      "title": "Mjukvaruytor",
+      "lead": "Molnprodukt och utvecklar­ingångar som era team redan använder.",
+      "items": [
+        {
+          "title": "Webb och mobil",
+          "body": "Projektdashboards, larm, beredskapsvyer och fältappar på CurNext-plattformen.",
+          "href": "https://dash.curnext.app",
+          "external": true
+        },
+        {
+          "title": "REST API",
+          "body": "Beredskap, BIM-hierarki, enheter, mätningar och webhooks under /api/v1.",
+          "href": "/api",
+          "external": false
+        },
+        {
+          "title": "SDK:er",
+          "body": "Officiella klienter för JavaScript/TypeScript, PHP, Go, Python, Java och Flutter.",
+          "href": "/sdks",
+          "external": false
+        },
+        {
+          "title": "Market Place",
+          "body": "Anslut meddelanden, schemaläggning, övervakning, BIM, CRM och redovisningsverktyg.",
+          "href": "/integrations",
+          "external": false
+        },
+        {
+          "title": "Firmware-drift",
+          "body": "Versionskatalog, rapporterade flottasträngar och edge-OTA-översikt.",
+          "href": "/firmware",
+          "external": false
+        },
+        {
+          "title": "Docs",
+          "body": "Produktdokumentation för operatörer och integratorer.",
+          "href": "/docs",
+          "external": false
+        },
+        {
+          "title": "Kunskapsbas",
+          "body": "AI-chatt förankrad i offentlig webbplatskunskap, med GDPR-samtycke.",
+          "href": "/knowledge-base",
+          "external": false
+        }
+      ]
+    }
+  },
+  "firmware": {
+    "firmwareCatalogSamples": [
+      {
+        "version": "1.2.0",
+        "deviceType": "CN-CC",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-03-12",
+        "checksumSha256": "a3f1...9c2e",
+        "notes": "Stabilitet och LoRaWAN duty-cycle-korrigeringar för plattnoder."
+      },
+      {
+        "version": "1.1.4",
+        "deviceType": "CN-FG",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-02-28",
+        "checksumSha256": "b7d0...4a11",
+        "notes": "Förbättringar av våningsgateways OTA-handskakning och cache."
+      },
+      {
+        "version": "2.0.1",
+        "deviceType": "CN-BC",
+        "isProduction": true,
+        "ceMarked": true,
+        "releasedAt": "2026-04-02",
+        "checksumSha256": "c91e...77b4",
+        "notes": "Edge-orkestrerarens canary/rolling-jobbtillstånd."
+      },
+      {
+        "version": "1.0.3",
+        "deviceType": "CN-UPS",
+        "isProduction": true,
+        "ceMarked": false,
+        "releasedAt": "2026-01-18",
+        "checksumSha256": "d2aa...08f6",
+        "notes": "Tillförlitlighet för UART-ramade uppdateringar."
+      },
+      {
+        "version": "1.3.0-rc",
+        "deviceType": "CN-CC",
+        "isProduction": false,
+        "ceMarked": false,
+        "releasedAt": "2026-05-01",
+        "checksumSha256": "e44b...c1d9",
+        "notes": "Intern soak-build - inte märkt som produktion."
+      }
+    ],
+    "firmwareFlags": [
+      {
+        "title": "Produktion",
+        "body": "Katalograder använder en isProduction-flagga. Det finns ingen separat draft/beta-kanal-enum."
+      },
+      {
+        "title": "CE-märkt",
+        "body": "ceMarked registrerar CE-märkning på katalogversionen när det är tillämpligt."
+      },
+      {
+        "title": "Installationsmetoder",
+        "body": "Historik registrerar FACTORY, OTA, USB eller MANUAL - inklusive tidigare versionslinje när den är känd."
+      }
+    ],
+    "firmwareHistorySamples": [
+      {
+        "deviceCode": "CN-CC-DEMO-001",
+        "version": "1.2.0",
+        "previousVersion": "1.1.8",
+        "method": "OTA",
+        "installedAt": "2026-03-15"
+      },
+      {
+        "deviceCode": "CN-FG-DEMO-014",
+        "version": "1.1.4",
+        "previousVersion": "1.1.2",
+        "method": "OTA",
+        "installedAt": "2026-03-01"
+      },
+      {
+        "deviceCode": "CN-BC-DEMO-002",
+        "version": "2.0.1",
+        "previousVersion": "2.0.0",
+        "method": "OTA",
+        "installedAt": "2026-04-03"
+      },
+      {
+        "deviceCode": "CN-CC-DEMO-009",
+        "version": "1.2.0",
+        "previousVersion": "-",
+        "method": "FACTORY",
+        "installedAt": "2026-03-20"
+      }
+    ],
+    "firmwareHonesty": {
+      "title": "Vad den här sidan täcker",
+      "body": "CurNext spårar en firmwareversionskatalog, rapporterade enhetsversioner och installationshistorik i driften. Fält-OTA orkestreras vid edge på CN-BC. Molnuppladdning, publiceringskanaler och ettklicks­flottutrullnings-UI ingår inte i den offentliga marknadsföringsytan.",
+      "bullets": [
+        "Bläddra i katalogmodellen: version, enhetstyp, produktions- och CE-flaggor",
+        "Förstå rapporterade flottasträngar vs katalograder",
+        "Se hur installationshistorik registrerar fabriks-, OTA-, USB- och manuella metoder",
+        "Fält-OTA körs som signerade jobb på CN-BC - inte en webbläsarflasher"
+      ]
+    },
+    "firmwareOta": {
+      "title": "Edge-OTA (CN-BC)",
+      "lead": "Signerade jobb når CN-BC. Edge-agenten verifierar, förbereder och rullar ut till mål. Avbildningar adresseras med checksum. Valfri canary sedan rolling på orkestreraren.",
+      "targets": [
+        {
+          "id": "bc",
+          "label": "bc",
+          "detail": "CN-BC själuppdatering"
+        },
+        {
+          "id": "fg",
+          "label": "fg",
+          "detail": "CN-FG via vånings-HMAC-kontroll"
+        },
+        {
+          "id": "cc",
+          "label": "cc",
+          "detail": "Fältnoder via FUOTA / LoRaWAN"
+        },
+        {
+          "id": "ups",
+          "label": "ups",
+          "detail": "CN-UPS via UART-ramning"
+        }
+      ],
+      "edgeStates": [
+        "accepted",
+        "rejected",
+        "canary",
+        "rolling",
+        "done",
+        "failed"
+      ],
+      "note": "Molnets draft/publish-flöden och dashboardens assign/rollback-API:er levereras inte. Förvänta dig inte ettklicks­flottflash från webbläsaren."
+    },
+    "firmwarePage": {
+      "title": "Firmware",
+      "description": "Katalogisera firmwareversioner, se vad flottan rapporterar och granska installationshistorik. Fält-OTA hanteras av edge-kontroller.",
+      "supportLine": "Versionskatalog och flot­tans installationshistorik. Fältuppdateringar går via signerad edge-OTA på CN-BC."
+    },
+    "firmwareSecurity": {
+      "title": "Säkerhetsteman",
+      "lead": "Signerad OTA, secure element-identitet och anti-rollback-teman ingår i hårdvarusäkerhetsmodellen. Fabriks-SWD-provisionering och fält-NFC-installation dokumenteras separat för driften.",
+      "items": [
+        "Secure element för enhetsidentitet och verifiering",
+        "Signerade OTA-avbildningar adresserade med checksum",
+        "Anti-rollback-kontroller beskrivna i säkerhetsarkitekturen",
+        "Protokoll: LoRaWAN OTAA (EU868), MQTT/TLS, WireGuard, vånings-HMAC-ämnen"
+      ]
+    },
+    "firmwareStack": {
+      "title": "Hårdvaruväg",
+      "lead": "Firmware följer samma byggnadsstack som telemetri - från fältnoder till edge-agenten som förbereder signerade uppdateringar.",
+      "layers": [
+        {
+          "id": "L1",
+          "title": "L1-fältnoder",
+          "body": "Noder: CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP"
+        },
+        {
+          "id": "L2",
+          "title": "L2 våningsgateway",
+          "body": "CN-FG LoRaWAN-koncentrator"
+        },
+        {
+          "id": "L3",
+          "title": "L3 ström",
+          "body": "CN-UPS ström och status"
+        },
+        {
+          "id": "L4",
+          "title": "L4 edge-agent",
+          "body": "CN-BC - tunnel, MQTT, OTA-orkestrering"
+        },
+        {
+          "id": "L5",
+          "title": "L5 moln",
+          "body": "CurNext-moln - katalog, historik, enhetsregister"
+        }
+      ]
+    },
+    "firmwareTrees": [
+      {
+        "id": "cn-cc",
+        "name": "CN-CC",
+        "path": "firmware/cn-cc",
+        "role": "Betonghärdningsfältnod",
+        "ota": "FUOTA via CN-FG / LoRaWAN"
+      },
+      {
+        "id": "cn-fg",
+        "name": "CN-FG",
+        "path": "firmware/cn-fg",
+        "role": "Vånings-LoRaWAN-koncentrator",
+        "ota": "HMAC-vånings-OTA från CN-BC"
+      },
+      {
+        "id": "cn-bc",
+        "name": "CN-BC",
+        "path": "firmware/cn-bc",
+        "role": "Byggnadsedge-agent och OTA-orkestrerare",
+        "ota": "Själuppdatering (bc-mål)"
+      },
+      {
+        "id": "cn-ups",
+        "name": "CN-UPS",
+        "path": "firmware/cn-ups",
+        "role": "UPS / strömstatusenhet",
+        "ota": "UART-ramad uppdatering från CN-BC"
+      }
+    ],
+    "tabs": {
+      "versions": "Versioner",
+      "architecture": "Arkitektur",
+      "history": "Historik"
+    }
+  }
+}
