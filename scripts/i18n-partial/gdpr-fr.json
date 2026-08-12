@@ -227,7 +227,7 @@
       "Infrastructure d'hébergement et de base de données dans l'UE (orientation Allemagne / Francfort).",
       "Stockage objet optionnel avec options de juridiction UE lorsqu'il est activé.",
       "Prestataires de livraison d'e-mails, de suivi d'erreurs et d'observabilité tels que listés publiquement.",
-      "Fonctionnalités d'IA assistée (par exemple Gemini ou Groq lorsqu'elles sont activées) sous contrôles produit et contractuels - la prédiction de maturation du béton utilise un modèle TensorFlow.js interne et n'est pas la même chose que l'assistance chat."
+      "Fonctionnalités d'IA assistée (par exemple Gemini ou Groq lorsqu'elles sont activées) sous contrôles produit et contractuels - la prédiction de maturation du béton utilise un modèle XGBoost interne et n'est pas la même chose que l'assistance chat."
     ],
     "cta": "Consulter le résumé public actuel des sous-traitants ultérieurs",
     "href": "/data/data-processing-agreement"

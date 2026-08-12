@@ -60,7 +60,9 @@
     "structuralHealth": "Salud estructural",
     "structuralHealthDesc": "Deformación, fisura, inclinación, vibración",
     "mep": "MEP",
-    "mepDesc": "Caudal, presión, energía (panel PoE)"
+    "mepDesc": "Caudal, presión, energía (panel PoE)",
+    "architecture": "Arquitectura",
+    "architectureDesc": "Ruta de obra L1-L5 de nodos al cloud"
   },
   "footer": {
     "solutions": "Soluciones",
@@ -122,7 +124,7 @@
     "intelligenceTitle": "No solo gráficos. Decisiones en las que puedes confiar.",
     "intelligenceLead": "Visualiza las condiciones cuando las necesitas y apóyate en predicciones de IA y controles de seguridad cuando el plazo y la reputación están en juego.",
     "aiTitle": "Predicciones de readiness con IA",
-    "aiBody": "CurNext va más allá de los paneles. Un modelo TensorFlow.js propio impulsa las predicciones de curado del hormigón, y la IA asistida aporta contexto de readiness: para actuar antes de que se desvíe el programa.",
+    "aiBody": "CurNext va más allá de los paneles. Un modelo maturity computations + XGBoost propio impulsa las predicciones de curado del hormigón, y la IA asistida aporta contexto de readiness: para actuar antes de que se desvíe el programa.",
     "aiLink": "Curado del hormigón",
     "securityTitle": "Seguridad by design",
     "securityBody": "Los datos de obra se protegen con controles reforzados, rastros auditables y prácticas pensadas para construcción y operaciones: del sensor a la nube.",
@@ -429,7 +431,7 @@
       "items": [
         {
           "name": "Modelo de curado interno",
-          "body": "La predicción de curado del hormigón se ejecuta en un modelo entrenado por CurNext con TensorFlow.js - parte del motor de readiness del producto para CN-CC."
+          "body": "La predicción de curado del hormigón se ejecuta en un modelo entrenado por CurNext con maturity computations + XGBoost - parte del motor de readiness del producto para CN-CC."
         },
         {
           "name": "Gemini (Google AI)",
@@ -780,6 +782,11 @@
             "title": "Tecnologías",
             "description": "Stack público, conectividad y partners del ecosistema.",
             "href": "/technologies"
+          },
+          {
+            "title": "Arquitectura",
+            "description": "Ruta de obra L1-L5 de nodos al cloud.",
+            "href": "/architecture"
           },
           {
             "title": "API playground",
@@ -1486,7 +1493,7 @@
         },
         {
           "control": "Controles de IA",
-          "summary": "Predicción de curado interna (TensorFlow.js) en el producto; Gemini y Groq solo para funciones asistidas activadas; minimizar el contexto de indicaciones; sin venta de Datos del Cliente"
+          "summary": "Predicción de curado interna (maturity computations + XGBoost) en el producto; Gemini y Groq solo para funciones asistidas activadas; minimizar el contexto de indicaciones; sin venta de Datos del Cliente"
         },
         {
           "control": "Vía de incidentes",
@@ -1545,7 +1552,7 @@
         },
         {
           "title": "Modelo de curado del hormigón",
-          "body": "Predicción interna para la madurez de losas CN-CC, entrenada y servida con TensorFlow.js."
+          "body": "Predicción interna para la madurez de losas CN-CC, entrenada y servida con maturity computations + XGBoost."
         },
         {
           "title": "Contexto BIM",
@@ -1595,7 +1602,7 @@
       {
         "title": "IA e inteligencia",
         "names": [
-          "TensorFlow.js",
+          "maturity computations + XGBoost",
           "Gemini",
           "Groq",
           "OpenWeather"
@@ -1627,7 +1634,7 @@
         "sku": "CN-CC",
         "name": "Curado del hormigón",
         "href": "/solutions/concrete-curing",
-        "body": "Sondas de aire, superficie y núcleo con inteligencia de madurez de losa y un modelo interno de predicción de curado TensorFlow.js."
+        "body": "Sondas de aire, superficie y núcleo con inteligencia de madurez de losa y un modelo interno de predicción de curado maturity computations + XGBoost."
       },
       {
         "sku": "CN-WD",
@@ -2034,7 +2041,7 @@
           "indoor air",
           "leak"
         ],
-        "text": "CN-CC curado de hormigón con sondas de aire, superficie y núcleo. CurNext ejecuta un modelo interno de predicción de curado entrenado con TensorFlow.js como parte del motor de readiness. CN-WD secado de paredes para yeso, cuartos húmedos y riesgo de humedad antes de acabados. CN-IAQ aire interior para CO2, PM, VOC y contexto climático interior. CN-LEAK detección de fugas para salas técnicas, baños y montantes cuando importan los eventos de humedad. CN-SHM salud estructural para inclinación, fisura, vibración. CN-MEP caudal, presión, energía incluyendo rutas de panel PoE. Para preocupaciones de moho o humedad en un edificio, oriente a CN-WD, CN-IAQ y CN-LEAK según si el trabajo es secado de acabados, calidad del aire interior o vigilancia de fugas - luego dimensione nodos y duración en Pricing."
+        "text": "CN-CC curado de hormigón con sondas de aire, superficie y núcleo. CurNext ejecuta un modelo interno de predicción de curado entrenado con maturity computations + XGBoost como parte del motor de readiness. CN-WD secado de paredes para yeso, cuartos húmedos y riesgo de humedad antes de acabados. CN-IAQ aire interior para CO2, PM, VOC y contexto climático interior. CN-LEAK detección de fugas para salas técnicas, baños y montantes cuando importan los eventos de humedad. CN-SHM salud estructural para inclinación, fisura, vibración. CN-MEP caudal, presión, energía incluyendo rutas de panel PoE. Para preocupaciones de moho o humedad en un edificio, oriente a CN-WD, CN-IAQ y CN-LEAK según si el trabajo es secado de acabados, calidad del aire interior o vigilancia de fugas - luego dimensione nodos y duración en Pricing."
       },
       {
         "id": "api",
@@ -2172,7 +2179,7 @@
           "soc",
           "certification"
         ],
-        "text": "CurNext no afirma ISO 27001 o SOC 2 para sí misma en páginas públicas. El GDPR aplica al procesamiento de plataforma en la UE. Las normas en las páginas de Seguridad y Cumplimiento son alineación de diseño. La evidencia de construcción incluye readiness y registros de auditoría. La predicción de curado del hormigón usa un modelo TensorFlow.js interno. Las funciones de IA asistida usan Gemini y Groq cuando están habilitadas."
+        "text": "CurNext no afirma ISO 27001 o SOC 2 para sí misma en páginas públicas. El GDPR aplica al procesamiento de plataforma en la UE. Las normas en las páginas de Seguridad y Cumplimiento son alineación de diseño. La evidencia de construcción incluye readiness y registros de auditoría. La predicción de curado del hormigón usa un modelo maturity computations + XGBoost interno. Las funciones de IA asistida usan Gemini y Groq cuando están habilitadas."
       },
       {
         "id": "contact",
@@ -2878,11 +2885,11 @@
           "solution-cn-cc": {
             "title": "CN-CC - Concrete Curing",
             "paragraphs": [
-              "El curado de hormigón supervisa la madurez de la losa con sondas de aire, superficie y núcleo. Un nodo edge sellado permanece fuera del vertido; sondas robustas se sitúan donde la losa necesita medición. El modelo TensorFlow.js interno de CurNext convierte esas temperaturas en predicciones de curado y timing listo para construir, con pista de auditoría para el paquete de vertido."
+              "El curado de hormigón supervisa la madurez de la losa con sondas de aire, superficie y núcleo. Un nodo edge sellado permanece fuera del vertido; sondas robustas se sitúan donde la losa necesita medición. El modelo maturity computations + XGBoost interno de CurNext convierte esas temperaturas en predicciones de curado y timing listo para construir, con pista de auditoría para el paquete de vertido."
             ],
             "bullets": [
               "Roles de sonda de aire, superficie y núcleo en el mismo modelo de arnés",
-              "Predicción de curado TensorFlow.js interna para la preparación",
+              "Predicción de curado maturity computations + XGBoost interna para la preparación",
               "Preparación go / no-go en lugar de solo reglas de curado por calendario",
               "Pista de curado documentada para encofrado y oficios siguientes",
               "Ruta de campo LoRaWAN hacia CN-FG y CN-BC"
@@ -4225,7 +4232,7 @@
         },
         "4": {
           "title": "Decidir",
-          "body": "Vea la preparación go / no-go en dash.curnext.app - impulsada por el modelo TensorFlow.js de predicción de curado desarrollado por CurNext, con alertas y evidencias de cumplimiento."
+          "body": "Vea la preparación go / no-go en dash.curnext.app - impulsada por el modelo maturity computations + XGBoost de predicción de curado desarrollado por CurNext, con alertas y evidencias de cumplimiento."
         }
       },
       "trust": {
@@ -4301,7 +4308,22 @@
       "howToName": "Cómo funciona la monitorización de curado CN-CC",
       "schemaCategory": "Software de monitorización de curado de hormigón",
       "schemaAudienceType": "Contratistas generales, oficios de suelos y revestimientos, consultores y equipos de calidad",
-      "schemaOfferDescription": "Precio según número de nodos y duración del proyecto para monitorización de readiness de losa"
+      "schemaOfferDescription": "Precio según número de nodos y duración del proyecto para monitorización de readiness de losa",
+      "readinessEyebrow": "Motor de preparación",
+      "readinessTitle": "Cómo se calcula la preparación",
+      "readinessLead": "CN-CC convierte la serie temporal de las sondas en una decisión go / no-go en dos capas: primero cálculos de madurez de clase ASTM, luego XGBoost para ETA y confianza.",
+      "readiness": {
+        "physics": {
+          "title": "Cálculos de madurez",
+          "body": "El historial de temperatura del núcleo se integra con madurez Nurse-Saul (principal) y edad equivalente de Arrhenius. Los datos de mezcla y lote — contenido de cemento, relación agua-cemento, temperatura de colocación, espesor — fijan la calibración. El congelamiento y una hidratación inválida pausan la decisión como PAUSED_COLD."
+        },
+        "xgboost": {
+          "title": "XGBoost en la trayectoria del vertido",
+          "body": "XGBoost refina las horas hasta listo y la confianza a partir de características de trayectoria a nivel de vertido (integrales de madurez, tasas recientes, ventanas de temperatura, contexto de HR y covariables de mezcla) — nunca a partir de filas de sensor aisladas mezcladas. Entrenamiento y validación se dividen por vertido, no por marcas de tiempo aleatorias."
+        }
+      },
+      "readinessRailLabel": "Tope duro:",
+      "readinessRailBody": "La física controla el congelamiento y el curado inválido. XGBoost puede refinar ETA y confianza, pero no puede forzar READY cuando la losa está fría o la hidratación no avanza."
     },
     "wall-drying": {
       "metaTitle": "Monitorización de secado de muros y riesgo de moho | Readiness zonas húmedas (CN-WD)",
@@ -5381,7 +5403,7 @@
         "Infraestructura de hosting y base de datos en la UE (orientación Alemania / Fráncfort).",
         "Almacenamiento de objetos opcional con opciones de jurisdicción UE cuando está habilitado.",
         "Proveedores de entrega de correo, monitorización de errores y observabilidad según la lista pública.",
-        "Funciones de IA asistida (por ejemplo Gemini o Groq cuando están habilitadas) bajo controles de producto y contractuales - la predicción de curado del hormigón usa un modelo TensorFlow.js interno y no es lo mismo que la asistencia por chat."
+        "Funciones de IA asistida (por ejemplo Gemini o Groq cuando están habilitadas) bajo controles de producto y contractuales - la predicción de curado del hormigón usa un modelo maturity computations + XGBoost interno y no es lo mismo que la asistencia por chat."
       ],
       "cta": "Revisar el resumen público actual de subencargados",
       "href": "/data/data-processing-agreement"
@@ -5900,7 +5922,7 @@
       "bullets": [
         "Infraestructura de hosting y bases de datos orientada a la UE para la producción principal.",
         "Resumen público de subencargados en la página del Acuerdo de encargo.",
-        "Las funciones de IA asistida, cuando están activadas, se ejecutan bajo controles de producto y contractuales - la predicción de curado del hormigón usa un modelo TensorFlow.js interno.",
+        "Las funciones de IA asistida, cuando están activadas, se ejecutan bajo controles de producto y contractuales - la predicción de curado del hormigón usa un modelo maturity computations + XGBoost interno.",
         "Los cambios materiales de subencargados siguen el proceso de aviso descrito en el DPA."
       ]
     },
@@ -6446,5 +6468,138 @@
         "href": "/contact"
       }
     ]
+  },
+  "architecture": {
+    "eyebrow": "Desarrolladores",
+    "layersTitle": "Capas L1-L5",
+    "layersLead": "Cada capa tiene un trabajo. La energía no interpreta mediciones. Las pasarelas de planta no miran a Internet público. El controlador de edificio es el límite de seguridad para el uplink y la OTA de campo firmada.",
+    "ctaHowItWorks": "Cómo funciona",
+    "ctaSecurity": "Arquitectura de seguridad",
+    "ctaDocs": "Documentación de producto",
+    "page": {
+      "title": "Arquitectura",
+      "description": "La ruta de obra CurNext de nodos de campo al cloud - cinco capas con un trabajo cada una: L1 sense, L2 agregación de planta, L3 energía, L4 uplink de edificio, L5 decidir.",
+      "leadNote": "Referencia de arquitectura de producto para operadores y desarrolladores. El detalle de zonas de seguridad está en la página Security."
+    },
+    "layers": [
+      {
+        "id": "L1",
+        "role": "Sense",
+        "product": "Nodos de campo",
+        "title": "L1 - Sensores de campo",
+        "body": "Los dispositivos se instalan en la obra - losas en curado, muros en secado, aire interior, fugas, estructura o sistemas de planta. Capturan las condiciones que impulsan plazo y calidad.",
+        "bullets": [
+          "SKU: CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP",
+          "Identidad única de dispositivo y material de claves en secure element",
+          "Diseño antimanipulación y detección de desplazamiento",
+          "LoRaWAN Class A (EU868) para nodos inalámbricos a batería cuando aplica"
+        ]
+      },
+      {
+        "id": "L2",
+        "role": "Aggregate",
+        "product": "CN-FG",
+        "title": "L2 - Pasarela de planta",
+        "body": "Cada planta concentra el tráfico de dispositivos en un punto de recogida para mantener el nivel organizado al escalar el proyecto.",
+        "bullets": [
+          "Ancla de confianza para verificación del enlace aéreo (MIC, contadores, join)",
+          "Solo VLAN de planta - sin interfaz hacia el cloud",
+          "OTA solo desde CN-BC"
+        ]
+      },
+      {
+        "id": "L3",
+        "role": "Power",
+        "product": "CN-UPS",
+        "title": "L3 - Energía de obra",
+        "body": "La energía dedicada mantiene el hardware de planta y edificio durante cortes. Esta capa solo suministra energía - no interpreta mediciones ni lleva plano de datos en la VLAN de gestión.",
+        "bullets": [
+          "Continuidad de energía para L2 / L4 ante pérdida de red",
+          "Sin interpretación de telemetría",
+          "Sin plano de datos público en la ruta de gestión"
+        ]
+      },
+      {
+        "id": "L4",
+        "role": "Bridge",
+        "product": "CN-BC",
+        "title": "L4 - Controlador de edificio",
+        "body": "La unidad de edificio es el enlace seguro de la red de obra a CurNext. Mantiene una ruta protegida fuera del sitio, termina la orquestación OTA de campo y habla con el broker cloud privado.",
+        "bullets": [
+          "Cliente WireGuard en el límite de seguridad del edificio",
+          "MQTT sobre TLS con TLS mutuo al broker privado",
+          "Trabajos OTA firmados para objetivos L1 / L2",
+          "Store-and-forward cifrado cuando el uplink cae"
+        ]
+      },
+      {
+        "id": "L5",
+        "role": "Decide",
+        "product": "Cloud CurNext",
+        "title": "L5 - Cloud CurNext",
+        "body": "La plataforma convierte los datos de obra en readiness, alertas y siguientes acciones - en el dashboard web y la app móvil - con pista de auditoría para clientes y cumplimiento.",
+        "bullets": [
+          "Dashboards de proyecto, alertas, readiness mapeada a BIM",
+          "API REST, SDK, Market Place, catálogo de firmware",
+          "Acceso solo por invitación, RBAC, MFA privilegiado"
+        ]
+      }
+    ],
+    "flow": {
+      "title": "Ruta de datos",
+      "lead": "Las mediciones suben por la pila. Las decisiones y operaciones firmadas vuelven a través de CurNext.",
+      "steps": [
+        {
+          "from": "L1",
+          "to": "L2",
+          "path": "Enlace aéreo LoRaWAN"
+        },
+        {
+          "from": "L2",
+          "to": "L4",
+          "path": "VLAN Ethernet planta / edificio"
+        },
+        {
+          "from": "L3",
+          "to": "L2 / L4",
+          "path": "PoE / solo energía de obra"
+        },
+        {
+          "from": "L4",
+          "to": "L5",
+          "path": "WireGuard + MQTT / TLS"
+        },
+        {
+          "from": "L5",
+          "to": "Compradores",
+          "path": "HTTPS REST · dash · mobile"
+        }
+      ]
+    },
+    "principles": {
+      "title": "Reglas de diseño",
+      "items": [
+        {
+          "title": "Un trabajo por capa",
+          "body": "La energía no interpreta mediciones. Las pasarelas de planta no miran a Internet público. El controlador de edificio es el límite de seguridad para el uplink y la OTA de campo firmada."
+        },
+        {
+          "title": "La misma ruta para cada superficie",
+          "body": "Curado, secado, aire, fuga, estructura y MEP comparten L2-L5. Solo cambia la línea de producto L1."
+        },
+        {
+          "title": "Decisiones y evidencia",
+          "body": "L5 es donde actúan los equipos - readiness, alertas y pista de auditoría - no solo flujos en bruto."
+        },
+        {
+          "title": "Internet, no una red LoRaWAN nacional",
+          "body": "La radio de obra permanece privada (L1↔L2). El acceso al cloud usa CN-BC por Internet - la cobertura no se limita a países con red LoRaWAN pública."
+        }
+      ]
+    },
+    "deployAnywhere": {
+      "title": "Despliegue en cualquier lugar con Internet",
+      "body": "Esta estructura L1-L5 es autosuficiente en obra: los nodos de campo hablan LoRaWAN solo con las pasarelas de planta CurNext (CN-FG), y el controlador de edificio (CN-BC) llega al cloud CurNext por Internet ordinario. Un proyecto puede desplegarse en cualquier lugar de la Tierra con conectividad a Internet. No depende de un operador de red LoRaWAN pública específica de un país - a diferencia de sistemas que solo funcionan donde ya existe esa red nacional o de operador."
+    }
   }
 }

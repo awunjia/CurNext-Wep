@@ -236,11 +236,11 @@
         "solution-cn-cc": {
           "title": "CN-CC - Concrete Curing",
           "paragraphs": [
-            "Betonghärdning övervakar plattans mognad med luft-, yt- och kärnprober. En förseglad edge-nod stannar utanför gjutningen; robusta prober sitter där plattan behöver mätas. CurNexts interna TensorFlow.js-modell omvandlar temperaturerna till härdningsprognoser och byggklar timing, med revisionsspår för gjutpaketet."
+            "Betonghärdning övervakar plattans mognad med luft-, yt- och kärnprober. En förseglad edge-nod stannar utanför gjutningen; robusta prober sitter där plattan behöver mätas. CurNexts interna XGBoost-modell omvandlar temperaturerna till härdningsprognoser och byggklar timing, med revisionsspår för gjutpaketet."
           ],
           "bullets": [
             "Luft-, yt- och kärnproberoller på samma selemodell",
-            "Intern TensorFlow.js-härdningsprognos för beredskap",
+            "Intern XGBoost-härdningsprognos för beredskap",
             "Go / no-go-beredskap istället för enbart kalenderbaserade härdningsregler",
             "Dokumenterat härdningsspår för formar och efterföljande yrkesgrupper",
             "LoRaWAN-fältväg in till CN-FG och CN-BC"

@@ -373,7 +373,7 @@
         },
         {
           "title": "Modelo de curado del hormigón",
-          "body": "Predicción interna para la madurez de losas CN-CC, entrenada y servida con TensorFlow.js."
+          "body": "Predicción interna para la madurez de losas CN-CC, entrenada y servida con XGBoost."
         },
         {
           "title": "Contexto BIM",
@@ -423,7 +423,7 @@
       {
         "title": "IA e inteligencia",
         "names": [
-          "TensorFlow.js",
+          "XGBoost",
           "Gemini",
           "Groq",
           "OpenWeather"
@@ -455,7 +455,7 @@
         "sku": "CN-CC",
         "name": "Curado del hormigón",
         "href": "/solutions/concrete-curing",
-        "body": "Sondas de aire, superficie y núcleo con inteligencia de madurez de losa y un modelo interno de predicción de curado TensorFlow.js."
+        "body": "Sondas de aire, superficie y núcleo con inteligencia de madurez de losa y un modelo interno de predicción de curado XGBoost."
       },
       {
         "sku": "CN-WD",

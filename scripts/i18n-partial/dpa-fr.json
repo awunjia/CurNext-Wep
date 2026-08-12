@@ -316,7 +316,7 @@
       },
       {
         "control": "Contrôles IA",
-        "summary": "Prédiction de cure interne (TensorFlow.js) dans le produit ; Gemini et Groq uniquement pour les fonctions assistées activées ; minimiser le contexte des invites ; pas de vente des Données Client"
+        "summary": "Prédiction de cure interne (XGBoost) dans le produit ; Gemini et Groq uniquement pour les fonctions assistées activées ; minimiser le contexte des invites ; pas de vente des Données Client"
       },
       {
         "control": "Parcours d'incident",

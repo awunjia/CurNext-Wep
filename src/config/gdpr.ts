@@ -246,7 +246,7 @@ export const gdprSubprocessors = {
     "Hosting and database infrastructure in the EU (Germany / Frankfurt orientation).",
     "Optional object storage with EU jurisdiction options where enabled.",
     "Email delivery, error monitoring, and observability vendors as listed publicly.",
-    "Assisted AI features (for example Gemini or Groq when enabled) under product and contractual controls - concrete curing prediction uses an in-house TensorFlow.js model and is not the same as chat assistance.",
+    "Assisted AI features (for example Gemini or Groq when enabled) under product and contractual controls - concrete curing prediction uses maturity computations plus an in-house XGBoost model and is not the same as chat assistance.",
   ],
   cta: "Review the current public subprocessor summary",
   href: "/data/data-processing-agreement",

@@ -85,7 +85,7 @@ export const complianceAi = {
   items: [
     {
       name: "In-house curing model",
-      body: "Concrete curing prediction runs on a CurNext-trained model built with TensorFlow.js - part of the product readiness engine for CN-CC.",
+      body: "Concrete curing prediction runs on CurNext maturity computations plus XGBoost - part of the product readiness engine for CN-CC.",
     },
     {
       name: "Gemini (Google AI)",

@@ -373,7 +373,7 @@
         },
         {
           "title": "Betonghärdningsmodell",
-          "body": "Intern prediktion för CN-CC-plattberedskap, tränad och serverad med TensorFlow.js."
+          "body": "Intern prediktion för CN-CC-plattberedskap, tränad och serverad med XGBoost."
         },
         {
           "title": "BIM-kontext",
@@ -423,7 +423,7 @@
       {
         "title": "AI och intelligens",
         "names": [
-          "TensorFlow.js",
+          "XGBoost",
           "Gemini",
           "Groq",
           "OpenWeather"
@@ -455,7 +455,7 @@
         "sku": "CN-CC",
         "name": "Betonghärdning",
         "href": "/solutions/concrete-curing",
-        "body": "Luft-, yt- och kärnsensorer med plattberedskapsintelligens och en intern TensorFlow.js-härdningsprediktionsmodell."
+        "body": "Luft-, yt- och kärnsensorer med plattberedskapsintelligens och en intern XGBoost-härdningsprediktionsmodell."
       },
       {
         "sku": "CN-WD",

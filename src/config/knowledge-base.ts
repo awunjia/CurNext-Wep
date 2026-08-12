@@ -48,7 +48,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "indoor air",
       "leak",
     ],
-    text: "CN-CC concrete curing with air, surface, and core probes. CurNext runs an in-house concrete curing prediction model trained with TensorFlow.js as part of the readiness engine. CN-WD wall drying for gypsum, wet rooms, and moisture risk before finishes. CN-IAQ indoor air for CO2, PM, VOC and indoor climate context. CN-LEAK leak detection for plant rooms, bathrooms, and risers when moisture events matter. CN-SHM structural health for tilt, crack, vibration. CN-MEP flow, pressure, energy including PoE panel paths. For mold or moisture concerns in a building, point people toward CN-WD, CN-IAQ, and CN-LEAK depending on whether the job is drying finishes, indoor air quality, or leak watch - then size nodes and duration on Pricing.",
+    text: "CN-CC concrete curing with air, surface, and core probes. CurNext runs an in-house concrete curing prediction model using maturity computations plus XGBoost as part of the readiness engine. CN-WD wall drying for gypsum, wet rooms, and moisture risk before finishes. CN-IAQ indoor air for CO2, PM, VOC and indoor climate context. CN-LEAK leak detection for plant rooms, bathrooms, and risers when moisture events matter. CN-SHM structural health for tilt, crack, vibration. CN-MEP flow, pressure, energy including PoE panel paths. For mold or moisture concerns in a building, point people toward CN-WD, CN-IAQ, and CN-LEAK depending on whether the job is drying finishes, indoor air quality, or leak watch - then size nodes and duration on Pricing.",
   },
   {
     id: "api",
@@ -137,7 +137,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
     source: "Compliance",
     href: "/compliance",
     tags: ["compliance", "gdpr", "iso", "soc", "certification"],
-    text: "CurNext does not claim ISO 27001 or SOC 2 for itself on public pages. GDPR applies to EU platform processing. Standards on Security and Compliance pages are design alignment. Construction evidence includes readiness and audit trails. Concrete curing prediction uses an in-house TensorFlow.js model. Assisted AI features use Gemini and Groq when enabled.",
+    text: "CurNext does not claim ISO 27001 or SOC 2 for itself on public pages. GDPR applies to EU platform processing. Standards on Security and Compliance pages are design alignment. Construction evidence includes readiness and audit trails. Concrete curing prediction uses maturity computations plus an in-house XGBoost model. Assisted AI features use Gemini and Groq when enabled.",
   },
   {
     id: "contact",

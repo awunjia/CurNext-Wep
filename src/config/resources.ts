@@ -88,6 +88,11 @@ export const resourceGroups: ResourceGroup[] = [
         href: "/technologies",
       },
       {
+        title: "Architecture",
+        description: "L1-L5 site path from field nodes to cloud",
+        href: "/architecture",
+      },
+      {
         title: "API playground",
         description: "Interactive OpenAPI docs at api.curnext.app.",
         href: siteConfig.links.apiDocs,

@@ -227,7 +227,7 @@
       "Hosting- och databasinfrastruktur i EU (orientering Tyskland / Frankfurt).",
       "Valfri objektlagring med EU-jurisdiktionsalternativ där det är aktiverat.",
       "Leverantörer av e-postleverans, felövervakning och observability enligt offentlig lista.",
-      "Assisterade AI-funktioner (till exempel Gemini eller Groq när aktiverat) under produkt- och avtalskontroller - betongmognadsprediktion använder en intern TensorFlow.js-modell och är inte samma sak som chattassistans."
+      "Assisterade AI-funktioner (till exempel Gemini eller Groq när aktiverat) under produkt- och avtalskontroller - betongmognadsprediktion använder en intern XGBoost-modell och är inte samma sak som chattassistans."
     ],
     "cta": "Granska aktuell offentlig underbiträdessammanfattning",
     "href": "/data/data-processing-agreement"

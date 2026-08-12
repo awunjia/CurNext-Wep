@@ -373,7 +373,7 @@
         },
         {
           "title": "Modèle de cure du béton",
-          "body": "Prédiction interne pour la maturité des dalles CN-CC, entraînée et servie avec TensorFlow.js."
+          "body": "Prédiction interne pour la maturité des dalles CN-CC, entraînée et servie avec XGBoost."
         },
         {
           "title": "Contexte BIM",
@@ -423,7 +423,7 @@
       {
         "title": "IA et intelligence",
         "names": [
-          "TensorFlow.js",
+          "XGBoost",
           "Gemini",
           "Groq",
           "OpenWeather"
@@ -455,7 +455,7 @@
         "sku": "CN-CC",
         "name": "Cure du béton",
         "href": "/solutions/concrete-curing",
-        "body": "Sondes air, surface et cœur avec intelligence de maturité de dalle et modèle de prédiction de cure TensorFlow.js interne."
+        "body": "Sondes air, surface et cœur avec intelligence de maturité de dalle et modèle de prédiction de cure XGBoost interne."
       },
       {
         "sku": "CN-WD",

@@ -227,7 +227,7 @@
       "Infraestructura de hosting y base de datos en la UE (orientación Alemania / Fráncfort).",
       "Almacenamiento de objetos opcional con opciones de jurisdicción UE cuando está habilitado.",
       "Proveedores de entrega de correo, monitorización de errores y observabilidad según la lista pública.",
-      "Funciones de IA asistida (por ejemplo Gemini o Groq cuando están habilitadas) bajo controles de producto y contractuales - la predicción de curado del hormigón usa un modelo TensorFlow.js interno y no es lo mismo que la asistencia por chat."
+      "Funciones de IA asistida (por ejemplo Gemini o Groq cuando están habilitadas) bajo controles de producto y contractuales - la predicción de curado del hormigón usa un modelo XGBoost interno y no es lo mismo que la asistencia por chat."
     ],
     "cta": "Revisar el resumen público actual de subencargados",
     "href": "/data/data-processing-agreement"

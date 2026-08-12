@@ -60,7 +60,9 @@
     "structuralHealth": "Structural Health",
     "structuralHealthDesc": "Strain, crack, tilt, vibration",
     "mep": "MEP",
-    "mepDesc": "Flow, pressure, energy (PoE panel)"
+    "mepDesc": "Flow, pressure, energy (PoE panel)",
+    "architecture": "Architecture",
+    "architectureDesc": "L1-L5 site path from field nodes to cloud"
   },
   "footer": {
     "solutions": "Solutions",
@@ -122,7 +124,7 @@
     "intelligenceTitle": "Not just graphs. Decisions you can trust.",
     "intelligenceLead": "Visualize conditions when you need them - and rely on AI predictions plus security controls when the schedule and reputation are on the line.",
     "aiTitle": "AI readiness predictions",
-    "aiBody": "CurNext goes beyond dashboards. An in-house TensorFlow.js model drives concrete curing predictions, while assisted AI helps with readiness context - so teams act before schedules slip.",
+    "aiBody": "CurNext goes beyond dashboards. Maturity computations plus an in-house XGBoost model drive concrete curing predictions, while assisted AI helps with readiness context - so teams act before schedules slip.",
     "aiLink": "Concrete curing",
     "securityTitle": "Security by design",
     "securityBody": "Site data stays protected with hardened controls, audit-ready trails, and practices built for construction and operations environments - from sensor to cloud.",
@@ -429,7 +431,7 @@
       "items": [
         {
           "name": "In-house curing model",
-          "body": "Concrete curing prediction runs on a CurNext-trained model built with TensorFlow.js - part of the product readiness engine for CN-CC."
+          "body": "Concrete curing prediction runs on CurNext maturity computations plus XGBoost - part of the product readiness engine for CN-CC."
         },
         {
           "name": "Gemini (Google AI)",
@@ -780,6 +782,11 @@
             "title": "Technologies",
             "description": "Public stack, connectivity, and ecosystem partners.",
             "href": "/technologies"
+          },
+          {
+            "title": "Architecture",
+            "description": "L1-L5 site path from field nodes to cloud.",
+            "href": "/architecture"
           },
           {
             "title": "API playground",
@@ -1486,7 +1493,7 @@
         },
         {
           "control": "AI controls",
-          "summary": "In-house curing prediction (TensorFlow.js) runs in the product; Gemini and Groq used only for enabled assisted features; minimize prompt context; no sale of Client Data"
+          "summary": "In-house curing prediction (maturity computations + XGBoost) runs in the product; Gemini and Groq used only for enabled assisted features; minimize prompt context; no sale of Client Data"
         },
         {
           "control": "Incident path",
@@ -1545,7 +1552,7 @@
         },
         {
           "title": "Concrete curing model",
-          "body": "In-house prediction for CN-CC slab readiness, trained and served with TensorFlow.js."
+          "body": "In-house prediction for CN-CC slab readiness, powered by maturity computations and XGBoost."
         },
         {
           "title": "BIM context",
@@ -1595,7 +1602,7 @@
       {
         "title": "AI & intelligence",
         "names": [
-          "TensorFlow.js",
+          "maturity computations + XGBoost",
           "Gemini",
           "Groq",
           "OpenWeather"
@@ -1627,7 +1634,7 @@
         "sku": "CN-CC",
         "name": "Concrete curing",
         "href": "/solutions/concrete-curing",
-        "body": "Air, surface, and core probes with slab readiness intelligence and an in-house TensorFlow.js curing prediction model."
+        "body": "Air, surface, and core probes with slab readiness intelligence and maturity computations plus an in-house XGBoost curing model."
       },
       {
         "sku": "CN-WD",
@@ -2034,7 +2041,7 @@
           "indoor air",
           "leak"
         ],
-        "text": "CN-CC concrete curing with air, surface, and core probes. CurNext runs an in-house concrete curing prediction model trained with TensorFlow.js as part of the readiness engine. CN-WD wall drying for gypsum, wet rooms, and moisture risk before finishes. CN-IAQ indoor air for CO2, PM, VOC and indoor climate context. CN-LEAK leak detection for plant rooms, bathrooms, and risers when moisture events matter. CN-SHM structural health for tilt, crack, vibration. CN-MEP flow, pressure, energy including PoE panel paths. For mold or moisture concerns in a building, point people toward CN-WD, CN-IAQ, and CN-LEAK depending on whether the job is drying finishes, indoor air quality, or leak watch - then size nodes and duration on Pricing."
+        "text": "CN-CC concrete curing with air, surface, and core probes. CurNext runs an in-house concrete curing prediction model using maturity computations plus XGBoost as part of the readiness engine. CN-WD wall drying for gypsum, wet rooms, and moisture risk before finishes. CN-IAQ indoor air for CO2, PM, VOC and indoor climate context. CN-LEAK leak detection for plant rooms, bathrooms, and risers when moisture events matter. CN-SHM structural health for tilt, crack, vibration. CN-MEP flow, pressure, energy including PoE panel paths. For mold or moisture concerns in a building, point people toward CN-WD, CN-IAQ, and CN-LEAK depending on whether the job is drying finishes, indoor air quality, or leak watch - then size nodes and duration on Pricing."
       },
       {
         "id": "api",
@@ -2172,7 +2179,7 @@
           "soc",
           "certification"
         ],
-        "text": "CurNext does not claim ISO 27001 or SOC 2 for itself on public pages. GDPR applies to EU platform processing. Standards on Security and Compliance pages are design alignment. Construction evidence includes readiness and audit trails. Concrete curing prediction uses an in-house TensorFlow.js model. Assisted AI features use Gemini and Groq when enabled."
+        "text": "CurNext does not claim ISO 27001 or SOC 2 for itself on public pages. GDPR applies to EU platform processing. Standards on Security and Compliance pages are design alignment. Construction evidence includes readiness and audit trails. Concrete curing prediction uses maturity computations plus an in-house XGBoost model. Assisted AI features use Gemini and Groq when enabled."
       },
       {
         "id": "contact",
@@ -2878,11 +2885,11 @@
           "solution-cn-cc": {
             "title": "CN-CC - Concrete Curing",
             "paragraphs": [
-              "Concrete curing monitors slab maturity with air, surface, and core probes. A sealed edge node stays outside the pour; rugged probes sit where the slab needs measurement. CurNext's in-house TensorFlow.js model turns those temperatures into curing predictions and build-ready timing, with an audit trail for the pour package."
+              "Concrete curing monitors slab maturity with air, surface, and core probes. A sealed edge node stays outside the pour; rugged probes sit where the slab needs measurement. CurNext's maturity computations plus XGBoost turn those temperatures into curing predictions and build-ready timing, with an audit trail for the pour package."
             ],
             "bullets": [
               "Air, surface, and core probe roles on the same harness model",
-              "In-house TensorFlow.js curing prediction for readiness",
+              "Maturity computations + XGBoost curing prediction for readiness",
               "Go / no-go readiness instead of calendar-only cure rules",
               "Documented cure trail for formwork and follow-on trades",
               "LoRaWAN field path into CN-FG and CN-BC"
@@ -4225,7 +4232,7 @@
         },
         "4": {
           "title": "Decide",
-          "body": "See go / no-go readiness on dash.curnext.app - powered by CurNext's in-house TensorFlow.js curing prediction model, with alerts and compliance evidence."
+          "body": "See go / no-go readiness on dash.curnext.app - powered by CurNext's maturity computations plus XGBoost, with alerts and compliance evidence."
         }
       },
       "trust": {
@@ -4301,7 +4308,22 @@
       "howToName": "How CurNext CN-CC concrete curing monitoring works",
       "schemaCategory": "Concrete curing monitoring software",
       "schemaAudienceType": "General contractors, specialty flooring and coating trades, consultants, and quality teams",
-      "schemaOfferDescription": "Quoted by node count and project duration for slab readiness monitoring"
+      "schemaOfferDescription": "Quoted by node count and project duration for slab readiness monitoring",
+      "readinessEyebrow": "Readiness engine",
+      "readinessTitle": "How readiness is calculated",
+      "readinessLead": "CN-CC turns the probe time series into a go / no-go call with two layers: ASTM-class maturity computations first, then an XGBoost booster for ETA and confidence.",
+      "readiness": {
+        "physics": {
+          "title": "Maturity computations",
+          "body": "Core temperature history is integrated with Nurse-Saul maturity (primary) and Arrhenius equivalent age. Mix and batch inputs — cement content, water-cement ratio, placement temperature, thickness — set the calibration. Freeze and invalid hydration pause the call as PAUSED_COLD."
+        },
+        "xgboost": {
+          "title": "XGBoost on the pour trajectory",
+          "body": "XGBoost refines hours-to-ready and confidence from pour-level trajectory features (maturity integrals, recent rates, temperature windows, RH context, and mix covariates) — never from shuffled single sensor rows. Training and validation split by pour, not by random timestamps."
+        }
+      },
+      "readinessRailLabel": "Hard rail:",
+      "readinessRailBody": "Physics owns freeze and invalid curing. XGBoost can refine ETA and confidence, but it cannot force READY when the slab is cold or hydration is not progressing."
     },
     "wall-drying": {
       "metaTitle": "Wall Drying & Mold Risk Monitoring | Wet-Room Readiness (CN-WD)",
@@ -5381,7 +5403,7 @@
         "Hosting and database infrastructure in the EU (Germany / Frankfurt orientation).",
         "Optional object storage with EU jurisdiction options where enabled.",
         "Email delivery, error monitoring, and observability vendors as listed publicly.",
-        "Assisted AI features (for example Gemini or Groq when enabled) under product and contractual controls - concrete curing prediction uses an in-house TensorFlow.js model and is not the same as chat assistance."
+        "Assisted AI features (for example Gemini or Groq when enabled) under product and contractual controls - concrete curing prediction uses maturity computations plus an in-house XGBoost model and is not the same as chat assistance."
       ],
       "cta": "Review the current public subprocessor summary",
       "href": "/data/data-processing-agreement"
@@ -5900,7 +5922,7 @@
       "bullets": [
         "EU-oriented hosting and database infrastructure for core production.",
         "Public subprocessor summary on the Data Processing Agreement page.",
-        "Assisted AI features, when enabled, run under product and contractual controls - concrete curing prediction uses an in-house TensorFlow.js model.",
+        "Assisted AI features, when enabled, run under product and contractual controls - concrete curing prediction uses maturity computations plus an in-house XGBoost model.",
         "Material subprocessor changes follow the notice process described in the DPA."
       ]
     },
@@ -6446,5 +6468,138 @@
         "href": "/contact"
       }
     ]
+  },
+  "architecture": {
+    "eyebrow": "Developer",
+    "layersTitle": "Layers L1-L5",
+    "layersLead": "Each layer has one job. Power does not interpret measurements. Floor gateways do not face the public internet. The building controller is the security boundary for uplink and signed field OTA.",
+    "ctaHowItWorks": "How it works",
+    "ctaSecurity": "Security architecture",
+    "ctaDocs": "Product docs",
+    "page": {
+      "title": "Architecture",
+      "description": "The CurNext site path from field nodes to cloud - five layers with one job each: L1 sense, L2 floor aggregate, L3 power, L4 building uplink, L5 decide.",
+      "leadNote": "This is the product architecture reference for operators and developers. Security zone detail lives on the Security page."
+    },
+    "layers": [
+      {
+        "id": "L1",
+        "role": "Sense",
+        "product": "Field nodes",
+        "title": "L1 - Field sensors",
+        "body": "Devices install on the work itself - curing slabs, drying walls, indoor air, leaks, structure, or plant systems. They capture the conditions that drive schedule and quality decisions.",
+        "bullets": [
+          "SKUs: CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP",
+          "Unique device identity and secure-element key material",
+          "Tamper-proof design and displacement detection",
+          "LoRaWAN Class A (EU868) for battery wireless nodes where applicable"
+        ]
+      },
+      {
+        "id": "L2",
+        "role": "Aggregate",
+        "product": "CN-FG",
+        "title": "L2 - Floor gateway",
+        "body": "Each floor concentrates device traffic at one collection point so a level stays organized as the project scales across wings and zones.",
+        "bullets": [
+          "Trust anchor for air-link verification (MIC, counters, join)",
+          "Floor VLAN only - no cloud-facing interface",
+          "OTA only from CN-BC"
+        ]
+      },
+      {
+        "id": "L3",
+        "role": "Power",
+        "product": "CN-UPS",
+        "title": "L3 - Site power",
+        "body": "Dedicated power keeps floor and building hardware online through outages. This layer supplies power only - it does not interpret measurements or carry a data plane on the management VLAN.",
+        "bullets": [
+          "Power continuity for L2 / L4 during grid loss",
+          "No telemetry interpretation",
+          "No public data plane on the management path"
+        ]
+      },
+      {
+        "id": "L4",
+        "role": "Bridge",
+        "product": "CN-BC",
+        "title": "L4 - Building controller",
+        "body": "The building unit is the secure link from the site network to CurNext. It maintains a protected path off the jobsite, terminates field OTA orchestration, and speaks to the private cloud broker path.",
+        "bullets": [
+          "WireGuard client at the building security boundary",
+          "MQTT over TLS with mutual TLS to the private broker",
+          "Signed OTA jobs for L1 / L2 targets",
+          "Encrypted store-and-forward when the uplink is down"
+        ]
+      },
+      {
+        "id": "L5",
+        "role": "Decide",
+        "product": "CurNext cloud",
+        "title": "L5 - CurNext cloud",
+        "body": "The platform turns site data into readiness status, alerts, and next actions - in the web dashboard and mobile app - with an audit trail for clients and compliance.",
+        "bullets": [
+          "Project dashboards, alerts, BIM-mapped readiness",
+          "REST API, SDKs, Market Place, firmware catalog",
+          "Invite-only access, RBAC, privileged MFA"
+        ]
+      }
+    ],
+    "flow": {
+      "title": "Data path",
+      "lead": "Measurements move up the stack. Decisions and signed operations come back through CurNext.",
+      "steps": [
+        {
+          "from": "L1",
+          "to": "L2",
+          "path": "LoRaWAN air link"
+        },
+        {
+          "from": "L2",
+          "to": "L4",
+          "path": "Floor / building Ethernet VLAN"
+        },
+        {
+          "from": "L3",
+          "to": "L2 / L4",
+          "path": "PoE / site power only"
+        },
+        {
+          "from": "L4",
+          "to": "L5",
+          "path": "WireGuard + MQTT / TLS"
+        },
+        {
+          "from": "L5",
+          "to": "Buyers",
+          "path": "HTTPS REST · dash · mobile"
+        }
+      ]
+    },
+    "principles": {
+      "title": "Design rules",
+      "items": [
+        {
+          "title": "One job per layer",
+          "body": "Power does not interpret measurements. Floor gateways do not face the public internet. The building controller is the security boundary for uplink and signed field OTA."
+        },
+        {
+          "title": "Same path for every surface",
+          "body": "Curing, drying, air, leak, structure, and MEP share L2-L5. Only the L1 product line changes."
+        },
+        {
+          "title": "Decisions and evidence",
+          "body": "L5 is where teams act - readiness, alerts, and an audit trail - not raw sensor dumps alone."
+        },
+        {
+          "title": "Internet, not a national LoRaWAN net",
+          "body": "Site radio stays private (L1↔L2). Cloud reach uses CN-BC over internet - so coverage is not limited to countries with a public LoRaWAN network."
+        }
+      ]
+    },
+    "deployAnywhere": {
+      "title": "Deploy anywhere with internet",
+      "body": "This L1-L5 structure is self-contained on site: field nodes talk LoRaWAN only to CurNext floor gateways (CN-FG), and the building controller (CN-BC) reaches CurNext cloud over ordinary internet. That means a project can be deployed anywhere on earth with internet connectivity. It does not depend on a country-specific public LoRaWAN network operator - unlike systems that only work where such a national or carrier LoRaWAN network already exists."
+    }
   }
 }

@@ -236,11 +236,11 @@
         "solution-cn-cc": {
           "title": "CN-CC - Concrete Curing",
           "paragraphs": [
-            "La cure du béton suit la maturité de la dalle avec des sondes air, surface et cœur. Un nœud edge scellé reste hors du coulage ; des sondes robustes se placent où la dalle doit être mesurée. Le modèle TensorFlow.js interne de CurNext transforme ces températures en prédictions de cure et en timing prêt pour construire, avec une piste d'audit pour le dossier de coulage."
+            "La cure du béton suit la maturité de la dalle avec des sondes air, surface et cœur. Un nœud edge scellé reste hors du coulage ; des sondes robustes se placent où la dalle doit être mesurée. Le modèle XGBoost interne de CurNext transforme ces températures en prédictions de cure et en timing prêt pour construire, avec une piste d'audit pour le dossier de coulage."
           ],
           "bullets": [
             "Rôles de sondes air, surface et cœur sur le même modèle de harnais",
-            "Prédiction de cure TensorFlow.js interne pour la disponibilité",
+            "Prédiction de cure XGBoost interne pour la disponibilité",
             "Disponibilité go / no-go au lieu de seules règles de cure calendaires",
             "Piste de cure documentée pour coffrage et corps d'état suivants",
             "Chemin terrain LoRaWAN vers CN-FG et CN-BC"

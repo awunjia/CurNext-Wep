@@ -104,6 +104,12 @@ export const sitePages: SitePage[] = [
     group: "product",
   },
   {
+    title: "Architecture",
+    href: "/architecture",
+    description: "L1-L5 site path from field nodes to cloud",
+    group: "product",
+  },
+  {
     title: "Integrations",
     href: "/integrations",
     description: "Market Place integrations for your stack",
@@ -392,6 +398,11 @@ export const primaryNav: NavItem[] = [
         title: "Technologies",
         href: "/technologies",
         description: "Platform stack from field nodes to cloud",
+      },
+      {
+        title: "Architecture",
+        href: "/architecture",
+        description: "L1-L5 site path from field nodes to cloud",
       },
     ],
   },

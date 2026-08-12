@@ -227,7 +227,7 @@
       "Hostaus- ja tietokantainfrastruktuuri EU:ssa (Saksa / Frankfurt -suuntaus).",
       "Valinnainen objektitallennus EU-toimivaltaoptioilla, kun käytössä.",
       "Sähköpostitoimitus-, virheseuranta- ja havainnoitavuustoimittajat julkisesti listattuina.",
-      "Avustavat tekoälyominaisuudet (esimerkiksi Gemini tai Groq, kun käytössä) tuote- ja sopimusohjauksella - betonin kypsymisennuste käyttää sisäistä TensorFlow.js -mallia eikä ole sama kuin chat-avustus."
+      "Avustavat tekoälyominaisuudet (esimerkiksi Gemini tai Groq, kun käytössä) tuote- ja sopimusohjauksella - betonin kypsymisennuste käyttää sisäistä XGBoost -mallia eikä ole sama kuin chat-avustus."
     ],
     "cta": "Tarkastele nykyistä julkista alikäsittelijäyhteenvetoa",
     "href": "/data/data-processing-agreement"

@@ -316,7 +316,7 @@
       },
       {
         "control": "Tekoälykontrollit",
-        "summary": "Sisäinen kovettumisennuste (TensorFlow.js) tuotteessa; Geminiä ja Groqia vain käytössä oleviin avustettuihin ominaisuuksiin; minimoi kehote-konteksti; ei Asiakastietojen myyntiä"
+        "summary": "Sisäinen kovettumisennuste (XGBoost) tuotteessa; Geminiä ja Groqia vain käytössä oleviin avustettuihin ominaisuuksiin; minimoi kehote-konteksti; ei Asiakastietojen myyntiä"
       },
       {
         "control": "Incidenssipolku",

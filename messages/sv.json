@@ -60,7 +60,9 @@
     "structuralHealth": "Strukturell hälsa",
     "structuralHealthDesc": "Töjning, spricka, lutning, vibration",
     "mep": "MEP",
-    "mepDesc": "Flöde, tryck, energi (PoE-panel)"
+    "mepDesc": "Flöde, tryck, energi (PoE-panel)",
+    "architecture": "Arkitektur",
+    "architectureDesc": "L1-L5 platsväg från fältnoder till moln"
   },
   "footer": {
     "solutions": "Lösningar",
@@ -122,7 +124,7 @@
     "intelligenceTitle": "Inte bara grafer. Beslut du kan lita på.",
     "intelligenceLead": "Visualisera förhållanden när du behöver dem - och lut dig mot AI-prediktioner och säkerhetskontroller när tidplan och rykte står på spel.",
     "aiTitle": "AI-prediktioner för readiness",
-    "aiBody": "CurNext går längre än dashboards. En egen TensorFlow.js-modell driver prediktioner för betonghärdning, medan assisterad AI ger readiness-kontext - så ni agerar innan tidplanen halkar.",
+    "aiBody": "CurNext går längre än dashboards. En egen maturity computations + XGBoost-modell driver prediktioner för betonghärdning, medan assisterad AI ger readiness-kontext - så ni agerar innan tidplanen halkar.",
     "aiLink": "Betonghärdning",
     "securityTitle": "Säkerhet by design",
     "securityBody": "Platsdata skyddas med förstärkta kontroller, granskningsbara spår och praxis för bygg- och driftsmiljöer - från sensor till moln.",
@@ -429,7 +431,7 @@
       "items": [
         {
           "name": "Intern härdningsmodell",
-          "body": "Betonghärdningsprediktion körs på en CurNext-tränad modell byggd med TensorFlow.js - del av produktens readiness-motor för CN-CC."
+          "body": "Betonghärdningsprediktion körs på en CurNext-tränad modell byggd med maturity computations + XGBoost - del av produktens readiness-motor för CN-CC."
         },
         {
           "name": "Gemini (Google AI)",
@@ -780,6 +782,11 @@
             "title": "Teknologier",
             "description": "Publik stack, anslutning och ekosystempartners.",
             "href": "/technologies"
+          },
+          {
+            "title": "Arkitektur",
+            "description": "L1-L5 platsväg från fältnoder till moln.",
+            "href": "/architecture"
           },
           {
             "title": "API playground",
@@ -1486,7 +1493,7 @@
         },
         {
           "control": "AI-kontroller",
-          "summary": "Intern härdningsprediktion (TensorFlow.js) i produkten; Gemini och Groq endast för aktiverade assisterade funktioner; minimera promptkontext; ingen försäljning av Kunddata"
+          "summary": "Intern härdningsprediktion (maturity computations + XGBoost) i produkten; Gemini och Groq endast för aktiverade assisterade funktioner; minimera promptkontext; ingen försäljning av Kunddata"
         },
         {
           "control": "Incidentväg",
@@ -1545,7 +1552,7 @@
         },
         {
           "title": "Betonghärdningsmodell",
-          "body": "Intern prediktion för CN-CC-plattberedskap, tränad och serverad med TensorFlow.js."
+          "body": "Intern prediktion för CN-CC-plattberedskap, tränad och serverad med maturity computations + XGBoost."
         },
         {
           "title": "BIM-kontext",
@@ -1595,7 +1602,7 @@
       {
         "title": "AI och intelligens",
         "names": [
-          "TensorFlow.js",
+          "maturity computations + XGBoost",
           "Gemini",
           "Groq",
           "OpenWeather"
@@ -1627,7 +1634,7 @@
         "sku": "CN-CC",
         "name": "Betonghärdning",
         "href": "/solutions/concrete-curing",
-        "body": "Luft-, yt- och kärnsensorer med plattberedskapsintelligens och en intern TensorFlow.js-härdningsprediktionsmodell."
+        "body": "Luft-, yt- och kärnsensorer med plattberedskapsintelligens och en intern maturity computations + XGBoost-härdningsprediktionsmodell."
       },
       {
         "sku": "CN-WD",
@@ -2034,7 +2041,7 @@
           "indoor air",
           "leak"
         ],
-        "text": "CN-CC betonghärdning med luft-, yt- och kärnsensorer. CurNext kör en intern betonghärdningsprediktionsmodell tränad med TensorFlow.js som del av readiness-motorn. CN-WD väggtorkning för gips, våtrum och fuktrisk före ytskikt. CN-IAQ inomhusluft för CO2, PM, VOC och inomhusklimatkontext. CN-LEAK läckagedetektering för teknikrum, badrum och schakt när fukthändelser spelar roll. CN-SHM strukturell hälsa för lutning, spricka, vibration. CN-MEP flöde, tryck, energi inklusive PoE-panelvägar. För mögel- eller fuktbekymmer i en byggnad, peka mot CN-WD, CN-IAQ och CN-LEAK beroende på om jobbet är torkning av ytskikt, inomhusluftkvalitet eller läckageövervakning - dimensionera sedan noder och längd på Pricing."
+        "text": "CN-CC betonghärdning med luft-, yt- och kärnsensorer. CurNext kör en intern betonghärdningsprediktionsmodell tränad med maturity computations + XGBoost som del av readiness-motorn. CN-WD väggtorkning för gips, våtrum och fuktrisk före ytskikt. CN-IAQ inomhusluft för CO2, PM, VOC och inomhusklimatkontext. CN-LEAK läckagedetektering för teknikrum, badrum och schakt när fukthändelser spelar roll. CN-SHM strukturell hälsa för lutning, spricka, vibration. CN-MEP flöde, tryck, energi inklusive PoE-panelvägar. För mögel- eller fuktbekymmer i en byggnad, peka mot CN-WD, CN-IAQ och CN-LEAK beroende på om jobbet är torkning av ytskikt, inomhusluftkvalitet eller läckageövervakning - dimensionera sedan noder och längd på Pricing."
       },
       {
         "id": "api",
@@ -2172,7 +2179,7 @@
           "soc",
           "certification"
         ],
-        "text": "CurNext hävdar inte ISO 27001 eller SOC 2 för sig själv på publika sidor. GDPR gäller EU-plattformsbehandling. Standarder på Säkerhet- och Compliance-sidor är designanpassning. Byggbevis inkluderar readiness- och revisionsspår. Betonghärdningsprediktion använder en intern TensorFlow.js-modell. Assisterade AI-funktioner använder Gemini och Groq när aktiverade."
+        "text": "CurNext hävdar inte ISO 27001 eller SOC 2 för sig själv på publika sidor. GDPR gäller EU-plattformsbehandling. Standarder på Säkerhet- och Compliance-sidor är designanpassning. Byggbevis inkluderar readiness- och revisionsspår. Betonghärdningsprediktion använder en intern maturity computations + XGBoost-modell. Assisterade AI-funktioner använder Gemini och Groq när aktiverade."
       },
       {
         "id": "contact",
@@ -2878,11 +2885,11 @@
           "solution-cn-cc": {
             "title": "CN-CC - Concrete Curing",
             "paragraphs": [
-              "Betonghärdning övervakar plattans mognad med luft-, yt- och kärnprober. En förseglad edge-nod stannar utanför gjutningen; robusta prober sitter där plattan behöver mätas. CurNexts interna TensorFlow.js-modell omvandlar temperaturerna till härdningsprognoser och byggklar timing, med revisionsspår för gjutpaketet."
+              "Betonghärdning övervakar plattans mognad med luft-, yt- och kärnprober. En förseglad edge-nod stannar utanför gjutningen; robusta prober sitter där plattan behöver mätas. CurNexts interna maturity computations + XGBoost-modell omvandlar temperaturerna till härdningsprognoser och byggklar timing, med revisionsspår för gjutpaketet."
             ],
             "bullets": [
               "Luft-, yt- och kärnproberoller på samma selemodell",
-              "Intern TensorFlow.js-härdningsprognos för beredskap",
+              "Intern maturity computations + XGBoost-härdningsprognos för beredskap",
               "Go / no-go-beredskap istället för enbart kalenderbaserade härdningsregler",
               "Dokumenterat härdningsspår för formar och efterföljande yrkesgrupper",
               "LoRaWAN-fältväg in till CN-FG och CN-BC"
@@ -4225,7 +4232,7 @@
         },
         "4": {
           "title": "Besluta",
-          "body": "Se go / no-go-beredskap på dash.curnext.app - driven av CurNexts interna TensorFlow.js-modell för härdningsprognos, med larm och efterlevnadsbevis."
+          "body": "Se go / no-go-beredskap på dash.curnext.app - driven av CurNexts interna maturity computations + XGBoost-modell för härdningsprognos, med larm och efterlevnadsbevis."
         }
       },
       "trust": {
@@ -4301,7 +4308,22 @@
       "howToName": "Hur CurNext CN-CC betonghärdningsövervakning fungerar",
       "schemaCategory": "Programvara för övervakning av betonghärdning",
       "schemaAudienceType": "Generalentreprenörer, golv- och beläggningsentreprenörer, konsulter och kvalitetsteam",
-      "schemaOfferDescription": "Prissatt efter antal noder och projekttid för övervakning av plattberedskap"
+      "schemaOfferDescription": "Prissatt efter antal noder och projekttid för övervakning av plattberedskap",
+      "readinessEyebrow": "Beredskapsmotor",
+      "readinessTitle": "Hur beredskap beräknas",
+      "readinessLead": "CN-CC omvandlar sondtidsserien till ett go / no-go-beslut i två lager: först ASTM-klass mognadsberäkningar, sedan XGBoost för ETA och konfidens.",
+      "readiness": {
+        "physics": {
+          "title": "Mognadsberäkningar",
+          "body": "Kärntemperaturhistoriken integreras med Nurse-Saul-mognad (primär) och Arrhenius ekvivalent ålder. Mix- och batchdata — cementhalt, vatten-cementtal, gjuttemperatur, tjocklek — sätter kalibreringen. Frys och ogiltig hydratisering pausar beslutet som PAUSED_COLD."
+        },
+        "xgboost": {
+          "title": "XGBoost på gjutbanan",
+          "body": "XGBoost förfinar tid till klar och konfidens från gjutnivåns trajektoriefunktioner (mognadsintegral, aktuella hastigheter, temperaturfönster, RH-kontext och mixkovariater) — aldrig från blandade enskilda sensorrader. Träning och validering delas per gjutning, inte per slumpmässiga tidsstämplar."
+        }
+      },
+      "readinessRailLabel": "Hård gräns:",
+      "readinessRailBody": "Fysiken äger frys och ogiltig härdning. XGBoost kan förfina ETA och konfidens, men kan inte tvinga READY när plattan är kall eller hydratiseringen inte går framåt."
     },
     "wall-drying": {
       "metaTitle": "Väggorkning och mögelriskövervakning | Våtrumsberedskap (CN-WD)",
@@ -5381,7 +5403,7 @@
         "Hosting- och databasinfrastruktur i EU (orientering Tyskland / Frankfurt).",
         "Valfri objektlagring med EU-jurisdiktionsalternativ där det är aktiverat.",
         "Leverantörer av e-postleverans, felövervakning och observability enligt offentlig lista.",
-        "Assisterade AI-funktioner (till exempel Gemini eller Groq när aktiverat) under produkt- och avtalskontroller - betongmognadsprediktion använder en intern TensorFlow.js-modell och är inte samma sak som chattassistans."
+        "Assisterade AI-funktioner (till exempel Gemini eller Groq när aktiverat) under produkt- och avtalskontroller - betongmognadsprediktion använder en intern maturity computations + XGBoost-modell och är inte samma sak som chattassistans."
       ],
       "cta": "Granska aktuell offentlig underbiträdessammanfattning",
       "href": "/data/data-processing-agreement"
@@ -5900,7 +5922,7 @@
       "bullets": [
         "EU-inriktad hosting- och databasinfrastruktur för kärnproduktion.",
         "Offentlig sammanfattning av underbiträden på sidan Personuppgiftsbiträdesavtal.",
-        "Assistansfunktioner med AI, när de är aktiverade, körs under produkt- och avtalskontroller - prediktion av betonghärdning använder en intern TensorFlow.js-modell.",
+        "Assistansfunktioner med AI, när de är aktiverade, körs under produkt- och avtalskontroller - prediktion av betonghärdning använder en intern maturity computations + XGBoost-modell.",
         "Väsentliga ändringar av underbiträden följer den underrättelseprocess som beskrivs i DPA."
       ]
     },
@@ -6446,5 +6468,138 @@
         "href": "/contact"
       }
     ]
+  },
+  "architecture": {
+    "eyebrow": "Utvecklare",
+    "layersTitle": "Lager L1-L5",
+    "layersLead": "Varje lager har ett jobb. Ström tolkar inte mätningar. Våningsgateways möter inte publikt internet. Byggnadsstyrenheten är säkerhetsgränsen för uplink och signerad fält-OTA.",
+    "ctaHowItWorks": "Så fungerar det",
+    "ctaSecurity": "Säkerhetsarkitektur",
+    "ctaDocs": "Produktdokumentation",
+    "page": {
+      "title": "Arkitektur",
+      "description": "CurNext platsväg från fältnoder till moln - fem lager med ett jobb vardera: L1 sense, L2 våningsaggregat, L3 ström, L4 byggnadsuplink, L5 besluta.",
+      "leadNote": "Produktarkitekturreferens för operatörer och utvecklare. Säkerhetszoner beskrivs på Security-sidan."
+    },
+    "layers": [
+      {
+        "id": "L1",
+        "role": "Sense",
+        "product": "Fältnoder",
+        "title": "L1 - Fältsensorer",
+        "body": "Enheter installeras på själva arbetet - härdande plattor, torkande väggar, inomhusluft, läckor, struktur eller tekniska system. De fångar förhållanden som driver tidplan och kvalitet.",
+        "bullets": [
+          "SKU:er: CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP",
+          "Unik enhetsidentitet och nyckelmaterial i secure element",
+          "Manipulationssäker design och förskjutningsdetektering",
+          "LoRaWAN Class A (EU868) för batteridrivna trådlösa noder där det gäller"
+        ]
+      },
+      {
+        "id": "L2",
+        "role": "Aggregate",
+        "product": "CN-FG",
+        "title": "L2 - Våningsgateway",
+        "body": "Varje våning samlar enhetstrafik i en punkt så nivån förblir organiserad när projektet växer.",
+        "bullets": [
+          "Tillitsankare för luftlänksverifiering (MIC, räknare, join)",
+          "Endast vånings-VLAN - inget molnvänt gränssnitt",
+          "OTA endast från CN-BC"
+        ]
+      },
+      {
+        "id": "L3",
+        "role": "Power",
+        "product": "CN-UPS",
+        "title": "L3 - Platsström",
+        "body": "Dedikerad ström håller vånings- och byggnadshårdvara igång vid avbrott. Lagret ger endast ström - det tolkar inte mätningar och bär ingen dataplan på management-VLAN.",
+        "bullets": [
+          "Strömkontinuitet för L2 / L4 vid nätbortfall",
+          "Ingen telemetritolkning",
+          "Ingen publik dataplan på managementvägen"
+        ]
+      },
+      {
+        "id": "L4",
+        "role": "Bridge",
+        "product": "CN-BC",
+        "title": "L4 - Byggnadsstyrenhet",
+        "body": "Byggnadsenheten är den säkra länken från platsnätet till CurNext. Den håller en skyddad väg från bygget, avslutar fält-OTA-orkestrering och talar med den privata molnbrokern.",
+        "bullets": [
+          "WireGuard-klient vid byggnadens säkerhetsgräns",
+          "MQTT över TLS med ömsesidig TLS till privat broker",
+          "Signerade OTA-jobb för L1 / L2-mål",
+          "Krypterad store-and-forward när uplink är nere"
+        ]
+      },
+      {
+        "id": "L5",
+        "role": "Decide",
+        "product": "CurNext-moln",
+        "title": "L5 - CurNext-moln",
+        "body": "Plattformen gör platsdata till readiness, larm och nästa åtgärder - i webbdashboard och mobilapp - med audit trail för kunder och efterlevnad.",
+        "bullets": [
+          "Projektdashboard, larm, BIM-mappad readiness",
+          "REST API, SDK:er, Market Place, firmwarekatalog",
+          "Inbjudningsbaserad åtkomst, RBAC, privilegierad MFA"
+        ]
+      }
+    ],
+    "flow": {
+      "title": "Dataväg",
+      "lead": "Mätningar rör sig uppåt i stacken. Beslut och signerade operationer kommer tillbaka via CurNext.",
+      "steps": [
+        {
+          "from": "L1",
+          "to": "L2",
+          "path": "LoRaWAN-luftlänk"
+        },
+        {
+          "from": "L2",
+          "to": "L4",
+          "path": "Vånings / byggnads Ethernet-VLAN"
+        },
+        {
+          "from": "L3",
+          "to": "L2 / L4",
+          "path": "PoE / endast platsström"
+        },
+        {
+          "from": "L4",
+          "to": "L5",
+          "path": "WireGuard + MQTT / TLS"
+        },
+        {
+          "from": "L5",
+          "to": "Köpande",
+          "path": "HTTPS REST · dash · mobile"
+        }
+      ]
+    },
+    "principles": {
+      "title": "Designregler",
+      "items": [
+        {
+          "title": "Ett jobb per lager",
+          "body": "Ström tolkar inte mätningar. Våningsgateways möter inte publikt internet. Byggnadsstyrenheten är säkerhetsgränsen för uplink och signerad fält-OTA."
+        },
+        {
+          "title": "Samma väg för varje yta",
+          "body": "Härdning, torkning, luft, läcka, struktur och MEP delar L2-L5. Endast L1-produktlinjen ändras."
+        },
+        {
+          "title": "Beslut och bevis",
+          "body": "L5 är där team agerar - readiness, larm och audit trail - inte bara råströmmar."
+        },
+        {
+          "title": "Internet, inte ett nationellt LoRaWAN-nät",
+          "body": "Platsradion förblir privat (L1↔L2). Molnåtkomst går via CN-BC över internet - så täckning begränsas inte till länder med ett publikt LoRaWAN-nät."
+        }
+      ]
+    },
+    "deployAnywhere": {
+      "title": "Driftsätt var som helst med internet",
+      "body": "Denna L1-L5-struktur är självbärande på plats: fältnoder pratar LoRaWAN endast med CurNext våningsgateways (CN-FG), och byggnadsstyrenheten (CN-BC) når CurNext-molnet över vanligt internet. Ett projekt kan därför driftsättas var som helst på jorden med internetuppkoppling. Det beror inte på en landsspecifik publik LoRaWAN-nätoperatör - till skillnad från system som bara fungerar där ett sådant nationellt eller operatörsbaserat LoRaWAN-nät redan finns."
+    }
   }
 }

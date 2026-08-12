@@ -316,7 +316,7 @@
       },
       {
         "control": "Controles de IA",
-        "summary": "Predicción de curado interna (TensorFlow.js) en el producto; Gemini y Groq solo para funciones asistidas activadas; minimizar el contexto de indicaciones; sin venta de Datos del Cliente"
+        "summary": "Predicción de curado interna (XGBoost) en el producto; Gemini y Groq solo para funciones asistidas activadas; minimizar el contexto de indicaciones; sin venta de Datos del Cliente"
       },
       {
         "control": "Vía de incidentes",

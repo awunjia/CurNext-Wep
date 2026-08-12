@@ -21,6 +21,7 @@ const PRODUCT_PRIORITY = new Set([
   "/solutions/structural-health",
   "/solutions/mep",
   "/technologies",
+  "/architecture",
   "/data/security",
   "/blog",
   "/how-it-works",

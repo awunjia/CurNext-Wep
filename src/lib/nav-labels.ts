@@ -20,6 +20,7 @@ export const navItemKeyByHref: Record<string, string> = {
   "/sdks": "sdks",
   "/firmware": "firmware",
   "/technologies": "technologies",
+  "/architecture": "architecture",
   "/contact": "contactUs",
   "/resources": "resources",
   "/data/datacenters": "datacenters",

@@ -373,7 +373,7 @@
         },
         {
           "title": "Betonin kovettumismalli",
-          "body": "Sisäinen ennuste CN-CC-laatan valmiudelle, koulutettu ja tarjottu TensorFlow.js:llä."
+          "body": "Sisäinen ennuste CN-CC-laatan valmiudelle, koulutettu ja tarjottu XGBoost:llä."
         },
         {
           "title": "BIM-konteksti",
@@ -423,7 +423,7 @@
       {
         "title": "Tekoäly ja äly",
         "names": [
-          "TensorFlow.js",
+          "XGBoost",
           "Gemini",
           "Groq",
           "OpenWeather"
@@ -455,7 +455,7 @@
         "sku": "CN-CC",
         "name": "Betonin kovettuminen",
         "href": "/solutions/concrete-curing",
-        "body": "Ilma-, pinta- ja ydinanturit laatan valmiusälyllä ja sisäisellä TensorFlow.js -kovettumisennustemallilla."
+        "body": "Ilma-, pinta- ja ydinanturit laatan valmiusälyllä ja sisäisellä XGBoost -kovettumisennustemallilla."
       },
       {
         "sku": "CN-WD",

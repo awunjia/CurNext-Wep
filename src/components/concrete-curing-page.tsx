@@ -151,13 +151,55 @@ export async function ConcreteCuringPage() {
               <h3 id="cn-cc-what-heading" className="text-xl font-semibold tracking-tight sm:text-2xl">{t("whatTitle")}</h3>
               <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">{t("whatBody")}</p>
               <p className="border-border mt-6 border-l-2 pl-4 text-sm leading-relaxed sm:text-[15px]">
-                  <span className="font-medium">{t("noteLabel")}</span>{" "}
-                  <span className="text-muted-foreground">{t("noteBody")}</span>
-                </p>
+                <span className="font-medium">{t("noteLabel")}</span>{" "}
+                <span className="text-muted-foreground">{t("noteBody")}</span>
+              </p>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[5/4]">
-              <Image src="/solutions/cn-cc-hero.jpg" alt={t("whatAlt")} fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover object-center" />
+              <Image
+                src="/solutions/cn-cc-hero.jpg"
+                alt={t("whatAlt")}
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover object-center"
+              />
             </div>
+          </div>
+
+          <div className="border-border/60 mt-14 border-t pt-14 sm:mt-16 sm:pt-16 md:mt-20 md:pt-20">
+            <div className="max-w-2xl">
+              <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">
+                {t("readinessEyebrow")}
+              </p>
+              <h4 id="cn-cc-readiness-heading" className="text-xl font-semibold tracking-tight sm:text-2xl">
+                {t("readinessTitle")}
+              </h4>
+              <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
+                {t("readinessLead")}
+              </p>
+            </div>
+            <ul className="mt-10 grid grid-cols-1 gap-10 sm:mt-12 sm:grid-cols-2 sm:gap-x-12 lg:gap-x-16">
+              <li className="min-w-0">
+                <h5 className="text-base font-semibold tracking-tight sm:text-lg">
+                  {t("readiness.physics.title")}
+                </h5>
+                <p className="text-muted-foreground mt-2 text-sm leading-relaxed sm:text-[15px]">
+                  {t("readiness.physics.body")}
+                </p>
+              </li>
+              <li className="min-w-0">
+                <h5 className="text-base font-semibold tracking-tight sm:text-lg">
+                  {t("readiness.xgboost.title")}
+                </h5>
+                <p className="text-muted-foreground mt-2 text-sm leading-relaxed sm:text-[15px]">
+                  {t("readiness.xgboost.body")}
+                </p>
+              </li>
+            </ul>
+            <p className="border-border mt-8 border-l-2 pl-4 text-sm leading-relaxed sm:text-[15px]">
+              <span className="font-medium">{t("readinessRailLabel")}</span>{" "}
+              <span className="text-muted-foreground">{t("readinessRailBody")}</span>
+            </p>
           </div>
         </div>
       </section>

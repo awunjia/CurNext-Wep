@@ -236,11 +236,11 @@
         "solution-cn-cc": {
           "title": "CN-CC - Concrete Curing",
           "paragraphs": [
-            "El curado de hormigón supervisa la madurez de la losa con sondas de aire, superficie y núcleo. Un nodo edge sellado permanece fuera del vertido; sondas robustas se sitúan donde la losa necesita medición. El modelo TensorFlow.js interno de CurNext convierte esas temperaturas en predicciones de curado y timing listo para construir, con pista de auditoría para el paquete de vertido."
+            "El curado de hormigón supervisa la madurez de la losa con sondas de aire, superficie y núcleo. Un nodo edge sellado permanece fuera del vertido; sondas robustas se sitúan donde la losa necesita medición. El modelo XGBoost interno de CurNext convierte esas temperaturas en predicciones de curado y timing listo para construir, con pista de auditoría para el paquete de vertido."
           ],
           "bullets": [
             "Roles de sonda de aire, superficie y núcleo en el mismo modelo de arnés",
-            "Predicción de curado TensorFlow.js interna para la preparación",
+            "Predicción de curado XGBoost interna para la preparación",
             "Preparación go / no-go en lugar de solo reglas de curado por calendario",
             "Pista de curado documentada para encofrado y oficios siguientes",
             "Ruta de campo LoRaWAN hacia CN-FG y CN-BC"

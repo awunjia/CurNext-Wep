@@ -16,9 +16,9 @@ export const partners: Partner[] = [
     href: "https://groq.com",
   },
   {
-    name: "TensorFlow.js",
-    src: "/partners/tensorflowjs.svg",
-    href: "https://www.tensorflow.org/js",
+    name: "XGBoost",
+    src: "/partners/xgboost.png",
+    href: "https://xgboost.ai",
   },
   {
     name: "Cloudflare",

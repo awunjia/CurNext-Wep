@@ -316,7 +316,7 @@
       },
       {
         "control": "AI-kontroller",
-        "summary": "Intern härdningsprediktion (TensorFlow.js) i produkten; Gemini och Groq endast för aktiverade assisterade funktioner; minimera promptkontext; ingen försäljning av Kunddata"
+        "summary": "Intern härdningsprediktion (XGBoost) i produkten; Gemini och Groq endast för aktiverade assisterade funktioner; minimera promptkontext; ingen försäljning av Kunddata"
       },
       {
         "control": "Incidentväg",

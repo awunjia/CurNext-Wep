@@ -300,7 +300,7 @@ export const dpaToms = {
     {
       control: "AI controls",
       summary:
-        "In-house curing prediction (TensorFlow.js) runs in the product; Gemini and Groq used only for enabled assisted features; minimize prompt context; no sale of Client Data",
+        "In-house curing prediction (maturity computations + XGBoost) runs in the product; Gemini and Groq used only for enabled assisted features; minimize prompt context; no sale of Client Data",
     },
     {
       control: "Incident path",

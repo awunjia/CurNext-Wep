@@ -60,7 +60,9 @@
     "structuralHealth": "Santé structurelle",
     "structuralHealthDesc": "Déformation, fissure, inclinaison, vibration",
     "mep": "MEP",
-    "mepDesc": "Débit, pression, énergie (panneau PoE)"
+    "mepDesc": "Débit, pression, énergie (panneau PoE)",
+    "architecture": "Architecture",
+    "architectureDesc": "Chemin de chantier L1-L5 des nœuds au cloud"
   },
   "footer": {
     "solutions": "Solutions",
@@ -122,7 +124,7 @@
     "intelligenceTitle": "Pas seulement des graphiques. Des décisions fiables.",
     "intelligenceLead": "Visualisez les conditions quand il le faut - et appuyez-vous sur les prédictions d'IA et les contrôles de sécurité quand le planning et la réputation sont en jeu.",
     "aiTitle": "Prédictions de readiness par IA",
-    "aiBody": "CurNext va au-delà des tableaux de bord. Un modèle TensorFlow.js interne pilote les prédictions de cure du béton, tandis que l'IA assistée enrichit le contexte de readiness - pour agir avant que le planning ne glisse.",
+    "aiBody": "CurNext va au-delà des tableaux de bord. Un modèle maturity computations + XGBoost interne pilote les prédictions de cure du béton, tandis que l'IA assistée enrichit le contexte de readiness - pour agir avant que le planning ne glisse.",
     "aiLink": "Cure du béton",
     "securityTitle": "Sécurité by design",
     "securityBody": "Les données de chantier restent protégées par des contrôles renforcés, des pistes auditables et des pratiques adaptées à la construction et à l'exploitation - du capteur au cloud.",
@@ -429,7 +431,7 @@
       "items": [
         {
           "name": "Modèle de cure interne",
-          "body": "La prédiction de cure du béton s'exécute sur un modèle entraîné par CurNext avec TensorFlow.js - partie du moteur de readiness produit pour CN-CC."
+          "body": "La prédiction de cure du béton s'exécute sur un modèle entraîné par CurNext avec maturity computations + XGBoost - partie du moteur de readiness produit pour CN-CC."
         },
         {
           "name": "Gemini (Google AI)",
@@ -780,6 +782,11 @@
             "title": "Technologies",
             "description": "Stack publique, connectivité et partenaires écosystème.",
             "href": "/technologies"
+          },
+          {
+            "title": "Architecture",
+            "description": "Chemin de chantier L1-L5 des nœuds au cloud.",
+            "href": "/architecture"
           },
           {
             "title": "API playground",
@@ -1486,7 +1493,7 @@
         },
         {
           "control": "Contrôles IA",
-          "summary": "Prédiction de cure interne (TensorFlow.js) dans le produit ; Gemini et Groq uniquement pour les fonctions assistées activées ; minimiser le contexte des invites ; pas de vente des Données Client"
+          "summary": "Prédiction de cure interne (maturity computations + XGBoost) dans le produit ; Gemini et Groq uniquement pour les fonctions assistées activées ; minimiser le contexte des invites ; pas de vente des Données Client"
         },
         {
           "control": "Parcours d'incident",
@@ -1545,7 +1552,7 @@
         },
         {
           "title": "Modèle de cure du béton",
-          "body": "Prédiction interne pour la maturité des dalles CN-CC, entraînée et servie avec TensorFlow.js."
+          "body": "Prédiction interne pour la maturité des dalles CN-CC, entraînée et servie avec maturity computations + XGBoost."
         },
         {
           "title": "Contexte BIM",
@@ -1595,7 +1602,7 @@
       {
         "title": "IA et intelligence",
         "names": [
-          "TensorFlow.js",
+          "maturity computations + XGBoost",
           "Gemini",
           "Groq",
           "OpenWeather"
@@ -1627,7 +1634,7 @@
         "sku": "CN-CC",
         "name": "Cure du béton",
         "href": "/solutions/concrete-curing",
-        "body": "Sondes air, surface et cœur avec intelligence de maturité de dalle et modèle de prédiction de cure TensorFlow.js interne."
+        "body": "Sondes air, surface et cœur avec intelligence de maturité de dalle et modèle de prédiction de cure maturity computations + XGBoost interne."
       },
       {
         "sku": "CN-WD",
@@ -2034,7 +2041,7 @@
           "indoor air",
           "leak"
         ],
-        "text": "CN-CC cure du béton avec sondes air, surface et cœur. CurNext exécute un modèle interne de prédiction de cure entraîné avec TensorFlow.js dans le moteur de readiness. CN-WD séchage de murs pour plâtre, salles d'eau et risque humidité avant finitions. CN-IAQ air intérieur pour CO2, PM, COV et contexte climatique intérieur. CN-LEAK détection de fuites pour locaux techniques, salles de bain et colonnes quand les événements d'humidité comptent. CN-SHM santé structurelle pour inclinaison, fissure, vibration. CN-MEP débit, pression, énergie y compris parcours panneau PoE. Pour des préoccupations moisissure ou humidité dans un bâtiment, orientez vers CN-WD, CN-IAQ et CN-LEAK selon que le besoin est séchage de finitions, qualité de l'air intérieur ou surveillance de fuites - puis dimensionnez nœuds et durée sur Pricing."
+        "text": "CN-CC cure du béton avec sondes air, surface et cœur. CurNext exécute un modèle interne de prédiction de cure entraîné avec maturity computations + XGBoost dans le moteur de readiness. CN-WD séchage de murs pour plâtre, salles d'eau et risque humidité avant finitions. CN-IAQ air intérieur pour CO2, PM, COV et contexte climatique intérieur. CN-LEAK détection de fuites pour locaux techniques, salles de bain et colonnes quand les événements d'humidité comptent. CN-SHM santé structurelle pour inclinaison, fissure, vibration. CN-MEP débit, pression, énergie y compris parcours panneau PoE. Pour des préoccupations moisissure ou humidité dans un bâtiment, orientez vers CN-WD, CN-IAQ et CN-LEAK selon que le besoin est séchage de finitions, qualité de l'air intérieur ou surveillance de fuites - puis dimensionnez nœuds et durée sur Pricing."
       },
       {
         "id": "api",
@@ -2172,7 +2179,7 @@
           "soc",
           "certification"
         ],
-        "text": "CurNext ne revendique pas ISO 27001 ou SOC 2 pour elle-même sur les pages publiques. Le GDPR s'applique au traitement plateforme UE. Les normes sur les pages Sécurité et Conformité sont un alignement de conception. Les preuves construction incluent readiness et pistes d'audit. La prédiction de cure du béton utilise un modèle TensorFlow.js interne. Les fonctionnalités d'IA assistée utilisent Gemini et Groq lorsqu'ils sont activés."
+        "text": "CurNext ne revendique pas ISO 27001 ou SOC 2 pour elle-même sur les pages publiques. Le GDPR s'applique au traitement plateforme UE. Les normes sur les pages Sécurité et Conformité sont un alignement de conception. Les preuves construction incluent readiness et pistes d'audit. La prédiction de cure du béton utilise un modèle maturity computations + XGBoost interne. Les fonctionnalités d'IA assistée utilisent Gemini et Groq lorsqu'ils sont activés."
       },
       {
         "id": "contact",
@@ -2878,11 +2885,11 @@
           "solution-cn-cc": {
             "title": "CN-CC - Concrete Curing",
             "paragraphs": [
-              "La cure du béton suit la maturité de la dalle avec des sondes air, surface et cœur. Un nœud edge scellé reste hors du coulage ; des sondes robustes se placent où la dalle doit être mesurée. Le modèle TensorFlow.js interne de CurNext transforme ces températures en prédictions de cure et en timing prêt pour construire, avec une piste d'audit pour le dossier de coulage."
+              "La cure du béton suit la maturité de la dalle avec des sondes air, surface et cœur. Un nœud edge scellé reste hors du coulage ; des sondes robustes se placent où la dalle doit être mesurée. Le modèle maturity computations + XGBoost interne de CurNext transforme ces températures en prédictions de cure et en timing prêt pour construire, avec une piste d'audit pour le dossier de coulage."
             ],
             "bullets": [
               "Rôles de sondes air, surface et cœur sur le même modèle de harnais",
-              "Prédiction de cure TensorFlow.js interne pour la disponibilité",
+              "Prédiction de cure maturity computations + XGBoost interne pour la disponibilité",
               "Disponibilité go / no-go au lieu de seules règles de cure calendaires",
               "Piste de cure documentée pour coffrage et corps d'état suivants",
               "Chemin terrain LoRaWAN vers CN-FG et CN-BC"
@@ -4225,7 +4232,7 @@
         },
         "4": {
           "title": "Décider",
-          "body": "Voyez la décision go / no-go sur dash.curnext.app - alimentée par le modèle TensorFlow.js de prédiction de cure développé en interne par CurNext, avec alertes et preuves de conformité."
+          "body": "Voyez la décision go / no-go sur dash.curnext.app - alimentée par le modèle maturity computations + XGBoost de prédiction de cure développé en interne par CurNext, avec alertes et preuves de conformité."
         }
       },
       "trust": {
@@ -4301,7 +4308,22 @@
       "howToName": "Comment fonctionne le monitoring de cure béton CN-CC",
       "schemaCategory": "Logiciel de monitoring de cure béton",
       "schemaAudienceType": "Entreprises générales, corps d'état de sols et revêtements, consultants et équipes qualité",
-      "schemaOfferDescription": "Tarification selon le nombre de nœuds et la durée du projet pour le monitoring de readiness dalle"
+      "schemaOfferDescription": "Tarification selon le nombre de nœuds et la durée du projet pour le monitoring de readiness dalle",
+      "readinessEyebrow": "Moteur de disponibilité",
+      "readinessTitle": "Comment la disponibilité est calculée",
+      "readinessLead": "CN-CC transforme la série temporelle des sondes en décision go / no-go en deux couches : d'abord des calculs de maturité de classe ASTM, puis XGBoost pour l'ETA et la confiance.",
+      "readiness": {
+        "physics": {
+          "title": "Calculs de maturité",
+          "body": "L'historique de température de cœur est intégré avec la maturité Nurse-Saul (principale) et l'âge équivalent d'Arrhenius. Les données de mélange et de lot — teneur en ciment, rapport eau-ciment, température de mise en place, épaisseur — fixent la calibration. Le gel et une hydratation invalide mettent la décision en pause PAUSED_COLD."
+        },
+        "xgboost": {
+          "title": "XGBoost sur la trajectoire de coulage",
+          "body": "XGBoost affine les heures jusqu'à prêt et la confiance à partir de caractéristiques de trajectoire au niveau du coulage (intégrales de maturité, taux récents, fenêtres de température, contexte HR et covariables de mélange) — jamais à partir de lignes capteur isolées mélangées. Entraînement et validation séparés par coulage, pas par horodatages aléatoires."
+        }
+      },
+      "readinessRailLabel": "Garde-fou :",
+      "readinessRailBody": "La physique possède le gel et une cure invalide. XGBoost peut affiner l'ETA et la confiance, mais ne peut pas forcer READY lorsque la dalle est froide ou que l'hydratation n'avance pas."
     },
     "wall-drying": {
       "metaTitle": "Monitoring séchage murs et risque moisissure | Readiness pièces humides (CN-WD)",
@@ -5381,7 +5403,7 @@
         "Infrastructure d'hébergement et de base de données dans l'UE (orientation Allemagne / Francfort).",
         "Stockage objet optionnel avec options de juridiction UE lorsqu'il est activé.",
         "Prestataires de livraison d'e-mails, de suivi d'erreurs et d'observabilité tels que listés publiquement.",
-        "Fonctionnalités d'IA assistée (par exemple Gemini ou Groq lorsqu'elles sont activées) sous contrôles produit et contractuels - la prédiction de maturation du béton utilise un modèle TensorFlow.js interne et n'est pas la même chose que l'assistance chat."
+        "Fonctionnalités d'IA assistée (par exemple Gemini ou Groq lorsqu'elles sont activées) sous contrôles produit et contractuels - la prédiction de maturation du béton utilise un modèle maturity computations + XGBoost interne et n'est pas la même chose que l'assistance chat."
       ],
       "cta": "Consulter le résumé public actuel des sous-traitants ultérieurs",
       "href": "/data/data-processing-agreement"
@@ -5900,7 +5922,7 @@
       "bullets": [
         "Infrastructure d'hébergement et de bases de données orientée UE pour la production principale.",
         "Résumé public des sous-traitants sur la page Accord de traitement des données.",
-        "Les fonctions d'IA assistée, lorsqu'elles sont activées, s'exécutent sous contrôles produit et contractuels - la prédiction de cure du béton utilise un modèle TensorFlow.js interne.",
+        "Les fonctions d'IA assistée, lorsqu'elles sont activées, s'exécutent sous contrôles produit et contractuels - la prédiction de cure du béton utilise un modèle maturity computations + XGBoost interne.",
         "Les changements matériels de sous-traitants suivent le processus de notification décrit dans le DPA."
       ]
     },
@@ -6446,5 +6468,138 @@
         "href": "/contact"
       }
     ]
+  },
+  "architecture": {
+    "eyebrow": "Développeurs",
+    "layersTitle": "Couches L1-L5",
+    "layersLead": "Chaque couche a un seul rôle. L'alimentation n'interprète pas les mesures. Les passerelles d'étage ne font pas face à Internet public. Le contrôleur de bâtiment est la frontière de sécurité pour l'uplink et l'OTA terrain signée.",
+    "ctaHowItWorks": "Comment ça marche",
+    "ctaSecurity": "Architecture de sécurité",
+    "ctaDocs": "Documentation produit",
+    "page": {
+      "title": "Architecture",
+      "description": "Le chemin de chantier CurNext des nœuds de terrain au cloud - cinq couches, une mission chacune : L1 sense, L2 agrégation d'étage, L3 énergie, L4 uplink bâtiment, L5 décider.",
+      "leadNote": "Référence d'architecture produit pour opérateurs et développeurs. Le détail des zones de sécurité est sur la page Sécurité."
+    },
+    "layers": [
+      {
+        "id": "L1",
+        "role": "Sense",
+        "product": "Nœuds de terrain",
+        "title": "L1 - Capteurs de terrain",
+        "body": "Les appareils s'installent sur l'ouvrage - dalles en cure, murs en séchage, air intérieur, fuites, structure ou systèmes techniques. Ils captent les conditions qui pilotent planning et qualité.",
+        "bullets": [
+          "SKU : CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP",
+          "Identité appareil unique et matériel de clés en secure element",
+          "Conception anti-manipulation et détection de déplacement",
+          "LoRaWAN Class A (EU868) pour les nœuds sans fil sur batterie le cas échéant"
+        ]
+      },
+      {
+        "id": "L2",
+        "role": "Aggregate",
+        "product": "CN-FG",
+        "title": "L2 - Passerelle d'étage",
+        "body": "Chaque étage concentre le trafic des appareils en un point de collecte, pour garder le niveau organisé quand le projet s'étend.",
+        "bullets": [
+          "Ancre de confiance pour la vérification du lien radio (MIC, compteurs, join)",
+          "VLAN d'étage uniquement - pas d'interface vers le cloud",
+          "OTA uniquement depuis CN-BC"
+        ]
+      },
+      {
+        "id": "L3",
+        "role": "Power",
+        "product": "CN-UPS",
+        "title": "L3 - Énergie de chantier",
+        "body": "Une alimentation dédiée maintient le matériel d'étage et de bâtiment pendant les coupures. Cette couche fournit seulement de l'énergie - elle n'interprète pas les mesures et ne porte pas de plan de données sur le VLAN de gestion.",
+        "bullets": [
+          "Continuité d'alimentation pour L2 / L4 en cas de perte réseau",
+          "Aucune interprétation de télémétrie",
+          "Pas de plan de données public sur le chemin de gestion"
+        ]
+      },
+      {
+        "id": "L4",
+        "role": "Bridge",
+        "product": "CN-BC",
+        "title": "L4 - Contrôleur de bâtiment",
+        "body": "L'unité bâtiment est le lien sécurisé du réseau de chantier vers CurNext. Elle maintient un chemin protégé hors site, termine l'orchestration OTA terrain et dialogue avec le broker cloud privé.",
+        "bullets": [
+          "Client WireGuard à la frontière de sécurité du bâtiment",
+          "MQTT sur TLS avec TLS mutuel vers le broker privé",
+          "Jobs OTA signés pour les cibles L1 / L2",
+          "Store-and-forward chiffré quand l'uplink est coupé"
+        ]
+      },
+      {
+        "id": "L5",
+        "role": "Decide",
+        "product": "Cloud CurNext",
+        "title": "L5 - Cloud CurNext",
+        "body": "La plateforme transforme les données de chantier en readiness, alertes et actions - dans le tableau de bord web et l'app mobile - avec une piste d'audit pour clients et conformité.",
+        "bullets": [
+          "Tableaux de bord projet, alertes, readiness cartographiée BIM",
+          "API REST, SDK, Market Place, catalogue firmware",
+          "Accès sur invitation, RBAC, MFA privilégié"
+        ]
+      }
+    ],
+    "flow": {
+      "title": "Chemin de données",
+      "lead": "Les mesures remontent la pile. Les décisions et opérations signées reviennent via CurNext.",
+      "steps": [
+        {
+          "from": "L1",
+          "to": "L2",
+          "path": "Lien radio LoRaWAN"
+        },
+        {
+          "from": "L2",
+          "to": "L4",
+          "path": "VLAN Ethernet étage / bâtiment"
+        },
+        {
+          "from": "L3",
+          "to": "L2 / L4",
+          "path": "PoE / énergie de chantier uniquement"
+        },
+        {
+          "from": "L4",
+          "to": "L5",
+          "path": "WireGuard + MQTT / TLS"
+        },
+        {
+          "from": "L5",
+          "to": "Acheteurs",
+          "path": "HTTPS REST · dash · mobile"
+        }
+      ]
+    },
+    "principles": {
+      "title": "Règles de conception",
+      "items": [
+        {
+          "title": "Une mission par couche",
+          "body": "L'alimentation n'interprète pas les mesures. Les passerelles d'étage ne font pas face à Internet public. Le contrôleur de bâtiment est la frontière de sécurité pour l'uplink et l'OTA terrain signée."
+        },
+        {
+          "title": "Le même chemin pour chaque surface",
+          "body": "Cure, séchage, air, fuite, structure et MEP partagent L2-L5. Seule la ligne produit L1 change."
+        },
+        {
+          "title": "Décisions et preuves",
+          "body": "L5 est où les équipes agissent - readiness, alertes et piste d'audit - pas seulement des flux bruts."
+        },
+        {
+          "title": "Internet, pas un réseau LoRaWAN national",
+          "body": "La radio de chantier reste privée (L1↔L2). L'accès cloud passe par CN-BC sur Internet - la couverture n'est donc pas limitée aux pays disposant d'un réseau LoRaWAN public."
+        }
+      ]
+    },
+    "deployAnywhere": {
+      "title": "Déployable partout où il y a Internet",
+      "body": "Cette structure L1-L5 est autonome sur le chantier : les nœuds de terrain parlent LoRaWAN uniquement aux passerelles d'étage CurNext (CN-FG), et le contrôleur de bâtiment (CN-BC) joint le cloud CurNext via Internet ordinaire. Un projet peut donc être déployé partout sur terre dès qu'il y a une connectivité Internet. Il ne dépend pas d'un opérateur de réseau LoRaWAN public spécifique à un pays - contrairement aux systèmes qui ne fonctionnent que là où un tel réseau national ou opérateur existe déjà."
+    }
   }
 }

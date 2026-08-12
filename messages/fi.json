@@ -60,7 +60,9 @@
     "structuralHealth": "Rakenteen kunto",
     "structuralHealthDesc": "Venymä, halkeama, kallistuma, tärinä",
     "mep": "MEP",
-    "mepDesc": "Virtaus, paine, energia (PoE-paneeli)"
+    "mepDesc": "Virtaus, paine, energia (PoE-paneeli)",
+    "architecture": "Arkkitehtuuri",
+    "architectureDesc": "L1-L5-työmaapolku kenttänodeista pilveen"
   },
   "footer": {
     "solutions": "Ratkaisut",
@@ -122,7 +124,7 @@
     "intelligenceTitle": "Ei vain graafeja. Päätöksiä, joihin voi luottaa.",
     "intelligenceLead": "Näe olosuhteet tarvittaessa - ja nojaa tekoälyennusteisiin sekä tietoturvakontrolleihin, kun aikataulu ja maine ovat pelissä.",
     "aiTitle": "Tekoälyn readiness-ennusteet",
-    "aiBody": "CurNext menee dashboardien ohi. Sisäinen TensorFlow.js-malli ohjaa betonin kovetusennusteita, ja avustava tekoäly täydentää readiness-kontekstia - jotta ehditte toimia ennen aikataulun lipsahdusta.",
+    "aiBody": "CurNext menee dashboardien ohi. Sisäinen maturity computations + XGBoost-malli ohjaa betonin kovetusennusteita, ja avustava tekoäly täydentää readiness-kontekstia - jotta ehditte toimia ennen aikataulun lipsahdusta.",
     "aiLink": "Betonin kovetus",
     "securityTitle": "Tietoturva by design",
     "securityBody": "Työmaadata suojataan vahvistetuilla kontrolleilla, auditoitavilla jäljillä ja rakennus- sekä käyttöympäristöihin sopivilla käytännöillä - anturista pilveen.",
@@ -429,7 +431,7 @@
       "items": [
         {
           "name": "Sisäinen kovetusmalli",
-          "body": "Betonin kovetusennuste pyörii CurNextin kouluttamalla TensorFlow.js-mallilla - osa CN-CC:n tuotteen readiness-moottoria."
+          "body": "Betonin kovetusennuste pyörii CurNextin kouluttamalla maturity computations + XGBoost-mallilla - osa CN-CC:n tuotteen readiness-moottoria."
         },
         {
           "name": "Gemini (Google AI)",
@@ -780,6 +782,11 @@
             "title": "Teknologiat",
             "description": "Julkinen stack, yhteydet ja ekosysteemikumppanit.",
             "href": "/technologies"
+          },
+          {
+            "title": "Arkkitehtuuri",
+            "description": "L1-L5-työmaapolku kenttänodeista pilveen.",
+            "href": "/architecture"
           },
           {
             "title": "API playground",
@@ -1486,7 +1493,7 @@
         },
         {
           "control": "Tekoälykontrollit",
-          "summary": "Sisäinen kovettumisennuste (TensorFlow.js) tuotteessa; Geminiä ja Groqia vain käytössä oleviin avustettuihin ominaisuuksiin; minimoi kehote-konteksti; ei Asiakastietojen myyntiä"
+          "summary": "Sisäinen kovettumisennuste (maturity computations + XGBoost) tuotteessa; Geminiä ja Groqia vain käytössä oleviin avustettuihin ominaisuuksiin; minimoi kehote-konteksti; ei Asiakastietojen myyntiä"
         },
         {
           "control": "Incidenssipolku",
@@ -1545,7 +1552,7 @@
         },
         {
           "title": "Betonin kovettumismalli",
-          "body": "Sisäinen ennuste CN-CC-laatan valmiudelle, koulutettu ja tarjottu TensorFlow.js:llä."
+          "body": "Sisäinen ennuste CN-CC-laatan valmiudelle, koulutettu ja tarjottu maturity computations + XGBoost:llä."
         },
         {
           "title": "BIM-konteksti",
@@ -1595,7 +1602,7 @@
       {
         "title": "Tekoäly ja äly",
         "names": [
-          "TensorFlow.js",
+          "maturity computations + XGBoost",
           "Gemini",
           "Groq",
           "OpenWeather"
@@ -1627,7 +1634,7 @@
         "sku": "CN-CC",
         "name": "Betonin kovettuminen",
         "href": "/solutions/concrete-curing",
-        "body": "Ilma-, pinta- ja ydinanturit laatan valmiusälyllä ja sisäisellä TensorFlow.js -kovettumisennustemallilla."
+        "body": "Ilma-, pinta- ja ydinanturit laatan valmiusälyllä ja sisäisellä maturity computations + XGBoost -kovettumisennustemallilla."
       },
       {
         "sku": "CN-WD",
@@ -2034,7 +2041,7 @@
           "indoor air",
           "leak"
         ],
-        "text": "CN-CC betonin kovetus ilma-, pinta- ja ydinantureilla. CurNext ajaa talon sisäistä betonin kovetusennustemallia, joka on koulutettu TensorFlow.js:llä osana readiness-moottoria. CN-WD seinän kuivatus kipsille, märkätiloille ja kosteusriskille ennen viimeistelyjä. CN-IAQ sisäilma CO2:lle, PM:lle, VOC:lle ja sisäilmastokontekstille. CN-LEAK vuototunnistus tekniikkatiloille, kylpyhuoneille ja nousuille kun kosteustapahtumat merkitsevät. CN-SHM rakenteellinen terveys kallistukselle, halkeamalle, tärinälle. CN-MEP virtaus, paine, energia mukaan lukien PoE-paneelipolut. Home- tai kosteushuoliin rakennuksessa ohjaa CN-WD:hen, CN-IAQ:hen ja CN-LEAK:iin sen mukaan, onko kyse viimeistelyjen kuivatuksesta, sisäilman laadusta vai vuotovalvonnasta - sitten mitoita solmut ja kesto Pricingissa."
+        "text": "CN-CC betonin kovetus ilma-, pinta- ja ydinantureilla. CurNext ajaa talon sisäistä betonin kovetusennustemallia, joka on koulutettu maturity computations + XGBoost:llä osana readiness-moottoria. CN-WD seinän kuivatus kipsille, märkätiloille ja kosteusriskille ennen viimeistelyjä. CN-IAQ sisäilma CO2:lle, PM:lle, VOC:lle ja sisäilmastokontekstille. CN-LEAK vuototunnistus tekniikkatiloille, kylpyhuoneille ja nousuille kun kosteustapahtumat merkitsevät. CN-SHM rakenteellinen terveys kallistukselle, halkeamalle, tärinälle. CN-MEP virtaus, paine, energia mukaan lukien PoE-paneelipolut. Home- tai kosteushuoliin rakennuksessa ohjaa CN-WD:hen, CN-IAQ:hen ja CN-LEAK:iin sen mukaan, onko kyse viimeistelyjen kuivatuksesta, sisäilman laadusta vai vuotovalvonnasta - sitten mitoita solmut ja kesto Pricingissa."
       },
       {
         "id": "api",
@@ -2172,7 +2179,7 @@
           "soc",
           "certification"
         ],
-        "text": "CurNext ei väitä ISO 27001:tä tai SOC 2:ta itselleen julkisilla sivuilla. GDPR koskee EU-alustan käsittelyä. Tietoturva- ja Compliance-sivujen standardit ovat suunnittelulinjausta. Rakentamisen näyttö sisältää readiness- ja audit-polkuja. Betonin kovetusennuste käyttää talon sisäistä TensorFlow.js-mallia. Avustetut tekoälyominaisuudet käyttävät Geminiä ja Groqia kun käytössä."
+        "text": "CurNext ei väitä ISO 27001:tä tai SOC 2:ta itselleen julkisilla sivuilla. GDPR koskee EU-alustan käsittelyä. Tietoturva- ja Compliance-sivujen standardit ovat suunnittelulinjausta. Rakentamisen näyttö sisältää readiness- ja audit-polkuja. Betonin kovetusennuste käyttää talon sisäistä maturity computations + XGBoost-mallia. Avustetut tekoälyominaisuudet käyttävät Geminiä ja Groqia kun käytössä."
       },
       {
         "id": "contact",
@@ -2878,11 +2885,11 @@
           "solution-cn-cc": {
             "title": "CN-CC - Concrete Curing",
             "paragraphs": [
-              "Betonin kovetus seuraa laatan kypsyyttä ilma-, pinta- ja ydinkoitimilla. Tiivistetty edge-node jää valun ulkopuolelle; kestävät koettimet sijoittuvat sinne, missä laattaa mitataan. CurNextin sisäinen TensorFlow.js-malli muuntaa lämpötilat kovetusennusteiksi ja rakentamisvalmiiksi ajoitukseksi auditointipolulla valuaineistolle."
+              "Betonin kovetus seuraa laatan kypsyyttä ilma-, pinta- ja ydinkoitimilla. Tiivistetty edge-node jää valun ulkopuolelle; kestävät koettimet sijoittuvat sinne, missä laattaa mitataan. CurNextin sisäinen maturity computations + XGBoost-malli muuntaa lämpötilat kovetusennusteiksi ja rakentamisvalmiiksi ajoitukseksi auditointipolulla valuaineistolle."
             ],
             "bullets": [
               "Ilma-, pinta- ja ydinkoettimen roolit samassa valjasmalissa",
-              "Sisäinen TensorFlow.js-kovetusennuste valmiutta varten",
+              "Sisäinen maturity computations + XGBoost-kovetusennuste valmiutta varten",
               "Go / no-go -valmius kalenteripohjaisten kovetussääntöjen sijaan",
               "Dokumentoitu kovetuspolku muoteille ja seuraaville urakoille",
               "LoRaWAN-kenttäpolku CN-FG:hen ja CN-BC:hen"
@@ -4225,7 +4232,7 @@
         },
         "4": {
           "title": "Päätä",
-          "body": "Näe go / no-go -valmius osoitteessa dash.curnext.app - CurNextin oman TensorFlow.js -kypsymisennustemallin voimin, hälytyksineen ja vaatimustenmukaisuusnäyttöineen."
+          "body": "Näe go / no-go -valmius osoitteessa dash.curnext.app - CurNextin oman maturity computations + XGBoost -kypsymisennustemallin voimin, hälytyksineen ja vaatimustenmukaisuusnäyttöineen."
         }
       },
       "trust": {
@@ -4301,7 +4308,22 @@
       "howToName": "Miten CurNext CN-CC betonin kypsymisen monitorointi toimii",
       "schemaCategory": "Betonin kypsymisen monitorointiohjelmisto",
       "schemaAudienceType": "Pääurakoitsijat, lattia- ja pinnoitusurakoitsijat, konsultit ja laatutiimit",
-      "schemaOfferDescription": "Hinnoittelu solmujen määrän ja projektin keston mukaan laatan valmiuden monitorointiin"
+      "schemaOfferDescription": "Hinnoittelu solmujen määrän ja projektin keston mukaan laatan valmiuden monitorointiin",
+      "readinessEyebrow": "Valmiusmoottori",
+      "readinessTitle": "Miten valmius lasketaan",
+      "readinessLead": "CN-CC muuntaa anturien aikasarjan go / no-go -päätökseksi kahdessa kerroksessa: ensin ASTM-luokan kypsyyslaskennat, sitten XGBoost ETA-arvioon ja luottamukseen.",
+      "readiness": {
+        "physics": {
+          "title": "Kypsyyslaskennat",
+          "body": "Ydinlämpötilahistoria integroidaan Nurse-Saul-kypsyydellä (ensisijainen) ja Arrhenius-ekvivalentti-iällä. Sekoituksen ja erän tiedot — sementtipitoisuus, vesi-sementtisuhde, valulämpötila, paksuus — asettavat kalibroinnin. Jäätyminen ja kelvoton hydraatio pysäyttävät päätöksen tilaan PAUSED_COLD."
+        },
+        "xgboost": {
+          "title": "XGBoost valutrajektorilla",
+          "body": "XGBoost tarkentaa valmiusaikaa ja luottamusta valukohtaisista trajektoriominaisuuksista (kypsyysintegraalit, tuoreet nopeudet, lämpötilaikkunat, RH-konteksti ja seoskovariaatit) — ei sekoitetuista yksittäisistä antuririveistä. Harjoitus ja validointi jaetaan valun, ei satunnaisten aikaleimojen mukaan."
+        }
+      },
+      "readinessRailLabel": "Kova raja:",
+      "readinessRailBody": "Fysiikka omistaa jäätymisen ja kelvottoman kovettumisen. XGBoost voi tarkentaa ETA-arviota ja luottamusta, mutta se ei voi pakottaa READY-tilaa, kun laatta on kylmä tai hydraatio ei etene."
     },
     "wall-drying": {
       "metaTitle": "Seinien kuivauksen ja home-riskin monitorointi | Märkätilojen readiness (CN-WD)",
@@ -5381,7 +5403,7 @@
         "Hostaus- ja tietokantainfrastruktuuri EU:ssa (Saksa / Frankfurt -suuntaus).",
         "Valinnainen objektitallennus EU-toimivaltaoptioilla, kun käytössä.",
         "Sähköpostitoimitus-, virheseuranta- ja havainnoitavuustoimittajat julkisesti listattuina.",
-        "Avustavat tekoälyominaisuudet (esimerkiksi Gemini tai Groq, kun käytössä) tuote- ja sopimusohjauksella - betonin kypsymisennuste käyttää sisäistä TensorFlow.js -mallia eikä ole sama kuin chat-avustus."
+        "Avustavat tekoälyominaisuudet (esimerkiksi Gemini tai Groq, kun käytössä) tuote- ja sopimusohjauksella - betonin kypsymisennuste käyttää sisäistä maturity computations + XGBoost -mallia eikä ole sama kuin chat-avustus."
       ],
       "cta": "Tarkastele nykyistä julkista alikäsittelijäyhteenvetoa",
       "href": "/data/data-processing-agreement"
@@ -5900,7 +5922,7 @@
       "bullets": [
         "EU-suuntautunut hosting- ja tietokantainfrastruktuuri ydintuotantoon.",
         "Julkinen alikäsittelijäyhteenveto Tietojenkäsittelysopimus-sivulla.",
-        "Avustetut tekoälyominaisuudet, kun ne on otettu käyttöön, toimivat tuote- ja sopimuskontrollien alla - betonin kovettumisen ennuste käyttää sisäistä TensorFlow.js -mallia.",
+        "Avustetut tekoälyominaisuudet, kun ne on otettu käyttöön, toimivat tuote- ja sopimuskontrollien alla - betonin kovettumisen ennuste käyttää sisäistä maturity computations + XGBoost -mallia.",
         "Merkittävät alikäsittelijämuutokset noudattavat DPA:ssa kuvattua ilmoitusprosessia."
       ]
     },
@@ -6446,5 +6468,138 @@
         "href": "/contact"
       }
     ]
+  },
+  "architecture": {
+    "eyebrow": "Kehittäjät",
+    "layersTitle": "Kerrokset L1-L5",
+    "layersLead": "Jokaisella kerroksella on yksi tehtävä. Virta ei tulkitse mittauksia. Kerroksen yhdyskäytävät eivät avaudu julkiseen internetiin. Rakennusohjain on turvallisuusraja uplinkille ja allekirjoitetulle kenttä-OTA:lle.",
+    "ctaHowItWorks": "Näin se toimii",
+    "ctaSecurity": "Tietoturva-arkkitehtuuri",
+    "ctaDocs": "Tuotedokumentaatio",
+    "page": {
+      "title": "Arkkitehtuuri",
+      "description": "CurNextin työmaapolku kenttänodeista pilveen - viisi kerrosta, kullakin yksi tehtävä: L1 sense, L2 kerrosaggregointi, L3 virta, L4 rakennusuplink, L5 päätökset.",
+      "leadNote": "Tuotearkkitehtuurin viite operaattoreille ja kehittäjille. Turvavyöhykkeiden yksityiskohdat ovat Security-sivulla."
+    },
+    "layers": [
+      {
+        "id": "L1",
+        "role": "Sense",
+        "product": "Kenttänodet",
+        "title": "L1 - Kenttäanturit",
+        "body": "Laitteet asennetaan itse työhön - kovettuviin laattoihin, kuivuviin seiniin, sisäilmaan, vuotoihin, rakenteeseen tai talotekniikkaan. Ne mittaavat olosuhteet, jotka ohjaavat aikataulua ja laatua.",
+        "bullets": [
+          "SKU:t: CN-CC, CN-WD, CN-IAQ, CN-LEAK, CN-SHM, CN-MEP",
+          "Yksilöllinen laitteenidentiteetti ja secure element -avaimet",
+          "Manipuloinnin kestävä rakenne ja siirtymän tunnistus",
+          "LoRaWAN Class A (EU868) akkukäyttöisille langattomille nodeille tarvittaessa"
+        ]
+      },
+      {
+        "id": "L2",
+        "role": "Aggregate",
+        "product": "CN-FG",
+        "title": "L2 - Kerroksen yhdyskäytävä",
+        "body": "Jokainen kerros kokoaa laitetrafficin yhteen keräyspisteeseen, jotta taso pysyy hallittuna hankkeen kasvaessa.",
+        "bullets": [
+          "Luottamusankkuri radiolinkin varmistukseen (MIC, laskurit, join)",
+          "Vain kerros-VLAN - ei pilveen avautuvaa rajapintaa",
+          "OTA vain CN-BC:stä"
+        ]
+      },
+      {
+        "id": "L3",
+        "role": "Power",
+        "product": "CN-UPS",
+        "title": "L3 - Työmaan virta",
+        "body": "Omistettu virta pitää kerros- ja rakennuslaitteiston käynnissä katkojen aikana. Tämä kerros antaa vain virtaa - se ei tulkitse mittauksia eikä kanna dataa hallinta-VLAN:lla.",
+        "bullets": [
+          "Virran jatkuvuus L2 / L4:lle verkko-katkossa",
+          "Ei telemetrian tulkintaa",
+          "Ei julkista dataplanea hallintapolulla"
+        ]
+      },
+      {
+        "id": "L4",
+        "role": "Bridge",
+        "product": "CN-BC",
+        "title": "L4 - Rakennusohjain",
+        "body": "Rakennusyksikkö on turvallinen linkki työmaan verkosta CurNextiin. Se ylläpitää suojattua polkua työmaalta, päättää kenttä-OTA-orkestroinnin ja puhuu yksityiselle pilvivälittäjälle.",
+        "bullets": [
+          "WireGuard-asiakas rakennuksen turvallisuusrajalla",
+          "MQTT TLS:n yli molemminpuolisella TLS:llä yksityiseen brokeriin",
+          "Allekirjoitetut OTA-työt L1 / L2 -kohteille",
+          "Salattu store-and-forward kun uplink on poissa"
+        ]
+      },
+      {
+        "id": "L5",
+        "role": "Decide",
+        "product": "CurNext-pilvi",
+        "title": "L5 - CurNext-pilvi",
+        "body": "Alusta muuttaa työmaan datan readiness-tilaksi, hälytyksiksi ja seuraaviksi toimiksi - web-dashboardissa ja mobiilisovelluksessa - audit traililla asiakkaille ja vaatimustenmukaisuudelle.",
+        "bullets": [
+          "Projektin dashboardit, hälytykset, BIM-kartoitettu readiness",
+          "REST API, SDK:t, Market Place, firmware-katalogi",
+          "Kutsuihin perustuva pääsy, RBAC, etuoikeutettu MFA"
+        ]
+      }
+    ],
+    "flow": {
+      "title": "Datapolku",
+      "lead": "Mittaukset nousevat pinossa. Päätökset ja allekirjoitetut operaatiot palaavat CurNextin kautta.",
+      "steps": [
+        {
+          "from": "L1",
+          "to": "L2",
+          "path": "LoRaWAN-radiolinkki"
+        },
+        {
+          "from": "L2",
+          "to": "L4",
+          "path": "Kerros / rakennus Ethernet-VLAN"
+        },
+        {
+          "from": "L3",
+          "to": "L2 / L4",
+          "path": "PoE / vain työmaan virta"
+        },
+        {
+          "from": "L4",
+          "to": "L5",
+          "path": "WireGuard + MQTT / TLS"
+        },
+        {
+          "from": "L5",
+          "to": "Ostajat",
+          "path": "HTTPS REST · dash · mobile"
+        }
+      ]
+    },
+    "principles": {
+      "title": "Suunnittelusäännöt",
+      "items": [
+        {
+          "title": "Yksi tehtävä per kerros",
+          "body": "Virta ei tulkitse mittauksia. Kerroksen yhdyskäytävät eivät avaudu julkiseen internetiin. Rakennusohjain on turvallisuusraja uplinkille ja allekirjoitetulle kenttä-OTA:lle."
+        },
+        {
+          "title": "Sama polku jokaiselle pinnalle",
+          "body": "Kovetus, kuivaus, ilma, vuoto, rakenne ja MEP jakavat L2-L5. Vain L1-tuotelinja vaihtuu."
+        },
+        {
+          "title": "Päätökset ja todisteet",
+          "body": "L5 on toiminta - readiness, hälytykset ja audit trail - ei pelkkiä raakavirtoja."
+        },
+        {
+          "title": "Internet, ei kansallinen LoRaWAN-verkko",
+          "body": "Työmaan radio pysyy yksityisenä (L1↔L2). Pilviyhteys kulkee CN-BC:n kautta internetissä - peitto ei rajoitu maihin, joissa on julkinen LoRaWAN-verkko."
+        }
+      ]
+    },
+    "deployAnywhere": {
+      "title": "Käyttöönotto missä tahansa, jossa on internet",
+      "body": "Tämä L1-L5-rakenne on omavarainen työmaalla: kenttänodet käyttävät LoRaWANia vain CurNextin kerrosyhdyskäytäviin (CN-FG), ja rakennusohjain (CN-BC) tavoittaa CurNext-pilven tavallisella internetillä. Hanke voidaan siis ottaa käyttöön missä tahansa maapallolla, jossa on internet-yhteys. Se ei riipu maakohtaisesta julkisesta LoRaWAN-verkko-operaattorista - toisin kuin järjestelmät, jotka toimivat vain siellä, missä tällainen kansallinen tai operaattorin LoRaWAN-verkko on jo olemassa."
+    }
   }
 }

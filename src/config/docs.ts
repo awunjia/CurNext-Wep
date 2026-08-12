@@ -39,10 +39,10 @@ const solutionBodies: Record<
 > = {
   "CN-CC": {
     summary:
-      "Concrete curing monitors slab maturity with air, surface, and core probes. A sealed edge node stays outside the pour; rugged probes sit where the slab needs measurement. CurNext's in-house TensorFlow.js model turns those temperatures into curing predictions and build-ready timing, with an audit trail for the pour package.",
+      "Concrete curing monitors slab maturity with air, surface, and core probes. A sealed edge node stays outside the pour; rugged probes sit where the slab needs measurement. CurNext's maturity computations plus XGBoost turn those temperatures into curing predictions and build-ready timing, with an audit trail for the pour package.",
     bullets: [
       "Air, surface, and core probe roles on the same harness model",
-      "In-house TensorFlow.js curing prediction for readiness",
+      "Maturity computations + XGBoost curing prediction for readiness",
       "Go / no-go readiness instead of calendar-only cure rules",
       "Documented cure trail for formwork and follow-on trades",
       "LoRaWAN field path into CN-FG and CN-BC",

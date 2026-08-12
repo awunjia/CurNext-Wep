@@ -236,11 +236,11 @@
         "solution-cn-cc": {
           "title": "CN-CC - Concrete Curing",
           "paragraphs": [
-            "Betonin kovetus seuraa laatan kypsyyttä ilma-, pinta- ja ydinkoitimilla. Tiivistetty edge-node jää valun ulkopuolelle; kestävät koettimet sijoittuvat sinne, missä laattaa mitataan. CurNextin sisäinen TensorFlow.js-malli muuntaa lämpötilat kovetusennusteiksi ja rakentamisvalmiiksi ajoitukseksi auditointipolulla valuaineistolle."
+            "Betonin kovetus seuraa laatan kypsyyttä ilma-, pinta- ja ydinkoitimilla. Tiivistetty edge-node jää valun ulkopuolelle; kestävät koettimet sijoittuvat sinne, missä laattaa mitataan. CurNextin sisäinen XGBoost-malli muuntaa lämpötilat kovetusennusteiksi ja rakentamisvalmiiksi ajoitukseksi auditointipolulla valuaineistolle."
           ],
           "bullets": [
             "Ilma-, pinta- ja ydinkoettimen roolit samassa valjasmalissa",
-            "Sisäinen TensorFlow.js-kovetusennuste valmiutta varten",
+            "Sisäinen XGBoost-kovetusennuste valmiutta varten",
             "Go / no-go -valmius kalenteripohjaisten kovetussääntöjen sijaan",
             "Dokumentoitu kovetuspolku muoteille ja seuraaville urakoille",
             "LoRaWAN-kenttäpolku CN-FG:hen ja CN-BC:hen"
