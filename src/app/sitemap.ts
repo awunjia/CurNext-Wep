@@ -1,3 +1,5 @@
+import { statSync } from "node:fs";
+import path from "node:path";
 import type { MetadataRoute } from "next";
 
 import { siteConfig, sitePages } from "@/config/site";
@@ -33,14 +35,47 @@ function pagePriority(href: string): number {
   return 0.6;
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+const pageSourceFiles: Partial<Record<string, string[]>> = {
+  "/solutions": [
+    "src/app/[locale]/solutions/page.tsx",
+    "src/components/solutions-index-page.tsx",
+    "messages/en.json",
+    "messages/fr.json",
+    "messages/fi.json",
+    "messages/sv.json",
+    "messages/es.json",
+  ],
+  "/solutions/concrete-curing": [
+    "src/app/[locale]/solutions/concrete-curing/page.tsx",
+    "src/components/concrete-curing-page.tsx",
+    "src/components/solution-product-json-ld.tsx",
+    "messages/en.json",
+    "messages/fr.json",
+    "messages/fi.json",
+    "messages/sv.json",
+    "messages/es.json",
+  ],
+};
 
+function pageLastModified(href: string): Date {
+  const files = pageSourceFiles[href];
+  if (!files || files.length === 0) {
+    return statSync(path.join(process.cwd(), "src/config/site.ts")).mtime;
+  }
+
+  return files.reduce((latest, relativePath) => {
+    const modifiedAt = statSync(path.join(process.cwd(), relativePath)).mtime;
+    return modifiedAt > latest ? modifiedAt : latest;
+  }, new Date(0));
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
   return sitePages
     .filter((page) => page.href.startsWith("/"))
     .flatMap((page) => {
       const path = page.href === "/" ? "" : page.href;
       const priority = pagePriority(page.href);
+      const lastModified = pageLastModified(page.href);
       return routing.locales.map((locale) => ({
         url: `${siteConfig.url}/${locale}${path}`,
         lastModified,

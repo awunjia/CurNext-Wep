@@ -85,10 +85,27 @@
     "businessId": "Y-tunnus: {id}"
   },
   "home": {
-    "metaTitle": "CurNext | Rakennustyömaan valmiusäly",
-    "metaDescription": "Teollinen IoT ja AI-valmius betonin kovettumiseen, seinien kuivumiseen, sisäilmaan, vuotoihin, rakenteiden kuntoon ja LVI:hin. Selkeät go / no-go -päätökset auditointikelpoisella näytöllä.",
+    "metaTitle": "CurNext | Työmaäly, ratkaisut, hinnoittelu ja valmiuspäätökset",
+    "metaDescription": "CurNext on rakennustyömaan älyä betonin kypsymiseen, seinien kuivumiseen, sisäilmaan, vuotoihin, rakenteiden kuntoon ja LVI:hin. Tutustu ratkaisuihin, hinnoitteluun ja auditointikelpoiseen go / no-go -näyttöön luovutuspäätöksiä varten.",
+    "metaKeywords": [
+      "CurNext",
+      "tyomaaaly",
+      "rakentamisen monitorointiratkaisut",
+      "betonin kypsymisen monitorointi",
+      "laatan valmius",
+      "seinien kuivumisen monitorointi",
+      "home riskin monitorointi",
+      "sisailman laatu rakennus",
+      "vuotovalvonta rakentaminen",
+      "rakenteiden kunnon monitorointi",
+      "LVI monitorointi",
+      "rakentamisen hinnoittelu",
+      "luovutusnaytto tyomaa"
+    ],
     "heroTitle": "Rakennusvalmis työmaäly",
     "heroLead": "Työmaälyalusta, joka seuraa laattoja, seiniä ja märkätiloja teollisilla IoT-antureilla ja tuottaa tekoälyennusteita readiness-päätöksiin.",
+    "heroImageAlt": "CurNextin rakennustyomaan monitorointinakyma betonikohteessa",
+    "dashboardImageAlt": "CurNextin tyomaavalvonnan hallintanakyma, jossa readiness, anturit ja tyomaaprosessit",
     "requestQuote": "Pyydä tarjous",
     "howItWorks": "Miten se toimii",
     "whyEyebrow": "Miksi CurNext",
@@ -143,7 +160,7 @@
     "commentCount": "{count} kommentti",
     "commentCount_plural": "{count} kommenttia",
     "signInTitle": "Kirjaudu vuorovaikutukseen",
-    "signInBody": "Tykkääminen, kommentointi ja vastaaminen edellyttävät CurNext-tiliä. Käytä samaa Google-kirjautumista kuin tuotehallinnassa.",
+    "signInBody": "Tykkääminen, kommentointi ja vastaaminen vaativat CurNext-tilin. Kirjaudu sisään osoitteessa dash.curnext.app ja palaa tälle artikkelille.",
     "signInGoogle": "Kirjaudu Googlella",
     "redirecting": "Ohjataan...",
     "accountRequired": "CurNext-tili vaaditaan",
@@ -4133,19 +4150,31 @@
       }
     },
     "concrete-curing": {
-      "metaTitle": "Betonin kypsymisen monitorointi | Laatan readiness (CN-CC)",
-      "metaDescription": "Seuraa betonin kypsymistä ilma-, pinta- ja ydinsensoreilla. CurNext CN-CC muuntaa laatan maturiteetin selkeäksi go / no-go -valmiudeksi ennen lattioita ja pinnoitteita.",
+      "metaTitle": "Betonin kypsymisen monitorointi | Laatan valmius ja RH-hallinta (CN-CC)",
+      "metaDescription": "Seuraa betonin kypsymistä antureilla, jotka mittaavat huoneen lämpötilaa / suhteellista kosteutta, betonipinnan lämpötilaa / suhteellista kosteutta ja betonin ydinlämpötilaa. CurNext CN-CC muuntaa tämän mittauskokonaisuuden selkeäksi laatan valmiudeksi ennen lattioita, pinnoitteita, laatoitusta, luovutusta ja vaatimustenmukaisuutta.",
+      "metaKeywords": [
+        "betonin kypsymisen monitorointi",
+        "laatan valmius monitorointi",
+        "betonin suhteellisen kosteuden mittaus",
+        "betonipinnan suhteellinen kosteus",
+        "betonin ydinlampotilan mittaus",
+        "lattian valmius betonilaatta",
+        "pinnoitteen valmius betonilaatta",
+        "laatoituksen valmius betonilaatta",
+        "tyomaan luovutusnaytto",
+        "betonin kypsymisen vaatimustenmukaisuusnaytto"
+      ],
       "heroAlt": "CurNext CN-CC -anturit ja valmiusmonitorointi betonilaatalla",
       "whatAlt": "CN-CC-solmu, keltainen anturivaljastus ja valmiusnäkymä työmaalla",
       "heroTitle": "Tiedä milloin laatta on valmis - ennen viimeistelyä",
-      "heroLead": "Betonin kypsymisäly valmiisiin laattoihin. Ilma-, pinta- ja ydinsensorointi selkeäksi go / no-go -signaaliksi laatoitukselle, lattioille ja pinnoitteille.",
+      "heroLead": "Seuraa betonin kypsymistä kolmella jakellulla anturilla: huoneen lämpötila / suhteellinen kosteus, betonipinnan lämpötila / suhteellinen kosteus ja betonin ydinlämpötila. CurNext CN-CC muuntaa tämän mittauskokonaisuuden selkeäksi go / no-go -valmiudeksi ennen laatoitusta, lattioita ja pinnoitteita.",
       "outcomesEyebrow": "Hyödyt",
       "outcomesTitle": "Readiness for the next phase - not another chart",
       "outcomesLead": "CurNext vastaa yhteen kysymykseen: onko tämä pinta valmis seuraavaan rakennusvaiheeseen?",
       "challengeEyebrow": "Haaste",
       "challengeTitle": "Arvailu maksaa aikataulun ja katteen",
       "whatTitle": "Slab maturity intelligence on the jobsite",
-      "whatBody": "Tiivistetty edge-solmu jää valun ulkopuolelle. Vain kestävät ilma-, pinta- ja ydinanturit menevät kovaan vyöhykkeeseen. Pilvi muuntaa mittaukset viimeistelyvalmiudeksi - dokumentoidulla näytöllä.",
+      "whatBody": "Tiivistetty edge-solmu jää valun ulkopuolelle. Kolme kestävää anturia jatkuu solmusta: yksi huoneen lämpötilaan / suhteelliseen kosteuteen, yksi betonipinnan lämpötilaan / suhteelliseen kosteuteen ja yksi betonin ydinlämpötilaan. Pilvi muuntaa tämän yhdistetyn mittauskokonaisuuden viimeistelyvalmiudeksi - dokumentoidulla näytöllä.",
       "howTitle": "Valusta selkeään päätökseen",
       "ctaTitle": "Näe CN-CC laatoillasi",
       "ctaLead": "Käy läpi työmaa-arvio CurNext-tiimin kanssa - hyödyt ensin, näyttö jonka voit antaa asiakkaalle.",
@@ -4188,7 +4217,7 @@
         },
         "2": {
           "title": "Mittaa",
-          "body": "Mittaa ympäristö, viimeistelyrajapinta ja ydintämpötila yhdessä - gradientti josta maturiteetti riippuu."
+          "body": "Mittaa huoneen lämpötila / suhteellinen kosteus, betonipinnan lämpötila / suhteellinen kosteus ja betonin ydinlämpötila yhdessä - kokonaiskuva, josta laatan maturiteetti riippuu."
         },
         "3": {
           "title": "Yhdistä",
@@ -4221,19 +4250,19 @@
       "trustTitle": "Teollinen suunnittelultaan",
       "probesEyebrow": "Anturijärjestelmä",
       "probesTitle": "Kolme pistettä. Yksi valmiuspäätös.",
-      "probesLead": "Tiivistetty edge-solmu jää valun ulkopuolelle. Vain kestävät ilma-, pinta- ja ydinanturit menevät kovaan vyöhykkeeseen. Pilvi muuntaa mittaukset viimeistelyvalmiudeksi - dokumentoidulla näytöllä.",
+      "probesLead": "Tiivistetty edge-solmu jää valun ulkopuolelle. Kolme anturijalkaa jatkuu solmusta mittauspisteisiin: huoneen lämpö / suhteellinen kosteus, pinnan lämpö / suhteellinen kosteus ja ydinlämpötila. Pilvi muuntaa nämä mittaukset viimeistelyvalmiudeksi - dokumentoidulla näytöllä.",
       "probes": {
         "1": {
           "name": "Ilma",
-          "role": "Ympäristöolosuhteet valun ympärillä - kuivumisen raja."
+          "role": "Huoneen lämpötila ja suhteellinen kosteus valun ympärillä - ympäristön kuivumisraja."
         },
         "2": {
           "name": "Pinta",
-          "role": "Viimeistely- ja kalvorajapinta - jossa pinnoitteet ja lattiat kohtaavat laatan."
+          "role": "Betonipinnan lämpötila ja suhteellinen kosteus viimeistelyrajapinnassa - siellä missä pinnoitteet ja lattiat kohtaavat laatan."
         },
         "3": {
           "name": "Ydin",
-          "role": "Terminen massa laatan sisällä - maturiteettisignaali joka ohjaa valmiutta."
+          "role": "Betonin ydinlämpötila laatan sisällä - maturiteettisignaali joka ohjaa valmiutta."
         }
       },
       "related1Label": "Seinien kuivatus",
@@ -4243,22 +4272,22 @@
       "breadcrumbName": "Betonin kypsyminen",
       "definitionEyebrow": "Lyhyesti",
       "definitionTitle": "Mitä on betonin kypsymisen monitorointi?",
-      "definition": "Betonin kypsymisen monitorointi mittaa ympäristön, pinnan ja laatan sisäisen lämpötilan, jotta tiedetään milloin valu on tarpeeksi kypsä viimeistelyyn. CurNext CN-CC muuttaa signaalit go / no-go -valmiudeksi jatkuvalla näytöllä - ei kertaluontoisilla mittauksilla.",
+      "definition": "Betonin kypsymisen monitorointi mittaa huoneen lämpötilaa / suhteellista kosteutta, betonipinnan lämpötilaa / suhteellista kosteutta ja betonin ydinlämpötilaa, jotta tiimit tietävät milloin valu on tarpeeksi kypsä lattioille, laatoitukselle, pinnoitteille ja luovutukselle. CurNext CN-CC muuttaa nämä signaalit go / no-go -valmiudeksi jatkuvalla näytöllä, vaatimustenmukaisuustuella ja vähemmillä kertaluontoisilla käsimittauksilla.",
       "faqEyebrow": "UKK",
       "faqTitle": "Kysymyksiä betonin kypsymisen monitoroinnista",
       "faqLead": "Suorat vastaukset urakoitsijoille, konsulteille ja tekoälyhakukoneille.",
       "faq": {
         "1": {
           "question": "Mikä on betonin kypsymisen monitorointijärjestelmä?",
-          "answer": "Se seuraa laatan lämpötilaa kypsymisen aikana, jotta maturiteetti ja readiness voidaan arvioida jatkuvasti. CurNext CN-CC käyttää ilma-, pinta- ja ydinsensoreita sekä pilvipohjaisia ennusteita viimeistelyn ajoitukseen."
+          "answer": "Betonin kypsymisen monitorointijärjestelmä seuraa kypsymisen aikana laatan maturiteettiin vaikuttavia olosuhteita, jotta readiness voidaan arvioida jatkuvasti. CurNext CN-CC käyttää kolmea anturia huoneen lämpötilaan / suhteelliseen kosteuteen, betonipinnan lämpötilaan / suhteelliseen kosteuteen ja betonin ydinlämpötilaan, ja soveltaa pilvipohjaisia readiness-ennusteita lattian, pinnoituksen, laatoituksen ja luovutuksen ajoituspäätöksiin."
         },
         "2": {
           "question": "Miten CurNext monitoroi betonin kypsymistä työmaalla?",
-          "answer": "Suljettu CN-CC-solmu pysyy valun ulkopuolella, kun robustit anturit mittaavat ilmaa, pintaa ja ydintä. Data nousee CurNext-pinon kautta dash.curnext.appiin go / no-go -valmiuden, hälytysten ja näytön kanssa."
+          "answer": "Tiivistetty CN-CC edge-solmu jää valun ulkopuolelle, kun kolme kestävää anturia jatkuu solmusta mittauspisteisiin. Yksi anturi mittaa huoneen lämpötilaa / suhteellista kosteutta, yksi betonipinnan lämpötilaa / suhteellista kosteutta ja yksi betonin ydinlämpötilaa. Data nousee CurNext-rakennuspinoa pitkin dash.curnext.appiin, jossa tiimit näkevät go / no-go -valmiuden, hälytykset, vaatimustenmukaisuusnäytön ja dokumentoidun perustan viimeistelyn ajoitukselle."
         },
         "3": {
           "question": "Miksi mitata ilmaa, pintaa ja ydintä yhdessä?",
-          "answer": "Maturiteetti riippuu lämpögradienteista, ei yhdestä pisteestä. Ympäristö, viimeistelyrajapinta ja ydinnassa voivat erota valun jälkeen. Kolmen pisteen mittaus vähentää virheellisiä readiness-päätöksiä."
+          "answer": "Laatan maturiteetti riippuu useammasta kuin yhdestä pisteestä. Huoneolosuhteet, betonipinta ja betonin ydin voivat erota valun jälkeen, ja suhteellinen kosteus huoneessa ja pinnalla tuo tärkeää kontekstia viimeistelyn ajoitukselle. Kaikkien kolmen pisteen mittaus koko mittauskokonaisuudella vähentää virheellisiä readiness-päätöksiä ennen laatoitusta, lattioita tai pinnoitteita."
         },
         "4": {
           "question": "Upotetaanko CN-CC-elektroniikka betoniin?",
@@ -4266,10 +4295,13 @@
         },
         "5": {
           "question": "Kenelle CurNextin betonimonitorointi sopii?",
-          "answer": "Pääurakoitsijoille, lattia- ja pinnoitusurakoitsijoille sekä konsulteille, jotka tarvitsevat dokumentoidun laatan readinessin ennen viimeistelyä."
+          "answer": "Pääurakoitsijoille, lattia- ja pinnoitusurakoitsijoille, konsulteille ja laatutiimeille, jotka tarvitsevat dokumentoidun laatan readinessin ennen viimeistelyä. CN-CC on tehty työmaille, jotka tarvitsevat teollisen langattoman yhteyden, audit trailin, vaatimustenmukaisuusnäytön sekä selkeämmät aikataulu- ja luovutuspäätökset."
         }
       },
-      "howToName": "Miten CurNext CN-CC betonin kypsymisen monitorointi toimii"
+      "howToName": "Miten CurNext CN-CC betonin kypsymisen monitorointi toimii",
+      "schemaCategory": "Betonin kypsymisen monitorointiohjelmisto",
+      "schemaAudienceType": "Pääurakoitsijat, lattia- ja pinnoitusurakoitsijat, konsultit ja laatutiimit",
+      "schemaOfferDescription": "Hinnoittelu solmujen määrän ja projektin keston mukaan laatan valmiuden monitorointiin"
     },
     "wall-drying": {
       "metaTitle": "Seinien kuivauksen ja home-riskin monitorointi | Märkätilojen readiness (CN-WD)",

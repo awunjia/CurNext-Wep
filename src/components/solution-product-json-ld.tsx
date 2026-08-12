@@ -22,8 +22,13 @@ type SolutionProductJsonLdProps = {
   imagePath: string;
   faq: FaqItem[];
   steps: HowToStep[];
+  homeLabel?: string;
+  solutionsLabel?: string;
   breadcrumbName: string;
   howToName: string;
+  category?: string;
+  audienceType?: string;
+  offerDescription?: string;
 };
 
 /**
@@ -39,8 +44,13 @@ export function SolutionProductJsonLd({
   imagePath,
   faq,
   steps,
+  homeLabel,
+  solutionsLabel,
   breadcrumbName,
   howToName,
+  category,
+  audienceType,
+  offerDescription,
 }: SolutionProductJsonLdProps) {
   const pageUrl = `${siteConfig.url}/${locale}${path}`;
   const imageUrl = `${siteConfig.url}${imagePath}`;
@@ -59,7 +69,7 @@ export function SolutionProductJsonLd({
       name: siteConfig.name,
     },
     manufacturer: { "@id": `${siteConfig.url}/#organization` },
-    category: "Construction monitoring software",
+    category: category ?? "Construction monitoring software",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web, iOS, Android",
     offers: {
@@ -67,11 +77,12 @@ export function SolutionProductJsonLd({
       url: `${siteConfig.url}/${locale}/pricing`,
       priceCurrency: "EUR",
       availability: "https://schema.org/PreOrder",
-      description: "Quoted by node count and project duration",
+      description: offerDescription ?? "Quoted by node count and project duration",
     },
     audience: {
       "@type": "BusinessAudience",
-      audienceType: "General contractors, specialty trades, consultants",
+      audienceType:
+        audienceType ?? "General contractors, specialty trades, consultants",
     },
   };
 
@@ -99,13 +110,13 @@ export function SolutionProductJsonLd({
       {
         "@type": "ListItem",
         position: 1,
-        name: "Home",
+        name: homeLabel ?? "Home",
         item: `${siteConfig.url}/${locale}`,
       },
       {
         "@type": "ListItem",
         position: 2,
-        name: "Solutions",
+        name: solutionsLabel ?? "Solutions",
         item: `${siteConfig.url}/${locale}/solutions`,
       },
       {

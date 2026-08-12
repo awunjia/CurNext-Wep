@@ -18,7 +18,7 @@ export function HomeHero() {
         <div className="absolute inset-0">
           <Image
             src="/hero/site-atmosphere.png"
-            alt="Concrete construction site atmosphere"
+            alt={t("heroImageAlt")}
             fill
             priority
             sizes="100vw"
@@ -70,6 +70,7 @@ export function HomeHero() {
 }
 
 export function HomeProductPlane() {
+  const t = useTranslations("home");
   const productRef = useRef<HTMLElement>(null);
   const [productVisible, setProductVisible] = useState(false);
 
@@ -103,7 +104,7 @@ export function HomeProductPlane() {
       <div className="relative aspect-[16/9] w-full min-h-[42vh] md:min-h-[56vh]">
         <Image
           src="/hero/product-dashboard.png"
-          alt="CurNext sensing dashboard showing site conditions and workflows"
+          alt={t("dashboardImageAlt")}
           fill
           sizes="100vw"
           className="object-cover object-top"

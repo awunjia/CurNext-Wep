@@ -85,10 +85,27 @@
     "businessId": "Business ID: {id}"
   },
   "home": {
-    "metaTitle": "CurNext | Build-ready Construction Site Intelligence",
-    "metaDescription": "Industrial IoT and AI readiness for concrete curing, wall drying, indoor air, leaks, structural health, and MEP. Clear go / no-go decisions with audit-ready evidence.",
+    "metaTitle": "CurNext | Construction Site Intelligence, Solutions, Pricing & Readiness",
+    "metaDescription": "CurNext is construction site intelligence for concrete curing, wall drying, indoor air, leaks, structural health, and MEP. Explore solutions, pricing, and audit-ready go / no-go evidence for handover decisions.",
+    "metaKeywords": [
+      "CurNext",
+      "construction site intelligence",
+      "construction monitoring solutions",
+      "concrete curing monitoring",
+      "slab readiness",
+      "wall drying monitoring",
+      "mold risk monitoring",
+      "indoor air quality construction",
+      "construction leak detection",
+      "structural health monitoring",
+      "MEP monitoring",
+      "construction pricing",
+      "construction handover evidence"
+    ],
     "heroTitle": "Build-ready site intelligence",
     "heroLead": "A site intelligence platform that monitors slabs, walls, and wet rooms with industrial IoT sensors and provides adequate AI predictions for readiness.",
+    "heroImageAlt": "CurNext construction site monitoring atmosphere on a concrete project",
+    "dashboardImageAlt": "CurNext construction monitoring dashboard showing readiness, sensors, and site workflows",
     "requestQuote": "Request Quote",
     "howItWorks": "How It Works",
     "whyEyebrow": "Why CurNext",
@@ -143,7 +160,7 @@
     "commentCount": "{count} comment",
     "commentCount_plural": "{count} comments",
     "signInTitle": "Sign in to interact",
-    "signInBody": "Like, comment, and reply require a CurNext account. Use the same Google login as the product dashboard.",
+    "signInBody": "Like, comment, and reply require a CurNext account. Sign in on dash.curnext.app, then return to this post.",
     "signInGoogle": "Sign in with Google",
     "redirecting": "Redirecting...",
     "accountRequired": "CurNext account required",
@@ -4133,19 +4150,31 @@
       }
     },
     "concrete-curing": {
-      "metaTitle": "Concrete Curing Monitoring System | Slab Readiness (CN-CC)",
-      "metaDescription": "Monitor concrete curing with air, surface, and core probes. CurNext CN-CC turns slab maturity sensing into clear go / no-go readiness before flooring and coatings.",
+      "metaTitle": "Concrete Curing Monitoring System | Slab Readiness & RH Control (CN-CC)",
+      "metaDescription": "Monitor concrete curing with room temperature / RH, concrete-surface temperature / RH, and concrete-core temperature probes. CurNext CN-CC turns that measurement set into clear slab readiness before flooring, coating, tiling, handover, and compliance decisions.",
+      "metaKeywords": [
+        "concrete curing monitoring",
+        "slab readiness monitoring",
+        "concrete relative humidity monitoring",
+        "concrete surface relative humidity",
+        "concrete core temperature monitoring",
+        "flooring readiness concrete slab",
+        "coating readiness concrete slab",
+        "tiling readiness concrete slab",
+        "construction handover evidence",
+        "concrete curing compliance evidence"
+      ],
       "heroAlt": "CurNext CN-CC probes and readiness monitoring on a concrete slab",
       "whatAlt": "CN-CC node, yellow probe harness, and readiness view on site",
       "heroTitle": "Concrete curing monitoring for build-ready slabs",
-      "heroLead": "Monitor concrete curing with air, surface, and core sensing. CurNext CN-CC turns slab maturity into clear go / no-go readiness before tiling, flooring, and coating.",
+      "heroLead": "Monitor concrete curing with three distributed probes: room temperature / RH, concrete-surface temperature / RH, and concrete-core temperature. CurNext CN-CC turns that measurement set into clear go / no-go readiness before tiling, flooring, and coating.",
       "outcomesEyebrow": "Outcomes",
       "outcomesTitle": "Concrete curing readiness for the next phase",
       "outcomesLead": "CurNext answers one question: is this surface ready for the next construction phase?",
       "challengeEyebrow": "The challenge",
       "challengeTitle": "Guesswork costs schedule and margin",
       "whatTitle": "Concrete curing monitoring on the jobsite",
-      "whatBody": "A sealed edge node sits outside the pour. Only rugged air, surface, and core probes enter the harsh zone. The cloud turns those measurements into readiness for finishes - with documented evidence.",
+      "whatBody": "A sealed edge node sits outside the pour. Three rugged probes extend from the node: one for room temperature / RH, one for concrete-surface temperature / RH, and one for concrete-core temperature. The cloud turns that combined measurement set into readiness for finishes - with documented evidence.",
       "howTitle": "From the pour to a clear decision",
       "ctaTitle": "See CN-CC on your slabs",
       "ctaLead": "Walk through a site assessment with the CurNext team - outcomes first, evidence you can hand to the client.",
@@ -4188,7 +4217,7 @@
         },
         "2": {
           "title": "Sense",
-          "body": "Measure ambient, finish interface, and core temperature together - the gradient that maturity depends on."
+          "body": "Measure room temperature / RH, concrete-surface temperature / RH, and concrete-core temperature together - the combined picture slab maturity depends on."
         },
         "3": {
           "title": "Connect",
@@ -4221,19 +4250,19 @@
       "trustTitle": "Industrial by design",
       "probesEyebrow": "Probe system",
       "probesTitle": "Three points. One readiness call.",
-      "probesLead": "A sealed edge node sits outside the pour. Only rugged air, surface, and core probes enter the harsh zone. The cloud turns those measurements into readiness for finishes - with documented evidence.",
+      "probesLead": "A sealed edge node sits outside the pour. Three probe legs extend from the node into the measurement points: room temp / RH, surface temp / RH, and core temp. The cloud turns those measurements into readiness for finishes - with documented evidence.",
       "probes": {
         "1": {
           "name": "Air",
-          "role": "Ambient conditions around the pour - the drying boundary."
+          "role": "Room temperature and relative humidity around the pour - the ambient drying boundary."
         },
         "2": {
           "name": "Surface",
-          "role": "Finish and membrane interface - where coatings and flooring meet the slab."
+          "role": "Concrete-surface temperature and relative humidity at the finish interface - where coatings and flooring meet the slab."
         },
         "3": {
           "name": "Core",
-          "role": "Thermal mass inside the slab - the maturity signal that drives readiness."
+          "role": "Concrete-core temperature inside the slab - the maturity signal that drives readiness."
         }
       },
       "related1Label": "Wall drying",
@@ -4243,22 +4272,22 @@
       "breadcrumbName": "Concrete curing",
       "definitionEyebrow": "In short",
       "definitionTitle": "What is concrete curing monitoring?",
-      "definition": "Concrete curing monitoring measures ambient, surface, and in-slab temperatures so teams know when a pour is mature enough for finishes. CurNext CN-CC converts those signals into go / no-go slab readiness with continuous evidence - not one-off handheld checks.",
+      "definition": "Concrete curing monitoring measures room temperature / RH, concrete-surface temperature / RH, and concrete-core temperature so teams know when a pour is mature enough for flooring, tiling, coatings, and handover. CurNext CN-CC converts those signals into go / no-go slab readiness with continuous evidence, compliance support, and fewer one-off handheld checks.",
       "faqEyebrow": "FAQ",
       "faqTitle": "Concrete curing monitoring questions",
       "faqLead": "Direct answers for contractors, consultants, and AI systems researching slab readiness monitoring.",
       "faq": {
         "1": {
           "question": "What is a concrete curing monitoring system?",
-          "answer": "A concrete curing monitoring system tracks temperature through the slab during curing so maturity and readiness can be judged continuously. CurNext CN-CC uses air, surface, and core probes plus cloud readiness predictions to support finish timing decisions."
+          "answer": "A concrete curing monitoring system tracks the conditions that drive slab maturity during curing so readiness can be judged continuously. CurNext CN-CC uses three probes for room temperature / RH, concrete-surface temperature / RH, and concrete-core temperature, then applies cloud readiness predictions to support flooring, coating, tiling, and handover timing decisions."
         },
         "2": {
           "question": "How does CurNext monitor concrete curing on site?",
-          "answer": "A sealed CN-CC edge node sits outside the pour while rugged probes measure air, surface, and core conditions. Data uplinks through the CurNext building stack to dash.curnext.app, where teams see go / no-go readiness, alerts, and compliance evidence."
+          "answer": "A sealed CN-CC edge node sits outside the pour while three rugged probes extend from the node to the measurement points. One probe measures room temperature / RH, one measures concrete-surface temperature / RH, and one measures concrete-core temperature. Data uplinks through the CurNext building stack to dash.curnext.app, where teams see go / no-go slab readiness, alerts, compliance evidence, and a documented basis for finish timing."
         },
         "3": {
           "question": "Why monitor air, surface, and core temperature together?",
-          "answer": "Slab maturity depends on thermal gradients, not a single point. Ambient air, the finish interface, and core mass can diverge after a pour. Measuring all three reduces false readiness calls before tiling, flooring, or coating."
+          "answer": "Slab maturity depends on more than one point. Room conditions, the concrete surface, and the concrete core can diverge after a pour, and relative humidity at the room and surface adds important context for finish timing. Measuring all three points with the full set reduces false readiness calls before tiling, flooring, or coating."
         },
         "4": {
           "question": "Is CN-CC electronics embedded in the concrete?",
@@ -4266,10 +4295,13 @@
         },
         "5": {
           "question": "Who should use CurNext concrete curing monitoring?",
-          "answer": "General contractors, specialty flooring and coating trades, and consultants who need documented slab readiness before finishes. CN-CC is built for jobsites that need industrial wireless, audit trails, and clearer schedule decisions."
+          "answer": "General contractors, specialty flooring and coating trades, consultants, and quality teams who need documented slab readiness before finishes. CN-CC is built for jobsites that need industrial wireless, audit trails, compliance evidence, and clearer schedule and handover decisions."
         }
       },
-      "howToName": "How CurNext CN-CC concrete curing monitoring works"
+      "howToName": "How CurNext CN-CC concrete curing monitoring works",
+      "schemaCategory": "Concrete curing monitoring software",
+      "schemaAudienceType": "General contractors, specialty flooring and coating trades, consultants, and quality teams",
+      "schemaOfferDescription": "Quoted by node count and project duration for slab readiness monitoring"
     },
     "wall-drying": {
       "metaTitle": "Wall Drying & Mold Risk Monitoring | Wet-Room Readiness (CN-WD)",

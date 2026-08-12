@@ -85,10 +85,27 @@
     "businessId": "ID de empresa: {id}"
   },
   "home": {
-    "metaTitle": "CurNext | Inteligencia de obra lista para construir",
-    "metaDescription": "IoT industrial e IA de readiness para curado de hormigón, secado de muros, aire interior, fugas, salud estructural y MEP. Decisiones go / no-go con evidencia auditable.",
+    "metaTitle": "CurNext | Inteligencia de obra, soluciones, precios y readiness",
+    "metaDescription": "CurNext es inteligencia de obra para curado de hormigón, secado de muros, aire interior, fugas, salud estructural y MEP. Explore soluciones, precios y evidencia go / no-go auditable para decisiones de entrega.",
+    "metaKeywords": [
+      "CurNext",
+      "inteligencia de obra",
+      "soluciones de monitorizacion construccion",
+      "monitorizacion de curado de hormigon",
+      "readiness de losa",
+      "monitorizacion de secado de muros",
+      "monitorizacion de riesgo de moho",
+      "calidad del aire interior construccion",
+      "deteccion de fugas construccion",
+      "monitorizacion de salud estructural",
+      "monitorizacion MEP",
+      "precios construccion",
+      "evidencia de entrega obra"
+    ],
     "heroTitle": "Inteligencia de obra lista para construir",
     "heroLead": "Una plataforma de inteligencia de obra que monitoriza losas, muros y cuartos húmedos con sensores IoT industriales y ofrece predicciones de IA para la readiness.",
+    "heroImageAlt": "Monitorizacion CurNext en una obra de hormigon",
+    "dashboardImageAlt": "Panel CurNext de monitorizacion de obra con readiness, sensores y flujos de trabajo",
     "requestQuote": "Solicitar presupuesto",
     "howItWorks": "Cómo funciona",
     "whyEyebrow": "Por qué CurNext",
@@ -143,7 +160,7 @@
     "commentCount": "{count} comentario",
     "commentCount_plural": "{count} comentarios",
     "signInTitle": "Inicia sesión para interactuar",
-    "signInBody": "Dar me gusta, comentar y responder requiere una cuenta CurNext. Usa el mismo inicio de sesión de Google que el panel del producto.",
+    "signInBody": "Me gusta, comentar y responder requieren una cuenta CurNext. Inicie sesión en dash.curnext.app y vuelva a esta publicación.",
     "signInGoogle": "Iniciar sesión con Google",
     "redirecting": "Redirigiendo...",
     "accountRequired": "Se requiere cuenta CurNext",
@@ -4133,19 +4150,31 @@
       }
     },
     "concrete-curing": {
-      "metaTitle": "Monitorización de curado de hormigón | Readiness de losa (CN-CC)",
-      "metaDescription": "Supervise el curado de hormigón con sondas de aire, superficie y núcleo. CurNext CN-CC convierte la madurez de losa en go / no-go claro antes de suelos y revestimientos.",
+      "metaTitle": "Monitorización de curado de hormigón | Readiness de losa y control RH (CN-CC)",
+      "metaDescription": "Supervise el curado de hormigón con sondas para temperatura / HR ambiente, temperatura / HR en la superficie del hormigón y temperatura en el núcleo del hormigón. CurNext CN-CC convierte ese conjunto de mediciones en readiness clara antes de suelos, revestimientos, alicatado, entrega y cumplimiento.",
+      "metaKeywords": [
+        "monitorizacion de curado de hormigon",
+        "readiness de losa",
+        "humedad relativa hormigon",
+        "humedad relativa superficie hormigon",
+        "temperatura nucleo hormigon",
+        "readiness suelo losa hormigon",
+        "readiness revestimiento losa hormigon",
+        "readiness alicatado losa hormigon",
+        "evidencia entrega obra",
+        "evidencia cumplimiento curado hormigon"
+      ],
       "heroAlt": "Sondas CurNext CN-CC y monitorización de preparación en una losa de hormigón",
       "whatAlt": "Nodo CN-CC, arnés de sondas amarillo y vista de preparación en obra",
       "heroTitle": "Sepa cuándo la losa está lista - antes de acabarla",
-      "heroLead": "Inteligencia de curado de hormigón para losas listas para construir. Sensado de aire, superficie y núcleo convertido en go / no-go claro para baldosas, suelos y revestimientos.",
+      "heroLead": "Supervise el curado de hormigón con tres sondas distribuidas: temperatura / HR ambiente, temperatura / HR en la superficie del hormigón y temperatura en el núcleo del hormigón. CurNext CN-CC convierte ese conjunto de mediciones en go / no-go claro antes de alicatado, suelos y revestimientos.",
       "outcomesEyebrow": "Resultados",
       "outcomesTitle": "Readiness for the next phase - not another chart",
       "outcomesLead": "CurNext responde a una pregunta: ¿está esta superficie lista para la siguiente fase de construcción?",
       "challengeEyebrow": "El reto",
       "challengeTitle": "Las conjeturas cuestan plazo y margen",
       "whatTitle": "Slab maturity intelligence on the jobsite",
-      "whatBody": "Un nodo edge sellado permanece fuera del vertido. Solo sondas robustas de aire, superficie y núcleo entran en la zona severa. La nube convierte esas mediciones en preparación para acabados - con evidencias documentadas.",
+      "whatBody": "Un nodo edge sellado permanece fuera del vertido. Tres sondas robustas se extienden desde el nodo: una para temperatura / HR ambiente, otra para temperatura / HR en la superficie del hormigón y otra para temperatura en el núcleo del hormigón. La nube convierte ese conjunto combinado de mediciones en preparación para acabados - con evidencias documentadas.",
       "howTitle": "Del vertido a una decisión clara",
       "ctaTitle": "Vea CN-CC en sus losas",
       "ctaLead": "Recorra una evaluación de sitio con el equipo CurNext - resultados primero, evidencias que puede entregar al cliente.",
@@ -4188,7 +4217,7 @@
         },
         "2": {
           "title": "Medir",
-          "body": "Mida juntos ambiente, interfaz de acabado y temperatura de núcleo - el gradiente del que depende la madurez."
+          "body": "Mida juntos temperatura / HR ambiente, temperatura / HR en la superficie del hormigón y temperatura en el núcleo del hormigón - el panorama combinado del que depende la madurez de la losa."
         },
         "3": {
           "title": "Conectar",
@@ -4221,19 +4250,19 @@
       "trustTitle": "Industrial por diseño",
       "probesEyebrow": "Sistema de sondas",
       "probesTitle": "Tres puntos. Una decisión de preparación.",
-      "probesLead": "Un nodo edge sellado permanece fuera del vertido. Solo sondas robustas de aire, superficie y núcleo entran en la zona severa. La nube convierte esas mediciones en preparación para acabados - con evidencias documentadas.",
+      "probesLead": "Un nodo edge sellado permanece fuera del vertido. Tres patas de sonda se extienden desde el nodo hacia los puntos de medición: temperatura / HR ambiente, temperatura / HR de superficie y temperatura de núcleo. La nube convierte esas mediciones en preparación para acabados - con evidencias documentadas.",
       "probes": {
         "1": {
           "name": "Aire",
-          "role": "Condiciones ambientales alrededor del vertido - el límite de secado."
+          "role": "Temperatura y humedad relativa ambiente alrededor del vertido - el límite de secado del entorno."
         },
         "2": {
           "name": "Superficie",
-          "role": "Interfaz de acabado y membrana - donde revestimientos y suelos se encuentran con la losa."
+          "role": "Temperatura y humedad relativa en la superficie del hormigón, en la interfaz de acabado - donde revestimientos y suelos se encuentran con la losa."
         },
         "3": {
           "name": "Núcleo",
-          "role": "Masa térmica dentro de la losa - la señal de madurez que impulsa la preparación."
+          "role": "Temperatura en el núcleo del hormigón dentro de la losa - la señal de madurez que impulsa la preparación."
         }
       },
       "related1Label": "Secado de muros",
@@ -4243,22 +4272,22 @@
       "breadcrumbName": "Curado de hormigón",
       "definitionEyebrow": "En resumen",
       "definitionTitle": "¿Qué es la monitorización de curado de hormigón?",
-      "definition": "La monitorización de curado mide temperaturas ambientales, de superficie y dentro de la losa para saber cuándo un vertido está suficientemente maduro para acabados. CurNext CN-CC convierte esas señales en readiness go / no-go con evidencia continua - no mediciones puntuales.",
+      "definition": "La monitorización de curado de hormigón mide temperatura / HR ambiente, temperatura / HR en la superficie del hormigón y temperatura en el núcleo del hormigón para saber cuándo un vertido está suficientemente maduro para suelos, alicatado, revestimientos y entrega. CurNext CN-CC convierte esas señales en readiness go / no-go con evidencia continua, soporte de cumplimiento y menos mediciones puntuales con equipo portátil.",
       "faqEyebrow": "FAQ",
       "faqTitle": "Preguntas sobre monitorización de curado",
       "faqLead": "Respuestas directas para contratistas, consultores y motores de respuesta de IA.",
       "faq": {
         "1": {
           "question": "¿Qué es un sistema de monitorización de curado de hormigón?",
-          "answer": "Sigue la temperatura de la losa durante el curado para evaluar madurez y readiness de forma continua. CurNext CN-CC usa sondas de aire, superficie y núcleo más predicciones en la nube para el timing de acabados."
+          "answer": "Un sistema de monitorización de curado de hormigón sigue las condiciones que impulsan la madurez de la losa durante el curado para evaluar la readiness de forma continua. CurNext CN-CC usa tres sondas para temperatura / HR ambiente, temperatura / HR en la superficie del hormigón y temperatura en el núcleo del hormigón, y aplica predicciones de readiness en la nube para apoyar decisiones sobre suelos, revestimientos, alicatado y entrega."
         },
         "2": {
           "question": "¿Cómo monitoriza CurNext el curado en obra?",
-          "answer": "Un nodo CN-CC sellado permanece fuera del vertido mientras sondas robustas miden aire, superficie y núcleo. Los datos suben por el stack CurNext a dash.curnext.app con go / no-go, alertas y evidencia."
+          "answer": "Un nodo CN-CC edge sellado permanece fuera del vertido mientras tres sondas robustas se extienden desde el nodo hacia los puntos de medición. Una sonda mide temperatura / HR ambiente, otra temperatura / HR en la superficie del hormigón y otra temperatura en el núcleo del hormigón. Los datos suben por el stack de edificio CurNext a dash.curnext.app, donde los equipos ven readiness go / no-go, alertas, evidencias de cumplimiento y una base documentada para el momento correcto de acabado."
         },
         "3": {
           "question": "¿Por qué medir aire, superficie y núcleo juntos?",
-          "answer": "La madurez depende de gradientes térmicos, no de un solo punto. Ambiente, interfaz de acabado y masa del núcleo pueden divergir tras el vertido. Medir los tres reduce falsas señales de readiness."
+          "answer": "La madurez de la losa depende de más que un punto. Las condiciones de la estancia, la superficie del hormigón y el núcleo del hormigón pueden divergir tras el vertido, y la humedad relativa en ambiente y superficie aporta contexto importante para el timing de acabados. Medir los tres puntos con el conjunto completo reduce falsas señales de readiness antes de alicatado, suelos o revestimientos."
         },
         "4": {
           "question": "¿Se embebe electrónica CN-CC en el hormigón?",
@@ -4266,10 +4295,13 @@
         },
         "5": {
           "question": "¿Quién debería usar la monitorización de curado CurNext?",
-          "answer": "Contratistas generales, oficios de suelos y revestimientos, y consultores que necesitan readiness documentada de losa antes de acabados."
+          "answer": "Contratistas generales, oficios de suelos y revestimientos, consultores y equipos de calidad que necesitan readiness documentada de losa antes de acabados. CN-CC está hecho para obras que necesitan conectividad industrial, audit trail, evidencias de cumplimiento y decisiones más claras sobre plazo y entrega."
         }
       },
-      "howToName": "Cómo funciona la monitorización de curado CN-CC"
+      "howToName": "Cómo funciona la monitorización de curado CN-CC",
+      "schemaCategory": "Software de monitorización de curado de hormigón",
+      "schemaAudienceType": "Contratistas generales, oficios de suelos y revestimientos, consultores y equipos de calidad",
+      "schemaOfferDescription": "Precio según número de nodos y duración del proyecto para monitorización de readiness de losa"
     },
     "wall-drying": {
       "metaTitle": "Monitorización de secado de muros y riesgo de moho | Readiness zonas húmedas (CN-WD)",

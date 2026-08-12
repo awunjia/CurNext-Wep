@@ -38,6 +38,7 @@ export function withLocaleMetadata(options: {
   path?: string;
   title: string;
   description: string;
+  keywords?: string[];
   absoluteTitle?: boolean;
   /** Absolute URL or site-relative path for social preview image */
   image?: string;
@@ -61,6 +62,7 @@ export function withLocaleMetadata(options: {
   return {
     title: titleValue,
     description: options.description,
+    keywords: options.keywords,
     applicationName: siteConfig.name,
     authors: [{ name: siteConfig.name, url: siteConfig.url }],
     creator: siteConfig.name,

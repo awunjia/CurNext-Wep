@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: "/solutions/concrete-curing",
     title: t("metaTitle"),
     description: t("metaDescription"),
+    keywords: t.raw("metaKeywords") as string[],
   });
 }
 

@@ -85,10 +85,27 @@
     "businessId": "Företags-ID: {id}"
   },
   "home": {
-    "metaTitle": "CurNext | Byggklar platsintelligens",
-    "metaDescription": "Industriell IoT och AI-beredskap för betonghärdning, väggtorkning, inomhusluft, läckor, strukturell hälsa och VVS. Tydliga go / no-go-beslut med revisionsklar evidens.",
+    "metaTitle": "CurNext | Platsintelligens, lösningar, prissättning och beredskap",
+    "metaDescription": "CurNext är platsintelligens för betonghärdning, väggtorkning, inomhusluft, läckor, strukturell hälsa och VVS. Utforska lösningar, prissättning och revisionsklar go / no-go-evidens för beslut om överlämning.",
+    "metaKeywords": [
+      "CurNext",
+      "platsintelligens",
+      "overvakningslosningar bygg",
+      "overvakning av betonghardning",
+      "plattberedskap",
+      "vaggtorkning overvakning",
+      "mogelrisk overvakning",
+      "inomhusluft byggarbetsplats",
+      "lackageovervakning bygg",
+      "strukturell halsoovervakning",
+      "VVS overvakning",
+      "prissattning bygg",
+      "overlamningsbevis byggplats"
+    ],
     "heroTitle": "Byggklar platsintelligens",
     "heroLead": "En plattform för platsintelligens som övervakar plattor, väggar och våtrum med industriella IoT-sensorer och ger AI-prediktioner för readiness.",
+    "heroImageAlt": "CurNext overvakning av byggarbetsplats pa ett betongprojekt",
+    "dashboardImageAlt": "CurNext byggovervakningsdashboard med beredskap, sensorer och arbetsfloden",
     "requestQuote": "Begär offert",
     "howItWorks": "Så fungerar det",
     "whyEyebrow": "Varför CurNext",
@@ -143,7 +160,7 @@
     "commentCount": "{count} kommentar",
     "commentCount_plural": "{count} kommentarer",
     "signInTitle": "Logga in för att interagera",
-    "signInBody": "Gilla, kommentera och svara kräver ett CurNext-konto. Använd samma Google-inloggning som produktdashboarden.",
+    "signInBody": "Gilla, kommentera och svara kräver ett CurNext-konto. Logga in på dash.curnext.app och återvänd till det här inlägget.",
     "signInGoogle": "Logga in med Google",
     "redirecting": "Omdirigerar...",
     "accountRequired": "CurNext-konto krävs",
@@ -4133,19 +4150,31 @@
       }
     },
     "concrete-curing": {
-      "metaTitle": "Övervakning av betonghärdning | Plattberedskap (CN-CC)",
-      "metaDescription": "Övervaka betonghärdning med luft-, yt- och kärnsensorer. CurNext CN-CC omvandlar plattmaturitet till tydlig go / no-go innan golv och beläggning.",
+      "metaTitle": "Övervakning av betonghärdning | Plattberedskap och RH-kontroll (CN-CC)",
+      "metaDescription": "Övervaka betonghärdning med sensorer för rumstemperatur / relativ fuktighet, betongytans temperatur / relativ fuktighet och kärntemperatur i betongen. CurNext CN-CC omvandlar detta mätpaket till tydlig plattberedskap före golv, beläggning, kakel, överlämning och efterlevnad.",
+      "metaKeywords": [
+        "overvakning av betonghardning",
+        "plattberedskap overvakning",
+        "relativ fuktighet betong",
+        "relativ fuktighet betongyta",
+        "karn temperatur betong",
+        "golvberedskap betongplatta",
+        "belaggningsberedskap betongplatta",
+        "kakelberedskap betongplatta",
+        "bevis for overlamning byggplats",
+        "efterlevnadsbevis betonghardning"
+      ],
       "heroAlt": "CurNext CN-CC-sonder och beredskapsövervakning på en betongplatta",
       "whatAlt": "CN-CC-nod, gul sondersele och beredskapsvy på plats",
       "heroTitle": "Vet när plattan är redo - innan du avslutar den",
-      "heroLead": "Betonghärdningsintelligens för byggklara plattor. Luft-, yt- och kärnsensing omsatt till tydlig go / no-go för kakel, golv och beläggning.",
+      "heroLead": "Övervaka betonghärdning med tre distribuerade sensorer: rumstemperatur / relativ fuktighet, betongytans temperatur / relativ fuktighet och kärntemperatur i betongen. CurNext CN-CC omvandlar detta mätpaket till tydlig go / no-go-beredskap före kakel, golv och beläggning.",
       "outcomesEyebrow": "Resultat",
       "outcomesTitle": "Readiness for the next phase - not another chart",
       "outcomesLead": "CurNext besvarar en fråga: är den här ytan redo för nästa byggfas?",
       "challengeEyebrow": "Utmaningen",
       "challengeTitle": "Gissningar kostar schema och marginal",
       "whatTitle": "Slab maturity intelligence on the jobsite",
-      "whatBody": "En tätad edge-nod sitter utanför gjutningen. Endast tåliga luft-, yt- och kärnsonder går in i den hårda zonen. Molnet gör mätningarna till beredskap för ytskikt - med dokumenterade bevis.",
+      "whatBody": "En tätad edge-nod sitter utanför gjutningen. Tre robusta sensorer sträcker sig från noden: en för rumstemperatur / relativ fuktighet, en för betongytans temperatur / relativ fuktighet och en för kärntemperatur i betongen. Molnet omvandlar detta kombinerade mätpaket till beredskap för ytskikt - med dokumenterade bevis.",
       "howTitle": "Från gjutningen till ett tydligt beslut",
       "ctaTitle": "Se CN-CC på dina plattor",
       "ctaLead": "Gå igenom en platsbedömning med CurNext-teamet - resultat först, bevis du kan ge till kunden.",
@@ -4188,7 +4217,7 @@
         },
         "2": {
           "title": "Mät",
-          "body": "Mät omgivning, ytskiktsgränssnitt och kärntemperatur tillsammans - gradienten som mognaden beror på."
+          "body": "Mät rumstemperatur / relativ fuktighet, betongytans temperatur / relativ fuktighet och kärntemperatur i betongen tillsammans - den samlade bilden som plattmognad beror på."
         },
         "3": {
           "title": "Anslut",
@@ -4221,19 +4250,19 @@
       "trustTitle": "Industriell till designen",
       "probesEyebrow": "Sondersystem",
       "probesTitle": "Tre punkter. Ett beredskapsbeslut.",
-      "probesLead": "En tätad edge-nod sitter utanför gjutningen. Endast tåliga luft-, yt- och kärnsonder går in i den hårda zonen. Molnet gör mätningarna till beredskap för ytskikt - med dokumenterade bevis.",
+      "probesLead": "En tätad edge-nod sitter utanför gjutningen. Tre sensorben sträcker sig från noden till mätpunkterna: rumstemperatur / relativ fuktighet, yttemperatur / relativ fuktighet och kärntemperatur. Molnet omvandlar dessa mätningar till beredskap för ytskikt - med dokumenterade bevis.",
       "probes": {
         "1": {
           "name": "Luft",
-          "role": "Omgivningsförhållanden runt gjutningen - torkningsgränsen."
+          "role": "Rumstemperatur och relativ fuktighet runt gjutningen - den omgivande torkningsgränsen."
         },
         "2": {
           "name": "Yta",
-          "role": "Ytskikts- och membran-gränssnitt - där beläggningar och golv möter plattan."
+          "role": "Betongytans temperatur och relativ fuktighet vid finish-gränssnittet - där beläggningar och golv möter plattan."
         },
         "3": {
           "name": "Kärna",
-          "role": "Termisk massa inuti plattan - mognadssignalen som styr beredskap."
+          "role": "Kärntemperatur i betongen inuti plattan - mognadssignalen som styr beredskap."
         }
       },
       "related1Label": "Väggtorkning",
@@ -4243,22 +4272,22 @@
       "breadcrumbName": "Betonghärdning",
       "definitionEyebrow": "Kort sagt",
       "definitionTitle": "Vad är övervakning av betonghärdning?",
-      "definition": "Övervakning av betonghärdning mäter omgivande, yt- och inre temperaturer så team vet när en gjutning är mogen nog för finish. CurNext CN-CC omvandlar signalerna till go / no-go med kontinuerlig evidens - inte enstaka stickprov.",
+      "definition": "Övervakning av betonghärdning mäter rumstemperatur / relativ fuktighet, betongytans temperatur / relativ fuktighet och kärntemperatur i betongen så team vet när en gjutning är mogen nog för golv, kakel, beläggning och överlämning. CurNext CN-CC omvandlar dessa signaler till go / no-go-beredskap med kontinuerlig evidens, stöd för efterlevnad och färre enstaka handhållna kontroller.",
       "faqEyebrow": "FAQ",
       "faqTitle": "Frågor om övervakning av betonghärdning",
       "faqLead": "Direkta svar för entreprenörer, konsulter och AI-svarsmotorer.",
       "faq": {
         "1": {
           "question": "Vad är ett system för övervakning av betonghärdning?",
-          "answer": "Det följer temperaturen i plattan under härdning så maturitet och beredskap kan bedömas kontinuerligt. CurNext CN-CC använder luft-, yt- och kärnsensorer plus molnprediktioner för finish-timing."
+          "answer": "Ett system för övervakning av betonghärdning följer de förhållanden som driver plattmognad under härdning så beredskap kan bedömas kontinuerligt. CurNext CN-CC använder tre sensorer för rumstemperatur / relativ fuktighet, betongytans temperatur / relativ fuktighet och kärntemperatur i betongen, och applicerar molnbaserade beredskapsprognoser för att stödja beslut om timing för golv, beläggning, kakel och överlämning."
         },
         "2": {
           "question": "Hur övervakar CurNext betonghärdning på plats?",
-          "answer": "En försluten CN-CC-nod sitter utanför gjutningen medan robusta sensorer mäter luft, yta och kärna. Data går via CurNext-stacken till dash.curnext.app med go / no-go, larm och evidens."
+          "answer": "En tätad CN-CC edge-nod sitter utanför gjutningen medan tre robusta sensorer sträcker sig från noden till mätpunkterna. En sensor mäter rumstemperatur / relativ fuktighet, en mäter betongytans temperatur / relativ fuktighet och en mäter kärntemperatur i betongen. Data går via CurNext-byggnadsstacken till dash.curnext.app, där team ser go / no-go-beredskap, larm, efterlevnadsbevis och en dokumenterad grund för rätt finish-timing."
         },
         "3": {
           "question": "Varför mäta luft, yta och kärna tillsammans?",
-          "answer": "Maturitet beror på termiska gradienter, inte en punkt. Omgivning, finish-gränssnitt och kärnmassa kan skilja sig efter gjutning. Att mäta alla tre minskar falska readiness-beslut."
+          "answer": "Plattmognad beror på mer än en punkt. Rumsförhållanden, betongytan och betongkärnan kan divergera efter gjutning, och relativ fuktighet i rum och vid ytan ger viktig kontext för finish-timing. Att mäta alla tre punkter med hela mätpaketet minskar falska readiness-beslut före kakel, golv eller beläggning."
         },
         "4": {
           "question": "Bäddas CN-CC-elektronik in i betongen?",
@@ -4266,10 +4295,13 @@
         },
         "5": {
           "question": "Vem bör använda CurNext betongövervakning?",
-          "answer": "Generalentreprenörer, golv- och beläggningsentreprenörer samt konsulter som behöver dokumenterad plattberedskap före finish."
+          "answer": "Generalentreprenörer, golv- och beläggningsentreprenörer, konsulter och kvalitetsteam som behöver dokumenterad plattberedskap före finish. CN-CC är byggt för arbetsplatser som behöver industriell trådlös kommunikation, audit trail, efterlevnadsbevis och tydligare beslut om schema och överlämning."
         }
       },
-      "howToName": "Hur CurNext CN-CC betonghärdningsövervakning fungerar"
+      "howToName": "Hur CurNext CN-CC betonghärdningsövervakning fungerar",
+      "schemaCategory": "Programvara för övervakning av betonghärdning",
+      "schemaAudienceType": "Generalentreprenörer, golv- och beläggningsentreprenörer, konsulter och kvalitetsteam",
+      "schemaOfferDescription": "Prissatt efter antal noder och projekttid för övervakning av plattberedskap"
     },
     "wall-drying": {
       "metaTitle": "Väggorkning och mögelriskövervakning | Våtrumsberedskap (CN-WD)",

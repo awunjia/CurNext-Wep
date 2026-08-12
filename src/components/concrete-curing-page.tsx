@@ -33,6 +33,7 @@ export async function ConcreteCuringPage() {
   const locale = await getLocale();
   const t = await getTranslations("solutions.concrete-curing");
   const tShared = await getTranslations("solutions.shared");
+  const tNav = await getTranslations("nav");
 
   const faq = buildSolutionFaq(t);
   const steps = buildSolutionSteps(t, stepKeys);
@@ -49,8 +50,13 @@ export async function ConcreteCuringPage() {
         imagePath="/solutions/cn-cc-hero.jpg"
         faq={faq}
         steps={steps}
+        homeLabel={tNav("home")}
+        solutionsLabel={tNav("solutions")}
         breadcrumbName={t("breadcrumbName")}
         howToName={t("howToName")}
+        category={t("schemaCategory")}
+        audienceType={t("schemaAudienceType")}
+        offerDescription={t("schemaOfferDescription")}
       />
 
       <section className="relative w-full overflow-hidden">
@@ -216,7 +222,7 @@ export async function ConcreteCuringPage() {
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
           <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">{tShared("related")}</p>
           <h3 id="cn-cc-related-heading" className="text-xl font-semibold tracking-tight sm:text-2xl">{tShared("moreOnStack")}</h3>
-          <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <li>
               <Link href="/solutions/wall-drying" className="group block outline-none">
                 <span className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">{"CN-WD"}</span>
@@ -231,6 +237,15 @@ export async function ConcreteCuringPage() {
                 <span className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">{tShared("catalog")}</span>
                 <span className="mt-1 flex items-center gap-1.5 text-base font-medium tracking-tight">
                   {tShared("allSolutions")}
+                  <ArrowRight className="size-3.5 opacity-50 transition-transform group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/pricing#request-quote" className="group block outline-none">
+                <span className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">{tNav("pricing")}</span>
+                <span className="mt-1 flex items-center gap-1.5 text-base font-medium tracking-tight">
+                  {tShared("requestQuote")}
                   <ArrowRight className="size-3.5 opacity-50 transition-transform group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden />
                 </span>
               </Link>

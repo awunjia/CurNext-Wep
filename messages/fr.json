@@ -85,10 +85,27 @@
     "businessId": "Identifiant d'entreprise : {id}"
   },
   "home": {
-    "metaTitle": "CurNext | Intelligence de chantier prête à construire",
-    "metaDescription": "IoT industriel et IA de readiness pour le durcissement du béton, le séchage des murs, l'air intérieur, les fuites, la santé structurelle et le MEP. Décisions go / no-go avec preuves auditables.",
+    "metaTitle": "CurNext | Intelligence de chantier, solutions, tarifs et readiness",
+    "metaDescription": "CurNext est une intelligence de chantier pour la cure du béton, le séchage des murs, l'air intérieur, les fuites, la santé structurelle et le MEP. Explorez les solutions, les tarifs et les preuves go / no-go auditables pour les décisions de remise.",
+    "metaKeywords": [
+      "CurNext",
+      "intelligence de chantier",
+      "solutions monitoring construction",
+      "monitoring cure beton",
+      "readiness dalle beton",
+      "monitoring sechage murs",
+      "monitoring risque moisissure",
+      "qualite air interieur chantier",
+      "detection fuites construction",
+      "monitoring sante structurelle",
+      "monitoring MEP",
+      "tarifs construction",
+      "preuves de remise chantier"
+    ],
     "heroTitle": "Intelligence de chantier ready-to-build",
     "heroLead": "Une plateforme d'intelligence de chantier qui surveille dalles, murs et salles d'eau avec des capteurs IoT industriels et fournit des prédictions d'IA pour la readiness.",
+    "heroImageAlt": "Ambiance de monitoring CurNext sur un chantier beton",
+    "dashboardImageAlt": "Tableau de bord CurNext de monitoring chantier avec readiness, capteurs et workflows",
     "requestQuote": "Demander un devis",
     "howItWorks": "Comment ça marche",
     "whyEyebrow": "Pourquoi CurNext",
@@ -143,7 +160,7 @@
     "commentCount": "{count} commentaire",
     "commentCount_plural": "{count} commentaires",
     "signInTitle": "Connectez-vous pour interagir",
-    "signInBody": "Aimer, commenter et répondre nécessitent un compte CurNext. Utilisez la même connexion Google que le tableau de bord produit.",
+    "signInBody": "Aimer, commenter et répondre nécessitent un compte CurNext. Connectez-vous sur dash.curnext.app, puis revenez sur cet article.",
     "signInGoogle": "Se connecter avec Google",
     "redirecting": "Redirection...",
     "accountRequired": "Compte CurNext requis",
@@ -4133,19 +4150,31 @@
       }
     },
     "concrete-curing": {
-      "metaTitle": "Monitoring de cure béton | Readiness dalle (CN-CC)",
-      "metaDescription": "Surveillez la cure du béton avec des sondes air, surface et cœur. CurNext CN-CC transforme la maturité de dalle en go / no-go clair avant sols et revêtements.",
+      "metaTitle": "Monitoring de cure béton | Readiness dalle et contrôle HR (CN-CC)",
+      "metaDescription": "Surveillez la cure du béton avec des sondes pour la température / HR ambiante, la température / HR à la surface du béton et la température au cœur du béton. CurNext CN-CC transforme cet ensemble de mesures en readiness claire avant sols, revêtements, carrelage, réception et conformité.",
+      "metaKeywords": [
+        "monitoring cure beton",
+        "readiness dalle beton",
+        "humidite relative beton",
+        "humidite relative surface beton",
+        "temperature coeur beton",
+        "readiness sol beton",
+        "readiness revetement beton",
+        "readiness carrelage beton",
+        "preuves reception chantier",
+        "preuves conformite cure beton"
+      ],
       "heroAlt": "Sondes CurNext CN-CC et monitoring de préparation sur une dalle béton",
       "whatAlt": "Nœud CN-CC, harnais de sondes jaune et vue de préparation sur site",
       "heroTitle": "Sachez quand la dalle est prête - avant de la finir",
-      "heroLead": "Intelligence de cure du béton pour des dalles prêtes à construire. Capteurs air, surface et cœur transformés en go / no-go clair pour carrelage, sols et revêtements.",
+      "heroLead": "Intelligence de cure du béton pour des dalles prêtes à construire. Trois sondes mesurent la température / HR ambiante, la température / HR à la surface du béton et la température au cœur du béton, puis CurNext les transforme en go / no-go clair pour carrelage, sols et revêtements.",
       "outcomesEyebrow": "Résultats",
       "outcomesTitle": "Readiness for the next phase - not another chart",
       "outcomesLead": "CurNext répond à une question : cette surface est-elle prête pour la prochaine phase de construction ?",
       "challengeEyebrow": "Le défi",
       "challengeTitle": "L'approximation coûte planning et marge",
       "whatTitle": "Slab maturity intelligence on the jobsite",
-      "whatBody": "Un nœud edge étanche reste hors du coulage. Seules des sondes air, surface et cœur robustes entrent dans la zone sévère. Le cloud transforme ces mesures en décision de finition - avec des preuves documentées.",
+      "whatBody": "Un nœud edge étanche reste hors du coulage. Trois sondes robustes partent du nœud : une pour la température / HR ambiante, une pour la température / HR à la surface du béton et une pour la température au cœur du béton. Le cloud transforme cet ensemble de mesures en décision de finition - avec des preuves documentées.",
       "howTitle": "Du coulage à une décision claire",
       "ctaTitle": "Voir CN-CC sur vos dalles",
       "ctaLead": "Parcourez une évaluation de site avec l'équipe CurNext - résultats d'abord, preuves à remettre au client.",
@@ -4188,7 +4217,7 @@
         },
         "2": {
           "title": "Mesurer",
-          "body": "Mesurez ensemble l'ambiance, l'interface de finition et la température de cœur - le gradient dont dépend la maturité."
+          "body": "Mesurez ensemble la température / HR ambiante, la température / HR à la surface du béton et la température au cœur du béton - l'image complète dont dépend la maturité."
         },
         "3": {
           "title": "Connecter",
@@ -4221,19 +4250,19 @@
       "trustTitle": "Industriel par conception",
       "probesEyebrow": "Système de sondes",
       "probesTitle": "Trois points. Une décision de préparation.",
-      "probesLead": "Un nœud edge étanche reste hors du coulage. Seules des sondes air, surface et cœur robustes entrent dans la zone sévère. Le cloud transforme ces mesures en décision de finition - avec des preuves documentées.",
+      "probesLead": "Un nœud edge étanche reste hors du coulage. Trois jambes de sonde partent du nœud vers les points de mesure : température / HR ambiante, température / HR de surface et température au cœur. Le cloud transforme ces mesures en décision de finition - avec des preuves documentées.",
       "probes": {
         "1": {
           "name": "Air",
-          "role": "Conditions ambiantes autour du coulage - la frontière de séchage."
+          "role": "Température et humidité relative ambiantes autour du coulage - la frontière de séchage."
         },
         "2": {
           "name": "Surface",
-          "role": "Interface finition et membrane - là où revêtements et sols rencontrent la dalle."
+          "role": "Température et humidité relative à la surface du béton, à l'interface des finitions - là où revêtements et sols rencontrent la dalle."
         },
         "3": {
           "name": "Cœur",
-          "role": "Masse thermique au cœur de la dalle - le signal de maturité qui pilote la préparation."
+          "role": "Température au cœur du béton dans la dalle - le signal de maturité qui pilote la préparation."
         }
       },
       "related1Label": "Séchage des murs",
@@ -4243,22 +4272,22 @@
       "breadcrumbName": "Cure béton",
       "definitionEyebrow": "En bref",
       "definitionTitle": "Qu'est-ce que le monitoring de cure béton ?",
-      "definition": "Le monitoring de cure béton mesure les températures ambiantes, de surface et dans la dalle pour savoir quand un coulage est assez mature pour les finitions. CurNext CN-CC transforme ces signaux en readiness go / no-go avec des preuves continues - pas un relevé ponctuel.",
+      "definition": "Le monitoring de cure béton mesure la température / HR ambiante, la température / HR à la surface du béton et la température au cœur du béton pour savoir quand un coulage est assez mature pour sols, carrelage, revêtements et réception. CurNext CN-CC transforme ces signaux en readiness go / no-go avec des preuves continues, un support de conformité et moins de relevés ponctuels.",
       "faqEyebrow": "FAQ",
       "faqTitle": "Questions sur le monitoring de cure béton",
       "faqLead": "Réponses directes pour entreprises, bureaux d'études et moteurs de réponse IA.",
       "faq": {
         "1": {
           "question": "Qu'est-ce qu'un système de monitoring de cure béton ?",
-          "answer": "Un système de monitoring de cure béton suit la température dans la dalle pendant la cure pour juger maturité et readiness en continu. CurNext CN-CC utilise des sondes air, surface et cœur plus des prédictions cloud pour guider le timing des finitions."
+          "answer": "Un système de monitoring de cure béton suit les conditions qui pilotent la maturité de la dalle pendant la cure pour juger la readiness en continu. CurNext CN-CC utilise trois sondes pour la température / HR ambiante, la température / HR à la surface du béton et la température au cœur du béton, puis applique des prédictions cloud pour guider le timing des sols, revêtements, carrelage et réceptions."
         },
         "2": {
           "question": "Comment CurNext surveille-t-il la cure béton sur chantier ?",
-          "answer": "Un nœud CN-CC étanche reste hors du coulage tandis que des sondes robustes mesurent air, surface et cœur. Les données remontent via la stack CurNext vers dash.curnext.app pour afficher go / no-go, alertes et preuves de conformité."
+          "answer": "Un nœud CN-CC étanche reste hors du coulage tandis que trois sondes robustes partent du nœud vers les points de mesure. Une sonde mesure la température / HR ambiante, une mesure la température / HR à la surface du béton et une mesure la température au cœur du béton. Les données remontent via la stack CurNext vers dash.curnext.app pour afficher la readiness go / no-go, les alertes, les preuves de conformité et une base documentée pour le bon moment de finition."
         },
         "3": {
           "question": "Pourquoi mesurer air, surface et cœur ensemble ?",
-          "answer": "La maturité dépend des gradients thermiques, pas d'un seul point. Air ambiant, interface de finition et masse du cœur peuvent diverger après coulage. Les mesurer réduit les faux signaux de readiness avant carrelage, sols ou revêtements."
+          "answer": "La maturité ne dépend pas d'un seul point. Les conditions de la pièce, la surface du béton et le cœur du béton peuvent diverger après coulage, et l'humidité relative côté ambiance et côté surface apporte un contexte important pour le bon moment de finition. Mesurer ces trois points avec l'ensemble complet réduit les faux signaux de readiness avant carrelage, sols ou revêtements."
         },
         "4": {
           "question": "CN-CC enterre-t-il de l'électronique dans le béton ?",
@@ -4266,10 +4295,13 @@
         },
         "5": {
           "question": "Qui devrait utiliser le monitoring de cure CurNext ?",
-          "answer": "Entreprises générales, corps d'état de sols et revêtements, et consultants qui ont besoin d'une readiness documentée avant finitions. CN-CC est conçu pour des chantiers industriels avec preuves et décisions de planning plus claires."
+          "answer": "Entreprises générales, corps d'état de sols et revêtements, consultants et équipes qualité qui ont besoin d'une readiness de dalle documentée avant finitions. CN-CC est conçu pour des chantiers industriels avec radio robuste, audit trail, preuves de conformité et décisions de planning et de réception plus claires."
         }
       },
-      "howToName": "Comment fonctionne le monitoring de cure béton CN-CC"
+      "howToName": "Comment fonctionne le monitoring de cure béton CN-CC",
+      "schemaCategory": "Logiciel de monitoring de cure béton",
+      "schemaAudienceType": "Entreprises générales, corps d'état de sols et revêtements, consultants et équipes qualité",
+      "schemaOfferDescription": "Tarification selon le nombre de nœuds et la durée du projet pour le monitoring de readiness dalle"
     },
     "wall-drying": {
       "metaTitle": "Monitoring séchage murs et risque moisissure | Readiness pièces humides (CN-WD)",
