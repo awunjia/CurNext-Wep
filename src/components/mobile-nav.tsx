@@ -25,7 +25,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { primaryNav, siteConfig } from "@/config/site";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import { isActivePath, isGroupActive } from "@/lib/nav-active";
 import { navGroupKey, navItemKeyByHref } from "@/lib/nav-labels";
 import { cn } from "@/lib/utils";
 
@@ -37,11 +38,28 @@ const navIcons: Record<string, LucideIcon> = {
   More: Ellipsis,
 };
 
+function activeGroupTitle(pathname: string) {
+  for (const item of primaryNav) {
+    if (item.items && isGroupActive(pathname, item.items)) {
+      return item.title;
+    }
+  }
+  return null;
+}
+
 export function MobileNav() {
+  const pathname = usePathname();
   const t = useTranslations("nav");
   const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
+
+  function handleOpenChange(next: boolean) {
+    setOpen(next);
+    if (next) {
+      setExpanded(activeGroupTitle(pathname));
+    }
+  }
 
   function toggleSection(title: string) {
     setExpanded((current) => (current === title ? null : title));
@@ -68,7 +86,7 @@ export function MobileNav() {
   }
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet open={open} onOpenChange={handleOpenChange}>
       <SheetTrigger
         render={
           <Button
@@ -114,12 +132,19 @@ export function MobileNav() {
               const groupLabel = labelForGroup(item.title);
 
               if (!item.items) {
+                const linkActive = isActivePath(pathname, item.href);
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="hover:bg-muted flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium"
+                    aria-current={linkActive ? "page" : undefined}
+                    className={cn(
+                      "flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium",
+                      linkActive
+                        ? "bg-muted text-foreground"
+                        : "hover:bg-muted text-foreground",
+                    )}
                   >
                     {Icon ? <Icon className="size-4" aria-hidden /> : null}
                     {groupLabel}
@@ -127,6 +152,7 @@ export function MobileNav() {
                 );
               }
 
+              const groupActive = isGroupActive(pathname, item.items);
               const isExpanded = expanded === item.title;
 
               return (
@@ -134,8 +160,14 @@ export function MobileNav() {
                   <button
                     type="button"
                     onClick={() => toggleSection(item.title)}
-                    className="hover:bg-muted flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium"
+                    className={cn(
+                      "flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium",
+                      groupActive
+                        ? "bg-muted/70 text-foreground"
+                        : "hover:bg-muted text-foreground",
+                    )}
                     aria-expanded={isExpanded}
+                    data-active={groupActive ? "" : undefined}
                   >
                     <span className="flex items-center gap-2">
                       {Icon ? <Icon className="size-4" aria-hidden /> : null}
@@ -157,6 +189,9 @@ export function MobileNav() {
                           subItem.href,
                           subItem.description,
                         );
+                        const linkActive =
+                          !subItem.external &&
+                          isActivePath(pathname, subItem.href);
 
                         return (
                           <li key={subItem.href}>
@@ -185,7 +220,13 @@ export function MobileNav() {
                               <Link
                                 href={subItem.href}
                                 onClick={() => setOpen(false)}
-                                className="hover:bg-muted block rounded-lg px-3 py-2"
+                                aria-current={linkActive ? "page" : undefined}
+                                className={cn(
+                                  "block rounded-lg px-3 py-2",
+                                  linkActive
+                                    ? "bg-muted text-foreground"
+                                    : "hover:bg-muted",
+                                )}
                               >
                                 <span className="block text-sm font-medium">
                                   {title}

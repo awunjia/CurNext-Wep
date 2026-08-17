@@ -5,7 +5,7 @@ import {
   ChevronLeft,
   ChevronRight,
   HeartPulse,
-  House,
+  Home,
   MapPin,
   Palmtree,
   type LucideIcon,
@@ -21,7 +21,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const howWeWorkIcons: Record<"remote" | "week" | "holidays" | "health", LucideIcon> = {
-  remote: House,
+  remote: Home,
   week: CalendarDays,
   holidays: Palmtree,
   health: HeartPulse,
@@ -105,12 +105,14 @@ export async function CareersPage({
               const Icon = howWeWorkIcons[key];
               return (
                 <li key={key} className="min-w-0">
-                  <div className="bg-muted text-foreground mb-4 flex size-10 items-center justify-center rounded-lg">
-                    <Icon className="size-5" aria-hidden />
+                  <div className="mb-2 flex flex-row items-center gap-3 sm:mb-0 sm:flex-col sm:items-start sm:gap-0">
+                    <div className="bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-lg sm:mb-4">
+                      <Icon className="size-5" aria-hidden />
+                    </div>
+                    <h3 className={itemHeadingClassName}>
+                      {t(`how.${key}.title`)}
+                    </h3>
                   </div>
-                  <h3 className={itemHeadingClassName}>
-                    {t(`how.${key}.title`)}
-                  </h3>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed sm:text-[15px]">
                     {t(`how.${key}.body`)}
                   </p>

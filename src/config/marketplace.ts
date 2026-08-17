@@ -130,7 +130,7 @@ export const marketplaceIntegrations: MarketplaceIntegration[] = [
     description:
       "Sync BIM models, rooms, and surfaces with curing readiness context.",
     website: "https://www.autodesk.com/products/revit",
-    icon: { kind: "simple", slug: "autodesk" },
+    icon: { kind: "simple", slug: "autodeskrevit" },
   },
   {
     id: "procore",

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import {
-  ArrowRight,
   BatteryCharging,
   Building2,
   ClipboardCheck,
@@ -128,10 +127,12 @@ export async function LeakDetectionPage() {
               const Icon = problemIcons[index];
               return (
                 <li key={key} className="min-w-0">
-                  <div className="bg-muted/60 text-foreground mb-4 flex size-10 items-center justify-center rounded-xl border border-border/60 sm:size-11">
-                    <Icon className="size-4 sm:size-5" aria-hidden />
+                  <div className="mb-2 flex flex-row items-center gap-3 sm:mb-0 sm:flex-col sm:items-start sm:gap-0">
+                    <div className="bg-muted/60 text-foreground flex size-10 shrink-0 items-center justify-center rounded-xl border border-border/60 sm:mb-4 sm:size-11">
+                      <Icon className="size-4 sm:size-5" aria-hidden />
+                    </div>
+                    <h4 className="text-base font-semibold tracking-tight sm:text-lg">{t(`problems.${key}.title`)}</h4>
                   </div>
-                  <h4 className="text-base font-semibold tracking-tight sm:text-lg">{t(`problems.${key}.title`)}</h4>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed sm:text-[15px]">{t(`problems.${key}.body`)}</p>
                 </li>
               );
@@ -172,8 +173,10 @@ export async function LeakDetectionPage() {
               const Icon = measureIcons[index];
               return (
                 <li key={key} className="min-w-0">
-                  <div className="bg-muted/60 text-foreground mb-4 flex size-11 items-center justify-center rounded-xl border border-border/60"><Icon className="size-5" aria-hidden /></div>
-                  <h4 className="text-base font-semibold tracking-tight sm:text-lg">{t(`measures.${key}.name`)}</h4>
+                  <div className="mb-2 flex flex-row items-center gap-3 sm:mb-0 sm:flex-col sm:items-start sm:gap-0">
+                    <div className="bg-muted/60 text-foreground flex size-11 shrink-0 items-center justify-center rounded-xl border border-border/60 sm:mb-4"><Icon className="size-5" aria-hidden /></div>
+                    <h4 className="text-base font-semibold tracking-tight sm:text-lg">{t(`measures.${key}.name`)}</h4>
+                  </div>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed sm:text-[15px]">{t(`measures.${key}.role`)}</p>
                 </li>
               );
@@ -191,8 +194,10 @@ export async function LeakDetectionPage() {
           <ol className="mt-10 grid gap-10 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             {stepKeys.map((key, index) => (
               <li key={key} className="min-w-0">
-                <p className="text-muted-foreground text-[11px] font-medium tracking-[0.2em] uppercase">0{index + 1}</p>
-                <h4 className="mt-2 text-base font-semibold tracking-tight sm:text-lg">{t(`steps.${key}.title`)}</h4>
+                <div className="flex flex-row items-center gap-3 sm:flex-col sm:items-start sm:gap-0">
+                  <p className="text-muted-foreground text-[11px] font-medium tracking-[0.2em] uppercase">0{index + 1}</p>
+                  <h4 className="text-base font-semibold tracking-tight sm:mt-2 sm:text-lg">{t(`steps.${key}.title`)}</h4>
+                </div>
                 <p className="text-muted-foreground mt-3 text-sm leading-relaxed sm:text-[15px]">{t(`steps.${key}.body`)}</p>
               </li>
             ))}
@@ -211,8 +216,10 @@ export async function LeakDetectionPage() {
               const Icon = zoneIcons[index];
               return (
                 <li key={key} className="min-w-0">
-                  <div className="bg-muted/60 text-foreground mb-4 flex size-11 items-center justify-center rounded-xl border border-border/60"><Icon className="size-5" aria-hidden /></div>
-                  <h4 className="text-base font-semibold tracking-tight sm:text-lg">{t(`zones.${key}.name`)}</h4>
+                  <div className="mb-2 flex flex-row items-center gap-3 sm:mb-0 sm:flex-col sm:items-start sm:gap-0">
+                    <div className="bg-muted/60 text-foreground flex size-11 shrink-0 items-center justify-center rounded-xl border border-border/60 sm:mb-4"><Icon className="size-5" aria-hidden /></div>
+                    <h4 className="text-base font-semibold tracking-tight sm:text-lg">{t(`zones.${key}.name`)}</h4>
+                  </div>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed sm:text-[15px]">{t(`zones.${key}.role`)}</p>
                 </li>
               );
@@ -254,42 +261,6 @@ export async function LeakDetectionPage() {
         </div>
       </section>
             <SolutionAeoFaq t={t} />
-
-      <section aria-labelledby="cn-leak-related-heading" className="border-border/60 relative w-full border-t bg-background">
-        <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 md:py-24">
-          <p className="text-muted-foreground mb-3 text-xs font-medium tracking-[0.18em] uppercase">{tShared("related")}</p>
-          <h3 id="cn-leak-related-heading" className="text-xl font-semibold tracking-tight sm:text-2xl">{tShared("moreOnStack")}</h3>
-          <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <li>
-              <Link href="/solutions/mep" className="group block outline-none">
-                <span className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">{"CN-MEP"}</span>
-                <span className="mt-1 flex items-center gap-1.5 text-base font-medium tracking-tight">
-                  {t("related1Label")}
-                  <ArrowRight className="size-3.5 opacity-50 transition-transform group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden />
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/solutions/wall-drying" className="group block outline-none">
-                <span className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">{"CN-WD"}</span>
-                <span className="mt-1 flex items-center gap-1.5 text-base font-medium tracking-tight">
-                  {t("related2Label")}
-                  <ArrowRight className="size-3.5 opacity-50 transition-transform group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden />
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/solutions" className="group block outline-none">
-                <span className="text-muted-foreground text-xs font-medium tracking-[0.14em] uppercase">{tShared("catalog")}</span>
-                <span className="mt-1 flex items-center gap-1.5 text-base font-medium tracking-tight">
-                  {tShared("allSolutions")}
-                  <ArrowRight className="size-3.5 opacity-50 transition-transform group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden />
-                </span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </section>
       <section className="dark relative w-full bg-background text-foreground">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-14 sm:flex-row sm:items-end sm:justify-between sm:px-6 sm:py-20 md:py-24">
           <div className="max-w-xl">

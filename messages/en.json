@@ -2714,7 +2714,6 @@
               "Firmware - catalog, history, edge OTA",
               "Integrations - Market Place catalog",
               "Security - public architecture summary",
-              "Hosting - residency and scale posture",
               "Commercial - pricing model and contact paths"
             ]
           },
@@ -4246,7 +4245,7 @@
         },
         "3": {
           "label": "Long field life",
-          "detail": "2-5 years typical"
+          "detail": "Replaceable battery lasts 2-5 years - swap when low for ongoing use."
         },
         "4": {
           "label": "Secure by design",
@@ -5541,7 +5540,7 @@
       "rejectOptional": "Reject optional",
       "customize": "Customize",
       "save": "Save preferences",
-      "settings": "Cookie settings",
+      "settings": "Cookie",
       "settingsAria": "Open cookie settings",
       "closeAria": "Close cookie settings",
       "alwaysOn": "Always on",

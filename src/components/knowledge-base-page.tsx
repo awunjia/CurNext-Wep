@@ -137,6 +137,7 @@ function AccuracyAside({
   notice,
   importantLabel,
   contactLabel,
+  className,
 }: {
   notice: {
     title: string;
@@ -146,17 +147,11 @@ function AccuracyAside({
   };
   importantLabel: string;
   contactLabel: string;
+  className?: string;
 }) {
-  return (
-    <aside className="border-border/70 h-fit rounded-lg border p-5 sm:p-6 lg:sticky lg:top-28">
-      <p className="text-muted-foreground mb-2 text-xs font-medium tracking-[0.18em] uppercase">
-        {importantLabel}
-      </p>
-      <h2 className={itemHeadingClassName}>{notice.title}</h2>
-      <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-        {notice.body}
-      </p>
-      <div className="mt-5 flex flex-col gap-2">
+  function Contacts() {
+    return (
+      <div className="mt-4 flex flex-col gap-2 sm:mt-5">
         <ExternalLink
           href={`mailto:${notice.salesEmail}`}
           className="inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline"
@@ -170,6 +165,46 @@ function AccuracyAside({
         >
           {contactLabel}
         </Link>
+      </div>
+    );
+  }
+
+  return (
+    <aside
+      className={cn(
+        "border-border/70 h-fit rounded-lg border lg:sticky lg:top-28",
+        className,
+      )}
+    >
+      <details className="group p-4 sm:p-5 lg:hidden">
+        <summary className="flex cursor-pointer list-none items-start justify-between gap-3 text-left [&::-webkit-details-marker]:hidden">
+          <div className="min-w-0">
+            <p className="text-muted-foreground text-xs font-medium tracking-[0.18em] uppercase">
+              {importantLabel}
+            </p>
+            <p className="mt-1 text-sm font-semibold tracking-tight">
+              {notice.title}
+            </p>
+          </div>
+          <span className="text-muted-foreground mt-0.5 shrink-0 text-xs font-medium">
+            Details
+          </span>
+        </summary>
+        <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+          {notice.body}
+        </p>
+        <Contacts />
+      </details>
+
+      <div className="hidden p-5 sm:p-6 lg:block">
+        <p className="text-muted-foreground mb-2 text-xs font-medium tracking-[0.18em] uppercase">
+          {importantLabel}
+        </p>
+        <h2 className={itemHeadingClassName}>{notice.title}</h2>
+        <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+          {notice.body}
+        </p>
+        <Contacts />
       </div>
     </aside>
   );
@@ -310,14 +345,18 @@ export function KnowledgeBasePage() {
         }),
       });
 
-      const data = (await response.json()) as {
+      const data = (await response.json().catch(() => null)) as {
         answer?: string;
         error?: string;
         sources?: ChatMessage["sources"];
-      };
+      } | null;
 
       if (!response.ok) {
-        throw new Error(data.error || ui.requestFailed);
+        throw new Error(data?.error || ui.requestFailed);
+      }
+
+      if (!data) {
+        throw new Error(ui.requestFailed);
       }
 
       const elapsed = Date.now() - startedAt;
@@ -381,17 +420,18 @@ export function KnowledgeBasePage() {
       </section>
 
       <section className="relative flex flex-1 flex-col bg-background">
-        <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
+        <div className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:px-6 sm:py-10">
           {!ready ? (
             <p className="text-muted-foreground text-sm">{ui.loading}</p>
           ) : !consented ? (
-            <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:items-start">
+            <div className="mx-auto flex max-w-5xl flex-col gap-5 lg:grid lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:items-start lg:gap-8">
               <AccuracyAside
+                className="order-2 lg:order-1"
                 notice={knowledgeBasePage.accuracyNotice}
                 importantLabel={t("importantLabel")}
                 contactLabel={t("contactRepresentative")}
               />
-              <div className="border-border/70 rounded-lg border p-5 sm:p-6">
+              <div className="border-border/70 order-1 rounded-lg border p-5 sm:p-6 lg:order-2">
                 <h2 className={itemHeadingClassName}>
                   {knowledgeBaseConsentCopy.title}
                 </h2>
@@ -440,16 +480,17 @@ export function KnowledgeBasePage() {
               </div>
             </div>
           ) : (
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:items-start">
+            <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:items-start lg:gap-8">
               <AccuracyAside
+                className="order-2 lg:order-1"
                 notice={knowledgeBasePage.accuracyNotice}
                 importantLabel={t("importantLabel")}
                 contactLabel={t("contactRepresentative")}
               />
 
-              <div className="border-border/70 flex h-[min(36rem,calc(100dvh-12rem))] flex-col overflow-hidden rounded-lg border sm:h-[min(44rem,calc(100dvh-12rem))] lg:h-[min(52rem,calc(100dvh-11rem))]">
-                <div className="border-border/60 flex shrink-0 items-center justify-between gap-3 border-b px-4 py-3">
-                  <div className="flex min-w-0 items-center gap-3">
+              <div className="border-border/70 order-1 flex h-[min(40rem,calc(100dvh-7.5rem))] flex-col overflow-hidden rounded-lg border sm:h-[min(44rem,calc(100dvh-10rem))] lg:order-2 lg:h-[min(52rem,calc(100dvh-11rem))]">
+                <div className="border-border/60 flex shrink-0 items-center justify-between gap-2 border-b px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3">
+                  <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
                     <Image
                       src="/logo-mark.png"
                       alt=""
@@ -469,7 +510,7 @@ export function KnowledgeBasePage() {
                   <button
                     type="button"
                     onClick={revokeConsent}
-                    className="text-muted-foreground hover:text-foreground shrink-0 text-xs underline-offset-4 hover:underline"
+                    className="text-muted-foreground hover:text-foreground shrink-0 text-[11px] underline-offset-4 hover:underline sm:text-xs"
                   >
                     {ui.withdrawConsent}
                   </button>
@@ -477,7 +518,7 @@ export function KnowledgeBasePage() {
 
                 <div
                   ref={scrollRef}
-                  className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain p-4 sm:p-5"
+                  className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain p-3 sm:p-5"
                 >
                   {messages.map((message) => (
                     <div
@@ -548,19 +589,21 @@ export function KnowledgeBasePage() {
                 </div>
 
                 <div className="border-border/60 shrink-0 border-t p-3 sm:p-4">
-                  <div className="mb-3 flex flex-wrap gap-1.5">
-                    {knowledgeBaseStarterPrompts.map((prompt) => (
-                      <button
-                        key={prompt}
-                        type="button"
-                        disabled={pending}
-                        onClick={() => sendMessage(prompt)}
-                        className="border-border/70 hover:border-foreground/40 rounded-md border px-2.5 py-1 text-left text-xs transition-colors disabled:opacity-50"
-                      >
-                        {prompt}
-                      </button>
-                    ))}
-                  </div>
+                  {messages.length <= 1 ? (
+                    <div className="mb-3 -mx-1 flex gap-1.5 overflow-x-auto px-1 pb-0.5 [scrollbar-width:none] sm:flex-wrap sm:overflow-visible [&::-webkit-scrollbar]:hidden">
+                      {knowledgeBaseStarterPrompts.map((prompt) => (
+                        <button
+                          key={prompt}
+                          type="button"
+                          disabled={pending}
+                          onClick={() => sendMessage(prompt)}
+                          className="border-border/70 hover:border-foreground/40 max-w-[16rem] shrink-0 rounded-md border px-2.5 py-1.5 text-left text-xs transition-colors disabled:opacity-50 sm:max-w-none"
+                        >
+                          {prompt}
+                        </button>
+                      ))}
+                    </div>
+                  ) : null}
                   <form
                     className="flex items-end gap-2"
                     onSubmit={(event) => {
@@ -574,7 +617,7 @@ export function KnowledgeBasePage() {
                       placeholder={ui.placeholder}
                       rows={2}
                       disabled={pending}
-                      className="min-h-[2.75rem] max-h-28 flex-1 resize-none"
+                      className="min-h-11 max-h-28 flex-1 resize-none"
                       onKeyDown={(event) => {
                         if (event.key === "Enter" && !event.shiftKey) {
                           event.preventDefault();
@@ -587,12 +630,12 @@ export function KnowledgeBasePage() {
                       disabled={pending || input.trim().length < 3}
                       className={cn(
                         buttonVariants({ size: "lg" }),
-                        "h-11 shrink-0 gap-2 px-4 disabled:opacity-50",
+                        "h-11 shrink-0 gap-2 px-3 disabled:opacity-50 sm:px-4",
                       )}
                       aria-label={ui.sendAria}
                     >
                       <Send className="size-4" aria-hidden />
-                      {ui.send}
+                      <span className="hidden sm:inline">{ui.send}</span>
                     </button>
                   </form>
                   {error ? (

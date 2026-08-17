@@ -2714,7 +2714,6 @@
               "Firmware - katalog, historik, edge-OTA",
               "Integrationer - Market Place-katalog",
               "Säkerhet - offentlig arkitektursammanfattning",
-              "Hosting - residens och skalningsläge",
               "Kommersiellt - prismodell och kontaktvägar"
             ]
           },
@@ -4246,7 +4245,7 @@
         },
         "3": {
           "label": "Lång fältlivslängd",
-          "detail": "2-5 år typiskt"
+          "detail": "Utbytbart batteri håller 2-5 år - byt vid låg nivå för fortsatt drift."
         },
         "4": {
           "label": "Säker by design",
@@ -5541,7 +5540,7 @@
       "rejectOptional": "Avvisa valfria",
       "customize": "Anpassa",
       "save": "Spara preferenser",
-      "settings": "Cookieinställningar",
+      "settings": "Cookie",
       "settingsAria": "Öppna cookieinställningar",
       "closeAria": "Stäng cookieinställningar",
       "alwaysOn": "Alltid på",

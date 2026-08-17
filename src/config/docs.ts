@@ -157,7 +157,6 @@ export const docsTabs: DocsTab[] = [
           "Firmware - catalog, history, edge OTA",
           "Integrations - Market Place catalog",
           "Security - public architecture summary",
-          "Hosting - residency and scale posture",
           "Commercial - pricing model and contact paths",
         ],
       },
@@ -660,63 +659,6 @@ export const docsTabs: DocsTab[] = [
         links: [
           { label: "Security page", href: "/security" },
           { label: "DPA", href: "/data/data-processing-agreement" },
-        ],
-      },
-    ],
-  },
-  {
-    id: "hosting",
-    label: "Hosting",
-    description: "Where CurNext runs, how traffic flows, and what scales.",
-    sections: [
-      {
-        id: "hosting-intro",
-        title: "EU cloud, anchored in Germany",
-        paragraphs: [
-          "Application hosting runs on Hetzner in Germany. Database and authentication run on Supabase in Frankfurt. Public traffic is protected at the Cloudflare edge and distributed across load-balanced replicas.",
-          "This is a trust / residency explanation - not a status dashboard or a public inventory of machines. Customers in Finland, Canada, and Cameroon use this EU-anchored stack unless an enterprise addendum says otherwise.",
-        ],
-        links: [{ label: "Datacenters page", href: "/datacenters" }],
-      },
-      {
-        id: "hosting-layers",
-        title: "Publishable region facts",
-        paragraphs: [
-          "Use these labels in procurement reviews. They match the Datacenters page.",
-        ],
-        bullets: [
-          "Application origins - Hetzner, Germany - Docker images for marketing, SaaS web, API",
-          "Database + Auth - Supabase, Frankfurt - PostgreSQL and Auth",
-          "Edge - Cloudflare global - DNS, TLS, WAF, CDN, Turnstile",
-          "Object storage when used - Cloudflare R2 with EU jurisdiction option",
-          "Scale path - load balancers in front of stateless replicas",
-        ],
-      },
-      {
-        id: "hosting-traffic",
-        title: "How traffic flows",
-        paragraphs: [
-          "Internet to Cloudflare (DNS, TLS, WAF, CDN), then load balancers, then Docker replicas on Hetzner in Germany. Supabase Postgres and Auth sit in Frankfurt. Health checks keep unhealthy replicas out of rotation.",
-        ],
-        code: "Internet\n  → Cloudflare (DNS, TLS, WAF, CDN)\n      → Load balancer(s)\n          → Docker replicas (Hetzner, Germany)\n              · www.curnext.app   (marketing)\n              · dash.curnext.app  (SaaS web)\n              · api.curnext.app   (API)\n  → Supabase Postgres + Auth (Frankfurt, Germany)\n  → Cloudflare R2 (EU objects, when configured)",
-      },
-      {
-        id: "hosting-scale",
-        title: "Scale posture",
-        paragraphs: [
-          "Web and API replicas are stateless behind load balancers. Workers can add replicas as load grows. The database is managed Supabase with pooling for many replicas. Sessions use managed auth cookies - no sticky session requirement on the load balancer.",
-          "Do not invent replica counts, RPS, or uptime percentages from this Docs page.",
-        ],
-      },
-      {
-        id: "hosting-honesty",
-        title: "Residency honesty",
-        paragraphs: [
-          "Core application and database for platform Client Data are hosted in Germany / Frankfurt. Some third parties (edge CDN, Stripe billing, SMTP2GO email, AI APIs) may process limited data outside that boundary. See the DPA subprocessors table for the public list.",
-        ],
-        links: [
-          { label: "DPA subprocessors", href: "/data/data-processing-agreement" },
-          { label: "Privacy policy", href: "/data/privacy-policy" },
         ],
       },
     ],

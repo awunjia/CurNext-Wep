@@ -263,7 +263,7 @@ export async function TechnologiesPage() {
             {technologiesEcosystem.map((group) => (
               <div key={group.title}>
                 <h3 className={itemHeadingClassName}>{group.title}</h3>
-                <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                <ul className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3 md:grid-cols-5 lg:grid-cols-6">
                   {group.names.map((name) => {
                     const partner = partnerByName(name);
                     if (!partner) return null;
@@ -273,17 +273,18 @@ export async function TechnologiesPage() {
                           href={partner.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="border-border/70 hover:border-foreground/40 flex h-full flex-col items-start gap-3 rounded-lg border p-4 transition-colors"
+                          title={partner.name}
+                          className="partner-link group border-border/70 hover:border-foreground/40 flex h-full flex-col items-center justify-center gap-1.5 rounded-lg border p-3 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-4"
                         >
                           <Image
                             src={partner.src}
-                            alt=""
+                            alt={partner.name}
                             width={96}
                             height={32}
-                            className="h-7 w-auto max-w-full object-contain object-left"
+                            className="partner-logo h-7 w-auto max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
                             unoptimized
                           />
-                          <span className="text-muted-foreground text-xs">
+                          <span className="pointer-events-none max-w-full truncate px-0.5 text-center text-[11px] font-medium text-foreground/0 transition-colors duration-200 group-hover:text-foreground group-focus-visible:text-foreground sm:text-xs">
                             {partner.name}
                           </span>
                         </a>

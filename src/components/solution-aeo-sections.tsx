@@ -1,3 +1,10 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 type Translate = {
   (key: string): string;
 };
@@ -57,18 +64,18 @@ export function SolutionAeoFaq({ t }: { t: Translate }) {
             {t("faqLead")}
           </p>
         </div>
-        <dl className="mt-10 max-w-3xl space-y-8 sm:mt-12">
+        <Accordion className="border-border/70 mt-10 max-w-3xl border-y sm:mt-12">
           {faqKeys.map((key) => (
-            <div key={key} className="min-w-0">
-              <dt className="text-base font-semibold tracking-tight sm:text-lg">
+            <AccordionItem key={key} value={`faq-${key}`}>
+              <AccordionTrigger className="py-4 text-base font-semibold tracking-tight hover:no-underline sm:text-lg">
                 {t(`faq.${key}.question`)}
-              </dt>
-              <dd className="text-muted-foreground mt-2 text-sm leading-relaxed sm:text-[15px]">
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-5 text-sm leading-relaxed sm:text-[15px]">
                 {t(`faq.${key}.answer`)}
-              </dd>
-            </div>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </dl>
+        </Accordion>
       </div>
     </section>
   );

@@ -2714,7 +2714,6 @@
               "Firmware - catalogue, historique, OTA edge",
               "Intégrations - catalogue Market Place",
               "Sécurité - résumé d'architecture publique",
-              "Hébergement - résidence et posture d'échelle",
               "Commercial - modèle tarifaire et chemins de contact"
             ]
           },
@@ -4246,7 +4245,7 @@
         },
         "3": {
           "label": "Longue durée de vie terrain",
-          "detail": "2-5 ans typiques"
+          "detail": "Batterie remplaçable, 2-5 ans - changez-la à bas niveau pour un usage continu."
         },
         "4": {
           "label": "Sécurisé by design",
@@ -5541,7 +5540,7 @@
       "rejectOptional": "Refuser les optionnels",
       "customize": "Personnaliser",
       "save": "Enregistrer les préférences",
-      "settings": "Paramètres cookies",
+      "settings": "Cookie",
       "settingsAria": "Ouvrir les paramètres cookies",
       "closeAria": "Fermer les paramètres cookies",
       "alwaysOn": "Toujours actif",

@@ -7,5 +7,6 @@ const handleI18n = createMiddleware(routing);
 export default handleI18n;
 
 export const config = {
-  matcher: ["/((?!_next|.*\\..*).*)"],
+  // Skip API routes and static assets so locale rewriting does not break JSON handlers.
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };

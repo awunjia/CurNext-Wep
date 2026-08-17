@@ -72,14 +72,18 @@ function IntegrationIcon({
     );
   }
 
+  const monochrome =
+    icon.hex.toLowerCase() === "000000" ||
+    icon.hex.toLowerCase() === "ffffff";
+
   return (
     <span className="bg-background ring-border/70 flex size-10 shrink-0 items-center justify-center rounded-lg ring-1">
       <svg
         role="img"
         viewBox="0 0 24 24"
         aria-hidden
-        className="size-5"
-        fill={`#${icon.hex}`}
+        className={cn("size-5", monochrome && "text-foreground")}
+        fill={monochrome ? "currentColor" : `#${icon.hex}`}
       >
         <title>{icon.title}</title>
         <path d={icon.path} />
@@ -224,14 +228,14 @@ export function IntegrationsPage() {
               for your sites. Project owners manage Market Place access.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-nowrap gap-2 sm:gap-3">
             <a
               href={marketplacePage.dashboardHref}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "h-11 gap-2 px-5",
+                "h-11 flex-1 gap-2 px-3 sm:flex-none sm:px-5",
               )}
             >
               Open Market Place
@@ -241,7 +245,7 @@ export function IntegrationsPage() {
               href="/contact"
               className={cn(
                 buttonVariants({ size: "lg", variant: "outline" }),
-                "h-11 gap-2 px-5",
+                "h-11 flex-1 gap-2 px-3 sm:flex-none sm:px-5",
               )}
             >
               Contact sales

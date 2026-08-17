@@ -2714,7 +2714,6 @@
               "Firmware - katalogi, historia, edge-OTA",
               "Integraatiot - Market Place -katalogi",
               "Tietoturva - julkinen arkkitehtuuritiivistelmä",
-              "Hosting - residenssi ja skaalausasento",
               "Kaupallinen - hinnoittelumalli ja yhteystietopolut"
             ]
           },
@@ -4246,7 +4245,7 @@
         },
         "3": {
           "label": "Pitkä kenttäikä",
-          "detail": "2-5 vuotta tyypillisesti"
+          "detail": "Vaihdettava akku kestää 2-5 vuotta - vaihda tyhjänä jatkuvaan käyttöön."
         },
         "4": {
           "label": "Turvallinen by design",
@@ -5541,7 +5540,7 @@
       "rejectOptional": "Hylkää valinnaiset",
       "customize": "Mukauta",
       "save": "Tallenna asetukset",
-      "settings": "Evästeasetukset",
+      "settings": "Eväste",
       "settingsAria": "Avaa evästeasetukset",
       "closeAria": "Sulje evästeasetukset",
       "alwaysOn": "Aina päällä",

@@ -312,10 +312,13 @@ export async function DatacentersPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-3 lg:justify-end">
+          <div className="flex flex-nowrap gap-2 sm:gap-3 lg:justify-end">
             <Link
               href="/contact"
-              className={cn(buttonVariants({ size: "lg" }), "h-11 gap-2 px-5")}
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "h-11 flex-1 gap-2 px-3 sm:flex-none sm:px-5",
+              )}
             >
               Request assessment
               <ArrowRight className="size-4" aria-hidden />
@@ -324,7 +327,7 @@ export async function DatacentersPage() {
               href="/data/privacy-policy"
               className={cn(
                 buttonVariants({ size: "lg", variant: "outline" }),
-                "h-11 gap-2 px-5",
+                "h-11 flex-1 gap-2 px-3 sm:flex-none sm:px-5",
               )}
             >
               Privacy policy

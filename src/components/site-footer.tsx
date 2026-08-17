@@ -4,13 +4,11 @@ import {
   BookOpen,
   Building2,
   Layers,
-  Scale,
   Shield,
   type LucideIcon,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
-import { CookiePreferencesButton } from "@/components/cookie-consent-banner";
 import { FooterNavLink } from "@/components/footer-nav-link";
 import { AppStoreBadge, GooglePlayBadge } from "@/components/store-badges";
 import { Separator } from "@/components/ui/separator";
@@ -46,12 +44,9 @@ const footerGroups: {
     icon: Shield,
     pages: sitePages.filter((p) => p.group === "trust"),
   },
-  {
-    title: "Legal",
-    icon: Scale,
-    pages: sitePages.filter((p) => p.group === "legal"),
-  },
 ];
+
+const legalPages = sitePages.filter((p) => p.group === "legal");
 
 export async function SiteFooter() {
   const tFooter = await getTranslations("footer");
@@ -110,7 +105,7 @@ export async function SiteFooter() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
             {footerGroups.map((group) => {
               const Icon = group.icon;
 
@@ -156,16 +151,25 @@ export async function SiteFooter() {
 
         <Separator className="my-8" />
 
-        <div className="text-muted-foreground flex flex-col gap-2 text-center text-sm sm:flex-row sm:items-center sm:justify-between sm:text-left">
+        <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+          {legalPages.map((page) => (
+            <li key={page.href}>
+              <FooterNavLink href={page.href}>
+                {itemLabel(page.href, page.title)}
+              </FooterNavLink>
+            </li>
+          ))}
+        </ul>
+
+        <Separator className="my-8" />
+
+        <div className="text-muted-foreground flex flex-row items-center justify-between gap-2 text-sm">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}, Inc.
           </p>
-          <div className="flex flex-col items-center gap-2 sm:items-end">
-            <p>
-              {tFooter("businessId", { id: businessIdDisplay })}
-            </p>
-            <CookiePreferencesButton label={tFooter("cookieSettings")} />
-          </div>
+          <p>
+            {tFooter("businessId", { id: businessIdDisplay })}
+          </p>
         </div>
       </div>
     </footer>

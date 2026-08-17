@@ -375,30 +375,30 @@ export function SdksPage() {
             </p>
           </div>
 
-          <ul className="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+          <ul className="mt-10 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-3 sm:overflow-visible md:grid-cols-3 lg:grid-cols-6 [&::-webkit-scrollbar]:hidden">
             {packages.map((pkg) => {
               const selectedCard = pkg.id === selected.id;
               return (
-                <li key={pkg.id} className="min-w-0">
+                <li key={pkg.id} className="min-w-0 shrink-0 sm:shrink">
                   <button
                     type="button"
                     onClick={() => setSelectedId(pkg.id)}
                     aria-pressed={selectedCard}
                     className={cn(
-                      "hover:border-foreground/40 flex h-full w-full flex-col items-start gap-3 rounded-lg border-2 border-border/70 bg-background p-4 text-left transition-colors",
+                      "flex w-full items-center gap-2 rounded-lg border-2 border-border/70 bg-background px-3 py-2 text-left transition-colors hover:border-foreground/40 sm:h-full sm:flex-col sm:items-start sm:gap-3 sm:p-4",
                       selectedCard && "border-foreground bg-muted/30",
                     )}
                   >
-                    <BrandIcon id={pkg.id} />
+                    <BrandIcon id={pkg.id} className="h-6 w-8 sm:h-8 sm:w-10" />
                     <div className="min-w-0">
                       <p className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase">
                         {pkg.short}
                       </p>
-                      <p className="text-muted-foreground mt-1 text-xs leading-snug">
+                      <p className="text-muted-foreground mt-1 hidden text-xs leading-snug sm:block">
                         {pkg.stack}
                       </p>
                     </div>
-                    <p className="text-muted-foreground mt-auto font-mono text-[11px]">
+                    <p className="text-muted-foreground mt-auto hidden font-mono text-[11px] sm:block">
                       {cardVersionLine(pkg.status, pkg.version)}
                     </p>
                   </button>
@@ -508,12 +508,12 @@ export function SdksPage() {
               site subscription.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-nowrap gap-2 sm:gap-3">
             <Link
               href="/contact"
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "h-11 gap-2 px-5",
+                "h-11 flex-1 gap-2 px-3 sm:flex-none sm:px-5",
               )}
             >
               Talk to sales
@@ -525,7 +525,7 @@ export function SdksPage() {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ size: "lg", variant: "outline" }),
-                "h-11 gap-2 px-5",
+                "h-11 flex-1 gap-2 px-3 sm:flex-none sm:px-5",
               )}
             >
               Open playground

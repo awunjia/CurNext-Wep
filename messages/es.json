@@ -2714,7 +2714,6 @@
               "Firmware - catálogo, historial, OTA en el edge",
               "Integraciones - catálogo Market Place",
               "Seguridad - resumen de arquitectura pública",
-              "Hosting - residencia y postura de escala",
               "Comercial - modelo de precios y vías de contacto"
             ]
           },
@@ -4246,7 +4245,7 @@
         },
         "3": {
           "label": "Larga vida en campo",
-          "detail": "2-5 años típicos"
+          "detail": "Batería reemplazable, 2-5 años - cámbiela al agotarse para uso continuo."
         },
         "4": {
           "label": "Seguro by design",
@@ -5541,7 +5540,7 @@
       "rejectOptional": "Rechazar opcionales",
       "customize": "Personalizar",
       "save": "Guardar preferencias",
-      "settings": "Ajustes de cookies",
+      "settings": "Cookie",
       "settingsAria": "Abrir ajustes de cookies",
       "closeAria": "Cerrar ajustes de cookies",
       "alwaysOn": "Siempre activo",
