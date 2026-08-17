@@ -438,7 +438,7 @@ export const docsTabs: DocsTab[] = [
         id: "sdk-languages",
         title: "Official languages",
         paragraphs: [
-          "Install from public registries. Live versions on the SDK page are resolved from npm, Packagist, pkg.go.dev, PyPI, and Maven Central where published. Flutter is planned on pub.dev and marked coming soon until published.",
+          "Install from public registries. Live versions on the SDK page are resolved from npm, Packagist, pkg.go.dev, PyPI, Maven Central, and pub.dev.",
         ],
         bullets: sdkPackages.map((pkg) => {
           const status =

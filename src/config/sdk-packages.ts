@@ -315,19 +315,17 @@ try {
     name: "Flutter",
     short: "Flutter",
     stack: "Dart, iOS, Android & desktop",
-    packageName: "curnext (planned)",
-    version: "",
-    status: "coming_soon",
+    packageName: "curnext",
+    version: "1.0.0",
+    status: "live",
     registry: "pub.dev",
-    registryUrl: "",
-    install: `# Not published yet
-# Planned: flutter pub add curnext`,
+    registryUrl: "https://pub.dev/packages/curnext",
+    install: "flutter pub add curnext",
     summary:
-      "Flutter / Dart client for mobile and desktop apps that need readiness, devices, and alerts in the field. Same REST surface as the live SDKs - package is not on pub.dev yet.",
-    highlights: ["Coming soon", "Dart", "Mobile & desktop"],
+      "Official Dart / Flutter client for mobile, desktop, and web apps that need readiness, devices, and alerts in the field.",
+    highlights: ["Dart 3.3+", "Flutter", "Mobile, desktop & web"],
     accent: "#02569B",
-    quickStart: `// Preview only - Flutter SDK is not published yet
-import 'package:curnext/curnext.dart';
+    quickStart: `import 'package:curnext/curnext.dart';
 
 final client = CurNext(
   apiKey: const String.fromEnvironment('CURNEXT_API_KEY'),
@@ -336,19 +334,22 @@ final client = CurNext(
 );
 
 final health = await client.health.get();
+// { status: ok, service: curnext-api, version: "...", api: /api/v1 }
+
 final projects = await client.projects.list();
 final readiness =
     await client.projects.getReadiness('SURFACE_EXTERNAL_ID');
 
-print('\${health.status} \${readiness.status}');`,
-    errorHandling: `// Preview only - Flutter SDK is not published yet
-try {
+print('\${readiness['status']} \${readiness['readiness_score']}');
+
+client.close();`,
+    errorHandling: `try {
   final readiness =
       await client.projects.getReadiness('SURFACE_ID');
-  print(readiness.status);
+  print(readiness['status']);
 } on CurNextApiException catch (e) {
   // 401 invalid key | 404 not found | 429 rate limited
-  print('\${e.statusCode} \${e.message} \${e.code}');
+  print('\${e.statusCode} \${e.message}');
   rethrow;
 }`,
   },

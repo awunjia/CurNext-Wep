@@ -64,7 +64,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
     source: "SDKs",
     href: "/sdks",
     tags: ["sdk", "javascript", "python", "go", "php", "java", "flutter"],
-    text: "Official SDKs wrap the REST API: JavaScript/TypeScript @curnext/sdk on npm, PHP curnext/sdk on Packagist, Go github.com/awunjia/curnext-go, Python curnext on PyPI, Java app.curnext:curnext-sdk on Maven Central. Flutter is coming soon on pub.dev. Pass CURNEXT_API_KEY and optional baseUrl host https://api.curnext.app.",
+    text: "Official SDKs wrap the REST API: JavaScript/TypeScript @curnext/sdk on npm, PHP curnext/sdk on Packagist, Go github.com/awunjia/curnext-go, Python curnext on PyPI, Java app.curnext:curnext-sdk on Maven Central, Flutter curnext on pub.dev. Pass CURNEXT_API_KEY and optional baseUrl host https://api.curnext.app.",
   },
   {
     id: "firmware",

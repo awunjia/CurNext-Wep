@@ -2070,7 +2070,7 @@
           "java",
           "flutter"
         ],
-        "text": "Les SDK officiels encapsulent l'API REST : JavaScript/TypeScript @curnext/sdk sur npm, PHP curnext/sdk sur Packagist, Go github.com/awunjia/curnext-go, Python curnext sur PyPI, Java app.curnext:curnext-sdk sur Maven Central. Flutter arrive bientôt sur pub.dev. Passez CURNEXT_API_KEY et un host baseUrl optionnel https://api.curnext.app."
+        "text": "Les SDK officiels encapsulent l'API REST : JavaScript/TypeScript @curnext/sdk sur npm, PHP curnext/sdk sur Packagist, Go github.com/awunjia/curnext-go, Python curnext sur PyPI, Java app.curnext:curnext-sdk sur Maven Central, Flutter curnext sur pub.dev. Passez CURNEXT_API_KEY et un host baseUrl optionnel https://api.curnext.app."
       },
       {
         "id": "firmware",
@@ -2619,15 +2619,15 @@
         "name": "Flutter",
         "short": "Flutter",
         "stack": "Dart, iOS, Android et desktop",
-        "summary": "Client Flutter / Dart pour apps mobiles et desktop qui ont besoin de maturité, appareils et alertes sur le terrain. Même surface REST que les SDK live - le package n'est pas encore sur pub.dev.",
+        "summary": "Client officiel Dart / Flutter pour apps mobiles, desktop et web qui ont besoin de maturité, appareils et alertes sur le terrain.",
         "highlights": [
-          "Bientôt disponible",
-          "Dart",
-          "Mobile et desktop"
+          "Dart 3.3+",
+          "Flutter",
+          "Mobile, desktop et web"
         ],
-        "quickStart": "// Aperçu uniquement - le SDK Flutter n'est pas encore publié\nimport 'package:curnext/curnext.dart';\n\nfinal client = CurNext(\n  apiKey: const String.fromEnvironment('CURNEXT_API_KEY'),\n  // baseUrl par défaut : https://api.curnext.app\n  // baseUrl: 'http://localhost:4000',\n);\n\nfinal health = await client.health.get();\nfinal projects = await client.projects.list();\nfinal readiness =\n    await client.projects.getReadiness('SURFACE_EXTERNAL_ID');\n\nprint('${health.status} ${readiness.status}');",
-        "errorHandling": "// Aperçu uniquement - le SDK Flutter n'est pas encore publié\ntry {\n  final readiness =\n      await client.projects.getReadiness('SURFACE_ID');\n  print(readiness.status);\n} on CurNextApiException catch (e) {\n  // 401 clé invalide | 404 introuvable | 429 limité en débit\n  print('${e.statusCode} ${e.message} ${e.code}');\n  rethrow;\n}",
-        "status": "coming_soon"
+        "quickStart": "import 'package:curnext/curnext.dart';\n\nfinal client = CurNext(\n  apiKey: const String.fromEnvironment('CURNEXT_API_KEY'),\n  // baseUrl defaults to https://api.curnext.app\n  // baseUrl: 'http://localhost:4000',\n);\n\nfinal health = await client.health.get();\n// { status: ok, service: curnext-api, version: \"...\", api: /api/v1 }\n\nfinal projects = await client.projects.list();\nfinal readiness =\n    await client.projects.getReadiness('SURFACE_EXTERNAL_ID');\n\nprint('${readiness['status']} ${readiness['readiness_score']}');\n\nclient.close();",
+        "errorHandling": "try {\n  final readiness =\n      await client.projects.getReadiness('SURFACE_ID');\n  print(readiness['status']);\n} on CurNextApiException catch (e) {\n  // 401 invalid key | 404 not found | 429 rate limited\n  print('${e.statusCode} ${e.message}');\n  rethrow;\n}",
+        "status": "live"
       }
     },
     "status": {
@@ -3128,7 +3128,7 @@
           "sdk-languages": {
             "title": "Langages officiels",
             "paragraphs": [
-              "Installez depuis les registres publics. Les versions live sur la page SDK sont résolues depuis npm, Packagist, pkg.go.dev, PyPI et Maven Central lorsqu'elles sont publiées. Flutter est prévu sur pub.dev et marqué coming soon jusqu'à publication."
+              "Installez depuis les registres publics. Les versions live sur la page SDK sont résolues depuis npm, Packagist, pkg.go.dev, PyPI, Maven Central et pub.dev."
             ],
             "bullets": [
               "JavaScript / TypeScript - @curnext/sdk (npm, disponible)",
@@ -3136,7 +3136,7 @@
               "Go - github.com/awunjia/curnext-go (pkg.go.dev, disponible)",
               "Python - curnext (PyPI, disponible)",
               "Java - app.curnext:curnext-sdk (Maven Central, disponible)",
-              "Flutter - curnext (prévu) (pub.dev, bientôt disponible)"
+              "Flutter - curnext (pub.dev, live)"
             ]
           },
           "sdk-auth": {
@@ -3238,12 +3238,12 @@
           "sdk-flutter": {
             "title": "Flutter",
             "paragraphs": [
-              "Client Flutter / Dart pour apps mobiles et bureau qui ont besoin de disponibilité, appareils et alertes sur le terrain. Même surface REST que les SDK live - le paquet n'est pas encore sur pub.dev."
+              "Client officiel Dart / Flutter pour apps mobiles, bureau et web qui ont besoin de disponibilité, appareils et alertes sur le terrain."
             ],
             "bullets": [
-              "Bientôt disponible",
-              "Dart",
-              "Mobile et bureau"
+              "Dart 3.3+",
+              "Flutter",
+              "Mobile, desktop et web"
             ]
           }
         }

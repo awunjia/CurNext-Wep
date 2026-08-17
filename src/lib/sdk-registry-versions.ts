@@ -101,13 +101,23 @@ export async function fetchMavenVersion(): Promise<string | undefined> {
   return (await fetchMavenFromSearch()) ?? (await fetchMavenFromMetadata());
 }
 
+export async function fetchPubDevVersion(): Promise<string | undefined> {
+  const data = await fetchJson<{ latest?: { version?: string } }>(
+    "https://pub.dev/api/packages/curnext",
+  );
+  return typeof data?.latest?.version === "string"
+    ? data.latest.version
+    : undefined;
+}
+
 export async function fetchAllSdkVersions(): Promise<SdkVersionsMap> {
-  const [javascript, php, go, python, java] = await Promise.all([
+  const [javascript, php, go, python, java, flutter] = await Promise.all([
     fetchNpmVersion(),
     fetchPackagistVersion(),
     fetchGoVersion(),
     fetchPypiVersion(),
     fetchMavenVersion(),
+    fetchPubDevVersion(),
   ]);
 
   return {
@@ -116,5 +126,6 @@ export async function fetchAllSdkVersions(): Promise<SdkVersionsMap> {
     ...(go ? { go } : {}),
     ...(python ? { python } : {}),
     ...(java ? { java } : {}),
+    ...(flutter ? { flutter } : {}),
   };
 }
